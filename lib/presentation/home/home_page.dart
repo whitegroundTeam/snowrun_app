@@ -24,11 +24,16 @@ class HomePageState extends State<HomePage>{
                       (context, index) {
                     return Card(
                       margin: const EdgeInsets.all(10),
-                      child: Container(
-                        color: Colors.yellow,
-                        height: 80,
-                        alignment: Alignment.center,
-                        child: Text('기록 ${index}'),
+                      child: GestureDetector(
+                        onTap: (){
+                          context.go('/result');
+                        },
+                        child: Container(
+                          color: Colors.yellow,
+                          height: 80,
+                          alignment: Alignment.center,
+                          child: Text('기록 ${index}'),
+                        ),
                       ),
                     );
                   },
