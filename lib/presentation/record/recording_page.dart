@@ -20,8 +20,25 @@ class RecordingPageState extends State<RecordingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        iconTheme: const IconThemeData(
+          color: Colors.black
+        ),
+      ),
+      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
+          Positioned(
+            top: 10.0,
+              left: 10.0,
+              child: Container(
+                height: 100,
+                width: 100,
+                color: Colors.black,
+                  child: const Icon(CupertinoIcons.back, color: Colors.black,))
+          ),
           MapWidget(
             key: const ValueKey('mapWidget'),
             resourceOptions: ResourceOptions(accessToken: 'pk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xrYW96N2RkMDd5eTNyanM2ZmVjZ2E4ciJ9.DFZG8kD1ahfSc1sk-cN-bw'),
