@@ -51,5 +51,7 @@
     <string>sk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xraTdram9lMGdvczNtcno1NDAwOGlhZyJ9.E2FUV2FYUXqLDeZtjLw1Hg</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>Shows your location on the map and helps improve the map</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>This app needs access to location when in the background.</string>
 </dict>
 </plist>
