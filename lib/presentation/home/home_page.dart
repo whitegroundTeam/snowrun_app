@@ -27,7 +27,7 @@ class HomePageState extends State<HomePage>{
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(100)
                 ),
-                child: const Icon(Icons.navigate_next, size:100 ,color: Colors.white,),
+                child: const Icon(Icons.play_arrow, size:80 ,color: Colors.white,),
               ),
             ),
           )

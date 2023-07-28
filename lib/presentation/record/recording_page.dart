@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 
 
@@ -10,12 +13,60 @@ class RecordingPage extends StatefulWidget {
   State createState() => RecordingPageState();
 }
 
+class AnnotationClickListener extends OnPointAnnotationClickListener {
+  @override
+  void onPointAnnotationClick(PointAnnotation annotation) {
+    print("onAnnotationClick, id: ${annotation.id}");
+  }
+}
+
 class RecordingPageState extends State<RecordingPage> {
   MapboxMap? mapboxMap;
+  PointAnnotation? pointAnnotation;
+  PointAnnotationManager? pointAnnotationManager;
 
   _onMapCreated(MapboxMap mapboxMap) {
     this.mapboxMap = mapboxMap;
+    mapboxMap.annotations.createPointAnnotationManager().then((value) async {
+      pointAnnotationManager = value;
+      final ByteData bytes =
+      await rootBundle.load('assets/pngs/marker.png');
+      final Uint8List list = bytes.buffer.asUint8List();
+      createOneAnnotation(list);
+    });
   }
+
+  void createOneAnnotation(Uint8List list) {
+    for(int i=0; i < positionMarkers.length; i++){
+        pointAnnotationManager
+            ?.create(PointAnnotationOptions(
+            geometry: Point(
+                coordinates:
+                // Position(126.6338237,37.4064278,)).toJson(),
+                positionMarkers[i]).toJson(),
+            textField: markerNames[i],
+            textOffset: [0.0, -2.0],
+            iconSize: 0.2,
+            iconOffset: [0.0, -5.0],
+            symbolSortKey: 10,
+            image: list))
+            .then((value) => pointAnnotation = value);
+    }
+  }
+
+  List<Position> positionMarkers = [
+    Position(126.6338237,37.4064278),
+    Position(126.6299832,37.4066198),
+    Position(126.6297943,37.404984),
+    Position(126.6287445,37.4061404),
+  ];
+
+  List<String> markerNames = [
+    '쥴리',
+    '댄',
+    '캐틀린',
+    '루만'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +96,11 @@ class RecordingPageState extends State<RecordingPage> {
             onMapCreated: _onMapCreated,
             cameraOptions: CameraOptions(
                 center: Point(
-                    coordinates: Position(6.0033416748046875,
-                      43.70908256335716,)
+                    coordinates: Position(
+                      126.6338237,37.4064278,
+                      )
                 ).toJson(),
-                zoom: 10.0
+                zoom: 14.0
             ),
           ),
           Positioned(
