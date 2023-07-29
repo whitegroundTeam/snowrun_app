@@ -30,7 +30,7 @@ class RecordingPageState extends State<RecordingPage> {
     mapboxMap.annotations.createPointAnnotationManager().then((value) async {
       pointAnnotationManager = value;
       final ByteData bytes =
-      await rootBundle.load('assets/pngs/marker.png');
+      await rootBundle.load('assets/pngs/snowrun_icon.png');
       final Uint8List list = bytes.buffer.asUint8List();
       createOneAnnotation(list);
     });
@@ -46,7 +46,7 @@ class RecordingPageState extends State<RecordingPage> {
                 positionMarkers[i]).toJson(),
             textField: markerNames[i],
             textOffset: [0.0, -2.0],
-            iconSize: 0.2,
+            iconSize: 0.5,
             iconOffset: [0.0, -5.0],
             symbolSortKey: 10,
             image: list))
