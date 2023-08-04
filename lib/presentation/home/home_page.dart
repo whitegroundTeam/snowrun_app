@@ -119,32 +119,4 @@ class HomePageState extends State<HomePage>{
       // ),
     );
   }
-
-  Future<void> _login() async {
-    final response = await http.post(
-      Uri.parse('https://서버url'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'name': _nameController.text,
-        'password': _passwordController.text,
-      }),
-    );
-
-    if (response.statusCode == 200) {
-      // If server returns an OK response, parse the token
-      var token = jsonDecode(response.body)['token'];
-      await _storage.write(key: 'auth_token', value: token);
-      context.go('/');
-    } else {
-      // If response was not OK, show error message
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('로그인 실패'),
-        ),
-      );
-    }
-  }
-
 }

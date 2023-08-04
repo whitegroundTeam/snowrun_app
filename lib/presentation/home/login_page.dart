@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
+import 'package:snowrun_app/injection.dart';
 
 class LoginPage extends StatefulWidget{
   const LoginPage({super.key});
@@ -10,6 +10,7 @@ class LoginPage extends StatefulWidget{
 }
 
 class LoginPageState extends State<LoginPage>{
+  final hiveProvider = getIt<HiveProvider>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,7 @@ class LoginPageState extends State<LoginPage>{
                 
               },
               child: Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: Colors.yellow,
                   borderRadius: BorderRadius.circular(12)

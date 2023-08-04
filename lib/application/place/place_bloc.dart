@@ -5,7 +5,7 @@ import 'package:snowrun_app/domain/place/i_place_repository.dart';
 import 'package:snowrun_app/domain/place/model/boundary_status.dart';
 import 'package:snowrun_app/domain/place/model/boundary_type.dart';
 import 'package:snowrun_app/domain/place/model/place.dart';
-import 'package:snowrun_app/types.dart';
+import 'package:snowrun_app/domain/place/types.dart';
 
 
 part 'place_event.dart';

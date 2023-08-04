@@ -1,7 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
 import 'package:snowrun_app/domain/location/model/location.dart';
-import 'package:snowrun_app/types.dart';
+import 'package:snowrun_app/domain/place/types.dart';
+
 
 part 'location_dtos.freezed.dart';
 

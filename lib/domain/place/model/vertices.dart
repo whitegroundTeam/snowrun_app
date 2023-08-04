@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:snowrun_app/domain/core/failures.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
 import 'package:snowrun_app/domain/place/model/vertices_type.dart';
-import 'package:snowrun_app/types.dart';
+import 'package:snowrun_app/domain/place/types.dart';
 
 
 part 'vertices.freezed.dart';

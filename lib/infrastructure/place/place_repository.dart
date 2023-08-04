@@ -8,10 +8,11 @@ import 'package:snowrun_app/domain/place/model/boundary_status.dart';
 import 'package:snowrun_app/domain/place/model/boundary_type.dart';
 import 'package:snowrun_app/domain/place/model/place.dart';
 import 'package:snowrun_app/domain/place/place_failure.dart';
+import 'package:snowrun_app/domain/place/types.dart';
 import 'package:snowrun_app/infrastructure/api/core_api.dart';
 import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
 import 'package:snowrun_app/infrastructure/place/place_dtos.dart';
-import 'package:snowrun_app/types.dart';
+
 
 
 @LazySingleton(as: IPlaceRepository)

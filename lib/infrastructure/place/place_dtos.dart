@@ -4,7 +4,8 @@ import 'package:snowrun_app/domain/place/model/boundary.dart';
 import 'package:snowrun_app/domain/place/model/place.dart';
 import 'package:snowrun_app/domain/place/model/vertices.dart';
 import 'package:snowrun_app/domain/place/model/vertices_type.dart';
-import 'package:snowrun_app/types.dart';
+import 'package:snowrun_app/domain/place/types.dart';
+
 
 
 part 'place_dtos.freezed.dart';
