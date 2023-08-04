@@ -1,113 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
+import 'package:snowrun_app/presentation/core/common_detector.dart';
 
-class LoginPage extends StatefulWidget{
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
   State createState() => LoginPageState();
 }
 
-class LoginPageState extends State<LoginPage>{
+class LoginPageState extends State<LoginPage> {
   final hiveProvider = getIt<HiveProvider>();
+  Color selectedColor = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text('누구인가요?', style: TextStyle(fontSize: 40),),
-            const SizedBox(height: 40,),
-            GestureDetector(
-              onTap: (){
-                
-              },
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.circular(12)
-                ),
-                height: 100,
-                width: 280,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Image.asset('assets/pngs/julie_avatar.png'),
-                    const Text('쥴리', style: TextStyle(fontSize: 24),)
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 16,),
-            GestureDetector(
-              onTap: (){
-
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                height: 100,
-                width: 280,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Image.asset('assets/pngs/dan_avatar.png'),
-                    const Text('댄', style: TextStyle(fontSize: 24),)
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 16,),
-            GestureDetector(
-              onTap: (){
-
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                height: 100,
-                width: 280,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Image.asset('assets/pngs/kathlyn_avatar.png'),
-                    const Text('캐틀린', style: TextStyle(fontSize: 24),)
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 16,),
-            GestureDetector(
-              onTap: (){
-
-              },
-              child: Container(
-                decoration: BoxDecoration(
-color: Colors.blue,
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                height: 100,
-                width: 280,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Image.asset('assets/pngs/luman_avatar.png'),
-                    const Text('루만', style: TextStyle(fontSize: 24),)
-                  ],
-                ),
-              ),
-            ),
-          ],
+      appBar: AppBar(
+        backgroundColor: selectedColor,
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
         ),
-      )
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 32,
+              ),
+              const Center(
+                child: Text(
+                  '누구인가요?',
+                  style: TextStyle(fontSize: 40),
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              _buildMember('assets/pngs/julie_avatar.png', "쥴리", Colors.yellow),
+              _buildMember('assets/pngs/dan_avatar.png', "댄", Colors.green),
+              _buildMember('assets/pngs/kathlyn_avatar.png', "케틀린", Colors.pink),
+              _buildMember('assets/pngs/luman_avatar.png', "루만", Colors.blue),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildMember(String avatarPath, String name, Color borderColor) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      child: CommonDetector(
+        onTap: () {
+          setState(() {
+            selectedColor = borderColor;
+          });
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: borderColor, width: 8.0),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                avatarPath,
+                width: 72,
+                height: 72,
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                        fontSize: 36, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

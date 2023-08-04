@@ -6,6 +6,7 @@ import 'package:snowrun_app/presentation/record/recording_page.dart';
 import 'package:snowrun_app/presentation/record/result_page.dart';
 
 final GoRouter router = GoRouter(
+  initialLocation: '/login',
   routes: <RouteBase>[
     GoRoute(
       path: '/',
