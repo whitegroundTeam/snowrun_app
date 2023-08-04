@@ -29,8 +29,8 @@ class UserRepository implements IUserRepository {
     // final carts = CartDto.fromJson(infoJson).toDomain();
 
     List<UserDto> testUsersDtos = [
-      const UserDto(name: "펜타포트"),
-      const UserDto(name: "펜타포트")
+      const UserDto(name: "쥴리"),
+      const UserDto(name: "댄")
     ];
     List<User> testUsers = testUsersDtos.map((e) => e.toDomain()).toList();
     return Future.value(right(testUsers));

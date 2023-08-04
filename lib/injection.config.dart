@@ -14,6 +14,7 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import 'application/location/location_bloc.dart' as _i4;
 import 'application/place/place_bloc.dart' as _i13;
+import 'application/user/user_bloc.dart' as _i14;
 import 'domain/location/i_location_repository.dart' as _i7;
 import 'domain/place/i_place_repository.dart' as _i9;
 import 'domain/user/i_user_repository.dart' as _i11;
@@ -50,5 +51,6 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i11.IUserRepository>(
       () => _i12.UserRepository(gh<_i6.CoreApi>()));
   gh.factory<_i13.PlaceBloc>(() => _i13.PlaceBloc(gh<_i9.IPlaceRepository>()));
+  gh.factory<_i14.UserBloc>(() => _i14.UserBloc(gh<_i11.IUserRepository>()));
   return getIt;
 }
