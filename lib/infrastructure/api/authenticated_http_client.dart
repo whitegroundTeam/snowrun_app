@@ -13,7 +13,10 @@ class AuthenticatedHttpClient extends http.BaseClient {
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
     final accessToken = await hiveProvider.getAuthToken();
-    request.headers.putIfAbsent('x-access-token', () => accessToken);
+    if (accessToken.isNotEmpty) {
+      request.headers
+          .putIfAbsent('Authorization', () => 'Token $accessToken');
+    }
 
     debugPrint("\t\x1B[36m[HEADER]: ${request.headers.toString()}\x1B[0m\n");
     return request.send();

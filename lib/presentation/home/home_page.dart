@@ -66,7 +66,6 @@ class HomePageState extends State<HomePage>{
                     ],
                   ),
                 ),
-
                 const SizedBox(height: 100,),
                 GestureDetector(
                   onTap: (){

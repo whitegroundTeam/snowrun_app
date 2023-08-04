@@ -135,24 +135,6 @@ class CoreApi {
   Uri _getUri(String path, Map<String, dynamic>? queryParams) =>
       Uri.https(baseUrl, path, queryParams);
 
-  // /// EXAMPLE - GET
-  // Future<Response> isPreferredStore(String storeExtId) => _requestWrapper(
-  //   method: HttpMethod.get,
-  //   path: "/stores/{extId}/preferred",
-  //   pathParams: {"extId": storeExtId},
-  // );
-  //
-  // /// EXAMPLE - POST
-  // Future<Response> createPreferredStore(String storeExtId) => _requestWrapper(
-  //   method: HttpMethod.post,
-  //   path: "/stores/{extId}/preferred",
-  //   pathParams: {"extId": storeExtId},
-  // );
-  //
-  // /// EXAMPLE
-  // Future<Response> getHomeConfig() =>
-  //     _requestWrapper(method: HttpMethod.get, path: "/home");
-
   Future<Response> createBoundaries(CreateBoundaryDto createBoundaryDto) =>
       _requestWrapper(
         method: HttpMethod.post,
