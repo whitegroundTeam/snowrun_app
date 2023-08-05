@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/location/model/location.dart';
+import 'package:snowrun_app/domain/location/model/boundary_location.dart';
 import 'package:snowrun_app/domain/place/types.dart';
 
 
@@ -16,14 +16,14 @@ class LocationDto with _$LocationDto {
     @JsonKey(name: 'coordinates') required List<Polygon> coordinates,
   }) = _LocationDto;
 
-  factory LocationDto.fromDomain(Location location) {
+  factory LocationDto.fromDomain(BoundaryLocation location) {
     return LocationDto(
       coordinates: location.coordinates.getOrCrash(),
     );
   }
 
-  Location toDomain() {
-    return Location(
+  BoundaryLocation toDomain() {
+    return BoundaryLocation(
       coordinates: ListVO(coordinates),
     );
   }

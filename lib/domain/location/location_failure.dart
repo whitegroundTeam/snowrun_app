@@ -6,5 +6,6 @@ part 'location_failure.freezed.dart';
 
 @freezed
 class LocationFailure with _$LocationFailure {
-  const factory LocationFailure.unexpected(AppError appError) = _Unexpected;
+  const factory LocationFailure.unexpected() = _Unexpected;
+  const factory LocationFailure.unexpectedWithErrorError(AppError appError) = _UnexpectedWithErrorError;
 }

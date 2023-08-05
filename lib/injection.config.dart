@@ -12,18 +12,18 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/location/location_bloc.dart' as _i4;
+import 'application/location/location_bloc.dart' as _i12;
 import 'application/place/place_bloc.dart' as _i13;
 import 'application/user/user_bloc.dart' as _i14;
-import 'domain/location/i_location_repository.dart' as _i7;
-import 'domain/place/i_place_repository.dart' as _i9;
-import 'domain/user/i_user_repository.dart' as _i11;
-import 'infrastructure/api/authenticated_http_client.dart' as _i5;
-import 'infrastructure/api/core_api.dart' as _i6;
+import 'domain/location/i_location_repository.dart' as _i6;
+import 'domain/place/i_place_repository.dart' as _i8;
+import 'domain/user/i_user_repository.dart' as _i10;
+import 'infrastructure/api/authenticated_http_client.dart' as _i4;
+import 'infrastructure/api/core_api.dart' as _i5;
 import 'infrastructure/hive/hive_provider.dart' as _i3;
-import 'infrastructure/location/location_repository.dart' as _i8;
-import 'infrastructure/place/place_repository.dart' as _i10;
-import 'infrastructure/user/user_repository.dart' as _i12;
+import 'infrastructure/location/location_repository.dart' as _i7;
+import 'infrastructure/place/place_repository.dart' as _i9;
+import 'infrastructure/user/user_repository.dart' as _i11;
 
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
@@ -39,18 +39,19 @@ _i1.GetIt $initGetIt(
     environmentFilter,
   );
   gh.singleton<_i3.HiveProvider>(_i3.HiveProvider());
-  gh.factory<_i4.LocationBloc>(() => _i4.LocationBloc());
-  gh.lazySingleton<_i5.AuthenticatedHttpClient>(
-      () => _i5.AuthenticatedHttpClient(hiveProvider: gh<_i3.HiveProvider>()));
-  gh.singleton<_i6.CoreApi>(
-      _i6.CoreApi(client: gh<_i5.AuthenticatedHttpClient>()));
-  gh.lazySingleton<_i7.ILocationRepository>(
-      () => _i8.LocationRepository(gh<_i6.CoreApi>()));
-  gh.lazySingleton<_i9.IPlaceRepository>(
-      () => _i10.PlaceRepository(gh<_i6.CoreApi>()));
-  gh.lazySingleton<_i11.IUserRepository>(
-      () => _i12.UserRepository(gh<_i6.CoreApi>()));
-  gh.factory<_i13.PlaceBloc>(() => _i13.PlaceBloc(gh<_i9.IPlaceRepository>()));
-  gh.factory<_i14.UserBloc>(() => _i14.UserBloc(gh<_i11.IUserRepository>()));
+  gh.lazySingleton<_i4.AuthenticatedHttpClient>(
+      () => _i4.AuthenticatedHttpClient(hiveProvider: gh<_i3.HiveProvider>()));
+  gh.singleton<_i5.CoreApi>(
+      _i5.CoreApi(client: gh<_i4.AuthenticatedHttpClient>()));
+  gh.lazySingleton<_i6.ILocationRepository>(
+      () => _i7.LocationRepository(gh<_i5.CoreApi>()));
+  gh.lazySingleton<_i8.IPlaceRepository>(
+      () => _i9.PlaceRepository(gh<_i5.CoreApi>()));
+  gh.lazySingleton<_i10.IUserRepository>(
+      () => _i11.UserRepository(gh<_i5.CoreApi>()));
+  gh.factory<_i12.LocationBloc>(
+      () => _i12.LocationBloc(gh<_i6.ILocationRepository>()));
+  gh.factory<_i13.PlaceBloc>(() => _i13.PlaceBloc(gh<_i8.IPlaceRepository>()));
+  gh.factory<_i14.UserBloc>(() => _i14.UserBloc(gh<_i10.IUserRepository>()));
   return getIt;
 }

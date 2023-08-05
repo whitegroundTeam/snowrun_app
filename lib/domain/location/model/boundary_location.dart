@@ -5,18 +5,18 @@ import 'package:snowrun_app/domain/core/value_objects.dart';
 import 'package:snowrun_app/domain/place/types.dart';
 
 
-part 'location.freezed.dart';
+part 'boundary_location.freezed.dart';
 
 @freezed
-class Location with _$Location {
-  const Location._();
+class BoundaryLocation with _$BoundaryLocation {
+  const BoundaryLocation._();
 
-  const factory Location({
+  const factory BoundaryLocation({
     required ListVO<Polygon> coordinates,
-  }) = _Location;
+  }) = _BoundaryLocation;
 
-  factory Location.empty() =>
-      Location(
+  factory BoundaryLocation.empty() =>
+      BoundaryLocation(
         coordinates: ListVO([]),
       );
 

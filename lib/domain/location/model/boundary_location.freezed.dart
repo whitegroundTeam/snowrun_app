@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'location.dart';
+part of 'boundary_location.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,27 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Location {
+mixin _$BoundaryLocation {
   ListVO<List<List<double>>> get coordinates =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LocationCopyWith<Location> get copyWith =>
+  $BoundaryLocationCopyWith<BoundaryLocation> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LocationCopyWith<$Res> {
-  factory $LocationCopyWith(Location value, $Res Function(Location) then) =
-      _$LocationCopyWithImpl<$Res, Location>;
+abstract class $BoundaryLocationCopyWith<$Res> {
+  factory $BoundaryLocationCopyWith(
+          BoundaryLocation value, $Res Function(BoundaryLocation) then) =
+      _$BoundaryLocationCopyWithImpl<$Res, BoundaryLocation>;
   @useResult
   $Res call({ListVO<List<List<double>>> coordinates});
 }
 
 /// @nodoc
-class _$LocationCopyWithImpl<$Res, $Val extends Location>
-    implements $LocationCopyWith<$Res> {
-  _$LocationCopyWithImpl(this._value, this._then);
+class _$BoundaryLocationCopyWithImpl<$Res, $Val extends BoundaryLocation>
+    implements $BoundaryLocationCopyWith<$Res> {
+  _$BoundaryLocationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -57,21 +58,22 @@ class _$LocationCopyWithImpl<$Res, $Val extends Location>
 }
 
 /// @nodoc
-abstract class _$$_LocationCopyWith<$Res> implements $LocationCopyWith<$Res> {
-  factory _$$_LocationCopyWith(
-          _$_Location value, $Res Function(_$_Location) then) =
-      __$$_LocationCopyWithImpl<$Res>;
+abstract class _$$_BoundaryLocationCopyWith<$Res>
+    implements $BoundaryLocationCopyWith<$Res> {
+  factory _$$_BoundaryLocationCopyWith(
+          _$_BoundaryLocation value, $Res Function(_$_BoundaryLocation) then) =
+      __$$_BoundaryLocationCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ListVO<List<List<double>>> coordinates});
 }
 
 /// @nodoc
-class __$$_LocationCopyWithImpl<$Res>
-    extends _$LocationCopyWithImpl<$Res, _$_Location>
-    implements _$$_LocationCopyWith<$Res> {
-  __$$_LocationCopyWithImpl(
-      _$_Location _value, $Res Function(_$_Location) _then)
+class __$$_BoundaryLocationCopyWithImpl<$Res>
+    extends _$BoundaryLocationCopyWithImpl<$Res, _$_BoundaryLocation>
+    implements _$$_BoundaryLocationCopyWith<$Res> {
+  __$$_BoundaryLocationCopyWithImpl(
+      _$_BoundaryLocation _value, $Res Function(_$_BoundaryLocation) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -79,7 +81,7 @@ class __$$_LocationCopyWithImpl<$Res>
   $Res call({
     Object? coordinates = null,
   }) {
-    return _then(_$_Location(
+    return _then(_$_BoundaryLocation(
       coordinates: null == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
@@ -90,22 +92,22 @@ class __$$_LocationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Location extends _Location {
-  const _$_Location({required this.coordinates}) : super._();
+class _$_BoundaryLocation extends _BoundaryLocation {
+  const _$_BoundaryLocation({required this.coordinates}) : super._();
 
   @override
   final ListVO<List<List<double>>> coordinates;
 
   @override
   String toString() {
-    return 'Location(coordinates: $coordinates)';
+    return 'BoundaryLocation(coordinates: $coordinates)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Location &&
+            other is _$_BoundaryLocation &&
             (identical(other.coordinates, coordinates) ||
                 other.coordinates == coordinates));
   }
@@ -116,19 +118,20 @@ class _$_Location extends _Location {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LocationCopyWith<_$_Location> get copyWith =>
-      __$$_LocationCopyWithImpl<_$_Location>(this, _$identity);
+  _$$_BoundaryLocationCopyWith<_$_BoundaryLocation> get copyWith =>
+      __$$_BoundaryLocationCopyWithImpl<_$_BoundaryLocation>(this, _$identity);
 }
 
-abstract class _Location extends Location {
-  const factory _Location(
-      {required final ListVO<List<List<double>>> coordinates}) = _$_Location;
-  const _Location._() : super._();
+abstract class _BoundaryLocation extends BoundaryLocation {
+  const factory _BoundaryLocation(
+          {required final ListVO<List<List<double>>> coordinates}) =
+      _$_BoundaryLocation;
+  const _BoundaryLocation._() : super._();
 
   @override
   ListVO<List<List<double>>> get coordinates;
   @override
   @JsonKey(ignore: true)
-  _$$_LocationCopyWith<_$_Location> get copyWith =>
+  _$$_BoundaryLocationCopyWith<_$_BoundaryLocation> get copyWith =>
       throw _privateConstructorUsedError;
 }

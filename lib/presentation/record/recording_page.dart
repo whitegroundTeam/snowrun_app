@@ -1,10 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:snowrun_app/application/location/location_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/injection.dart';
 
@@ -18,11 +17,12 @@ class RecordingPage extends StatefulWidget {
 class AnnotationClickListener extends OnPointAnnotationClickListener {
   @override
   void onPointAnnotationClick(PointAnnotation annotation) {
-    print("onAnnotationClick, id: ${annotation.id}");
+    debugPrint("onAnnotationClick, id: ${annotation.id}");
   }
 }
 
 class RecordingPageState extends State<RecordingPage> {
+  final _locationBloc = getIt<LocationBloc>();
   final _userBloc = getIt<UserBloc>();
 
   MapboxMap? mapboxMap;
@@ -30,18 +30,35 @@ class RecordingPageState extends State<RecordingPage> {
   PointAnnotationManager? pointAnnotationManager;
 
   /**
-   * 권한 가져오기
-   * 내 현위치를 가져오는 것 -> update_location
-   * 내 현위치를 업데이트 하는 것
    * 내 현위치를 30초마다 가져오는것
+   * 내 현위치를 업데이트 하는 것
    * 내 현위치를 가져온 후 /users를 날려서 모두의 위치를 가져오는 것
    * TestFlight 배포
    */
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<UserBloc>(create: (context) => _userBloc..add(const UserEvent.getUsers())),
+        BlocProvider<UserBloc>(
+            create: (context) => _userBloc..add(const UserEvent.getUsers())),
+        BlocProvider<LocationBloc>(
+            create: (context) =>
+                _locationBloc..add(const LocationEvent.getCurrentLocation())),
+        BlocListener<LocationBloc, LocationState>(
+          listener: (context, state) async {
+            if(state.status == LocationStatus.successGetCurrentLocation) {
+              debugPrint("wow ${state.userLocation.lat.getOrCrash()} // ${state.userLocation.lng.getOrCrash()}");
+              //TODO : 위치 업데이트 API 호출
+              //TODO : 모두의 위치를 가져오는 API 호출
+            }
+          },
+        ),
       ],
       child: Scaffold(
         appBar: AppBar(

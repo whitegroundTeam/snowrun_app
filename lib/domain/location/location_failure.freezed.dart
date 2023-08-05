@@ -16,42 +16,45 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LocationFailure {
-  AppError get appError => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AppError appError) unexpected,
+    required TResult Function() unexpected,
+    required TResult Function(AppError appError) unexpectedWithErrorError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AppError appError)? unexpected,
+    TResult? Function()? unexpected,
+    TResult? Function(AppError appError)? unexpectedWithErrorError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AppError appError)? unexpected,
+    TResult Function()? unexpected,
+    TResult Function(AppError appError)? unexpectedWithErrorError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_UnexpectedWithErrorError value)
+        unexpectedWithErrorError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_UnexpectedWithErrorError value)?
+        unexpectedWithErrorError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_UnexpectedWithErrorError value)? unexpectedWithErrorError,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $LocationFailureCopyWith<LocationFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,10 +63,6 @@ abstract class $LocationFailureCopyWith<$Res> {
   factory $LocationFailureCopyWith(
           LocationFailure value, $Res Function(LocationFailure) then) =
       _$LocationFailureCopyWithImpl<$Res, LocationFailure>;
-  @useResult
-  $Res call({AppError appError});
-
-  $AppErrorCopyWith<$Res> get appError;
 }
 
 /// @nodoc
@@ -75,41 +74,13 @@ class _$LocationFailureCopyWithImpl<$Res, $Val extends LocationFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? appError = null,
-  }) {
-    return _then(_value.copyWith(
-      appError: null == appError
-          ? _value.appError
-          : appError // ignore: cast_nullable_to_non_nullable
-              as AppError,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppErrorCopyWith<$Res> get appError {
-    return $AppErrorCopyWith<$Res>(_value.appError, (value) {
-      return _then(_value.copyWith(appError: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res>
-    implements $LocationFailureCopyWith<$Res> {
+abstract class _$$_UnexpectedCopyWith<$Res> {
   factory _$$_UnexpectedCopyWith(
           _$_Unexpected value, $Res Function(_$_Unexpected) then) =
       __$$_UnexpectedCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({AppError appError});
-
-  @override
-  $AppErrorCopyWith<$Res> get appError;
 }
 
 /// @nodoc
@@ -119,76 +90,54 @@ class __$$_UnexpectedCopyWithImpl<$Res>
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? appError = null,
-  }) {
-    return _then(_$_Unexpected(
-      null == appError
-          ? _value.appError
-          : appError // ignore: cast_nullable_to_non_nullable
-              as AppError,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected(this.appError);
-
-  @override
-  final AppError appError;
+  const _$_Unexpected();
 
   @override
   String toString() {
-    return 'LocationFailure.unexpected(appError: $appError)';
+    return 'LocationFailure.unexpected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Unexpected &&
-            (identical(other.appError, appError) ||
-                other.appError == appError));
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appError);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
-      __$$_UnexpectedCopyWithImpl<_$_Unexpected>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AppError appError) unexpected,
+    required TResult Function() unexpected,
+    required TResult Function(AppError appError) unexpectedWithErrorError,
   }) {
-    return unexpected(appError);
+    return unexpected();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AppError appError)? unexpected,
+    TResult? Function()? unexpected,
+    TResult? Function(AppError appError)? unexpectedWithErrorError,
   }) {
-    return unexpected?.call(appError);
+    return unexpected?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AppError appError)? unexpected,
+    TResult Function()? unexpected,
+    TResult Function(AppError appError)? unexpectedWithErrorError,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
-      return unexpected(appError);
+      return unexpected();
     }
     return orElse();
   }
@@ -197,6 +146,8 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_UnexpectedWithErrorError value)
+        unexpectedWithErrorError,
   }) {
     return unexpected(this);
   }
@@ -205,6 +156,8 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_UnexpectedWithErrorError value)?
+        unexpectedWithErrorError,
   }) {
     return unexpected?.call(this);
   }
@@ -213,6 +166,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_UnexpectedWithErrorError value)? unexpectedWithErrorError,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -223,12 +177,154 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements LocationFailure {
-  const factory _Unexpected(final AppError appError) = _$_Unexpected;
+  const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_UnexpectedWithErrorErrorCopyWith<$Res> {
+  factory _$$_UnexpectedWithErrorErrorCopyWith(
+          _$_UnexpectedWithErrorError value,
+          $Res Function(_$_UnexpectedWithErrorError) then) =
+      __$$_UnexpectedWithErrorErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppError appError});
+
+  $AppErrorCopyWith<$Res> get appError;
+}
+
+/// @nodoc
+class __$$_UnexpectedWithErrorErrorCopyWithImpl<$Res>
+    extends _$LocationFailureCopyWithImpl<$Res, _$_UnexpectedWithErrorError>
+    implements _$$_UnexpectedWithErrorErrorCopyWith<$Res> {
+  __$$_UnexpectedWithErrorErrorCopyWithImpl(_$_UnexpectedWithErrorError _value,
+      $Res Function(_$_UnexpectedWithErrorError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appError = null,
+  }) {
+    return _then(_$_UnexpectedWithErrorError(
+      null == appError
+          ? _value.appError
+          : appError // ignore: cast_nullable_to_non_nullable
+              as AppError,
+    ));
+  }
 
   @override
-  AppError get appError;
+  @pragma('vm:prefer-inline')
+  $AppErrorCopyWith<$Res> get appError {
+    return $AppErrorCopyWith<$Res>(_value.appError, (value) {
+      return _then(_value.copyWith(appError: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_UnexpectedWithErrorError implements _UnexpectedWithErrorError {
+  const _$_UnexpectedWithErrorError(this.appError);
+
   @override
+  final AppError appError;
+
+  @override
+  String toString() {
+    return 'LocationFailure.unexpectedWithErrorError(appError: $appError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UnexpectedWithErrorError &&
+            (identical(other.appError, appError) ||
+                other.appError == appError));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, appError);
+
   @JsonKey(ignore: true)
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
-      throw _privateConstructorUsedError;
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UnexpectedWithErrorErrorCopyWith<_$_UnexpectedWithErrorError>
+      get copyWith => __$$_UnexpectedWithErrorErrorCopyWithImpl<
+          _$_UnexpectedWithErrorError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function(AppError appError) unexpectedWithErrorError,
+  }) {
+    return unexpectedWithErrorError(appError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function(AppError appError)? unexpectedWithErrorError,
+  }) {
+    return unexpectedWithErrorError?.call(appError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function(AppError appError)? unexpectedWithErrorError,
+    required TResult orElse(),
+  }) {
+    if (unexpectedWithErrorError != null) {
+      return unexpectedWithErrorError(appError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_UnexpectedWithErrorError value)
+        unexpectedWithErrorError,
+  }) {
+    return unexpectedWithErrorError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_UnexpectedWithErrorError value)?
+        unexpectedWithErrorError,
+  }) {
+    return unexpectedWithErrorError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_UnexpectedWithErrorError value)? unexpectedWithErrorError,
+    required TResult orElse(),
+  }) {
+    if (unexpectedWithErrorError != null) {
+      return unexpectedWithErrorError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnexpectedWithErrorError implements LocationFailure {
+  const factory _UnexpectedWithErrorError(final AppError appError) =
+      _$_UnexpectedWithErrorError;
+
+  AppError get appError;
+  @JsonKey(ignore: true)
+  _$$_UnexpectedWithErrorErrorCopyWith<_$_UnexpectedWithErrorError>
+      get copyWith => throw _privateConstructorUsedError;
 }
