@@ -77,6 +77,7 @@ class RecordingPageState extends State<RecordingPage> {
         BlocListener<UserBloc, UserState>(
           listener: (context, state) async {
             if (state.status == UserStatus.successGetUsers) {
+              //TODO : 여기서 마커 그려주기
               debugPrint(
                   "wow users!! ${state.users.length}");
             }

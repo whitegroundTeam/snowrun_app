@@ -7,6 +7,7 @@ import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/infrastructure/api/authenticated_http_client.dart';
 import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
 import 'package:snowrun_app/infrastructure/place/place_dtos.dart';
+import 'package:snowrun_app/infrastructure/user/user_dtos.dart';
 
 enum HttpMethod {
   get,
@@ -49,23 +50,23 @@ class CoreApi {
   /// access token 만료를 공통으로 처리하기 위해 만든 함수 *
   Future<Response> _requestWrapper(
       {required HttpMethod method,
-        required String path,
-        Map<String, dynamic>? bodyParam,
-        Map<String, dynamic>? pathParams,
-        Map<String, dynamic>? queryParams}) async {
+      required String path,
+      Map<String, dynamic>? bodyParam,
+      Map<String, dynamic>? pathParams,
+      Map<String, dynamic>? queryParams}) async {
     return _request(
-        method: method,
-        path: path,
-        bodyParam: bodyParam,
-        pathParams: pathParams,
-        queryParams: queryParams)
+            method: method,
+            path: path,
+            bodyParam: bodyParam,
+            pathParams: pathParams,
+            queryParams: queryParams)
         .then((response) async {
       if (response.statusCode == 200) {
         return response;
       }
 
       final infoJson =
-      json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+          json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
       final errorResponse = AppErrorDto.fromJson(infoJson).toDomain();
 
       return response;
@@ -74,10 +75,10 @@ class CoreApi {
 
   Future<Response> _request(
       {required HttpMethod method,
-        required String path,
-        Map<String, dynamic>? bodyParam,
-        Map<String, dynamic>? pathParams,
-        Map<String, dynamic>? queryParams}) async {
+      required String path,
+      Map<String, dynamic>? bodyParam,
+      Map<String, dynamic>? pathParams,
+      Map<String, dynamic>? queryParams}) async {
     //body
     final body = json.encode(bodyParam);
 
@@ -143,9 +144,15 @@ class CoreApi {
         bodyParam: createBoundaryDto.toJson(),
       );
 
-  Future<Response> getUsers() =>
-      _requestWrapper(
+  Future<Response> getUsers() => _requestWrapper(
         method: HttpMethod.get,
         path: "/users/",
+      );
+
+  Future<Response> updateUserCurrentLocation(UserLocationDto userLocationDto) =>
+      _requestWrapper(
+        method: HttpMethod.post,
+        path: "/users/update_location",
+        bodyParam: userLocationDto.toJson(),
       );
 }

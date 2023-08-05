@@ -5,6 +5,10 @@ enum UserStatus {
   progressGetUsers,
   successGetUsers,
   failureGetUsers,
+
+  progressUpdateCurrentLocation,
+  successUpdateCurrentLocation,
+  failureUpdateCurrentLocation,
 }
 
 @freezed
