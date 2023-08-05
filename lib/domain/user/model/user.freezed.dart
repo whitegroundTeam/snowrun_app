@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$User {
-  StringVO get name => throw _privateConstructorUsedError;
+  StringVO get nickname => throw _privateConstructorUsedError;
+  UserLocation? get location => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -27,7 +28,9 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({StringVO name});
+  $Res call({StringVO nickname, UserLocation? location});
+
+  $UserLocationCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -43,14 +46,31 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? nickname = null,
+    Object? location = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
               as StringVO,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as UserLocation?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserLocationCopyWith<$Res>? get location {
+    if (_value.location == null) {
+      return null;
+    }
+
+    return $UserLocationCopyWith<$Res>(_value.location!, (value) {
+      return _then(_value.copyWith(location: value) as $Val);
+    });
   }
 }
 
@@ -60,7 +80,10 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StringVO name});
+  $Res call({StringVO nickname, UserLocation? location});
+
+  @override
+  $UserLocationCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -72,13 +95,18 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? nickname = null,
+    Object? location = freezed,
   }) {
     return _then(_$_User(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
               as StringVO,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as UserLocation?,
     ));
   }
 }
@@ -86,14 +114,16 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 /// @nodoc
 
 class _$_User extends _User {
-  const _$_User({required this.name}) : super._();
+  const _$_User({required this.nickname, required this.location}) : super._();
 
   @override
-  final StringVO name;
+  final StringVO nickname;
+  @override
+  final UserLocation? location;
 
   @override
   String toString() {
-    return 'User(name: $name)';
+    return 'User(nickname: $nickname, location: $location)';
   }
 
   @override
@@ -101,11 +131,14 @@ class _$_User extends _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.nickname, nickname) ||
+                other.nickname == nickname) &&
+            (identical(other.location, location) ||
+                other.location == location));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, nickname, location);
 
   @JsonKey(ignore: true)
   @override
@@ -115,11 +148,15 @@ class _$_User extends _User {
 }
 
 abstract class _User extends User {
-  const factory _User({required final StringVO name}) = _$_User;
+  const factory _User(
+      {required final StringVO nickname,
+      required final UserLocation? location}) = _$_User;
   const _User._() : super._();
 
   @override
-  StringVO get name;
+  StringVO get nickname;
+  @override
+  UserLocation? get location;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

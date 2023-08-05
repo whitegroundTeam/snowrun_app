@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
+import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/infrastructure/api/authenticated_http_client.dart';
 import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
 import 'package:snowrun_app/infrastructure/place/place_dtos.dart';
@@ -140,5 +141,11 @@ class CoreApi {
         method: HttpMethod.post,
         path: "/boundaries/",
         bodyParam: createBoundaryDto.toJson(),
+      );
+
+  Future<Response> getUsers() =>
+      _requestWrapper(
+        method: HttpMethod.get,
+        path: "/users/",
       );
 }
