@@ -35,7 +35,7 @@ class RecordingPageState extends State<RecordingPage> {
 
   /**
    * 내 현위치를 업데이트 하는 것
-   * 내 현위치를 가져온 후 /users를 날려서 모두의 위치를 가져오는 것
+   * /users 이후에 마커 그려주기
    * TestFlight 배포
    */
 
@@ -43,7 +43,7 @@ class RecordingPageState extends State<RecordingPage> {
   void initState() {
     super.initState();
     _timer =
-        Timer.periodic(const Duration(seconds: 3), (Timer t) => _updateMarker());
+        Timer.periodic(const Duration(seconds: 10), (Timer t) => _updateMarker());
   }
 
   @override
@@ -66,8 +66,19 @@ class RecordingPageState extends State<RecordingPage> {
             if (state.status == LocationStatus.successGetCurrentLocation) {
               debugPrint(
                   "wow ${state.userLocation.lat.getOrCrash()} // ${state.userLocation.lng.getOrCrash()}");
+
+
+              _userBloc.add(const UserEvent.getUsers());
               //TODO : 위치 업데이트 API 호출
               //TODO : 모두의 위치를 가져오는 API 호출
+            }
+          },
+        ),
+        BlocListener<UserBloc, UserState>(
+          listener: (context, state) async {
+            if (state.status == UserStatus.successGetUsers) {
+              debugPrint(
+                  "wow users!! ${state.users.length}");
             }
           },
         ),
