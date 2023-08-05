@@ -103,7 +103,7 @@ class LoginPageState extends State<LoginPage> {
               checkedPermission ==
                   LocationPermission.whileInUse) {
             if (!mounted) return;
-            context.go("/recording");
+            context.go("/");
           } else {
             _showOpenSettingDialog();
           }

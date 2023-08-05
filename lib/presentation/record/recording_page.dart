@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,12 +27,13 @@ class RecordingPageState extends State<RecordingPage> {
   final _locationBloc = getIt<LocationBloc>();
   final _userBloc = getIt<UserBloc>();
 
+  Timer? _timer;
+
   MapboxMap? mapboxMap;
   PointAnnotation? pointAnnotation;
   PointAnnotationManager? pointAnnotationManager;
 
   /**
-   * 내 현위치를 30초마다 가져오는것
    * 내 현위치를 업데이트 하는 것
    * 내 현위치를 가져온 후 /users를 날려서 모두의 위치를 가져오는 것
    * TestFlight 배포
@@ -39,6 +42,14 @@ class RecordingPageState extends State<RecordingPage> {
   @override
   void initState() {
     super.initState();
+    _timer =
+        Timer.periodic(const Duration(seconds: 3), (Timer t) => _updateMarker());
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -52,8 +63,9 @@ class RecordingPageState extends State<RecordingPage> {
                 _locationBloc..add(const LocationEvent.getCurrentLocation())),
         BlocListener<LocationBloc, LocationState>(
           listener: (context, state) async {
-            if(state.status == LocationStatus.successGetCurrentLocation) {
-              debugPrint("wow ${state.userLocation.lat.getOrCrash()} // ${state.userLocation.lng.getOrCrash()}");
+            if (state.status == LocationStatus.successGetCurrentLocation) {
+              debugPrint(
+                  "wow ${state.userLocation.lat.getOrCrash()} // ${state.userLocation.lng.getOrCrash()}");
               //TODO : 위치 업데이트 API 호출
               //TODO : 모두의 위치를 가져오는 API 호출
             }
@@ -143,6 +155,10 @@ class RecordingPageState extends State<RecordingPage> {
     );
   }
 
+  void _updateMarker() {
+    _locationBloc.add(const LocationEvent.getCurrentLocation());
+  }
+
   _onMapCreated(MapboxMap mapboxMap) {
     this.mapboxMap = mapboxMap;
     mapboxMap.annotations.createPointAnnotationManager().then((value) async {
@@ -182,3 +198,7 @@ class RecordingPageState extends State<RecordingPage> {
 
   List<String> markerNames = ['쥴리', '댄', '캐틀린', '루만'];
 }
+
+
+
+
