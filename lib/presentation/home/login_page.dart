@@ -1,9 +1,14 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
+import 'package:snowrun_app/presentation/core/common_dialog.dart';
+import 'package:snowrun_app/presentation/core/common_toast.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -32,10 +37,7 @@ class LoginPageState extends State<LoginPage> {
                 parent: AlwaysScrollableScrollPhysics(),
               ),
               child: SizedBox(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height,
+                height: MediaQuery.of(context).size.height,
                 child: Column(
                   children: [
                     const SizedBox(
@@ -51,80 +53,111 @@ class LoginPageState extends State<LoginPage> {
                       height: 40,
                     ),
                     _buildMember(
-                        'assets/pngs/julie_avatar.png', "쥴리", Colors.yellow),
+                        'assets/pngs/julie_avatar.png',
+                        "쥴리",
+                        Colors.yellow,
+                        "1ed5b1a69494e060f7476e804085832c07a212da"),
                     _buildMember(
-                        'assets/pngs/dan_avatar.png', "댄", Colors.green),
+                        'assets/pngs/dan_avatar.png',
+                        "댄",
+                        Colors.green,
+                        "0a1bb476b920cacb2f0765330ae9ef0a6e4bc9fb"),
                     _buildMember(
-                        'assets/pngs/kathlyn_avatar.png', "케틀린", Colors.pink),
+                        'assets/pngs/kathlyn_avatar.png',
+                        "케틀린",
+                        Colors.pink,
+                        "7fb4fdf50f9358cc4a2b627186d541d0e808597a"),
                     _buildMember(
-                        'assets/pngs/luman_avatar.png', "루만", Colors.blue),
+                        'assets/pngs/luman_avatar.png',
+                        "루만",
+                        Colors.blue,
+                        "2eb7536ceb360ee511418ce1a1e3e6604717f01f"),
                   ],
                 ),
               ),
             );
           },
         ),
-
       ),
     );
   }
 
-  _buildMember(String avatarPath, String name, Color borderColor) {
-    return BlocProvider(
-      create: (context) => getIt<UserBloc>(),
-      child: BlocBuilder<UserBloc, UserState>(
-        builder: (context, state){
-          return Container(
-            margin: const EdgeInsets.symmetric(vertical: 8),
-            child: CommonDetector(
-              onTap: () {
-                print('${context
-                    .read<UserBloc>()
-                    .state
-                    .users}');
-                setState(() {
-                  selectedColor = borderColor;
-                });
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
-                margin: const EdgeInsets.symmetric(horizontal: 24),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: borderColor, width: 8.0),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset(
-                      avatarPath,
-                      width: 72,
-                      height: 72,
-                    ),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: Text(
-                          name,
-                          style: const TextStyle(
-                              fontSize: 36, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
-      )
+  _buildMember(
+      String avatarPath, String name, Color borderColor, String authToken) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      child: CommonDetector(
+        onTap: () async {
+          setState(() {
+            selectedColor = borderColor;
+          });
+          hiveProvider.setAuthToken(authToken);
+          if (!await Geolocator.isLocationServiceEnabled()) {
+            _showOpenSettingDialog();
+          }
 
+          final checkedPermission =
+          await Geolocator.requestPermission();
+          if (checkedPermission ==
+              LocationPermission.always ||
+              checkedPermission ==
+                  LocationPermission.whileInUse) {
+            if (!mounted) return;
+            context.go("/recording");
+          } else {
+            _showOpenSettingDialog();
+          }
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: borderColor, width: 8.0),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                avatarPath,
+                width: 72,
+                height: 72,
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                        fontSize: 36, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
+  }
+
+  _showOpenSettingDialog() async {
+    if (!mounted) return;
+    await showCommonDialog(context,
+        buttonText: "설정으로 이동",
+        title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
+        negativeButtonText: "취소", onPressedButton: () async {
+      AppSettings.openAppSettings(type: AppSettingsType.location);
+      showToast(
+        "위치 권한 허용 후 다시 시도해주세요.",
+      );
+
+      if (!mounted) return;
+      context.pop();
+    }, onPressedNegativeButton: () {
+      context.pop();
+    });
   }
 }
