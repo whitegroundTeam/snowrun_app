@@ -152,7 +152,7 @@ class CoreApi {
   Future<Response> updateUserCurrentLocation(UserLocationDto userLocationDto) =>
       _requestWrapper(
         method: HttpMethod.post,
-        path: "/users/update_location",
+        path: "/users/update_location/",
         bodyParam: userLocationDto.toJson(),
       );
 }

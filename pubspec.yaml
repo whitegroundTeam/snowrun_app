@@ -51,3 +51,6 @@ flutter:
 
   assets:
     - assets/pngs/
+    - assets/webp/
+    - assets/webp/2x/
+    - assets/webp/3x/

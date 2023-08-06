@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:snowrun_app/application/location/location_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
+import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/injection.dart';
 
 class RecordingPage extends StatefulWidget {
@@ -32,18 +33,13 @@ class RecordingPageState extends State<RecordingPage> {
   MapboxMap? mapboxMap;
   PointAnnotation? pointAnnotation;
   PointAnnotationManager? pointAnnotationManager;
-
-  /**
-   * 내 현위치를 업데이트 하는 것
-   * /users 이후에 마커 그려주기
-   * TestFlight 배포
-   */
+  bool isCreatedMap = false;
 
   @override
   void initState() {
     super.initState();
     _timer =
-        Timer.periodic(const Duration(seconds: 10), (Timer t) => _updateMarker());
+        Timer.periodic(const Duration(seconds: 10), (Timer t) => _getUsers());
   }
 
   @override
@@ -64,22 +60,19 @@ class RecordingPageState extends State<RecordingPage> {
         BlocListener<LocationBloc, LocationState>(
           listener: (context, state) async {
             if (state.status == LocationStatus.successGetCurrentLocation) {
-              debugPrint(
-                  "wow ${state.userLocation.lat.getOrCrash()} // ${state.userLocation.lng.getOrCrash()}");
-
-
-              _userBloc.add(const UserEvent.getUsers());
-              //TODO : 위치 업데이트 API 호출
-              //TODO : 모두의 위치를 가져오는 API 호출
+              _userBloc.add(UserEvent.updateCurrentLocation(
+                  state.userLocation.lat.getOrCrash(),
+                  state.userLocation.lng.getOrCrash()));
             }
           },
         ),
         BlocListener<UserBloc, UserState>(
           listener: (context, state) async {
             if (state.status == UserStatus.successGetUsers) {
-              //TODO : 여기서 마커 그려주기
-              debugPrint(
-                  "wow users!! ${state.users.length}");
+              await updateMarkers(state.users);
+            } else if (state.status ==
+                UserStatus.successUpdateCurrentLocation) {
+              _userBloc.add(const UserEvent.getUsers());
             }
           },
         ),
@@ -167,7 +160,7 @@ class RecordingPageState extends State<RecordingPage> {
     );
   }
 
-  void _updateMarker() {
+  void _getUsers() {
     _locationBloc.add(const LocationEvent.getCurrentLocation());
   }
 
@@ -175,42 +168,47 @@ class RecordingPageState extends State<RecordingPage> {
     this.mapboxMap = mapboxMap;
     mapboxMap.annotations.createPointAnnotationManager().then((value) async {
       pointAnnotationManager = value;
-      final ByteData bytes =
-          await rootBundle.load('assets/pngs/snowrun_icon.png');
-      final Uint8List list = bytes.buffer.asUint8List();
-      createOneAnnotation(list);
+    });
+    setState(() {
+      isCreatedMap = true;
     });
   }
 
-  void createOneAnnotation(Uint8List list) {
-    for (int i = 0; i < positionMarkers.length; i++) {
-      pointAnnotationManager
-          ?.create(PointAnnotationOptions(
-              geometry: Point(
-                      coordinates:
-                          // Position(126.6338237,37.4064278,)).toJson(),
-                          positionMarkers[i])
-                  .toJson(),
-              textField: markerNames[i],
-              textOffset: [0.0, -2.0],
-              iconSize: 0.5,
-              iconOffset: [0.0, -5.0],
-              symbolSortKey: 10,
-              image: list))
-          .then((value) => pointAnnotation = value);
+  updateMarkers(List<User> users) async {
+    if (!isCreatedMap) {
+      return;
+    }
+    debugPrint("UPDATEMARKERS :: ${users.length}");
+    pointAnnotationManager?.deleteAll();
+    for (var user in users) {
+      String avatarPath = "assets/webp/snowrun_icon.png";
+      if (user.nickname.getOrCrash() == "줄리") {
+        avatarPath = "assets/webp/julie_avatar.png";
+      } else if (user.nickname.getOrCrash() == "댄") {
+        avatarPath = "assets/webp/dan_avatar.png";
+      } else if (user.nickname.getOrCrash() == "케틀린") {
+        avatarPath = "assets/webp/kathlyn_avatar.png";
+      } else if (user.nickname.getOrCrash() == "루만") {
+        avatarPath = "assets/webp/luman_avatar.png";
+      }
+
+      final ByteData bytes = await rootBundle.load(avatarPath);
+      final Uint8List avatarData = bytes.buffer.asUint8List();
+      double? lat = user.location?.lat.getOrCrash();
+      double? lng = user.location?.lng.getOrCrash();
+
+      if (lat != null && lng != null) {
+        pointAnnotationManager
+            ?.create(PointAnnotationOptions(
+                geometry: Point(coordinates: Position(lng, lat)).toJson(),
+                textField: user.nickname.getOrCrash(),
+                textOffset: [0.0, -2.0],
+                iconSize: 0.5,
+                iconOffset: [0.0, -5.0],
+                symbolSortKey: 10,
+                image: avatarData))
+            .then((value) => pointAnnotation = value);
+      }
     }
   }
-
-  List<Position> positionMarkers = [
-    Position(126.6338237, 37.4064278),
-    Position(126.6299832, 37.4066198),
-    Position(126.6297943, 37.404984),
-    Position(126.6287445, 37.4061404),
-  ];
-
-  List<String> markerNames = ['쥴리', '댄', '캐틀린', '루만'];
 }
-
-
-
-

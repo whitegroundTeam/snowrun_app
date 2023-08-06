@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:snowrun_app/domain/core/value_objects.dart';
 import 'package:snowrun_app/domain/user/i_user_repository.dart';
 import 'package:snowrun_app/domain/user/model/user.dart';
+import 'package:snowrun_app/domain/user/model/user_location.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
@@ -26,5 +28,18 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         ),
       );
     });
+
+    on<_UpdateCurrentLocation>((event, emit) async {
+            emit(state.copyWith(status: UserStatus.progressUpdateCurrentLocation));
+            final failureOrResponse = await _repository.updateCurrentLocation(UserLocation(lat: DoubleVO(event.lat), lng: DoubleVO(event.lng)));
+            emit(
+              failureOrResponse.fold(
+                (f) => state.copyWith(status: UserStatus.failureUpdateCurrentLocation),
+                (response) => state.copyWith(
+                  status: UserStatus.successUpdateCurrentLocation,
+                ),
+              ),
+            );
+          });
   }
 }

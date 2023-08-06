@@ -22,7 +22,7 @@ class UserRepository implements IUserRepository {
   Future<Either<UserFailure, List<User>>> getUsers() async {
     final response = await _api.getUsers();
     if (response.statusCode == 200) {
-      List<User> users = (json.decode(response.body) as List)
+      List<User> users = (json.decode(utf8.decode(response.bodyBytes)) as List)
           .map((i) => UserDto.fromJson(i)).map((e) => e.toDomain()).toList();
       return right(users);
     } else {
