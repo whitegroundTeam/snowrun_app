@@ -1,0 +1,21 @@
+#  flutter pub run flutter_native_splash:remove --path=flutter_native_splash.yaml
+#  flutter pub run flutter_native_splash:create --path=flutter_native_splash.yaml
+
+flutter_native_splash:
+  web: false
+
+#  background_image: "assets/background.png"
+#  image: assets/png/splash_app_icon_64.png
+#  image_dark: assets/png/splash_app_icon_64.png
+  image: assets/png/splash_app_icon.png
+  image_dark: assets/png/splash_app_icon.png
+  color: "#000000"
+  color_dark: "#000000"
+
+  android_12:
+#    image: assets/png/splash_app_icon_64.png
+#    image_dark: assets/png/splash_app_icon_64.png
+    image: assets/png/splash_app_icon.png
+    image_dark: assets/png/splash_app_icon.png
+    color: "#000000"
+    color_dark: "#000000"

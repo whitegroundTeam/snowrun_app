@@ -105,8 +105,10 @@ class RecordingPageState extends State<RecordingPage> {
             cameraOptions: CameraOptions(
                 center: Point(
                     coordinates: Position(
-                  126.6338237,
-                  37.4064278,
+                  // 126.6338237,
+                  // 37.4064278,
+                        128.8795658,
+                        37.7363675,
                 )).toJson(),
                 zoom: 14.0),
           ),
@@ -202,8 +204,13 @@ class RecordingPageState extends State<RecordingPage> {
             ?.create(PointAnnotationOptions(
                 geometry: Point(coordinates: Position(lng, lat)).toJson(),
                 textField: user.nickname.getOrCrash(),
+                textSize: 24,
+                textHaloColor: 0xffffaacc,
+                // textAnchor: TextAnchor.BOTTOM,
+            textColor: 0xff00ddff,
+                textHaloWidth: 30,
                 textOffset: [0.0, -2.0],
-                iconSize: 0.5,
+                iconSize: 1.0,
                 iconOffset: [0.0, -5.0],
                 symbolSortKey: 10,
                 image: avatarData))

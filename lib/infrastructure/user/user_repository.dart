@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:snowrun_app/domain/core/value_objects.dart';
 import 'package:snowrun_app/domain/user/i_user_repository.dart';
 import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/domain/user/model/user_location.dart';
@@ -20,17 +21,20 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<Either<UserFailure, List<User>>> getUsers() async {
-    final response = await _api.getUsers();
-    if (response.statusCode == 200) {
-      List<User> users = (json.decode(utf8.decode(response.bodyBytes)) as List)
-          .map((i) => UserDto.fromJson(i)).map((e) => e.toDomain()).toList();
-      return right(users);
-    } else {
-      final infoJson =
-      json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-      final appError = AppErrorDto.fromJson(infoJson);
-      return left(UserFailure.unexpected(appError.toDomain()));
-    }
+    // //FIXME : 임시로 넣어둔거
+    final testUser = [User(nickname: StringVO("dansnow"), location: UserLocation(lat: DoubleVO(37.7363675), lng: DoubleVO(128.8795658)))];
+    return right(testUser);
+    // final response = await _api.getUsers();
+    // if (response.statusCode == 200) {
+    //   List<User> users = (json.decode(utf8.decode(response.bodyBytes)) as List)
+    //       .map((i) => UserDto.fromJson(i)).map((e) => e.toDomain()).toList();
+    //   return right(users);
+    // } else {
+    //   final infoJson =
+    //   json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+    //   final appError = AppErrorDto.fromJson(infoJson);
+    //   return left(UserFailure.unexpected(appError.toDomain()));
+    // }
   }
 
   @override

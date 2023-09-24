@@ -6,8 +6,8 @@
 
     <application
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
-        android:label="snowrun_app">
+        android:icon="@mipmap/launcher_icon"
+        android:label="SnowRun">
 
         <meta-data
             android:name="com.mapbox.token"
