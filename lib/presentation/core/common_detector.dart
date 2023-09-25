@@ -30,7 +30,7 @@ class CommonDetectorState extends State<CommonDetector>
   DateTime? lastClickTime;
 
   late double _scale;
-  AnimationController? _controller;
+  late AnimationController _controller;
 
   bool isClicked = false;
 
@@ -44,20 +44,21 @@ class CommonDetectorState extends State<CommonDetector>
       lowerBound: 0.0,
       upperBound: 0.04,
     )..addListener(() {
-        setState(() {});
-      });
+      setState(() {});
+    });
     super.initState();
   }
 
   @override
   void dispose() {
-    _controller = null;
+    _controller.stop();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    _scale = 1 - (_controller?.value ?? 0);
+    _scale = 1 - (_controller.value);
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTapDown: (tapDownDetails) {
@@ -87,11 +88,11 @@ class CommonDetectorState extends State<CommonDetector>
   }
 
   void _startClick() {
-    _controller?.forward();
+    _controller.forward();
   }
 
   void _finishClick() {
     Future.delayed(const Duration(milliseconds: 150))
-        .then((value) => _controller?.reverse());
+        .then((value) => _controller.reverse());
   }
 }

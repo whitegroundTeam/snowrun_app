@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppStyle {
+  static const Color transparent = Color(0x00ffffff);
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
   static const Color background = Color(0xff101012);
 
-  static const Color testPink = Color(0xffffaacc);
+  //Toast
+  static const Color toastBackground = Color(0xff3C3C47);
+  static const Color toastActionButtonBackground = Color(0xff4D4C5B);
+  static const Color toastText = Color(0xffffffff);
 
   static TextTheme kTextTheme = const TextTheme().apply(
     fontFamily: kFontFamily,

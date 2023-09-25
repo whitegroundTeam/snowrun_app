@@ -10,7 +10,8 @@ import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
-import 'package:snowrun_app/presentation/core/common_toast.dart';
+import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
+import 'package:snowrun_app/presentation/core/toast/toast_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
