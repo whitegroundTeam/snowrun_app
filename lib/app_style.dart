@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 class AppStyle {
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
+  static const Color background = Color(0xff101012);
 
   static const Color testPink = Color(0xffffaacc);
 
@@ -27,7 +28,7 @@ class AppStyle {
     return ThemeData(
       fontFamily: kFontFamily,
     ).copyWith(
-      scaffoldBackgroundColor: AppStyle.black,
+      scaffoldBackgroundColor: AppStyle.background,
       textTheme: defaultTheme.textTheme.apply(
         fontFamily: kFontFamily,
       ),
