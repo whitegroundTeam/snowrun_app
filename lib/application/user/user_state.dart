@@ -5,7 +5,6 @@ enum UserStatus {
   progressGetUsers,
   successGetUsers,
   failureGetUsers,
-
   progressUpdateCurrentLocation,
   successUpdateCurrentLocation,
   failureUpdateCurrentLocation,
@@ -16,12 +15,12 @@ class UserState with _$UserState {
   const factory UserState({
     required UserStatus status,
     required List<User> users,
-}) = _UserState;
+    required User? user,
+  }) = _UserState;
 
   factory UserState.initial() => const UserState(
-    status: UserStatus.initial,
-    users: [],
-  );
+        status: UserStatus.initial,
+        users: [],
+        user: null,
+      );
 }
-
-

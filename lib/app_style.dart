@@ -9,6 +9,10 @@ class AppStyle {
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
   static const Color background = Color(0xff101012);
+  static const Color secondaryBackground = Color(0xff18171E);
+  static const Color actionIconColor = Color(0xff62626B);
+
+  static const Color secondaryTextColor = Color(0xffA09FA6);
 
   //Toast
   static const Color toastBackground = Color(0xff3C3C47);
