@@ -9,8 +9,8 @@ class AuthState with _$AuthState {
     required User? user,
   }) = _AuthState;
 
-  factory AuthState.initial() => const AuthState(
-        status: AuthStatus.authenticated,
-        user: null,
+  factory AuthState.initial() => AuthState(
+        status: AuthStatus.unauthenticated,
+        user: User.empty(),
       );
 }

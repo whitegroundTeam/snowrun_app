@@ -36,10 +36,10 @@ class MainAppState extends State<MainApp> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
         systemNavigationBarDividerColor: AppStyle.background,
         systemNavigationBarColor: AppStyle.background,
-        systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.light,
       ));
       commonToast = CommonToast(
         key: commonToastKey,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
@@ -12,26 +13,24 @@ import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class EditProfileImagePage extends StatefulWidget {
+  const EditProfileImagePage({super.key});
 
   @override
-  State createState() => HomePageState();
+  State createState() => EditProfileImagePageState();
 }
 
-class HomePageState extends State<HomePage> {
+class EditProfileImagePageState extends State<EditProfileImagePage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _storage = const FlutterSecureStorage();
 
-  int imageNumber = 0;
+  int? selectedProfileImageIndex;
 
   @override
   Widget build(BuildContext context) {
-    final isAuthenticated =
-        context.read<AuthBloc>().state.status == AuthStatus.authenticated;
-    final previewProfileImageHeight = MediaQuery.of(context).size.height/6;
+    final previewProfileImageHeight = MediaQuery.of(context).size.height / 4;
     return Scaffold(
         body: Column(
       children: [
@@ -39,17 +38,15 @@ class HomePageState extends State<HomePage> {
           height: 100,
         ),
 
-        isAuthenticated
+        selectedProfileImageIndex != null
             ? CommonDetector(
-          needAuth: true,
-                onTap: () {
-                  context.go('/editProfileImage');
-                },
+                needAuth: true,
+                onTap: () {},
                 child: Hero(
                   tag: "profileImage",
                   child: Center(
                     child: Image.asset(
-                      'assets/webp/profile_snow_ball_$imageNumber.webp',
+                      'assets/webp/profile_snow_ball_$selectedProfileImageIndex.webp',
                       height: previewProfileImageHeight,
                       width: previewProfileImageHeight,
                     ),
@@ -59,13 +56,11 @@ class HomePageState extends State<HomePage> {
             :
             //TODO : 아바타 user
             CommonDetector(
-              needAuth: true,
-              onTap: () {
-                context.go('/editProfileImage');
-              },
-              child: Hero(
-                tag: "profileImage",
-                child: Center(
+                needAuth: true,
+                onTap: () {},
+                child: Hero(
+                  tag: "profileImage",
+                  child: Center(
                     child: Stack(
                       children: [
                         Image.asset(
@@ -92,29 +87,82 @@ class HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                ),
               ),
-            ),
         const SizedBox(
-          height: 16,
+          height: 12,
         ),
-        isAuthenticated
-            ? const Text(
-                "감자눈송이#3132",
-                style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
+        selectedProfileImageIndex != null
+            ? const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 24,
+                ),
+                child: Text(
+                  "이 눈송이는 말이죠.. 독특한 그런 무언가의 스토리가 있어요",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: AppStyle.secondaryTextColor,
+                      height: 1.2,
+                      fontWeight: FontWeight.w500),
+                ),
               )
-            : const Text(
-                "눈송이를 불어주세요",
-                style: TextStyle(
-                    fontSize: 24,
-                    color: AppStyle.secondaryTextColor,
-                    fontWeight: FontWeight.bold),
+            : const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 24,
+                ),
+                child: Text(
+                  "어떤 눈송이가 마음에 드세요?",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: AppStyle.secondaryTextColor,
+                      height: 1.2,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
 
+        const SizedBox(
+          height: 84,
+        ),
         Expanded(
-          child: SizedBox(),
+          child: Container(
+            padding: const EdgeInsets.only(
+              top: 16,
+            ),
+            decoration: const BoxDecoration(
+              color: AppStyle.secondaryBackground,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(32),
+                topLeft: Radius.circular(32),
+              ),
+            ),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4, // 각 행에 표시할 항목의 수
+                crossAxisSpacing: 10.0, // 가로 간격
+                mainAxisSpacing: 10.0, // 세로 간격
+                childAspectRatio: 1.0, // 항목의 가로 세로 비율
+              ),
+              padding: const EdgeInsets.all(10.0),
+              itemCount: 11,
+              itemBuilder: (context, index) {
+                return CommonDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedProfileImageIndex = index;
+                    });
+                  },
+                  child: Container(
+                    // padding: EdgeInsets.all(8),
+                    child: Image.asset(
+                      'assets/webp/profile_snow_ball_$index.webp',
+                      // height: 48,
+                      // width: previewProfileImageHeight,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
         )
 
         // const SizedBox(
@@ -124,13 +172,13 @@ class HomePageState extends State<HomePage> {
         //   child: Container(
         //     width: 100,
         //     height: 100,
-            // decoration: BoxDecoration(
-            //   borderRadius:
-            //   BorderRadius.circular(16),
-            //   // borderSide: const BorderSide(color: Colors.white, width: 2),
-            //   // badgeColor:
-            //   // const Color(0xffDA1E28),
-            // ),
+        //     // decoration: BoxDecoration(
+        //     //   borderRadius:
+        //     //   BorderRadius.circular(16),
+        //     //   // borderSide: const BorderSide(color: Colors.white, width: 2),
+        //     //   // badgeColor:
+        //     //   // const Color(0xffDA1E28),
+        //     // ),
         //     child: ClipRRect(
         //       borderRadius: BorderRadius.circular(4),
         //       child: Stack(
