@@ -11,6 +11,7 @@ class AuthState with _$AuthState {
 
   factory AuthState.initial() => AuthState(
         status: AuthStatus.unauthenticated,
-        user: User.empty(),
+        // user: User.empty(),
+        user: null,
       );
 }

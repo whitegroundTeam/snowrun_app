@@ -13,14 +13,14 @@ import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/core/toast/toast_bloc.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State createState() => LoginPageState();
+  State createState() => SignUpPageState();
 }
 
-class LoginPageState extends State<LoginPage> {
+class SignUpPageState extends State<SignUpPage> {
   final hiveProvider = getIt<HiveProvider>();
   Color selectedColor = Colors.white;
 
@@ -165,15 +165,15 @@ class LoginPageState extends State<LoginPage> {
         buttonText: "설정으로 이동",
         title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
         negativeButtonText: "취소", onPressedButton: () async {
-      AppSettings.openAppSettings(type: AppSettingsType.location);
-      showToast(
-        "위치 권한 허용 후 다시 시도해주세요.",
-      );
+          AppSettings.openAppSettings(type: AppSettingsType.location);
+          showToast(
+            "위치 권한 허용 후 다시 시도해주세요.",
+          );
 
-      if (!mounted) return;
-      context.pop();
-    }, onPressedNegativeButton: () {
-      context.pop();
-    });
+          if (!mounted) return;
+          context.pop();
+        }, onPressedNegativeButton: () {
+          context.pop();
+        });
   }
 }

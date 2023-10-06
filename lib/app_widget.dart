@@ -118,22 +118,22 @@ class MainAppState extends State<MainApp> {
                   //             // child: Lottie.asset("assets/lottie/test_lottie.json", repeat: true),
                   //             child: Lottie.asset("assets/lottie/splash_test.json", repeat: false,),
                   //           ),
-                  //           // BackdropFilter(
-                  //           //   filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  //           //   child: Container(
-                  //           //     color: Colors.black.withOpacity(0),
-                  //           //   ),
-                  //           // ),
+                  //           BackdropFilter(
+                  //             filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  //             child: Container(
+                  //               color: Colors.black.withOpacity(0),
+                  //             ),
+                  //           ),
                   //         ],
                   //       ),
                   //     ),
                   //
-                  //     // Image.asset(
-                  //     //   width: MediaQuery.of(context).size.width,
-                  //     //   height: MediaQuery.of(context).size.height,
-                  //     //   'assets/png/app_icon_64.png',
-                  //     //   fit: BoxFit.cover,
-                  //     // ),
+                  //     Image.asset(
+                  //       width: MediaQuery.of(context).size.width,
+                  //       height: MediaQuery.of(context).size.height,
+                  //       'assets/png/app_icon_64.png',
+                  //       fit: BoxFit.cover,
+                  //     ),
                   //   ),
                   // ),
                 ],

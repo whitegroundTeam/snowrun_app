@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 
 class CommonDetector extends StatefulWidget {
   final Function? onTap;
@@ -44,8 +48,8 @@ class CommonDetectorState extends State<CommonDetector>
       lowerBound: 0.0,
       upperBound: 0.04,
     )..addListener(() {
-      setState(() {});
-    });
+        setState(() {});
+      });
     super.initState();
   }
 
@@ -59,31 +63,45 @@ class CommonDetectorState extends State<CommonDetector>
   @override
   Widget build(BuildContext context) {
     _scale = 1 - (_controller.value);
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTapDown: (tapDownDetails) {
-        _startClick();
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        final isAuthenticated = state.user != null;
+        return GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTapDown: (tapDownDetails) {
+            _startClick();
+          },
+          onTapCancel: () {
+            _finishClick();
+          },
+          onTapUp: (tapDownDetails) {
+            _finishClick();
+            Future.delayed(const Duration(milliseconds: 300)).then((value) {
+              final now = DateTime.now();
+              if (lastClickTime == null ||
+                  now.difference(lastClickTime!) >
+                      Duration(milliseconds: widget.delay ?? defaultDelay)) {
+                if (widget.needAuth == true) {
+                  if (!isAuthenticated) {
+                    showToast("로그인 후 이용하실 수 있습니다.");
+                    context.go("/signIn");
+                  } else {
+                    widget.onTap?.call();
+                  }
+                  lastClickTime = now;
+                } else {
+                  widget.onTap?.call();
+                }
+              }
+              return value;
+            });
+          },
+          child: Transform.scale(
+            scale: _scale,
+            child: Container(child: widget.child),
+          ),
+        );
       },
-      onTapCancel: () {
-        _finishClick();
-      },
-      onTapUp: (tapDownDetails) {
-        _finishClick();
-        Future.delayed(const Duration(milliseconds: 300)).then((value) {
-          final now = DateTime.now();
-          if (lastClickTime == null ||
-              now.difference(lastClickTime!) >
-                  Duration(milliseconds: widget.delay ?? defaultDelay)) {
-            widget.onTap?.call();
-            lastClickTime = now;
-          }
-          return value;
-        });
-      },
-      child: Transform.scale(
-        scale: _scale,
-        child: Container(child: widget.child),
-      ),
     );
   }
 

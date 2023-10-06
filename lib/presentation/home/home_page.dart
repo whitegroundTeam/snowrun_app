@@ -31,7 +31,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final isAuthenticated =
         context.read<AuthBloc>().state.status == AuthStatus.authenticated;
-    final previewProfileImageHeight = MediaQuery.of(context).size.height/6;
+    final previewProfileImageHeight = MediaQuery.of(context).size.height / 6;
     return Scaffold(
         body: Column(
       children: [
@@ -41,7 +41,7 @@ class HomePageState extends State<HomePage> {
 
         isAuthenticated
             ? CommonDetector(
-          needAuth: true,
+                needAuth: true,
                 onTap: () {
                   context.go('/editProfileImage');
                 },
@@ -59,13 +59,13 @@ class HomePageState extends State<HomePage> {
             :
             //TODO : 아바타 user
             CommonDetector(
-              needAuth: true,
-              onTap: () {
-                context.go('/editProfileImage');
-              },
-              child: Hero(
-                tag: "profileImage",
-                child: Center(
+                needAuth: true,
+                onTap: () {
+                  context.go('/editProfileImage');
+                },
+                child: Hero(
+                  tag: "profileImage",
+                  child: Center(
                     child: Stack(
                       children: [
                         Image.asset(
@@ -92,8 +92,8 @@ class HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                ),
               ),
-            ),
         const SizedBox(
           height: 16,
         ),
@@ -124,13 +124,13 @@ class HomePageState extends State<HomePage> {
         //   child: Container(
         //     width: 100,
         //     height: 100,
-            // decoration: BoxDecoration(
-            //   borderRadius:
-            //   BorderRadius.circular(16),
-            //   // borderSide: const BorderSide(color: Colors.white, width: 2),
-            //   // badgeColor:
-            //   // const Color(0xffDA1E28),
-            // ),
+        // decoration: BoxDecoration(
+        //   borderRadius:
+        //   BorderRadius.circular(16),
+        //   // borderSide: const BorderSide(color: Colors.white, width: 2),
+        //   // badgeColor:
+        //   // const Color(0xffDA1E28),
+        // ),
         //     child: ClipRRect(
         //       borderRadius: BorderRadius.circular(4),
         //       child: Stack(
