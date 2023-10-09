@@ -7,11 +7,10 @@ import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/toast/toast_bloc.dart';
 
-@injectable
 class CommonToast extends StatefulWidget {
-  String? message;
+  final String? message;
 
-  CommonToast({super.key, this.message});
+  const CommonToast({super.key, this.message});
 
   @override
   State createState() => CommonToastState();

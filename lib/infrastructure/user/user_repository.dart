@@ -10,6 +10,7 @@ import 'package:snowrun_app/domain/user/model/user_location.dart';
 import 'package:snowrun_app/domain/user/user_failure.dart';
 import 'package:snowrun_app/infrastructure/api/core_api.dart';
 import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
+
 import 'package:snowrun_app/infrastructure/user/user_dtos.dart';
 
 

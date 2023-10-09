@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:snowrun_app/presentation/auth/email_sign_in_page.dart';
 import 'package:snowrun_app/presentation/auth/sign_up_page.dart';
 import 'package:snowrun_app/presentation/edit_profile_image_page/edit_profile_image_page.dart';
 import 'package:snowrun_app/presentation/home/home_page.dart';
@@ -38,6 +39,12 @@ final GoRouter router = GoRouter(
       path: '/signIn',
       builder: (BuildContext context, GoRouterState state) {
         return const SignInPage();
+      },
+    ),
+    GoRoute(
+      path: '/emailSignInPage',
+      builder: (BuildContext context, GoRouterState state) {
+        return const EmailSignInPage();
       },
     ),
     GoRoute(

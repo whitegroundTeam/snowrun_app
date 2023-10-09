@@ -119,7 +119,7 @@ class SignUpPageState extends State<SignUpPage> {
           if (checkedPermission == LocationPermission.always ||
               checkedPermission == LocationPermission.whileInUse) {
             if (!mounted) return;
-            context.go("/");
+            context.push("/");
           } else {
             _showOpenSettingDialog();
           }

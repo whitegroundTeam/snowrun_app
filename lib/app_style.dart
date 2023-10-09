@@ -68,6 +68,24 @@ class AppStyle {
         titleTextStyle: kTextStyle,
         toolbarTextStyle: kTextStyle,
       ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: Colors.pink,
+          minimumSize: const Size(88, 36),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+        ).copyWith(
+          side: MaterialStateProperty.resolveWith<BorderSide>(
+                (Set<MaterialState> states) {
+              return const BorderSide(
+                color: Colors.pink,
+              ); // Defer to the widget's default.
+            },
+          ),
+        ),
+      ),
     );
   }
 }

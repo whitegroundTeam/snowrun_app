@@ -28,9 +28,9 @@ class AppErrorDto with _$AppErrorDto {
 
   AppError toDomain() {
     return AppError(
-      type: StringVO(type),
-      title: StringVO(title),
-      detail: StringVO(detail),
+      type: StringVO(type ?? ""),
+      title: StringVO(title ?? ""),
+      detail: StringVO(detail ?? ""),
       statusCode: IntVO(status),
     );
   }

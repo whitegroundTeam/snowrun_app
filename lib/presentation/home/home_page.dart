@@ -43,7 +43,7 @@ class HomePageState extends State<HomePage> {
             ? CommonDetector(
                 needAuth: true,
                 onTap: () {
-                  context.go('/editProfileImage');
+                  context.push('/editProfileImage');
                 },
                 child: Hero(
                   tag: "profileImage",
@@ -61,7 +61,7 @@ class HomePageState extends State<HomePage> {
             CommonDetector(
                 needAuth: true,
                 onTap: () {
-                  context.go('/editProfileImage');
+                  context.push('/editProfileImage');
                 },
                 child: Hero(
                   tag: "profileImage",
@@ -175,7 +175,7 @@ class HomePageState extends State<HomePage> {
         //     ),
         //     GestureDetector(
         //       onTap: () {
-        //         context.go('/recording');
+        //         context.push('/recording');
         //       },
         //       child: Container(
         //         padding: const EdgeInsets.all(0.0),
@@ -204,7 +204,7 @@ class HomePageState extends State<HomePage> {
         //             margin: const EdgeInsets.all(10),
         //             child: GestureDetector(
         //               onTap: (){
-        //                 context.go('/result');
+        //                 context.push('/result');
         //               },
         //               child: Container(
         //                 color: Colors.yellow,
@@ -220,7 +220,7 @@ class HomePageState extends State<HomePage> {
         // )
         // floatingActionButton: FloatingActionButton(
         //     onPressed: (){
-        //       context.go('/recording');
+        //       context.push('/recording');
         //     },
         //   backgroundColor: Colors.black,
         //   child: const Icon(Icons.navigate_next),

@@ -33,7 +33,7 @@ class ResultPageState extends State<ResultPage>{
                       margin: const EdgeInsets.all(10),
                       child: GestureDetector(
                         onTap: (){
-                          context.go('/result');
+                          context.push('/result');
                         },
                         child: Container(
                           color: Colors.yellow,

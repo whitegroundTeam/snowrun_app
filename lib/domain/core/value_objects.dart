@@ -1,11 +1,11 @@
-// Package imports:
-import 'package:dartz/dartz.dart';
-import 'package:intl/intl.dart';
+import 'dart:typed_data';
+import 'dart:ui';
+
 import 'package:snowrun_app/domain/core/errors.dart';
 import 'package:snowrun_app/domain/core/failures.dart';
+import 'package:dartz/dartz.dart';
 import 'package:uuid/uuid.dart';
-
-// Project imports:
+import 'package:version/version.dart';
 
 abstract class ValueObject<T> {
   const ValueObject();
@@ -36,66 +36,153 @@ abstract class ValueObject<T> {
   int get hashCode => value.hashCode;
 
   @override
-  String toString() => 'Value($value)';
+  String toString() => 'VO($value)';
 }
 
-class UniqueIdVO extends ValueObject<String> {
+class UniqueId extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory UniqueIdVO() {
-    return UniqueIdVO._(
+  factory UniqueId() {
+    return UniqueId._(
       right(const Uuid().v1()),
     );
   }
 
-  factory UniqueIdVO.fromUniqueString(String uniqueId) {
-    return UniqueIdVO._(
+  factory UniqueId.fromUniqueString(String uniqueId) {
+    return UniqueId._(
       right(uniqueId),
     );
   }
 
-  factory UniqueIdVO.empty() =>
-      UniqueIdVO.fromUniqueString("empty_${const Uuid().v1()}");
-
-  const UniqueIdVO._(this.value);
+  const UniqueId._(this.value);
 }
 
+class ObjectId extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  factory ObjectId(int input) {
+    return ObjectId._(right(input));
+  }
+
+  const ObjectId._(this.value);
+}
+
+class CreatedAtVO extends ValueObject<DateTime> {
+  @override
+  final Either<ValueFailure<DateTime>, DateTime> value;
+
+  factory CreatedAtVO(DateTime input) {
+    return CreatedAtVO._(right(input));
+  }
+
+  const CreatedAtVO._(this.value);
+}
+
+class CountVO extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  factory CountVO(int input) {
+    return CountVO._(right(input));
+  }
+
+  const CountVO._(this.value);
+}
+
+class RatioNumberVO extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  factory RatioNumberVO(int input) {
+    return RatioNumberVO._(right(input));
+  }
+
+  const RatioNumberVO._(this.value);
+}
+
+class AmountVO extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  factory AmountVO(int input) {
+    return AmountVO._(right(input));
+  }
+
+  const AmountVO._(this.value);
+}
+
+class NameVO extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory NameVO(String input) {
+    return NameVO._(right(input));
+  }
+
+  const NameVO._(this.value);
+}
+
+class ImageUrlVO extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory ImageUrlVO(String input) {
+    return ImageUrlVO._(right(input));
+  }
+
+  const ImageUrlVO._(this.value);
+}
+
+class VersionVO extends ValueObject<Version> {
+  @override
+  final Either<ValueFailure<Version>, Version> value;
+
+  factory VersionVO(String input) {
+    if (input.isNotEmpty) {
+      return VersionVO._(right(Version.parse(input)));
+    } else {
+      return VersionVO._(right(Version.parse("0.0.0")));
+    }
+  }
+
+  factory VersionVO.empty() => VersionVO("");
+
+  const VersionVO._(this.value);
+}
+
+/// 당장 모르겠을때
 class StringVO extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory StringVO(String? input) {
-    return StringVO._(right(input ?? ""));
+  factory StringVO(String input) {
+    return StringVO._(right(input));
   }
-
-  factory StringVO.empty() => StringVO("This is empty string!");
 
   const StringVO._(this.value);
 }
 
-class MediaUrlVO extends ValueObject<String> {
+class DoubleVO extends ValueObject<double> {
   @override
-  final Either<ValueFailure<String>, String> value;
+  final Either<ValueFailure<double>, double> value;
 
-  factory MediaUrlVO(String input) {
-    return MediaUrlVO._(right(input));
+  factory DoubleVO(double input) {
+    return DoubleVO._(right(input));
   }
 
-  factory MediaUrlVO.empty() => MediaUrlVO("http://localhost/empty/image");
-
-  const MediaUrlVO._(this.value);
+  const DoubleVO._(this.value);
 }
 
 class BooleanVO extends ValueObject<bool> {
   @override
   final Either<ValueFailure<bool>, bool> value;
 
+  // ignore: avoid_positional_boolean_parameters
   factory BooleanVO(bool input) {
     return BooleanVO._(right(input));
   }
-
-  factory BooleanVO.empty() => BooleanVO(false);
 
   const BooleanVO._(this.value);
 }
@@ -108,43 +195,7 @@ class DateVO extends ValueObject<DateTime> {
     return DateVO._(right(input));
   }
 
-  factory DateVO.empty() {
-    return DateVO(DateTime.now().toLocal());
-  }
-
-  factory DateVO.fromString(String input) {
-    try {
-      DateTime parsedDateTime = DateTime.parse(input);
-      return DateVO(parsedDateTime);
-    } catch (e) {
-      return DateVO._(left(ValueFailure.empty(failedValue: DateTime.now())));
-    }
-  }
-
-  String serverFormat() {
-    return "${getOrCrash().add(const Duration(hours: -9)).toIso8601String()}Z";
-  }
-
-  /// 현 디바이스의 타임존에 맞게 변환된다.
-  /// 'yyyy-MM-dd HH:mm'
-  String format(String format) {
-    return DateFormat(format).format(getOrCrash().toLocal());
-  }
-
   const DateVO._(this.value);
-}
-
-class TempDateVO extends ValueObject<DateTime> {
-  @override
-  final Either<ValueFailure<DateTime>, DateTime> value;
-
-  factory TempDateVO(String input) {
-    return TempDateVO._(right(DateTime.parse(input)));
-  }
-
-  factory TempDateVO.empty() => TempDateVO("");
-
-  const TempDateVO._(this.value);
 }
 
 class IntVO extends ValueObject<int> {
@@ -155,49 +206,7 @@ class IntVO extends ValueObject<int> {
     return IntVO._(right(input));
   }
 
-  factory IntVO.empty() => IntVO(0);
-
   const IntVO._(this.value);
-}
-
-class DoubleVO extends ValueObject<double> {
-  @override
-  final Either<ValueFailure<double>, double> value;
-
-  factory DoubleVO(double? input) {
-    return DoubleVO._(right(input ?? 0));
-  }
-
-  factory DoubleVO.empty() => DoubleVO(0);
-
-  const DoubleVO._(this.value);
-}
-
-class CoordinateVO extends ValueObject<double> {
-  @override
-  final Either<ValueFailure<double>, double> value;
-
-  factory CoordinateVO(double? input) {
-    return CoordinateVO._(right(input ?? 0));
-  }
-
-  factory CoordinateVO.empty() => CoordinateVO(0);
-
-  const CoordinateVO._(this.value);
-}
-
-class IdVO extends ValueObject<int> {
-  @override
-  final Either<ValueFailure<int>, int> value;
-
-  factory IdVO(int input) {
-    //TODO : id null 예외
-    return IdVO._(right(input));
-  }
-
-  factory IdVO.empty() => IdVO(-1);
-
-  const IdVO._(this.value);
 }
 
 class ListVO<T> extends ValueObject<List<T>> {
@@ -208,20 +217,27 @@ class ListVO<T> extends ValueObject<List<T>> {
     return ListVO._(right(input));
   }
 
-  factory ListVO.empty() => ListVO([]);
-
   const ListVO._(this.value);
 }
 
-class MapVO<T> extends ValueObject<Map<T, T>> {
+class ColorVO extends ValueObject<Color> {
   @override
-  final Either<ValueFailure<Map<T, T>>, Map<T, T>> value;
+  final Either<ValueFailure<Color>, Color> value;
 
-  factory MapVO(Map<T, T> input) {
-    return MapVO._(right(input));
+  factory ColorVO(Color input) {
+    return ColorVO._(right(input));
   }
 
-  factory MapVO.empty() => MapVO({});
+  const ColorVO._(this.value);
+}
 
-  const MapVO._(this.value);
+class ImageDataVO extends ValueObject<Uint8List> {
+  @override
+  final Either<ValueFailure<Uint8List>, Uint8List> value;
+
+  factory ImageDataVO(Uint8List input) {
+    return ImageDataVO._(right(input));
+  }
+
+  const ImageDataVO._(this.value);
 }

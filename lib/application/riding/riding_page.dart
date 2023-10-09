@@ -56,7 +56,7 @@ class RidingPageState extends State<RidingPage> {
           if (checkedPermission == LocationPermission.always ||
               checkedPermission == LocationPermission.whileInUse) {
             if (!mounted) return;
-            context.go("/");
+            context.push("/");
           } else {
             _showOpenSettingDialog();
           }

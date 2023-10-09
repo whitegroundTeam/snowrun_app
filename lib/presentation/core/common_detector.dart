@@ -84,7 +84,7 @@ class CommonDetectorState extends State<CommonDetector>
                 if (widget.needAuth == true) {
                   if (!isAuthenticated) {
                     showToast("로그인 후 이용하실 수 있습니다.");
-                    context.go("/signIn");
+                    context.push("/signIn");
                   } else {
                     widget.onTap?.call();
                   }

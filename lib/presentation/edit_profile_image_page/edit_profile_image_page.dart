@@ -223,7 +223,7 @@ class EditProfileImagePageState extends State<EditProfileImagePage> {
         //     ),
         //     GestureDetector(
         //       onTap: () {
-        //         context.go('/recording');
+        //         context.push('/recording');
         //       },
         //       child: Container(
         //         padding: const EdgeInsets.all(0.0),
@@ -252,7 +252,7 @@ class EditProfileImagePageState extends State<EditProfileImagePage> {
         //             margin: const EdgeInsets.all(10),
         //             child: GestureDetector(
         //               onTap: (){
-        //                 context.go('/result');
+        //                 context.push('/result');
         //               },
         //               child: Container(
         //                 color: Colors.yellow,
@@ -268,7 +268,7 @@ class EditProfileImagePageState extends State<EditProfileImagePage> {
         // )
         // floatingActionButton: FloatingActionButton(
         //     onPressed: (){
-        //       context.go('/recording');
+        //       context.push('/recording');
         //     },
         //   backgroundColor: Colors.black,
         //   child: const Icon(Icons.navigate_next),

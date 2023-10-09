@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 
 class EmailAuthButton extends StatefulWidget {
@@ -17,21 +19,17 @@ class EmailAuthButtonState extends State<EmailAuthButton> {
       children: [
         Visibility(
           child: Container(
-          height: 150,
-          color: Colors.green,
-        ),),
-
-        CommonDetector(
-          onTap: () {
-            setState(() {
-              isOpened = true;
-            });
-          },
-          child: Container(
             height: 150,
-            color: Colors.yellow,
+            color: Colors.green,
           ),
         ),
+        CommonButton(
+          onTap: (){
+            context.push('/signIn');
+          },
+          text: "이메일로 로그인하기",
+          iconPath: 'assets/webp/ridings.webp',
+        )
       ],
     );
     if (isOpened) {
@@ -58,5 +56,3 @@ class EmailAuthButtonState extends State<EmailAuthButton> {
     }
   }
 }
-
-//TODO : 버튼 누르면 쭉 열리게

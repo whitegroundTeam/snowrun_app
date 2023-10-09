@@ -1,4 +1,4 @@
-package app.smallestapp.snowrun
+package app.whiteground.snowrun
 
 import io.flutter.embedding.android.FlutterActivity
 

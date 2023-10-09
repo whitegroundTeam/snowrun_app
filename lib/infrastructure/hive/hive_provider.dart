@@ -13,7 +13,7 @@ class HiveProvider {
   // FIXME HIVE 암호화 고려
   Future<void> init() async {
     debugPrint('HIVE :: Initializer Local Store Open Device Box');
-    // await Hive.openBox(deviceKey);
+    await Hive.openBox<String>(recentlySignInMethodBoxKey);
     // await Hive.openBox<String>(selectedOrderTypeKey);
     // await Hive.openBox<List<String>>(franchiseOrderTypesKey);
     // await Hive.openBox(ttlBoxKey);
@@ -41,23 +41,10 @@ class HiveProvider {
 
   Box getBox({required String key}) => Hive.box(key);
 
-  Box get deviceBox => Hive.box(deviceKey);
-  //
-  // Box<List<String>> get franchiseOrderTypesBox =>
-  //     Hive.box<List<String>>(franchiseOrderTypesKey);
-  //
-  // Box<String> get selectedOrderTypeBox =>
-  //     Hive.box<String>(selectedOrderTypeKey);
-
   Box get hiveTestModelBox => Hive.box<HiveTestModel>(hiveTestModelKey);
 
-  // Box get ttlBox => Hive.box(ttlBoxKey);
-  //
-  // Box<bool> get isConfirmDauGiftTermsBox =>
-  //     Hive.box<bool>(isConfirmDauGiftTermsKey);
-  //
-  // Box<String> get appNoticeNotViewedTodayBox =>
-  //     Hive.box<String>(isAppNoticeNotViewedTodayKey);
+  Box<String> get recentlySignInMethodBox =>
+      Hive.box<String>(recentlySignInMethodBoxKey);
 
 
   /// AUTH
@@ -68,16 +55,27 @@ class HiveProvider {
 
   Future<void> deleteAuthToken() async {
     debugPrint("FLUTTER_CORE :: HIVE :: deleteAuthToken ");
-    // deviceBox.delete(lastRefreshTimeKey);
     await secureStorage.delete(key: cachedAuthTokenKey);
   }
 
   Future<String> setAuthToken(String authToken) async {
     if (authToken.isEmpty) return Future.value("");
-    // deviceBox.put(lastRefreshTimeKey, DateTime.now());
     debugPrint("FLUTTER_CORE :: HIVE :: setAuthToken => ${authToken}");
     await secureStorage.write(key: cachedAuthTokenKey, value: authToken);
     return authToken;
+  }
+
+  /// SIGN IN METHOD
+  String getRecentlySignInMethod() {
+    debugPrint("FLUTTER_CORE :: HIVE :: RecentlySignInMethod");
+    return recentlySignInMethodBox.get(recentlySignInMethodBoxKey, defaultValue: "")
+    as String;
+  }
+
+  Future<void> setRecentlySignInMethod(String recentlySignInMethod) async {
+    debugPrint(
+        "FLUTTER_CORE :: HIVE :: recentlySignInMethod -> $recentlySignInMethod");
+    await recentlySignInMethodBox.put(recentlySignInMethodBoxKey, recentlySignInMethod);
   }
 
   /// TEST
