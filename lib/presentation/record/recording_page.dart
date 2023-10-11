@@ -100,15 +100,15 @@ class RecordingPageState extends State<RecordingPage> {
             key: const ValueKey('mapWidget'),
             resourceOptions: ResourceOptions(
                 accessToken:
-                    'pk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xrYW96N2RkMDd5eTNyanM2ZmVjZ2E4ciJ9.DFZG8kD1ahfSc1sk-cN-bw'),
+                    "pk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xua3UxZTZvMGZmMDJpczFmdnlxd2RqZSJ9.EHF4W-fNtEyADJC3lInQcA"),
             onMapCreated: _onMapCreated,
             cameraOptions: CameraOptions(
                 center: Point(
                     coordinates: Position(
                   // 126.6338237,
                   // 37.4064278,
-                        128.8795658,
-                        37.7363675,
+                  128.8795658,
+                  37.7363675,
                 )).toJson(),
                 zoom: 14.0),
           ),
@@ -207,7 +207,7 @@ class RecordingPageState extends State<RecordingPage> {
                 textSize: 24,
                 textHaloColor: 0xffffaacc,
                 // textAnchor: TextAnchor.BOTTOM,
-            textColor: 0xff00ddff,
+                textColor: 0xff00ddff,
                 textHaloWidth: 30,
                 textOffset: [0.0, -2.0],
                 iconSize: 1.0,

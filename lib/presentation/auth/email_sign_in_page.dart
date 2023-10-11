@@ -1,6 +1,7 @@
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
@@ -12,6 +13,7 @@ import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
+import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/label_text.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
@@ -66,6 +68,7 @@ class EmailSignInPageState extends State<EmailSignInPage> {
             return Stack(
               children: [
                 CustomScrollView(
+                  physics: bouncingScrollPhysics,
                   slivers: [
                     const CommonAppBar(
                       isSliver: true,
@@ -90,9 +93,30 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                               ),
                             ),
                             TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              cursorColor: AppStyle.white,
                               decoration: const InputDecoration(
                                 hintText: '이메일',
+                                hintStyle: TextStyle(
+                                  color: AppStyle.secondaryTextColor,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20,
+                                ),
                                 border: OutlineInputBorder(),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppStyle.white, width: 2),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppStyle.secondaryBackground,
+                                      width: 1),
+                                ),
+                              ),
+                              style: const TextStyle(
+                                color: AppStyle.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
                               ),
                               autocorrect: false,
                               onChanged: (value) => context
@@ -113,10 +137,31 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                             ),
                             const SizedBox(height: 8),
                             TextFormField(
+                              keyboardType: TextInputType.visiblePassword,
                               obscureText: true,
+                              cursorColor: AppStyle.white,
                               decoration: const InputDecoration(
                                 hintText: '비밀번호',
+                                hintStyle: TextStyle(
+                                  color: AppStyle.secondaryTextColor,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20,
+                                ),
                                 border: OutlineInputBorder(),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppStyle.white, width: 2),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppStyle.secondaryBackground,
+                                      width: 1),
+                                ),
+                              ),
+                              style: const TextStyle(
+                                color: AppStyle.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
                               ),
                               autocorrect: false,
                               onChanged: (value) => context
@@ -136,6 +181,14 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                                     (r) => null,
                                   ),
                             ),
+                            const SizedBox(
+                              height: 56,
+                            ),
+                            CommonButton(
+                              isPrimary: true,
+                              onTap: () {},
+                              text: "로그인 하기",
+                            )
                           ],
                         ),
                       ),

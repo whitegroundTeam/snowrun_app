@@ -14,7 +14,7 @@ class MapboxState extends State<Mapbox> {
   Widget build(BuildContext context) {
     return MapWidget(
         resourceOptions:
-        ResourceOptions(accessToken: 'pk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xrYW96N2RkMDd5eTNyanM2ZmVjZ2E4ciJ9.DFZG8kD1ahfSc1sk-cN-bw')
+        ResourceOptions(accessToken: "pk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xua3UxZTZvMGZmMDJpczFmdnlxd2RqZSJ9.EHF4W-fNtEyADJC3lInQcA")
     );
   }
 }
