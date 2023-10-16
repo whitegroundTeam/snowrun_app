@@ -29,8 +29,7 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isAuthenticated =
-        context.read<AuthBloc>().state.status == AuthStatus.authenticated;
+    final isAuthenticated = context.read<AuthBloc>().state.user != null;
     final previewProfileImageHeight = MediaQuery.of(context).size.height / 6;
     return Scaffold(
         body: Column(

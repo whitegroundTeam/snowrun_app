@@ -11,6 +11,7 @@ class AppStyle {
   static const Color background = Color(0xff101012);
   static const Color secondaryBackground = Color(0xff18171E);
   static const Color actionIconColor = Color(0xff62626B);
+  static const Color accentColor = Color(0xffFF8C00);
 
   static const Color secondaryTextColor = Color(0xffA09FA6);
 
@@ -55,12 +56,12 @@ class AppStyle {
       tabBarTheme: const TabBarTheme(
         labelStyle: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 17.0,
+          fontSize: 18.0,
           fontFamily: kFontFamily,
         ),
         unselectedLabelStyle: TextStyle(
           fontWeight: FontWeight.normal,
-          fontSize: 17.0,
+          fontSize: 18.0,
           fontFamily: kFontFamily,
         ),
       ),

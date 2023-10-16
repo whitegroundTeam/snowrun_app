@@ -13,7 +13,7 @@ class CommonButton extends StatefulWidget {
   String? text;
   Function? onTap;
   String? iconHeroTag;
-  bool? isPrimary = false;
+  bool? isPrimary;
 
   CommonButton(
       {super.key,
@@ -40,61 +40,67 @@ class CommonButtonState extends State<CommonButton> {
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 56,
-        decoration: BoxDecoration(
-          color: widget.buttonColor ?? AppStyle.secondaryBackground,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Stack(
-          children: [
-            if (widget.isPrimary == true) ...[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: const BlurHash(hash: "LHTOE1q8g1oxqMeWf7e;gdfjfQfQ"),
-              ),
-            ],
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                if (widget.iconPath?.isNotEmpty == true) ...{
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 16,
-                      right: 12,
-                    ),
-                    child: widget.iconHeroTag?.isNotEmpty == true
-                        ? Hero(
-                            tag: widget.iconHeroTag ?? "",
-                            child: Image.asset(
-                              widget.iconPath ?? "",
-                              width: 24,
-                              height: 24,
-                              color: widget.iconColor,
-                            ),
-                          )
-                        : Image.asset(
-                            widget.iconPath ?? "",
-                            width: 24,
-                            height: 24,
-                            color: widget.iconColor,
-                          ),
-                  ),
-                },
-                Expanded(
-                  child: Center(
-                    child: LabelText(
-                      title: widget.text ?? "",
-                      fontSize: 16,
-                      color: widget.textColor,
-                    ),
-                  ),
+        decoration: widget.isPrimary == true
+            ? BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFFFFFF44), Color(0xFFFF1F00)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
-                if (widget.iconPath?.isNotEmpty == true) ...{
-                  const SizedBox(
-                    width: 24,
+                borderRadius: BorderRadius.circular(12.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 15,
+                    offset: const Offset(0, 7),
                   ),
-                }
-              ],
+                ],
+              )
+            : BoxDecoration(
+                color: widget.buttonColor ?? AppStyle.secondaryBackground,
+                borderRadius: BorderRadius.circular(12),
+              ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if (widget.iconPath?.isNotEmpty == true) ...{
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 16,
+                  right: 12,
+                ),
+                child: widget.iconHeroTag?.isNotEmpty == true
+                    ? Hero(
+                        tag: widget.iconHeroTag ?? "",
+                        child: Image.asset(
+                          widget.iconPath ?? "",
+                          width: 24,
+                          height: 24,
+                          color: widget.iconColor,
+                        ),
+                      )
+                    : Image.asset(
+                        widget.iconPath ?? "",
+                        width: 24,
+                        height: 24,
+                        color: widget.iconColor,
+                      ),
+              ),
+            },
+            Expanded(
+              child: Center(
+                child: LabelText(
+                  title: widget.text ?? "",
+                  fontSize: 16,
+                  color: widget.textColor,
+                ),
+              ),
             ),
+            if (widget.iconPath?.isNotEmpty == true) ...{
+              const SizedBox(
+                width: 24,
+              ),
+            }
           ],
         ),
       ),

@@ -12,6 +12,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'package:snowrun_app/domain/auth/auth_method.dart';
 import 'package:snowrun_app/domain/user/model/app_user.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/auth/auth_failure.dart';
@@ -151,40 +152,49 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, OauthSignResult>> signWithGoogle() async {
-    // try {
-    //   final googleUser = await _googleSignIn.signIn();
-    //   if (googleUser == null) {
-    //     return left(const AuthFailure.cancelledByUser());
-    //   }
-    //   final googleAuthentication = await googleUser.authentication;
-    //
-    //   final AuthCredential authCredential = GoogleAuthProvider.credential(
-    //     accessToken: googleAuthentication.accessToken,
-    //     idToken: googleAuthentication.idToken,
-    //   );
-    //
-    //   final UserCredential credential =
-    //   await _firebaseAuth.signInWithCredential(authCredential);
-    //   final userInfo = credential.additionalUserInfo;
-    //   final user = credential.user;
-    //   if (userInfo == null || user == null) {
-    //     return left(const AuthFailure.serverError());
-    //   }
-    //
-    //   final SignResponse response =
-    //   await _api.requestSign(await user.getIdToken() ?? "");
-    //   return right(
-    //     OauthSignResult(
-    //       isNewUser: response.isNewUser,
-    //       provider: OauthSignProvider.google,
-    //     ),
-    //   );
-    // } on FirebaseAuthException catch (_) {
-    //   return left(const AuthFailure.serverError());
-    // } on Exception {
-    //   return left(const AuthFailure.serverError());
-    // }
-    return left(const AuthFailure.serverError());
+    debugPrint("TWTWTW T:: :::::::");
+    try {
+      debugPrint("TWTWTW T:: 00-1 $_googleSignIn");
+      final googleUser = await _googleSignIn.signIn();
+      debugPrint("TWTWTW T:: 00-2 $googleUser");
+      if (googleUser == null) {
+        return left(const AuthFailure.cancelledByUser());
+      }
+      final googleAuthentication = await googleUser.authentication;
+
+      final AuthCredential authCredential = GoogleAuthProvider.credential(
+        accessToken: googleAuthentication.accessToken,
+        idToken: googleAuthentication.idToken,
+      );
+
+      final UserCredential credential =
+      await _firebaseAuth.signInWithCredential(authCredential);
+
+      debugPrint("TWTWTW T:: 11  $credential");
+      final userInfo = credential.additionalUserInfo;
+      final user = credential.user;
+      debugPrint("TWTWTW T:: 22  $userInfo");
+      if (userInfo == null || user == null) {
+        return left(const AuthFailure.serverError());
+      }
+
+      // final SignResponse response =
+      // await _api.requestSign(await user.getIdToken() ?? "");
+      // return right(
+      //   OauthSignResult(
+      //     isNewUser: response.isNewUser,
+      //     provider: AuthMethod.google,
+      //   ),
+      // );
+      //TODO : 임시용
+      return left(const AuthFailure.serverError());
+    } on FirebaseAuthException catch (e) {
+      debugPrint("TWTWTW T:: ::::::: $e");
+      return left(const AuthFailure.serverError());
+    } on Exception catch (e) {
+      debugPrint("TWTWTW T:: :::::::22 :: $e");
+      return left(const AuthFailure.serverError());
+    }
   }
 
   @override

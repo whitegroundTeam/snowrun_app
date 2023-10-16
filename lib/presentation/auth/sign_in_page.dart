@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:snowrun_app/domain/auth/auth_method.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/auth/widget/email_auth_button.dart';
 import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
+import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
@@ -25,6 +28,7 @@ class SignInPage extends StatefulWidget {
 
 class SignInPageState extends State<SignInPage> {
   final hiveProvider = getIt<HiveProvider>();
+  final authBloc = getIt<AuthBloc>();
   Color selectedColor = Colors.white;
 
   @override
@@ -48,11 +52,17 @@ class SignInPageState extends State<SignInPage> {
       buttonColor: AppStyle.white,
       iconPath: 'assets/webp/apple_logo.webp',
       text: "애플로 로그인 하기",
+      onTap: () {
+        authBloc.add(const AuthEvent.signWithApplePressed());
+      },
     );
 
     final googleSignInButton = CommonButton(
       iconPath: 'assets/webp/google_logo.webp',
       text: "구글로 로그인 하기",
+      onTap: () {
+        authBloc.add(const AuthEvent.signWithGooglePressed());
+      },
     );
 
     Widget? recentlySignInMethodButton;
@@ -128,6 +138,31 @@ class SignInPageState extends State<SignInPage> {
                             ),
                           )
                           .toList(),
+                      const SizedBox(
+                        height: 36,
+                      ),
+                      Center(
+                        child: CommonDetector(
+                          onTap: () {
+                            context.push("/signUp");
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 24,
+                              vertical: 12,
+                            ),
+                            child: UnderlineText(
+                              const TitleText(
+                                title: "이메일로 가입하기",
+                                fontSize: 12,
+                                color: AppStyle.white,
+                              ),
+                              AppStyle.white,
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
