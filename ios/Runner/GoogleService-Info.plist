@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>84646097442-jqjkdlbhjgpbbim61ajsomo1f6fva8m6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.84646097442-jqjkdlbhjgpbbim61ajsomo1f6fva8m6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCFI1gI1VBUEc7uI0lpqNRs9I-mhUl2rGY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>84646097442</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.whiteground.snowrun</string>
+	<key>PROJECT_ID</key>
+	<string>snowrun-b75bb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>snowrun-b75bb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:84646097442:ios:d8b150c0a37d0b57ed107b</string>
+</dict>
+</plist>
