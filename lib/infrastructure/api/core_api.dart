@@ -20,7 +20,7 @@ enum HttpMethod {
 @singleton
 class CoreApi {
   static const defaultPageSize = 10;
-  String baseUrl = "api.whiteground.app";
+  String baseUrl = "api.snowrun.app";
   String basePath = "/api";
   final Map<String, String> _baseHeaders = {
     "Content-Type": "application/json; charset=utf-8"
@@ -42,7 +42,7 @@ class CoreApi {
       Future<void> Function(String waitingToken) onErrorWaiting) async {
     this.onErrorWaiting = onErrorWaiting;
   }
-
+  // color_dark: "#101012"
   setOnApprovedWaiting(Future<void> Function() onApprovedWaiting) async {
     this.onApprovedWaiting = onApprovedWaiting;
   }

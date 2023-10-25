@@ -1,15 +1,20 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/riding/riding_page.dart';
+import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
+import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,10 +39,29 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
         body: Column(
       children: [
-        const SizedBox(
-          height: 100,
+        SizedBox(
+          height: MediaQuery.of(context).padding.top,
         ),
-
+        Align(
+          alignment: Alignment.topRight,
+          child: CommonDetector(
+            delay: 300,
+            onTap: () {
+              context.push('/setting');
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              child: Hero(
+                tag: "settingTag",
+                child: Image.asset(
+                  'assets/webp/setting.webp',
+                  height: 24,
+                  width: 24,
+                ),
+              ),
+            ),
+          ),
+        ),
         isAuthenticated
             ? CommonDetector(
                 needAuth: true,
@@ -71,7 +95,7 @@ class HomePageState extends State<HomePage> {
                           'assets/webp/profile_placeholder.webp',
                           height: previewProfileImageHeight,
                           width: previewProfileImageHeight,
-                          color: AppStyle.secondaryBackground,
+                          color: AppStyle.white.withOpacity(0.7),
                         ),
                         const Positioned(
                           left: 0,
@@ -105,16 +129,26 @@ class HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.bold),
               )
             : const Text(
-                "눈송이를 불어주세요",
+                "마음에드는 눈송이를 선택해주세요!",
                 style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 16,
                     color: AppStyle.secondaryTextColor,
                     fontWeight: FontWeight.bold),
               ),
 
-        Expanded(
-          child: SizedBox(),
-        )
+        // const SizedBox(
+        //   height: 24,
+        // ),
+        // CommonButton(
+        //   onTap: () {
+        //     _checkLocationPermission();
+        //   },
+        //   text: "라이딩화면으로 이동하기",
+        // )
+
+        // Expanded(
+        //   child: SizedBox(),
+        // )
 
         // const SizedBox(
         //   height: 32,
@@ -225,5 +259,39 @@ class HomePageState extends State<HomePage> {
         //   child: const Icon(Icons.navigate_next),
         // ),
         );
+  }
+
+  _checkLocationPermission() async {
+    if (!await Geolocator.isLocationServiceEnabled()) {
+      _showOpenSettingDialog();
+    }
+
+    final checkedPermission = await Geolocator.requestPermission();
+
+    if (checkedPermission == LocationPermission.always ||
+        checkedPermission == LocationPermission.whileInUse) {
+      if (!mounted) return;
+      context.push("/recording");
+    } else {
+      _showOpenSettingDialog();
+    }
+  }
+
+  _showOpenSettingDialog() async {
+    if (!mounted) return;
+    await showCommonDialog(context,
+        buttonText: "설정으로 이동",
+        title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
+        negativeButtonText: "취소", onPressedButton: () async {
+      AppSettings.openAppSettings(type: AppSettingsType.location);
+      showToast(
+        "위치 권한 허용 후 다시 시도해주세요.",
+      );
+
+      if (!mounted) return;
+      context.pop();
+    }, onPressedNegativeButton: () {
+      context.pop();
+    });
   }
 }

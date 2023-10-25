@@ -30,7 +30,7 @@ PODS:
     - Firebase/Analytics (= 10.15.0)
     - firebase_core
     - Flutter
-  - firebase_auth (4.7.2):
+  - firebase_auth (4.10.1):
     - Firebase/Auth (= 10.15.0)
     - firebase_core
     - Flutter
@@ -211,6 +211,8 @@ PODS:
   - PromisesSwift (2.3.1):
     - PromisesObjC (= 2.3.1)
   - RecaptchaInterop (100.0.0)
+  - sign_in_with_apple (0.0.1):
+    - Flutter
   - Toast (4.0.0)
   - Turf (2.7.0)
 
@@ -230,6 +232,7 @@ DEPENDENCIES:
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
   - mapbox_maps_flutter (from `.symlinks/plugins/mapbox_maps_flutter/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
 
 SPEC REPOS:
   trunk:
@@ -295,13 +298,15 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/mapbox_maps_flutter/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  sign_in_with_apple:
+    :path: ".symlinks/plugins/sign_in_with_apple/ios"
 
 SPEC CHECKSUMS:
   app_settings: ee4ae4d1c9a907a23b81c40e5c56a5ca8a20a62b
   AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   Firebase: 66043bd4579e5b73811f96829c694c7af8d67435
   firebase_analytics: f153c564d6a7675e56e4f171454b9f1b3e7b6601
-  firebase_auth: b4cf8426f82311bcf1d58298beeef2bfdae696fb
+  firebase_auth: b62e99e6ece589afe88ebe8919eb9563b52c384c
   firebase_core: 28e84c2a4fcf6a50ef83f47b145ded8c1fa331e4
   firebase_crashlytics: 36b8a72e23437dbb69bd97102661ce31b6721be5
   firebase_performance: 0cd853c1ae53c1f576dcaf3b4d0e31c4ea799792
@@ -340,6 +345,7 @@ SPEC CHECKSUMS:
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
+  sign_in_with_apple: f3bf75217ea4c2c8b91823f225d70230119b8440
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Turf: 13d1a92d969ca0311bbc26e8356cca178ce95da2
 

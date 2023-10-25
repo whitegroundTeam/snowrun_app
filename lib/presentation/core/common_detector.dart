@@ -33,8 +33,8 @@ class CommonDetectorState extends State<CommonDetector>
   static const defaultDelay = 1000;
   DateTime? lastClickTime;
 
-  late double _scale;
-  late AnimationController _controller;
+  double? _scale;
+  AnimationController? _controller;
 
   bool isClicked = false;
 
@@ -55,14 +55,14 @@ class CommonDetectorState extends State<CommonDetector>
 
   @override
   void dispose() {
-    _controller.stop();
-    _controller.dispose();
+    _controller?.stop();
+    _controller?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    _scale = 1 - (_controller.value);
+    _scale = 1 - (_controller?.value ?? 0);
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         final isAuthenticated = state.user != null;
@@ -83,7 +83,7 @@ class CommonDetectorState extends State<CommonDetector>
                       Duration(milliseconds: widget.delay ?? defaultDelay)) {
                 if (widget.needAuth == true) {
                   if (!isAuthenticated) {
-                    showToast("로그인 후 이용하실 수 있습니다.");
+                    showToast("로그인이 필요해요!");
                     context.push("/signIn");
                   } else {
                     widget.onTap?.call();
@@ -106,11 +106,11 @@ class CommonDetectorState extends State<CommonDetector>
   }
 
   void _startClick() {
-    _controller.forward();
+    _controller?.forward();
   }
 
   void _finishClick() {
     Future.delayed(const Duration(milliseconds: 150))
-        .then((value) => _controller.reverse());
+        .then((value) => _controller?.reverse());
   }
 }

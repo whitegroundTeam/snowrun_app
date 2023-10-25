@@ -7,6 +7,7 @@ import 'package:snowrun_app/presentation/home/home_page.dart';
 import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
 import 'package:snowrun_app/presentation/record/recording_page.dart';
 import 'package:snowrun_app/presentation/record/result_page.dart';
+import 'package:snowrun_app/presentation/setting/setting_page.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
@@ -51,6 +52,12 @@ final GoRouter router = GoRouter(
       path: '/signUp',
       builder: (BuildContext context, GoRouterState state) {
         return const EmailSignUpPage();
+      },
+    ),
+    GoRoute(
+      path: '/setting',
+      builder: (BuildContext context, GoRouterState state) {
+        return const SettingPage();
       },
     ),
   ],

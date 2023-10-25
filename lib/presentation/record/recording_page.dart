@@ -102,13 +102,14 @@ class RecordingPageState extends State<RecordingPage> {
                 accessToken:
                     "pk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xua3UxZTZvMGZmMDJpczFmdnlxd2RqZSJ9.EHF4W-fNtEyADJC3lInQcA"),
             onMapCreated: _onMapCreated,
+            styleUri: "mapbox://styles/mapbox/outdoors-v12",
             cameraOptions: CameraOptions(
                 center: Point(
                     coordinates: Position(
                   // 126.6338237,
                   // 37.4064278,
-                  128.8795658,
-                  37.7363675,
+                  128.6803521,
+                  37.6390034,
                 )).toJson(),
                 zoom: 14.0),
           ),

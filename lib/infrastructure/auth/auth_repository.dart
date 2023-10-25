@@ -152,11 +152,8 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, OauthSignResult>> signWithGoogle() async {
-    debugPrint("TWTWTW T:: :::::::");
     try {
-      debugPrint("TWTWTW T:: 00-1 $_googleSignIn");
       final googleUser = await _googleSignIn.signIn();
-      debugPrint("TWTWTW T:: 00-2 $googleUser");
       if (googleUser == null) {
         return left(const AuthFailure.cancelledByUser());
       }
@@ -170,10 +167,8 @@ class AuthRepository implements IAuthRepository {
       final UserCredential credential =
       await _firebaseAuth.signInWithCredential(authCredential);
 
-      debugPrint("TWTWTW T:: 11  $credential");
       final userInfo = credential.additionalUserInfo;
       final user = credential.user;
-      debugPrint("TWTWTW T:: 22  $userInfo");
       if (userInfo == null || user == null) {
         return left(const AuthFailure.serverError());
       }
@@ -189,10 +184,8 @@ class AuthRepository implements IAuthRepository {
       //TODO : 임시용
       return left(const AuthFailure.serverError());
     } on FirebaseAuthException catch (e) {
-      debugPrint("TWTWTW T:: ::::::: $e");
       return left(const AuthFailure.serverError());
     } on Exception catch (e) {
-      debugPrint("TWTWTW T:: :::::::22 :: $e");
       return left(const AuthFailure.serverError());
     }
   }
