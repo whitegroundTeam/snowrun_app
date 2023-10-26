@@ -14,11 +14,12 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i4;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/auth/auth_bloc.dart' as _i21;
+import 'application/auth/auth_bloc.dart' as _i22;
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i19;
+import 'application/auth/sign_up_form/sign_up_form_bloc.dart' as _i20;
 import 'application/location/location_bloc.dart' as _i17;
 import 'application/place/place_bloc.dart' as _i18;
-import 'application/user/user_bloc.dart' as _i20;
+import 'application/user/user_bloc.dart' as _i21;
 import 'domain/auth/i_auth_repository.dart' as _i9;
 import 'domain/location/i_location_repository.dart' as _i11;
 import 'domain/place/i_place_repository.dart' as _i13;
@@ -31,7 +32,7 @@ import 'infrastructure/location/location_repository.dart' as _i12;
 import 'infrastructure/place/place_repository.dart' as _i14;
 import 'infrastructure/user/user_repository.dart' as _i16;
 import 'presentation/core/toast/toast_bloc.dart' as _i6;
-import 'utils/injectable_module.dart' as _i22;
+import 'utils/injectable_module.dart' as _i23;
 
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
@@ -71,9 +72,11 @@ _i1.GetIt $initGetIt(
   gh.factory<_i18.PlaceBloc>(() => _i18.PlaceBloc(gh<_i13.IPlaceRepository>()));
   gh.factory<_i19.SignInFormBloc>(
       () => _i19.SignInFormBloc(gh<_i9.IAuthRepository>()));
-  gh.factory<_i20.UserBloc>(() => _i20.UserBloc(gh<_i15.IUserRepository>()));
-  gh.factory<_i21.AuthBloc>(() => _i21.AuthBloc(gh<_i9.IAuthRepository>()));
+  gh.factory<_i20.SignUpFormBloc>(
+      () => _i20.SignUpFormBloc(gh<_i9.IAuthRepository>()));
+  gh.factory<_i21.UserBloc>(() => _i21.UserBloc(gh<_i15.IUserRepository>()));
+  gh.factory<_i22.AuthBloc>(() => _i22.AuthBloc(gh<_i9.IAuthRepository>()));
   return getIt;
 }
 
-class _$InjectableModule extends _i22.InjectableModule {}
+class _$InjectableModule extends _i23.InjectableModule {}

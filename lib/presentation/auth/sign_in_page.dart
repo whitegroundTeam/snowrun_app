@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -37,6 +39,8 @@ class SignInPageState extends State<SignInPage> {
     final recentlySignInMethod =
         AuthMethod.findByName(name: hiveProvider.getRecentlySignInMethod());
 
+    bool isIos = Platform.isIOS;
+
     final emailSignInButton = CommonButton(
       onTap: () {
         context.push("/emailSignInPage");
@@ -69,21 +73,36 @@ class SignInPageState extends State<SignInPage> {
     List<Widget> otherSignInMethodButtons = [];
     if (recentlySignInMethod == AuthMethod.email) {
       recentlySignInMethodButton = emailSignInButton;
-      otherSignInMethodButtons = [appleSignInButton, googleSignInButton];
+      if(isIos) {
+        otherSignInMethodButtons = [appleSignInButton, googleSignInButton];
+      } else {
+        otherSignInMethodButtons = [googleSignInButton];
+      }
     } else if (recentlySignInMethod == AuthMethod.apple) {
       recentlySignInMethodButton = appleSignInButton;
       otherSignInMethodButtons = [googleSignInButton, emailSignInButton];
     } else if (recentlySignInMethod == AuthMethod.google) {
       recentlySignInMethodButton = googleSignInButton;
-      otherSignInMethodButtons = [appleSignInButton, emailSignInButton];
+      if(isIos) {
+        otherSignInMethodButtons = [appleSignInButton, emailSignInButton];
+      } else{
+        otherSignInMethodButtons = [emailSignInButton];
+      }
     }
 
     if (recentlySignInMethodButton == null) {
-      otherSignInMethodButtons = [
-        googleSignInButton,
-        appleSignInButton,
-        emailSignInButton
-      ];
+      if(isIos) {
+        otherSignInMethodButtons = [
+          googleSignInButton,
+          appleSignInButton,
+          emailSignInButton
+        ];
+      } else {
+        otherSignInMethodButtons = [
+          googleSignInButton,
+          emailSignInButton
+        ];
+      }
     }
 
     return Scaffold(
@@ -154,7 +173,7 @@ class SignInPageState extends State<SignInPage> {
                             child: UnderlineText(
                               const TitleText(
                                 title: "이메일로 가입하기",
-                                fontSize: 12,
+                                fontSize: 14,
                                 color: AppStyle.white,
                               ),
                               AppStyle.white,

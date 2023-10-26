@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/infrastructure/api/authenticated_http_client.dart';
+import 'package:snowrun_app/infrastructure/auth/auth_dtos.dart';
 import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
 import 'package:snowrun_app/infrastructure/place/place_dtos.dart';
 import 'package:snowrun_app/infrastructure/user/user_dtos.dart';
@@ -42,6 +43,7 @@ class CoreApi {
       Future<void> Function(String waitingToken) onErrorWaiting) async {
     this.onErrorWaiting = onErrorWaiting;
   }
+
   // color_dark: "#101012"
   setOnApprovedWaiting(Future<void> Function() onApprovedWaiting) async {
     this.onApprovedWaiting = onApprovedWaiting;
@@ -136,6 +138,14 @@ class CoreApi {
 
   Uri _getUri(String path, Map<String, dynamic>? queryParams) =>
       Uri.https(baseUrl, path, queryParams);
+
+  Future<Response> signWithIdToken(IdTokenRequestDto idTokenRequestDto) =>
+      _requestWrapper(
+        method: HttpMethod.post,
+        path: "/account/sign/",
+        bodyParam: idTokenRequestDto.toJson(),
+      );
+
 
   Future<Response> createBoundaries(CreateBoundaryDto createBoundaryDto) =>
       _requestWrapper(

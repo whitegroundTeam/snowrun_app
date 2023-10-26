@@ -12,7 +12,9 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:snowrun_app/domain/auth/auth_method.dart';
+import 'package:snowrun_app/domain/auth/sign_response.dart';
 import 'package:snowrun_app/domain/user/model/app_user.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/auth/auth_failure.dart';
@@ -21,24 +23,27 @@ import 'package:snowrun_app/domain/auth/value_objects.dart';
 import 'package:snowrun_app/domain/user/model/user.dart' as auth_user;
 import 'package:snowrun_app/domain/auth/i_auth_repository.dart';
 import 'package:snowrun_app/infrastructure/api/core_api.dart';
+import 'package:snowrun_app/infrastructure/auth/exceptions.dart';
 import 'package:snowrun_app/infrastructure/auth/firebase_user_mapper.dart';
 
+import 'auth_dtos.dart';
 
 @LazySingleton(as: IAuthRepository)
 class AuthRepository implements IAuthRepository {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final CoreApi _api;
+
   // final AnalyticsService analyticsService;
   // final HivePro localStore;
 
   AuthRepository(
-      this._firebaseAuth,
-      this._googleSignIn,
-      this._api,
-      // this.analyticsService,
-      // this.localStore,
-      );
+    this._firebaseAuth,
+    this._googleSignIn,
+    this._api,
+    // this.analyticsService,
+    // this.localStore,
+  );
 
   @override
   Future<Option<AppUser>> getSignedInUser() async =>
@@ -87,35 +92,34 @@ class AuthRepository implements IAuthRepository {
     required EmailAddress emailAddress,
     required Password password,
   }) async {
-  //   final emailAddressStr = emailAddress.getOrCrash();
-  //   final passwordStr = password.getOrCrash();
-  //   try {
-  //     final UserCredential credential =
-  //     await _firebaseAuth.createUserWithEmailAndPassword(
-  //       email: emailAddressStr,
-  //       password: passwordStr,
-  //     );
-  //     final user = credential.user;
-  //     if (user == null) {
-  //       return left(const AuthFailure.serverError());
-  //     }
-  //
-  //     await _api.requestSign(await user.getIdToken() ?? "");
-  //
-  //     return right(unit);
-  //   } on FirebaseAuthException catch (e) {
-  //     if (e.code == 'email-already-in-use') {
-  //       return left(const AuthFailure.emailAlreadyInUse());
-  //     } else {
-  //       return left(const AuthFailure.serverError());
-  //     }
-  //   } on ServerAuthException {
-  //     _firebaseAuth.currentUser?.delete();
-  //     return left(const AuthFailure.serverError());
-  //   } on Exception {
-  //     return left(const AuthFailure.serverError());
-  //   }
+    final emailAddressStr = emailAddress.getOrCrash();
+    final passwordStr = password.getOrCrash();
+    try {
+      final UserCredential credential =
+      await _firebaseAuth.createUserWithEmailAndPassword(
+        email: emailAddressStr,
+        password: passwordStr,
+      );
+      final user = credential.user;
+      if (user == null) {
+        return left(const AuthFailure.serverError());
+      }
+
+      await _api.signWithIdToken(IdTokenRequestDto.fromDomain(await user.getIdToken() ?? ""));
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        return left(const AuthFailure.emailAlreadyInUse());
+      } else {
+        return left(const AuthFailure.serverError());
+      }
+    } on ServerAuthException {
+      _firebaseAuth.currentUser?.delete();
       return left(const AuthFailure.serverError());
+    } on Exception {
+      return left(const AuthFailure.serverError());
+    }
   }
 
   @override
@@ -165,7 +169,7 @@ class AuthRepository implements IAuthRepository {
       );
 
       final UserCredential credential =
-      await _firebaseAuth.signInWithCredential(authCredential);
+          await _firebaseAuth.signInWithCredential(authCredential);
 
       final userInfo = credential.additionalUserInfo;
       final user = credential.user;
@@ -173,16 +177,19 @@ class AuthRepository implements IAuthRepository {
         return left(const AuthFailure.serverError());
       }
 
-      // final SignResponse response =
-      // await _api.requestSign(await user.getIdToken() ?? "");
-      // return right(
-      //   OauthSignResult(
-      //     isNewUser: response.isNewUser,
-      //     provider: AuthMethod.google,
-      //   ),
-      // );
-      //TODO : 임시용
-      return left(const AuthFailure.serverError());
+      final response = await _api.signWithIdToken(
+          IdTokenRequestDto.fromDomain(await user.getIdToken() ?? ""));
+
+      final infoJson =
+          json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      final signResponseDto = SignResponseDto.fromJson(infoJson);
+
+      return right(
+        OauthSignResult(
+          isNewUser: signResponseDto.isNewUser,
+          provider: AuthMethod.google,
+        ),
+      );
     } on FirebaseAuthException catch (e) {
       return left(const AuthFailure.serverError());
     } on Exception catch (e) {
@@ -192,56 +199,59 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, OauthSignResult>> signWithApple() async {
-    // try {
-    //   final rawNonce = generateNonce();
-    //   final nonce = sha256ofString(rawNonce);
-    //
-    //   final appleCredential = await SignInWithApple.getAppleIDCredential(
-    //     scopes: [
-    //       AppleIDAuthorizationScopes.email,
-    //     ],
-    //     nonce: nonce,
-    //   );
-    //
-    //   final oauthCredential = OAuthProvider("apple.com").credential(
-    //     idToken: appleCredential.identityToken,
-    //     rawNonce: rawNonce,
-    //   );
-    //
-    //   final UserCredential credential =
-    //   await _firebaseAuth.signInWithCredential(oauthCredential);
-    //   final userInfo = credential.additionalUserInfo;
-    //   final user = credential.user;
-    //   if (userInfo == null || user == null) {
-    //     return left(const AuthFailure.serverError());
-    //   }
-    //
-    //   final SignResponse response =
-    //   await _api.requestSign(await user.getIdToken() ?? "");
-    //
-    //   return right(
-    //     OauthSignResult(
-    //       isNewUser: response.isNewUser,
-    //       provider: OauthSignProvider.apple,
-    //     ),
-    //   );
-    // } on FirebaseAuthException {
-    //   return left(const AuthFailure.serverError());
-    // } on SignInWithAppleAuthorizationException {
-    //   return left(const AuthFailure.serverError());
-    // } on PlatformException {
-    //   return left(const AuthFailure.serverError());
-    // } on Exception {
-    //   return left(const AuthFailure.serverError());
-    // }
-    return left(const AuthFailure.serverError());
+    try {
+      final rawNonce = generateNonce();
+      final nonce = sha256ofString(rawNonce);
+
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+        ],
+        nonce: nonce,
+      );
+
+      final oauthCredential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+        rawNonce: rawNonce,
+      );
+
+      final UserCredential credential =
+          await _firebaseAuth.signInWithCredential(oauthCredential);
+      final userInfo = credential.additionalUserInfo;
+      final user = credential.user;
+      if (userInfo == null || user == null) {
+        return left(const AuthFailure.serverError());
+      }
+
+      final response = await _api.signWithIdToken(
+          IdTokenRequestDto.fromDomain(await user.getIdToken() ?? ""));
+
+      final infoJson =
+      json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      final signResponseDto = SignResponseDto.fromJson(infoJson);
+
+      return right(
+        OauthSignResult(
+          isNewUser: signResponseDto.isNewUser,
+          provider: AuthMethod.google,
+        ),
+      );
+    } on FirebaseAuthException {
+      return left(const AuthFailure.serverError());
+    } on SignInWithAppleAuthorizationException {
+      return left(const AuthFailure.serverError());
+    } on PlatformException {
+      return left(const AuthFailure.serverError());
+    } on Exception {
+      return left(const AuthFailure.serverError());
+    }
   }
 
   @override
   Future<void> signOut() => Future.wait([
-    _googleSignIn.signOut(),
-    _firebaseAuth.signOut(),
-  ]);
+        _googleSignIn.signOut(),
+        _firebaseAuth.signOut(),
+      ]);
 
   String generateNonce([int length = 32]) {
     const charset =

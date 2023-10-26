@@ -71,129 +71,140 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                       appBarType: AppBarType.back,
                     ),
                     SliverToBoxAdapter(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 24,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Hero(
-                              tag: "emailSignInTag",
-                              child: Center(
-                                child: Image.asset(
-                                  'assets/webp/email.webp',
-                                  height: previewProfileImageHeight,
-                                  width: previewProfileImageHeight,
+                      child: Form(
+                        autovalidateMode: state.showErrorMessages
+                            ? AutovalidateMode.always
+                            : AutovalidateMode.disabled,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 24,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Hero(
+                                tag: "emailSignInTag",
+                                child: Center(
+                                  child: Image.asset(
+                                    'assets/webp/email.webp',
+                                    height: previewProfileImageHeight,
+                                    width: previewProfileImageHeight,
+                                  ),
                                 ),
                               ),
-                            ),
-                            TextFormField(
-                              keyboardType: TextInputType.emailAddress,
-                              cursorColor: AppStyle.white,
-                              decoration: InputDecoration(
-                                hintText: '이메일',
-                                hintStyle: const TextStyle(
-                                  color: AppStyle.secondaryTextColor,
-                                  fontWeight: FontWeight.w400,
+                              TextFormField(
+                                keyboardType: TextInputType.emailAddress,
+                                cursorColor: AppStyle.white,
+                                decoration: InputDecoration(
+                                  hintText: '이메일',
+                                  hintStyle: const TextStyle(
+                                    color: AppStyle.secondaryTextColor,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 20,
+                                  ),
+                                  border: const OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: AppStyle.white, width: 2),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: AppStyle.secondaryBackground,
+                                        width: 4),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                style: const TextStyle(
+                                  color: AppStyle.white,
+                                  fontWeight: FontWeight.w600,
                                   fontSize: 20,
                                 ),
-                                border: const OutlineInputBorder(),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: AppStyle.white, width: 2),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: AppStyle.secondaryBackground,
-                                      width: 4),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                              style: const TextStyle(
-                                color: AppStyle.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                              ),
-                              autocorrect: false,
-                              autofocus: true,
-                              onChanged: (value) => context
-                                  .read<SignInFormBloc>()
-                                  .add(SignInFormEvent.emailChanged(value)),
-                              validator: (_) => context
-                                  .read<SignInFormBloc>()
-                                  .state
-                                  .emailAddress
-                                  .value
-                                  .fold(
-                                    (f) => f.maybeMap(
-                                      invalidEmail: (_) => '유효한 이메일 주소가 아닙니다.',
-                                      orElse: () => null,
+                                autocorrect: false,
+                                autofocus: true,
+                                onChanged: (value) => context
+                                    .read<SignInFormBloc>()
+                                    .add(SignInFormEvent.emailChanged(value)),
+                                validator: (_) => context
+                                    .read<SignInFormBloc>()
+                                    .state
+                                    .emailAddress
+                                    .value
+                                    .fold(
+                                      (f) => f.maybeMap(
+                                        invalidEmail: (_) => '유효한 이메일 주소가 아닙니다.',
+                                        orElse: () => null,
+                                      ),
+                                      (r) => null,
                                     ),
-                                    (r) => null,
+                              ),
+                              const SizedBox(height: 8),
+                              TextFormField(
+                                keyboardType: TextInputType.visiblePassword,
+                                obscureText: true,
+                                cursorColor: AppStyle.white,
+                                decoration: InputDecoration(
+                                  hintText: '비밀번호',
+                                  hintStyle: const TextStyle(
+                                    color: AppStyle.secondaryTextColor,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 20,
                                   ),
-                            ),
-                            const SizedBox(height: 8),
-                            TextFormField(
-                              keyboardType: TextInputType.visiblePassword,
-                              obscureText: true,
-                              cursorColor: AppStyle.white,
-                              decoration: InputDecoration(
-                                hintText: '비밀번호',
-                                hintStyle: const TextStyle(
-                                  color: AppStyle.secondaryTextColor,
-                                  fontWeight: FontWeight.w400,
+                                  border: const OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: AppStyle.white, width: 2),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: AppStyle.secondaryBackground,
+                                        width: 4),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                style: const TextStyle(
+                                  color: AppStyle.white,
+                                  fontWeight: FontWeight.w600,
                                   fontSize: 20,
                                 ),
-                                border: const OutlineInputBorder(),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: AppStyle.white, width: 2),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: AppStyle.secondaryBackground,
-                                      width: 4),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                              style: const TextStyle(
-                                color: AppStyle.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                              ),
-                              autocorrect: false,
-                              onChanged: (value) => context
-                                  .read<SignInFormBloc>()
-                                  .add(SignInFormEvent.passwordChanged(value)),
-                              validator: (_) => context
-                                  .read<SignInFormBloc>()
-                                  .state
-                                  .password
-                                  .value
-                                  .fold(
-                                    (f) => f.maybeMap(
-                                      shortPassword: (_) =>
-                                          '비밀번호는 6자 이상 작성해주세요.',
-                                      orElse: () => null,
+                                autocorrect: false,
+                                onChanged: (value) => context
+                                    .read<SignInFormBloc>()
+                                    .add(SignInFormEvent.passwordChanged(value)),
+                                validator: (_) => context
+                                    .read<SignInFormBloc>()
+                                    .state
+                                    .password
+                                    .value
+                                    .fold(
+                                      (f) => f.maybeMap(
+                                        shortPassword: (_) =>
+                                            '비밀번호는 6자 이상 작성해주세요.',
+                                        orElse: () => null,
+                                      ),
+                                      (r) => null,
                                     ),
-                                    (r) => null,
-                                  ),
-                            ),
-                            const SizedBox(
-                              height: 56,
-                            ),
-                            CommonButton(
-                              buttonColor: AppStyle.accentColor,
-                              isPrimary: true,
-                              onTap: () {
-                                context.go("/");
-                              },
-                              text: "로그인 하기",
-                            )
-                          ],
+                              ),
+                              const SizedBox(
+                                height: 56,
+                              ),
+                              CommonButton(
+                                buttonColor: AppStyle.accentColor,
+                                isPrimary: true,
+                                onTap: () {
+                                  FocusScope.of(context).unfocus();
+                                  if (!state.isSubmitting) {
+                                    context.read<SignInFormBloc>().add(
+                                      const SignInFormEvent
+                                          .signInWithEmailAndPasswordPressed(),
+                                    );
+                                  }
+                                },
+                                text: "로그인 하기",
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
