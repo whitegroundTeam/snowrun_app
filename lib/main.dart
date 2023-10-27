@@ -1,18 +1,31 @@
+import 'dart:async';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:snowrun_app/app_widget.dart';
-import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
+import 'package:snowrun_app/firebase_options.dart';
 import 'package:snowrun_app/initializer.dart';
-import 'package:snowrun_app/injection.dart';
 
 Future<void> main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  await initServices(
-  isAnalyticsCollectEnabled: true,
-  isCrashlyticsCollectionEnabled: true,
-  );
+  runZonedGuarded<Future<void>>(
+    () async {
+      await initServices(
+        isAnalyticsCollectEnabled: true,
+        isCrashlyticsCollectionEnabled: true,
+      );
 
-  runApp(const MainApp());
+      await SentryFlutter.init(
+        (options) {
+          options.environment = "production";
+          options.dsn = dotenv.env['SENTRY_OPTIONS_DSN'] ?? "";
+        },
+        appRunner: () => runApp(const MainApp()),
+      );
+    },
+    (error, stack) => FirebaseCrashlytics.instance.recordError(error, stack),
+  );
 }

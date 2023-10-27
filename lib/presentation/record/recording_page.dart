@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:snowrun_app/application/location/location_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
@@ -100,7 +101,7 @@ class RecordingPageState extends State<RecordingPage> {
             key: const ValueKey('mapWidget'),
             resourceOptions: ResourceOptions(
                 accessToken:
-                    "pk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xua3UxZTZvMGZmMDJpczFmdnlxd2RqZSJ9.EHF4W-fNtEyADJC3lInQcA"),
+                    dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? ""),
             onMapCreated: _onMapCreated,
             styleUri: "mapbox://styles/mapbox/outdoors-v12",
             cameraOptions: CameraOptions(

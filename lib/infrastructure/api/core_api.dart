@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/user/model/user.dart';
@@ -21,8 +22,7 @@ enum HttpMethod {
 @singleton
 class CoreApi {
   static const defaultPageSize = 10;
-  String baseUrl = "api.snowrun.app";
-  String basePath = "/api";
+  final _baseUrl = dotenv.env['BASE_URL'] ?? "";
   final Map<String, String> _baseHeaders = {
     "Content-Type": "application/json; charset=utf-8"
   };
@@ -32,12 +32,6 @@ class CoreApi {
   final AuthenticatedHttpClient client;
 
   CoreApi({required this.client});
-
-  setBaseUrl({required String baseUrl, String? path}) {
-    debugPrint("FLUTTER_CORE :: setBaseUrl :: $baseUrl  //  $path");
-    this.baseUrl = baseUrl;
-    basePath = path ?? "";
-  }
 
   setOnErrorWaiting(
       Future<void> Function(String waitingToken) onErrorWaiting) async {
@@ -137,7 +131,7 @@ class CoreApi {
   }
 
   Uri _getUri(String path, Map<String, dynamic>? queryParams) =>
-      Uri.https(baseUrl, path, queryParams);
+      Uri.https(_baseUrl, path, queryParams);
 
   Future<Response> signWithIdToken(IdTokenRequestDto idTokenRequestDto) =>
       _requestWrapper(
