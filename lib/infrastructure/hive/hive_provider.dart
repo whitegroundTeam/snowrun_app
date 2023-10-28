@@ -46,6 +46,8 @@ class HiveProvider {
   Box<String> get recentlySignInMethodBox =>
       Hive.box<String>(recentlySignInMethodBoxKey);
 
+  Box get deviceBox => Hive.box(deviceKey);
+
 
   /// AUTH
   Future<String> getAuthToken() async {
@@ -85,4 +87,15 @@ class HiveProvider {
   setHiveTestModel() async =>
       hiveTestModelBox.put(hiveTestModelKey,
           HiveTestModel("testModel", "testDescription", ["0", "1", "2"]));
+
+  /// 권한요청 초기화 필요 여부 확인
+  bool isInitPermissionsNeeded() {
+    return !(deviceBox.get(isSeenInitPermissionKey, defaultValue: false)
+    as bool);
+  }
+
+  Future<void> markInitPermissionsAsSeen() async {
+    debugPrint('Local Store mark init_permissions as seen');
+    await deviceBox.put(isSeenInitPermissionKey, true);
+  }
 }

@@ -33,6 +33,12 @@ class HomePageState extends State<HomePage> {
   int imageNumber = 0;
 
   @override
+  void initState() {
+    super.initState();
+    // context.router.replace(const OnboardingRoute());
+  }
+
+  @override
   Widget build(BuildContext context) {
     final isAuthenticated = context.read<AuthBloc>().state.user != null;
     final previewProfileImageHeight = MediaQuery.of(context).size.height / 6;

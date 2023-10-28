@@ -29,6 +29,10 @@ dependencies:
   firebase_remote_config: ^4.2.7
   firebase_analytics: ^10.5.1
   firebase_performance: ^0.9.2+7
+  firebase_messaging: ^14.7.2
+
+  permission_handler: ^11.0.1
+  app_tracking_transparency: ^2.0.4
 
   sentry_flutter: ^7.11.0
 
@@ -46,10 +50,14 @@ dependencies:
 
   version: ^3.0.2
 
+  device_info_plus: ^9.1.0
+
   intl: ^0.18.1
   fluttertoast: ^8.2.2
   app_settings: ^5.0.0
   flutter_blurhash: ^0.7.0
+
+  smooth_page_indicator: ^1.1.0
 
   lottie: ^2.6.0
   flutter_native_splash: ^2.3.2
@@ -82,6 +90,7 @@ flutter:
 
   assets:
     - assets/lottie/
+    - assets/images/onboarding/
     - assets/png/
     - assets/webp/
     - assets/webp/2x/

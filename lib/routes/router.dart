@@ -5,6 +5,9 @@ import 'package:snowrun_app/presentation/auth/email_sign_up_page.dart';
 import 'package:snowrun_app/presentation/edit_profile_image_page/edit_profile_image_page.dart';
 import 'package:snowrun_app/presentation/home/home_page.dart';
 import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
+import 'package:snowrun_app/presentation/permission/request_att_permission_page.dart';
+import 'package:snowrun_app/presentation/permission/request_location_permission_page.dart';
+import 'package:snowrun_app/presentation/permission/request_notification_permission_page.dart';
 import 'package:snowrun_app/presentation/record/recording_page.dart';
 import 'package:snowrun_app/presentation/record/result_page.dart';
 import 'package:snowrun_app/presentation/setting/setting_page.dart';
@@ -58,6 +61,26 @@ final GoRouter router = GoRouter(
       path: '/setting',
       builder: (BuildContext context, GoRouterState state) {
         return const SettingPage();
+      },
+    ),
+    GoRoute(
+      path: '/attPermission',
+      builder: (BuildContext context, GoRouterState state) {
+        return const RequestAttPermissionPage();
+      },
+    ),
+
+    GoRoute(
+      path: '/locationPermission',
+      builder: (BuildContext context, GoRouterState state) {
+        return const RequestLocationPermissionPage();
+      },
+    ),
+
+    GoRoute(
+      path: '/notificationPermission',
+      builder: (BuildContext context, GoRouterState state) {
+        return const RequestNotificationPermissionPage();
       },
     ),
   ],
