@@ -75,7 +75,7 @@ class RequestLocationPermissionPage extends StatelessWidget {
                         vertical: Constants.kSpacing * 3,
                       ),
                       child: Image.asset(
-                        "assets/images/permission/permission_location_hero.png",
+                        "assets/png/app_icon_256.png",
                         fit: BoxFit.cover,
                       ),
                     ),

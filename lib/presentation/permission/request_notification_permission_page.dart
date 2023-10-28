@@ -59,7 +59,7 @@ class RequestNotificationPermissionPage extends StatelessWidget {
                         horizontal: Constants.kSpacing,
                       ),
                       child: Image.asset(
-                        "assets/images/permission/permission_push_hero.png",
+                        "assets/png/app_icon_256.png",
                       ),
                     ),
                   ),

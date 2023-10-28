@@ -21,6 +21,23 @@ class UserRepository implements IUserRepository {
   UserRepository(this._api);
 
   @override
+  Future<Either<UserFailure, Unit>> savePushToken(String token) async {
+    final response = await _api.updatePushToken(token);
+
+    if (response.statusCode == 200) {
+      final jsonData =
+      json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      final userDto = UserDto.fromJson(jsonData);
+      // ignore: unused_local_variable
+      final user = userDto.toDomain();
+
+      return right(unit);
+    } else {
+      return left(const UserFailure.serverError());
+    }
+  }
+
+  @override
   Future<Either<UserFailure, List<User>>> getUsers() async {
     // //FIXME : 임시로 넣어둔거
     final testUser = [User(nickname: StringVO("dansnow"), location: UserLocation(lat: DoubleVO(37.7363675), lng: DoubleVO(128.8795658)))];
@@ -44,10 +61,7 @@ class UserRepository implements IUserRepository {
     if (response.statusCode == 200) {
       return right(unit);
     } else {
-      final infoJson =
-      json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-      final appError = AppErrorDto.fromJson(infoJson);
-      return left(UserFailure.unexpected(appError.toDomain()));
+      return left(const UserFailure.serverError());
     }
   }
 }

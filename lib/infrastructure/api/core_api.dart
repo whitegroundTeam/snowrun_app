@@ -140,7 +140,6 @@ class CoreApi {
         bodyParam: idTokenRequestDto.toJson(),
       );
 
-
   Future<Response> createBoundaries(CreateBoundaryDto createBoundaryDto) =>
       _requestWrapper(
         method: HttpMethod.post,
@@ -159,4 +158,15 @@ class CoreApi {
         path: "/users/update_location/",
         bodyParam: userLocationDto.toJson(),
       );
+
+  Future<Response> updatePushToken(String token) async {
+    final uri = Uri.http(_baseUrl, "/account/pushtoken/");
+
+    final Response response = await client.post(
+      uri,
+      body: {'token': token},
+    );
+
+    return response;
+  }
 }

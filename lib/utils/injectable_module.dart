@@ -1,5 +1,6 @@
 // Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 
@@ -10,6 +11,11 @@ abstract class InjectableModule {
 
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+
+  @lazySingleton
+  FirebaseRemoteConfig get remoteConfig => FirebaseRemoteConfig.instance;
+
+  // FirebaseRemoteConfig
 
   // @lazySingleton
   // FirebaseRemoteConfig get remoteConfig => FirebaseRemoteConfig.instance;

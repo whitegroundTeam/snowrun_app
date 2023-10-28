@@ -20,18 +20,24 @@ mixin _$UserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getUsers,
     required TResult Function(double lat, double lng) updateCurrentLocation,
+    required TResult Function(String token) savePushToken,
+    required TResult Function(User user) saveUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUsers,
     TResult? Function(double lat, double lng)? updateCurrentLocation,
+    TResult? Function(String token)? savePushToken,
+    TResult? Function(User user)? saveUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUsers,
     TResult Function(double lat, double lng)? updateCurrentLocation,
+    TResult Function(String token)? savePushToken,
+    TResult Function(User user)? saveUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +46,24 @@ mixin _$UserEvent {
     required TResult Function(_GetUsers value) getUsers,
     required TResult Function(_UpdateCurrentLocation value)
         updateCurrentLocation,
+    required TResult Function(_SavePushToken value) savePushToken,
+    required TResult Function(_SaveUser value) saveUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetUsers value)? getUsers,
     TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult? Function(_SavePushToken value)? savePushToken,
+    TResult? Function(_SaveUser value)? saveUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetUsers value)? getUsers,
     TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult Function(_SavePushToken value)? savePushToken,
+    TResult Function(_SaveUser value)? saveUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +126,8 @@ class _$_GetUsers implements _GetUsers {
   TResult when<TResult extends Object?>({
     required TResult Function() getUsers,
     required TResult Function(double lat, double lng) updateCurrentLocation,
+    required TResult Function(String token) savePushToken,
+    required TResult Function(User user) saveUser,
   }) {
     return getUsers();
   }
@@ -123,6 +137,8 @@ class _$_GetUsers implements _GetUsers {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUsers,
     TResult? Function(double lat, double lng)? updateCurrentLocation,
+    TResult? Function(String token)? savePushToken,
+    TResult? Function(User user)? saveUser,
   }) {
     return getUsers?.call();
   }
@@ -132,6 +148,8 @@ class _$_GetUsers implements _GetUsers {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUsers,
     TResult Function(double lat, double lng)? updateCurrentLocation,
+    TResult Function(String token)? savePushToken,
+    TResult Function(User user)? saveUser,
     required TResult orElse(),
   }) {
     if (getUsers != null) {
@@ -146,6 +164,8 @@ class _$_GetUsers implements _GetUsers {
     required TResult Function(_GetUsers value) getUsers,
     required TResult Function(_UpdateCurrentLocation value)
         updateCurrentLocation,
+    required TResult Function(_SavePushToken value) savePushToken,
+    required TResult Function(_SaveUser value) saveUser,
   }) {
     return getUsers(this);
   }
@@ -155,6 +175,8 @@ class _$_GetUsers implements _GetUsers {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetUsers value)? getUsers,
     TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult? Function(_SavePushToken value)? savePushToken,
+    TResult? Function(_SaveUser value)? saveUser,
   }) {
     return getUsers?.call(this);
   }
@@ -164,6 +186,8 @@ class _$_GetUsers implements _GetUsers {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetUsers value)? getUsers,
     TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult Function(_SavePushToken value)? savePushToken,
+    TResult Function(_SaveUser value)? saveUser,
     required TResult orElse(),
   }) {
     if (getUsers != null) {
@@ -252,6 +276,8 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   TResult when<TResult extends Object?>({
     required TResult Function() getUsers,
     required TResult Function(double lat, double lng) updateCurrentLocation,
+    required TResult Function(String token) savePushToken,
+    required TResult Function(User user) saveUser,
   }) {
     return updateCurrentLocation(lat, lng);
   }
@@ -261,6 +287,8 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUsers,
     TResult? Function(double lat, double lng)? updateCurrentLocation,
+    TResult? Function(String token)? savePushToken,
+    TResult? Function(User user)? saveUser,
   }) {
     return updateCurrentLocation?.call(lat, lng);
   }
@@ -270,6 +298,8 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUsers,
     TResult Function(double lat, double lng)? updateCurrentLocation,
+    TResult Function(String token)? savePushToken,
+    TResult Function(User user)? saveUser,
     required TResult orElse(),
   }) {
     if (updateCurrentLocation != null) {
@@ -284,6 +314,8 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
     required TResult Function(_GetUsers value) getUsers,
     required TResult Function(_UpdateCurrentLocation value)
         updateCurrentLocation,
+    required TResult Function(_SavePushToken value) savePushToken,
+    required TResult Function(_SaveUser value) saveUser,
   }) {
     return updateCurrentLocation(this);
   }
@@ -293,6 +325,8 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetUsers value)? getUsers,
     TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult? Function(_SavePushToken value)? savePushToken,
+    TResult? Function(_SaveUser value)? saveUser,
   }) {
     return updateCurrentLocation?.call(this);
   }
@@ -302,6 +336,8 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetUsers value)? getUsers,
     TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult Function(_SavePushToken value)? savePushToken,
+    TResult Function(_SaveUser value)? saveUser,
     required TResult orElse(),
   }) {
     if (updateCurrentLocation != null) {
@@ -319,6 +355,308 @@ abstract class _UpdateCurrentLocation implements UserEvent {
   double get lng;
   @JsonKey(ignore: true)
   _$$_UpdateCurrentLocationCopyWith<_$_UpdateCurrentLocation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SavePushTokenCopyWith<$Res> {
+  factory _$$_SavePushTokenCopyWith(
+          _$_SavePushToken value, $Res Function(_$_SavePushToken) then) =
+      __$$_SavePushTokenCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String token});
+}
+
+/// @nodoc
+class __$$_SavePushTokenCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_SavePushToken>
+    implements _$$_SavePushTokenCopyWith<$Res> {
+  __$$_SavePushTokenCopyWithImpl(
+      _$_SavePushToken _value, $Res Function(_$_SavePushToken) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? token = null,
+  }) {
+    return _then(_$_SavePushToken(
+      null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SavePushToken implements _SavePushToken {
+  const _$_SavePushToken(this.token);
+
+  @override
+  final String token;
+
+  @override
+  String toString() {
+    return 'UserEvent.savePushToken(token: $token)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SavePushToken &&
+            (identical(other.token, token) || other.token == token));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, token);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SavePushTokenCopyWith<_$_SavePushToken> get copyWith =>
+      __$$_SavePushTokenCopyWithImpl<_$_SavePushToken>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getUsers,
+    required TResult Function(double lat, double lng) updateCurrentLocation,
+    required TResult Function(String token) savePushToken,
+    required TResult Function(User user) saveUser,
+  }) {
+    return savePushToken(token);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUsers,
+    TResult? Function(double lat, double lng)? updateCurrentLocation,
+    TResult? Function(String token)? savePushToken,
+    TResult? Function(User user)? saveUser,
+  }) {
+    return savePushToken?.call(token);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUsers,
+    TResult Function(double lat, double lng)? updateCurrentLocation,
+    TResult Function(String token)? savePushToken,
+    TResult Function(User user)? saveUser,
+    required TResult orElse(),
+  }) {
+    if (savePushToken != null) {
+      return savePushToken(token);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetUsers value) getUsers,
+    required TResult Function(_UpdateCurrentLocation value)
+        updateCurrentLocation,
+    required TResult Function(_SavePushToken value) savePushToken,
+    required TResult Function(_SaveUser value) saveUser,
+  }) {
+    return savePushToken(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetUsers value)? getUsers,
+    TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult? Function(_SavePushToken value)? savePushToken,
+    TResult? Function(_SaveUser value)? saveUser,
+  }) {
+    return savePushToken?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetUsers value)? getUsers,
+    TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult Function(_SavePushToken value)? savePushToken,
+    TResult Function(_SaveUser value)? saveUser,
+    required TResult orElse(),
+  }) {
+    if (savePushToken != null) {
+      return savePushToken(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SavePushToken implements UserEvent {
+  const factory _SavePushToken(final String token) = _$_SavePushToken;
+
+  String get token;
+  @JsonKey(ignore: true)
+  _$$_SavePushTokenCopyWith<_$_SavePushToken> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SaveUserCopyWith<$Res> {
+  factory _$$_SaveUserCopyWith(
+          _$_SaveUser value, $Res Function(_$_SaveUser) then) =
+      __$$_SaveUserCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$_SaveUserCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_SaveUser>
+    implements _$$_SaveUserCopyWith<$Res> {
+  __$$_SaveUserCopyWithImpl(
+      _$_SaveUser _value, $Res Function(_$_SaveUser) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$_SaveUser(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SaveUser implements _SaveUser {
+  const _$_SaveUser(this.user);
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'UserEvent.saveUser(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SaveUser &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SaveUserCopyWith<_$_SaveUser> get copyWith =>
+      __$$_SaveUserCopyWithImpl<_$_SaveUser>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getUsers,
+    required TResult Function(double lat, double lng) updateCurrentLocation,
+    required TResult Function(String token) savePushToken,
+    required TResult Function(User user) saveUser,
+  }) {
+    return saveUser(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUsers,
+    TResult? Function(double lat, double lng)? updateCurrentLocation,
+    TResult? Function(String token)? savePushToken,
+    TResult? Function(User user)? saveUser,
+  }) {
+    return saveUser?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUsers,
+    TResult Function(double lat, double lng)? updateCurrentLocation,
+    TResult Function(String token)? savePushToken,
+    TResult Function(User user)? saveUser,
+    required TResult orElse(),
+  }) {
+    if (saveUser != null) {
+      return saveUser(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetUsers value) getUsers,
+    required TResult Function(_UpdateCurrentLocation value)
+        updateCurrentLocation,
+    required TResult Function(_SavePushToken value) savePushToken,
+    required TResult Function(_SaveUser value) saveUser,
+  }) {
+    return saveUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetUsers value)? getUsers,
+    TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult? Function(_SavePushToken value)? savePushToken,
+    TResult? Function(_SaveUser value)? saveUser,
+  }) {
+    return saveUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetUsers value)? getUsers,
+    TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
+    TResult Function(_SavePushToken value)? savePushToken,
+    TResult Function(_SaveUser value)? saveUser,
+    required TResult orElse(),
+  }) {
+    if (saveUser != null) {
+      return saveUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveUser implements UserEvent {
+  const factory _SaveUser(final User user) = _$_SaveUser;
+
+  User get user;
+  @JsonKey(ignore: true)
+  _$$_SaveUserCopyWith<_$_SaveUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

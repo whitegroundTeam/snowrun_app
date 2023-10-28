@@ -9,6 +9,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:lottie/lottie.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/core/toast/toast_bloc.dart';
@@ -60,6 +61,8 @@ class MainAppState extends State<MainApp> {
         builder: (context, child) {
           return MultiBlocProvider(
             providers: [
+              BlocProvider<CheckPermissionBloc>(
+                  create: (context) => getIt<CheckPermissionBloc>()),
               BlocProvider<ToastBloc>(
                 create: (context) => toastBloc,
                 lazy: false,

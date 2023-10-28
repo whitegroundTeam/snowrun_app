@@ -16,42 +16,51 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserFailure {
-  AppError get appError => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AppError appError) unexpected,
+    required TResult Function() unexpected,
+    required TResult Function() serverError,
+    required TResult Function() alreadyExistedNickname,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AppError appError)? unexpected,
+    TResult? Function()? unexpected,
+    TResult? Function()? serverError,
+    TResult? Function()? alreadyExistedNickname,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AppError appError)? unexpected,
+    TResult Function()? unexpected,
+    TResult Function()? serverError,
+    TResult Function()? alreadyExistedNickname,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(AlreadyExistedNicknameError value)
+        alreadyExistedNickname,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(Unexpected value)? unexpected,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(AlreadyExistedNicknameError value)?
+        alreadyExistedNickname,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(AlreadyExistedNicknameError value)? alreadyExistedNickname,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $UserFailureCopyWith<UserFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,10 +69,6 @@ abstract class $UserFailureCopyWith<$Res> {
   factory $UserFailureCopyWith(
           UserFailure value, $Res Function(UserFailure) then) =
       _$UserFailureCopyWithImpl<$Res, UserFailure>;
-  @useResult
-  $Res call({AppError appError});
-
-  $AppErrorCopyWith<$Res> get appError;
 }
 
 /// @nodoc
@@ -75,120 +80,73 @@ class _$UserFailureCopyWithImpl<$Res, $Val extends UserFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? appError = null,
-  }) {
-    return _then(_value.copyWith(
-      appError: null == appError
-          ? _value.appError
-          : appError // ignore: cast_nullable_to_non_nullable
-              as AppError,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppErrorCopyWith<$Res> get appError {
-    return $AppErrorCopyWith<$Res>(_value.appError, (value) {
-      return _then(_value.copyWith(appError: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res>
-    implements $UserFailureCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({AppError appError});
-
-  @override
-  $AppErrorCopyWith<$Res> get appError;
+abstract class _$$UnexpectedCopyWith<$Res> {
+  factory _$$UnexpectedCopyWith(
+          _$Unexpected value, $Res Function(_$Unexpected) then) =
+      __$$UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$UserFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedCopyWithImpl<$Res>
+    extends _$UserFailureCopyWithImpl<$Res, _$Unexpected>
+    implements _$$UnexpectedCopyWith<$Res> {
+  __$$UnexpectedCopyWithImpl(
+      _$Unexpected _value, $Res Function(_$Unexpected) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? appError = null,
-  }) {
-    return _then(_$_Unexpected(
-      null == appError
-          ? _value.appError
-          : appError // ignore: cast_nullable_to_non_nullable
-              as AppError,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected(this.appError);
-
-  @override
-  final AppError appError;
+class _$Unexpected implements Unexpected {
+  const _$Unexpected();
 
   @override
   String toString() {
-    return 'UserFailure.unexpected(appError: $appError)';
+    return 'UserFailure.unexpected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Unexpected &&
-            (identical(other.appError, appError) ||
-                other.appError == appError));
+        (other.runtimeType == runtimeType && other is _$Unexpected);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appError);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
-      __$$_UnexpectedCopyWithImpl<_$_Unexpected>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AppError appError) unexpected,
+    required TResult Function() unexpected,
+    required TResult Function() serverError,
+    required TResult Function() alreadyExistedNickname,
   }) {
-    return unexpected(appError);
+    return unexpected();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AppError appError)? unexpected,
+    TResult? Function()? unexpected,
+    TResult? Function()? serverError,
+    TResult? Function()? alreadyExistedNickname,
   }) {
-    return unexpected?.call(appError);
+    return unexpected?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AppError appError)? unexpected,
+    TResult Function()? unexpected,
+    TResult Function()? serverError,
+    TResult Function()? alreadyExistedNickname,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
-      return unexpected(appError);
+      return unexpected();
     }
     return orElse();
   }
@@ -196,7 +154,10 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(AlreadyExistedNicknameError value)
+        alreadyExistedNickname,
   }) {
     return unexpected(this);
   }
@@ -204,7 +165,10 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(Unexpected value)? unexpected,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(AlreadyExistedNicknameError value)?
+        alreadyExistedNickname,
   }) {
     return unexpected?.call(this);
   }
@@ -212,7 +176,9 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(AlreadyExistedNicknameError value)? alreadyExistedNickname,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -222,13 +188,229 @@ class _$_Unexpected implements _Unexpected {
   }
 }
 
-abstract class _Unexpected implements UserFailure {
-  const factory _Unexpected(final AppError appError) = _$_Unexpected;
+abstract class Unexpected implements UserFailure {
+  const factory Unexpected() = _$Unexpected;
+}
+
+/// @nodoc
+abstract class _$$ServerErrorCopyWith<$Res> {
+  factory _$$ServerErrorCopyWith(
+          _$ServerError value, $Res Function(_$ServerError) then) =
+      __$$ServerErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ServerErrorCopyWithImpl<$Res>
+    extends _$UserFailureCopyWithImpl<$Res, _$ServerError>
+    implements _$$ServerErrorCopyWith<$Res> {
+  __$$ServerErrorCopyWithImpl(
+      _$ServerError _value, $Res Function(_$ServerError) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ServerError implements ServerError {
+  const _$ServerError();
 
   @override
-  AppError get appError;
+  String toString() {
+    return 'UserFailure.serverError()';
+  }
+
   @override
-  @JsonKey(ignore: true)
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
-      throw _privateConstructorUsedError;
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ServerError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() serverError,
+    required TResult Function() alreadyExistedNickname,
+  }) {
+    return serverError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? serverError,
+    TResult? Function()? alreadyExistedNickname,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? serverError,
+    TResult Function()? alreadyExistedNickname,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(AlreadyExistedNicknameError value)
+        alreadyExistedNickname,
+  }) {
+    return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Unexpected value)? unexpected,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(AlreadyExistedNicknameError value)?
+        alreadyExistedNickname,
+  }) {
+    return serverError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(AlreadyExistedNicknameError value)? alreadyExistedNickname,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ServerError implements UserFailure {
+  const factory ServerError() = _$ServerError;
+}
+
+/// @nodoc
+abstract class _$$AlreadyExistedNicknameErrorCopyWith<$Res> {
+  factory _$$AlreadyExistedNicknameErrorCopyWith(
+          _$AlreadyExistedNicknameError value,
+          $Res Function(_$AlreadyExistedNicknameError) then) =
+      __$$AlreadyExistedNicknameErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AlreadyExistedNicknameErrorCopyWithImpl<$Res>
+    extends _$UserFailureCopyWithImpl<$Res, _$AlreadyExistedNicknameError>
+    implements _$$AlreadyExistedNicknameErrorCopyWith<$Res> {
+  __$$AlreadyExistedNicknameErrorCopyWithImpl(
+      _$AlreadyExistedNicknameError _value,
+      $Res Function(_$AlreadyExistedNicknameError) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AlreadyExistedNicknameError implements AlreadyExistedNicknameError {
+  const _$AlreadyExistedNicknameError();
+
+  @override
+  String toString() {
+    return 'UserFailure.alreadyExistedNickname()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AlreadyExistedNicknameError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() serverError,
+    required TResult Function() alreadyExistedNickname,
+  }) {
+    return alreadyExistedNickname();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? serverError,
+    TResult? Function()? alreadyExistedNickname,
+  }) {
+    return alreadyExistedNickname?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? serverError,
+    TResult Function()? alreadyExistedNickname,
+    required TResult orElse(),
+  }) {
+    if (alreadyExistedNickname != null) {
+      return alreadyExistedNickname();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(AlreadyExistedNicknameError value)
+        alreadyExistedNickname,
+  }) {
+    return alreadyExistedNickname(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Unexpected value)? unexpected,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(AlreadyExistedNicknameError value)?
+        alreadyExistedNickname,
+  }) {
+    return alreadyExistedNickname?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(AlreadyExistedNicknameError value)? alreadyExistedNickname,
+    required TResult orElse(),
+  }) {
+    if (alreadyExistedNickname != null) {
+      return alreadyExistedNickname(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AlreadyExistedNicknameError implements UserFailure {
+  const factory AlreadyExistedNicknameError() = _$AlreadyExistedNicknameError;
 }

@@ -13,6 +13,7 @@ class HiveProvider {
   // FIXME HIVE 암호화 고려
   Future<void> init() async {
     debugPrint('HIVE :: Initializer Local Store Open Device Box');
+    await Hive.openBox(deviceKey);
     await Hive.openBox<String>(recentlySignInMethodBoxKey);
     // await Hive.openBox<String>(selectedOrderTypeKey);
     // await Hive.openBox<List<String>>(franchiseOrderTypesKey);
