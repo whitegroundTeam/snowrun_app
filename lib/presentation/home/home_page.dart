@@ -32,17 +32,13 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final FirebaseRemoteConfig remoteConfig = GetIt.instance<FirebaseRemoteConfig>();
+  final FirebaseRemoteConfig remoteConfig =
+      GetIt.instance<FirebaseRemoteConfig>();
   int imageNumber = 0;
 
   @override
   void initState() {
     super.initState();
-    // context.router.replace(const OnboardingRoute());
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<CheckPermissionBloc>().add(
-          const CheckPermissionEvent.checkInitialPermissions());
-    });
   }
 
   void handleRemoteConfig() {
@@ -84,8 +80,7 @@ class HomePageState extends State<HomePage> {
         BlocListener<CheckPermissionBloc, CheckPermissionState>(
           bloc: context.read<CheckPermissionBloc>(),
           listenWhen: (p, c) {
-            debugPrint(
-                '[CheckPermissionBloc Listener] State Changed $p to $c');
+            debugPrint('[CheckPermissionBloc Listener] State Changed $p to $c');
             return p != c;
           },
           listener: (context, state) {
@@ -111,7 +106,7 @@ class HomePageState extends State<HomePage> {
           },
         ),
       ],
-      child:WillPopScope(
+      child: WillPopScope(
         onWillPop: () {
           // return showWarningDialog(
           //     description: '', context: context, title: '앱을 종료하시겠어요?')
@@ -121,10 +116,10 @@ class HomePageState extends State<HomePage> {
           return Future.value(true);
         },
         child: BlocBuilder<CheckPermissionBloc, CheckPermissionState>(
-          bloc: context.read<CheckPermissionBloc>(),
+          bloc: context.read<CheckPermissionBloc>()
+            ..add(const CheckPermissionEvent.checkInitialPermissions()),
           buildWhen: (p, c) {
-            debugPrint(
-                '[CheckPermissionBloc Builder] State Changed $p to $c');
+            debugPrint('[CheckPermissionBloc Builder] State Changed $p to $c');
             return p != c;
           },
           builder: (context, state) {
@@ -136,227 +131,228 @@ class HomePageState extends State<HomePage> {
               initPermissionsUnNeeded: (e) {
                 return Scaffold(
                     body: Column(
-                      children: [
-                        SizedBox(
-                          height: MediaQuery.of(context).padding.top,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).padding.top,
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: CommonDetector(
+                        delay: 300,
+                        onTap: () {
+                          context.push('/setting');
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 16),
+                          child: Hero(
+                            tag: "settingTag",
+                            child: Image.asset(
+                              'assets/webp/setting.webp',
+                              height: 24,
+                              width: 24,
+                            ),
+                          ),
                         ),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: CommonDetector(
-                            delay: 300,
+                      ),
+                    ),
+                    isAuthenticated
+                        ? CommonDetector(
+                            needAuth: true,
                             onTap: () {
-                              context.push('/setting');
+                              context.push('/editProfileImage');
                             },
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                              child: Hero(
-                                tag: "settingTag",
+                            child: Hero(
+                              tag: "profileImage",
+                              child: Center(
                                 child: Image.asset(
-                                  'assets/webp/setting.webp',
-                                  height: 24,
-                                  width: 24,
+                                  'assets/webp/profile_snow_ball_$imageNumber.webp',
+                                  height: previewProfileImageHeight,
+                                  width: previewProfileImageHeight,
+                                ),
+                              ),
+                            ),
+                          )
+                        :
+                        //TODO : 아바타 user
+                        CommonDetector(
+                            needAuth: true,
+                            onTap: () {
+                              context.push('/editProfileImage');
+                            },
+                            child: Hero(
+                              tag: "profileImage",
+                              child: Center(
+                                child: Stack(
+                                  children: [
+                                    Image.asset(
+                                      'assets/webp/profile_placeholder.webp',
+                                      height: previewProfileImageHeight,
+                                      width: previewProfileImageHeight,
+                                      color: AppStyle.white.withOpacity(0.7),
+                                    ),
+                                    const Positioned(
+                                      left: 0,
+                                      right: 0,
+                                      bottom: 0,
+                                      top: 0,
+                                      child: Center(
+                                        child: Text(
+                                          "+",
+                                          style: TextStyle(
+                                              fontSize: 36,
+                                              color: AppStyle.actionIconColor,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        isAuthenticated
-                            ? CommonDetector(
-                          needAuth: true,
-                          onTap: () {
-                            context.push('/editProfileImage');
-                          },
-                          child: Hero(
-                            tag: "profileImage",
-                            child: Center(
-                              child: Image.asset(
-                                'assets/webp/profile_snow_ball_$imageNumber.webp',
-                                height: previewProfileImageHeight,
-                                width: previewProfileImageHeight,
-                              ),
-                            ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    isAuthenticated
+                        ? const Text(
+                            "감자눈송이#3132",
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          )
+                        : const Text(
+                            "마음에드는 눈송이를 선택해주세요!",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: AppStyle.secondaryTextColor,
+                                fontWeight: FontWeight.bold),
                           ),
-                        )
-                            :
-                        //TODO : 아바타 user
-                        CommonDetector(
-                          needAuth: true,
-                          onTap: () {
-                            context.push('/editProfileImage');
-                          },
-                          child: Hero(
-                            tag: "profileImage",
-                            child: Center(
-                              child: Stack(
-                                children: [
-                                  Image.asset(
-                                    'assets/webp/profile_placeholder.webp',
-                                    height: previewProfileImageHeight,
-                                    width: previewProfileImageHeight,
-                                    color: AppStyle.white.withOpacity(0.7),
-                                  ),
-                                  const Positioned(
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                    top: 0,
-                                    child: Center(
-                                      child: Text(
-                                        "+",
-                                        style: TextStyle(
-                                            fontSize: 36,
-                                            color: AppStyle.actionIconColor,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        isAuthenticated
-                            ? const Text(
-                          "감자눈송이#3132",
-                          style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        )
-                            : const Text(
-                          "마음에드는 눈송이를 선택해주세요!",
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: AppStyle.secondaryTextColor,
-                              fontWeight: FontWeight.bold),
-                        ),
 
-                        // const SizedBox(
-                        //   height: 24,
-                        // ),
-                        // CommonButton(
-                        //   onTap: () {
-                        //     _checkLocationPermission();
-                        //   },
-                        //   text: "라이딩화면으로 이동하기",
-                        // )
+                    // const SizedBox(
+                    //   height: 24,
+                    // ),
+                    // CommonButton(
+                    //   onTap: () {
+                    //     _checkLocationPermission();
+                    //   },
+                    //   text: "라이딩화면으로 이동하기",
+                    // )
 
-                        // Expanded(
-                        //   child: SizedBox(),
-                        // )
+                    // Expanded(
+                    //   child: SizedBox(),
+                    // )
 
-                        // const SizedBox(
-                        //   height: 32,
-                        // ),
-                        // Center(
-                        //   child: Container(
-                        //     width: 100,
-                        //     height: 100,
-                        // decoration: BoxDecoration(
-                        //   borderRadius:
-                        //   BorderRadius.circular(16),
-                        //   // borderSide: const BorderSide(color: Colors.white, width: 2),
-                        //   // badgeColor:
-                        //   // const Color(0xffDA1E28),
-                        // ),
-                        //     child: ClipRRect(
-                        //       borderRadius: BorderRadius.circular(4),
-                        //       child: Stack(
-                        //         children: [
-                        //           const BlurHash(hash: "LHTOE1q8g1oxqMeWf7e;gdfjfQfQ",),
-                        //           Container(
-                        //             margin: const EdgeInsets.all(2),
-                        //             color: AppStyle.background,
-                        //           )
-                        //           // Positioned(
-                        //           //   right: 4, left: 4, top: 4, bottom: 4,
-                        //           //   child: Container(
-                        //           //     color: AppStyle.background,
-                        //           //   ),),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                      ],
-                    )
-                  //     Container(
-                  //       width: 100,
-                  //       height: 100,
-                  //       padding: const EdgeInsets.all(10),
-                  //       decoration: BoxDecoration(
-                  //         gradient: const LinearGradient(
-                  //           begin: Alignment.bottomRight,
-                  //           end: Alignment.topLeft,
-                  //           colors: [
-                  //             Color(0xff4dabf7),
-                  //             Color(0xffda77f2),
-                  //             Color(0xfff783ac),
-                  //           ],
-                  //         ),
-                  //         borderRadius: BorderRadius.circular(500),
-                  //       ),
-                  //       child: const CircleAvatar(
-                  //         radius: 250,
-                  //         backgroundImage: AssetImage("assets/images/person-winter.png"),
-                  //       ),
-                  //     ),
-                  //     GestureDetector(
-                  //       onTap: () {
-                  //         context.push('/recording');
-                  //       },
-                  //       child: Container(
-                  //         padding: const EdgeInsets.all(0.0),
-                  //         height: 100,
-                  //         width: 100,
-                  //         decoration: BoxDecoration(
-                  //             color: Colors.black,
-                  //             borderRadius: BorderRadius.circular(100)),
-                  //         child: const Icon(
-                  //           Icons.play_arrow,
-                  //           size: 80,
-                  //           color: Colors.white,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // )
-                  // const SliverAppBar(
-                  //   backgroundColor: Colors.white,
-                  //   title: Text('Record', style: TextStyle(color: Colors.black),),
-                  // ),
-                  // SliverList(
-                  //     delegate: SliverChildBuilderDelegate(
-                  //             (context, index) {
-                  //           return Card(
-                  //             margin: const EdgeInsets.all(10),
-                  //             child: GestureDetector(
-                  //               onTap: (){
-                  //                 context.push('/result');
-                  //               },
-                  //               child: Container(
-                  //                 color: Colors.yellow,
-                  //                 height: 80,
-                  //                 alignment: Alignment.center,
-                  //                 child: Text('기록 ${index}'),
-                  //               ),
-                  //             ),
-                  //           );
-                  //         },
-                  //         childCount: 10
-                  //     )
-                  // )
-                  // floatingActionButton: FloatingActionButton(
-                  //     onPressed: (){
-                  //       context.push('/recording');
-                  //     },
-                  //   backgroundColor: Colors.black,
-                  //   child: const Icon(Icons.navigate_next),
-                  // ),
-                );
+                    // const SizedBox(
+                    //   height: 32,
+                    // ),
+                    // Center(
+                    //   child: Container(
+                    //     width: 100,
+                    //     height: 100,
+                    // decoration: BoxDecoration(
+                    //   borderRadius:
+                    //   BorderRadius.circular(16),
+                    //   // borderSide: const BorderSide(color: Colors.white, width: 2),
+                    //   // badgeColor:
+                    //   // const Color(0xffDA1E28),
+                    // ),
+                    //     child: ClipRRect(
+                    //       borderRadius: BorderRadius.circular(4),
+                    //       child: Stack(
+                    //         children: [
+                    //           const BlurHash(hash: "LHTOE1q8g1oxqMeWf7e;gdfjfQfQ",),
+                    //           Container(
+                    //             margin: const EdgeInsets.all(2),
+                    //             color: AppStyle.background,
+                    //           )
+                    //           // Positioned(
+                    //           //   right: 4, left: 4, top: 4, bottom: 4,
+                    //           //   child: Container(
+                    //           //     color: AppStyle.background,
+                    //           //   ),),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                )
+                    //     Container(
+                    //       width: 100,
+                    //       height: 100,
+                    //       padding: const EdgeInsets.all(10),
+                    //       decoration: BoxDecoration(
+                    //         gradient: const LinearGradient(
+                    //           begin: Alignment.bottomRight,
+                    //           end: Alignment.topLeft,
+                    //           colors: [
+                    //             Color(0xff4dabf7),
+                    //             Color(0xffda77f2),
+                    //             Color(0xfff783ac),
+                    //           ],
+                    //         ),
+                    //         borderRadius: BorderRadius.circular(500),
+                    //       ),
+                    //       child: const CircleAvatar(
+                    //         radius: 250,
+                    //         backgroundImage: AssetImage("assets/images/person-winter.png"),
+                    //       ),
+                    //     ),
+                    //     GestureDetector(
+                    //       onTap: () {
+                    //         context.push('/recording');
+                    //       },
+                    //       child: Container(
+                    //         padding: const EdgeInsets.all(0.0),
+                    //         height: 100,
+                    //         width: 100,
+                    //         decoration: BoxDecoration(
+                    //             color: Colors.black,
+                    //             borderRadius: BorderRadius.circular(100)),
+                    //         child: const Icon(
+                    //           Icons.play_arrow,
+                    //           size: 80,
+                    //           color: Colors.white,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // )
+                    // const SliverAppBar(
+                    //   backgroundColor: Colors.white,
+                    //   title: Text('Record', style: TextStyle(color: Colors.black),),
+                    // ),
+                    // SliverList(
+                    //     delegate: SliverChildBuilderDelegate(
+                    //             (context, index) {
+                    //           return Card(
+                    //             margin: const EdgeInsets.all(10),
+                    //             child: GestureDetector(
+                    //               onTap: (){
+                    //                 context.push('/result');
+                    //               },
+                    //               child: Container(
+                    //                 color: Colors.yellow,
+                    //                 height: 80,
+                    //                 alignment: Alignment.center,
+                    //                 child: Text('기록 ${index}'),
+                    //               ),
+                    //             ),
+                    //           );
+                    //         },
+                    //         childCount: 10
+                    //     )
+                    // )
+                    // floatingActionButton: FloatingActionButton(
+                    //     onPressed: (){
+                    //       context.push('/recording');
+                    //     },
+                    //   backgroundColor: Colors.black,
+                    //   child: const Icon(Icons.navigate_next),
+                    // ),
+                    );
               },
               initial: (e) => const Scaffold(
                 backgroundColor: Colors.white,

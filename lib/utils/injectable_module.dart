@@ -32,7 +32,7 @@ abstract class InjectableModule {
   // LatestDataUpdateTimeStorage get latestDataUpdateTimeStorage =>
   //     LatestDataUpdateTimeStorage();
   //
-  // // 유저의 성별에 따른 카테고리 정보 제공하는 객체
+  // // 유저의 성별에 따른 카테고리 정보 제공하는 객체/**/
   // @lazySingleton
   // ClothCategoryProvider get clothCategoryProvider => ClothCategoryProvider();
   //
