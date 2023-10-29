@@ -103,7 +103,8 @@ class RequestNotificationPermissionPage extends StatelessWidget {
   }
 
   void goToLocationPermissionPage(BuildContext context) {
-    context.pop();
-    context.push('/locationPermission');
+    // context.pop();
+    // context.push('/locationPermission');
+    context.pushReplacement('/locationPermission');
   }
 }

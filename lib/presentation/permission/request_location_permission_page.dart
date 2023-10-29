@@ -75,7 +75,7 @@ class RequestLocationPermissionPage extends StatelessWidget {
                         vertical: Constants.kSpacing * 3,
                       ),
                       child: Image.asset(
-                        "assets/png/app_icon_256.png",
+                        "assets/png/splash_app_icon.png",
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -120,8 +120,9 @@ class RequestLocationPermissionPage extends StatelessWidget {
 
   void goToRequestAttPermissionPage(BuildContext context) {
     if (Platform.isIOS) {
-      context.pop();
-      context.push('/attPermission');
+      // context.pop();
+      // context.push('/attPermission');
+      context.pushReplacement('/attPermission');
     } else {
       BlocProvider.of<CheckPermissionBloc>(context)
           .add(const CheckPermissionEvent.checkInitialPermissions());

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:app_settings/app_settings.dart';
 import 'package:firebase_app_installations/firebase_app_installations.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -95,9 +96,10 @@ class HomePageState extends State<HomePage> {
 
                 FirebaseMessaging.instance.getToken().then((token) {
                   if (token != null) {
-                    context
-                        .read<UserBloc>()
-                        .add(UserEvent.savePushToken(token));
+                    //TODO : push token api 연동
+                    // context
+                    //     .read<UserBloc>()
+                    //     .add(UserEvent.savePushToken(token));
                   }
                 });
               },
@@ -125,7 +127,7 @@ class HomePageState extends State<HomePage> {
           builder: (context, state) {
             return state.map<Widget>(
               initPermissionsNeeded: (e) => const Scaffold(
-                backgroundColor: Colors.white,
+                backgroundColor: AppStyle.background,
                 body: SizedBox(),
               ),
               initPermissionsUnNeeded: (e) {
@@ -156,61 +158,65 @@ class HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    isAuthenticated
-                        ? CommonDetector(
-                            needAuth: true,
-                            onTap: () {
-                              context.push('/editProfileImage');
-                            },
-                            child: Hero(
-                              tag: "profileImage",
-                              child: Center(
-                                child: Image.asset(
-                                  'assets/webp/profile_snow_ball_$imageNumber.webp',
-                                  height: previewProfileImageHeight,
-                                  width: previewProfileImageHeight,
+                    BounceInUp(
+                      duration: const Duration(milliseconds: 1000),
+                      delay: const Duration(milliseconds: 500),
+                      child: isAuthenticated
+                          ? CommonDetector(
+                              needAuth: true,
+                              onTap: () {
+                                context.push('/editProfileImage');
+                              },
+                              child: Hero(
+                                tag: "profileImage",
+                                child: Center(
+                                  child: Image.asset(
+                                    'assets/webp/profile_snow_ball_$imageNumber.webp',
+                                    height: previewProfileImageHeight,
+                                    width: previewProfileImageHeight,
+                                  ),
                                 ),
                               ),
-                            ),
-                          )
-                        :
-                        //TODO : 아바타 user
-                        CommonDetector(
-                            needAuth: true,
-                            onTap: () {
-                              context.push('/editProfileImage');
-                            },
-                            child: Hero(
-                              tag: "profileImage",
-                              child: Center(
-                                child: Stack(
-                                  children: [
-                                    Image.asset(
-                                      'assets/webp/profile_placeholder.webp',
-                                      height: previewProfileImageHeight,
-                                      width: previewProfileImageHeight,
-                                      color: AppStyle.white.withOpacity(0.7),
-                                    ),
-                                    const Positioned(
-                                      left: 0,
-                                      right: 0,
-                                      bottom: 0,
-                                      top: 0,
-                                      child: Center(
-                                        child: Text(
-                                          "+",
-                                          style: TextStyle(
-                                              fontSize: 36,
-                                              color: AppStyle.actionIconColor,
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                            )
+                          :
+                          //TODO : 아바타 user
+                          CommonDetector(
+                              needAuth: true,
+                              onTap: () {
+                                context.push('/editProfileImage');
+                              },
+                              child: Hero(
+                                tag: "profileImage",
+                                child: Center(
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                        'assets/webp/profile_placeholder.webp',
+                                        height: previewProfileImageHeight,
+                                        width: previewProfileImageHeight,
+                                        color: AppStyle.white.withOpacity(0.7),
                                       ),
-                                    )
-                                  ],
+                                      const Positioned(
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        top: 0,
+                                        child: Center(
+                                          child: Text(
+                                            "+",
+                                            style: TextStyle(
+                                                fontSize: 36,
+                                                color: AppStyle.actionIconColor,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
+                    ),
                     const SizedBox(
                       height: 16,
                     ),

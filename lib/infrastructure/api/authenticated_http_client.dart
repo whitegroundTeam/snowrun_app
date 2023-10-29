@@ -37,7 +37,7 @@ class AuthenticatedHttpClient extends http.BaseClient {
     result = result.trimRight();
     result = "\x1B[36m$result\x1B[0m";
 
-    debugPrint(result, wrapWidth: 150);
+    debugPrint(result);
   }
 
   void printDebugResponse(String type, Response response,
