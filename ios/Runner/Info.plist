@@ -43,6 +43,8 @@
 		<string>This app needs access to location when in the background.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>즐거운 라이딩을 돕기위해 위치 정보 수집을 허용해주세요!</string>
+		<key>NSUserTrackingUsageDescription</key>
+        <string>스키와 스노우보드 경험을 향상시키기 위해 유저님의 데이터를 사용하고 있습니다. 괜찮으시다면 [허용]을 눌러 주세요!</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
 		<key>UILaunchStoryboardName</key>

@@ -48,13 +48,13 @@ class RequestAttPermissionPage extends StatelessWidget {
                       top: Constants.kSpacing * 3,
                     ),
                     child: Text(
-                      "나만의 패션라이프 리포트를\n받아보시겠어요?",
+                      "함께 스키/스노우보드를 타요!",
                       textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.bodyMedium?.copyWith(
                           fontSize: 24,
                           fontWeight: FontWeight.w500,
-                          color: Colors.black),
+                          color: AppStyle.white),
                     ),
                   ),
                   Padding(
@@ -64,11 +64,11 @@ class RequestAttPermissionPage extends StatelessWidget {
                       top: Constants.kSpacing,
                     ),
                     child: Text(
-                      "'허용'을 누르면 개인 기록을 분석한 리포트를 받을 수 있어요",
+                      "'허용'을 누르면 언제든 ㅁㄴㅇㄹㅁㄴㅇㄹ",
                       textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.bodyMedium
-                          ?.copyWith(fontSize: 12, color: Colors.black),
+                          ?.copyWith(fontSize: 12, color: AppStyle.white),
                     ),
                   ),
                 ],
