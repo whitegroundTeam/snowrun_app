@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:snowrun_app/domain/auth/auth_token.dart';
 import 'package:snowrun_app/domain/core/failures.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
 
@@ -10,18 +11,17 @@ class SignResponse with _$SignResponse {
   const SignResponse._();
 
   const factory SignResponse({
-    required StringVO authToken,
+    required AuthToken authToken,
     required BooleanVO isNewUser,
   }) = _SignResponse;
 
   factory SignResponse.empty() => SignResponse(
-        authToken: StringVO(""),
+        authToken: AuthToken.empty(),
         isNewUser: BooleanVO(false),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
-    return authToken.failureOrUnit
-        .andThen(isNewUser.failureOrUnit)
+    return isNewUser.failureOrUnit
         .fold((f) => some(f), (_) => none());
   }
 }

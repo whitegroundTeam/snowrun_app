@@ -70,6 +70,7 @@ _i1.GetIt $initGetIt(
         gh<_i3.FirebaseAuth>(),
         gh<_i5.GoogleSignIn>(),
         gh<_i11.CoreApi>(),
+        gh<_i6.HiveProvider>(),
       ));
   gh.lazySingleton<_i14.ILocationRepository>(
       () => _i15.LocationRepository(gh<_i11.CoreApi>()));

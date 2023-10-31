@@ -54,7 +54,7 @@ class RecordingPageState extends State<RecordingPage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<UserBloc>(
-            create: (context) => _userBloc..add(const UserEvent.getUsers())),
+            create: (context) => _userBloc),
         BlocProvider<LocationBloc>(
             create: (context) =>
                 _locationBloc..add(const LocationEvent.getCurrentLocation())),
@@ -73,7 +73,7 @@ class RecordingPageState extends State<RecordingPage> {
               await updateMarkers(state.users);
             } else if (state.status ==
                 UserStatus.successUpdateCurrentLocation) {
-              _userBloc.add(const UserEvent.getUsers());
+              // _userBloc.add(const UserEvent.getUsers());
             }
           },
         ),

@@ -51,16 +51,7 @@ class AuthenticatedHttpClient extends http.BaseClient {
     if (response.bodyBytes.isEmpty) {
       result += '\t[body]: ${null}\n';
     } else {
-      if (pretty) {
-        result += '\t[body]: \n';
-        var jsonResult = json.decode(utf8.decode(response.bodyBytes));
-        var prettyString =
-        const JsonEncoder.withIndent('  ').convert(jsonResult);
-        result += prettyString;
-      } else {
-        result +=
-        '\t[body]: ${json.decode(utf8.decode(response.bodyBytes)).toString()}\n';
-      }
+      result += '\t[body]: ${response.body}\n';
     }
 
     if (response.statusCode.toString().startsWith("2")) {

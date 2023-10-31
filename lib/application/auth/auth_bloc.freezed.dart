@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() checkAuth,
     required TResult Function() signWithGooglePressed,
     required TResult Function() signWithApplePressed,
     required TResult Function() signedOut,
@@ -25,6 +26,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkAuth,
     TResult? Function()? signWithGooglePressed,
     TResult? Function()? signWithApplePressed,
     TResult? Function()? signedOut,
@@ -32,6 +34,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkAuth,
     TResult Function()? signWithGooglePressed,
     TResult Function()? signWithApplePressed,
     TResult Function()? signedOut,
@@ -40,24 +43,27 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SignWithGooglePressed value)
         signWithGooglePressed,
     required TResult Function(_SignWithApplePressed value) signWithApplePressed,
-    required TResult Function(SignedOut value) signedOut,
+    required TResult Function(_SignedOut value) signedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SignWithGooglePressed value)? signWithGooglePressed,
     TResult? Function(_SignWithApplePressed value)? signWithApplePressed,
-    TResult? Function(SignedOut value)? signedOut,
+    TResult? Function(_SignedOut value)? signedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SignWithGooglePressed value)? signWithGooglePressed,
     TResult Function(_SignWithApplePressed value)? signWithApplePressed,
-    TResult Function(SignedOut value)? signedOut,
+    TResult Function(_SignedOut value)? signedOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +84,121 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_CheckAuthCopyWith<$Res> {
+  factory _$$_CheckAuthCopyWith(
+          _$_CheckAuth value, $Res Function(_$_CheckAuth) then) =
+      __$$_CheckAuthCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_CheckAuthCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_CheckAuth>
+    implements _$$_CheckAuthCopyWith<$Res> {
+  __$$_CheckAuthCopyWithImpl(
+      _$_CheckAuth _value, $Res Function(_$_CheckAuth) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_CheckAuth implements _CheckAuth {
+  const _$_CheckAuth();
+
+  @override
+  String toString() {
+    return 'AuthEvent.checkAuth()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_CheckAuth);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkAuth,
+    required TResult Function() signWithGooglePressed,
+    required TResult Function() signWithApplePressed,
+    required TResult Function() signedOut,
+  }) {
+    return checkAuth();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkAuth,
+    TResult? Function()? signWithGooglePressed,
+    TResult? Function()? signWithApplePressed,
+    TResult? Function()? signedOut,
+  }) {
+    return checkAuth?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkAuth,
+    TResult Function()? signWithGooglePressed,
+    TResult Function()? signWithApplePressed,
+    TResult Function()? signedOut,
+    required TResult orElse(),
+  }) {
+    if (checkAuth != null) {
+      return checkAuth();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_SignWithGooglePressed value)
+        signWithGooglePressed,
+    required TResult Function(_SignWithApplePressed value) signWithApplePressed,
+    required TResult Function(_SignedOut value) signedOut,
+  }) {
+    return checkAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_SignWithGooglePressed value)? signWithGooglePressed,
+    TResult? Function(_SignWithApplePressed value)? signWithApplePressed,
+    TResult? Function(_SignedOut value)? signedOut,
+  }) {
+    return checkAuth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_SignWithGooglePressed value)? signWithGooglePressed,
+    TResult Function(_SignWithApplePressed value)? signWithApplePressed,
+    TResult Function(_SignedOut value)? signedOut,
+    required TResult orElse(),
+  }) {
+    if (checkAuth != null) {
+      return checkAuth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckAuth implements AuthEvent {
+  const factory _CheckAuth() = _$_CheckAuth;
 }
 
 /// @nodoc
@@ -118,6 +239,7 @@ class _$_SignWithGooglePressed implements _SignWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() checkAuth,
     required TResult Function() signWithGooglePressed,
     required TResult Function() signWithApplePressed,
     required TResult Function() signedOut,
@@ -128,6 +250,7 @@ class _$_SignWithGooglePressed implements _SignWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkAuth,
     TResult? Function()? signWithGooglePressed,
     TResult? Function()? signWithApplePressed,
     TResult? Function()? signedOut,
@@ -138,6 +261,7 @@ class _$_SignWithGooglePressed implements _SignWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkAuth,
     TResult Function()? signWithGooglePressed,
     TResult Function()? signWithApplePressed,
     TResult Function()? signedOut,
@@ -152,10 +276,11 @@ class _$_SignWithGooglePressed implements _SignWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SignWithGooglePressed value)
         signWithGooglePressed,
     required TResult Function(_SignWithApplePressed value) signWithApplePressed,
-    required TResult Function(SignedOut value) signedOut,
+    required TResult Function(_SignedOut value) signedOut,
   }) {
     return signWithGooglePressed(this);
   }
@@ -163,9 +288,10 @@ class _$_SignWithGooglePressed implements _SignWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SignWithGooglePressed value)? signWithGooglePressed,
     TResult? Function(_SignWithApplePressed value)? signWithApplePressed,
-    TResult? Function(SignedOut value)? signedOut,
+    TResult? Function(_SignedOut value)? signedOut,
   }) {
     return signWithGooglePressed?.call(this);
   }
@@ -173,9 +299,10 @@ class _$_SignWithGooglePressed implements _SignWithGooglePressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SignWithGooglePressed value)? signWithGooglePressed,
     TResult Function(_SignWithApplePressed value)? signWithApplePressed,
-    TResult Function(SignedOut value)? signedOut,
+    TResult Function(_SignedOut value)? signedOut,
     required TResult orElse(),
   }) {
     if (signWithGooglePressed != null) {
@@ -227,6 +354,7 @@ class _$_SignWithApplePressed implements _SignWithApplePressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() checkAuth,
     required TResult Function() signWithGooglePressed,
     required TResult Function() signWithApplePressed,
     required TResult Function() signedOut,
@@ -237,6 +365,7 @@ class _$_SignWithApplePressed implements _SignWithApplePressed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkAuth,
     TResult? Function()? signWithGooglePressed,
     TResult? Function()? signWithApplePressed,
     TResult? Function()? signedOut,
@@ -247,6 +376,7 @@ class _$_SignWithApplePressed implements _SignWithApplePressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkAuth,
     TResult Function()? signWithGooglePressed,
     TResult Function()? signWithApplePressed,
     TResult Function()? signedOut,
@@ -261,10 +391,11 @@ class _$_SignWithApplePressed implements _SignWithApplePressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SignWithGooglePressed value)
         signWithGooglePressed,
     required TResult Function(_SignWithApplePressed value) signWithApplePressed,
-    required TResult Function(SignedOut value) signedOut,
+    required TResult Function(_SignedOut value) signedOut,
   }) {
     return signWithApplePressed(this);
   }
@@ -272,9 +403,10 @@ class _$_SignWithApplePressed implements _SignWithApplePressed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SignWithGooglePressed value)? signWithGooglePressed,
     TResult? Function(_SignWithApplePressed value)? signWithApplePressed,
-    TResult? Function(SignedOut value)? signedOut,
+    TResult? Function(_SignedOut value)? signedOut,
   }) {
     return signWithApplePressed?.call(this);
   }
@@ -282,9 +414,10 @@ class _$_SignWithApplePressed implements _SignWithApplePressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SignWithGooglePressed value)? signWithGooglePressed,
     TResult Function(_SignWithApplePressed value)? signWithApplePressed,
-    TResult Function(SignedOut value)? signedOut,
+    TResult Function(_SignedOut value)? signedOut,
     required TResult orElse(),
   }) {
     if (signWithApplePressed != null) {
@@ -299,25 +432,25 @@ abstract class _SignWithApplePressed implements AuthEvent {
 }
 
 /// @nodoc
-abstract class _$$SignedOutCopyWith<$Res> {
-  factory _$$SignedOutCopyWith(
-          _$SignedOut value, $Res Function(_$SignedOut) then) =
-      __$$SignedOutCopyWithImpl<$Res>;
+abstract class _$$_SignedOutCopyWith<$Res> {
+  factory _$$_SignedOutCopyWith(
+          _$_SignedOut value, $Res Function(_$_SignedOut) then) =
+      __$$_SignedOutCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SignedOutCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$SignedOut>
-    implements _$$SignedOutCopyWith<$Res> {
-  __$$SignedOutCopyWithImpl(
-      _$SignedOut _value, $Res Function(_$SignedOut) _then)
+class __$$_SignedOutCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_SignedOut>
+    implements _$$_SignedOutCopyWith<$Res> {
+  __$$_SignedOutCopyWithImpl(
+      _$_SignedOut _value, $Res Function(_$_SignedOut) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SignedOut implements SignedOut {
-  const _$SignedOut();
+class _$_SignedOut implements _SignedOut {
+  const _$_SignedOut();
 
   @override
   String toString() {
@@ -327,7 +460,7 @@ class _$SignedOut implements SignedOut {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SignedOut);
+        (other.runtimeType == runtimeType && other is _$_SignedOut);
   }
 
   @override
@@ -336,6 +469,7 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() checkAuth,
     required TResult Function() signWithGooglePressed,
     required TResult Function() signWithApplePressed,
     required TResult Function() signedOut,
@@ -346,6 +480,7 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkAuth,
     TResult? Function()? signWithGooglePressed,
     TResult? Function()? signWithApplePressed,
     TResult? Function()? signedOut,
@@ -356,6 +491,7 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkAuth,
     TResult Function()? signWithGooglePressed,
     TResult Function()? signWithApplePressed,
     TResult Function()? signedOut,
@@ -370,10 +506,11 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SignWithGooglePressed value)
         signWithGooglePressed,
     required TResult Function(_SignWithApplePressed value) signWithApplePressed,
-    required TResult Function(SignedOut value) signedOut,
+    required TResult Function(_SignedOut value) signedOut,
   }) {
     return signedOut(this);
   }
@@ -381,9 +518,10 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SignWithGooglePressed value)? signWithGooglePressed,
     TResult? Function(_SignWithApplePressed value)? signWithApplePressed,
-    TResult? Function(SignedOut value)? signedOut,
+    TResult? Function(_SignedOut value)? signedOut,
   }) {
     return signedOut?.call(this);
   }
@@ -391,9 +529,10 @@ class _$SignedOut implements SignedOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SignWithGooglePressed value)? signWithGooglePressed,
     TResult Function(_SignWithApplePressed value)? signWithApplePressed,
-    TResult Function(SignedOut value)? signedOut,
+    TResult Function(_SignedOut value)? signedOut,
     required TResult orElse(),
   }) {
     if (signedOut != null) {
@@ -403,14 +542,14 @@ class _$SignedOut implements SignedOut {
   }
 }
 
-abstract class SignedOut implements AuthEvent {
-  const factory SignedOut() = _$SignedOut;
+abstract class _SignedOut implements AuthEvent {
+  const factory _SignedOut() = _$_SignedOut;
 }
 
 /// @nodoc
 mixin _$AuthState {
   bool get isSubmitting => throw _privateConstructorUsedError;
-  Option<Either<AuthFailure, OauthSignResult>> get authFailureOrSuccessOption =>
+  Option<Either<AuthFailure, AuthSignResult>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   AuthStatus get status => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
@@ -427,7 +566,7 @@ abstract class $AuthStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isSubmitting,
-      Option<Either<AuthFailure, OauthSignResult>> authFailureOrSuccessOption,
+      Option<Either<AuthFailure, AuthSignResult>> authFailureOrSuccessOption,
       AuthStatus status,
       User? user});
 
@@ -460,7 +599,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       authFailureOrSuccessOption: null == authFailureOrSuccessOption
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, OauthSignResult>>,
+              as Option<Either<AuthFailure, AuthSignResult>>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -494,7 +633,7 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isSubmitting,
-      Option<Either<AuthFailure, OauthSignResult>> authFailureOrSuccessOption,
+      Option<Either<AuthFailure, AuthSignResult>> authFailureOrSuccessOption,
       AuthStatus status,
       User? user});
 
@@ -526,7 +665,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: null == authFailureOrSuccessOption
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, OauthSignResult>>,
+              as Option<Either<AuthFailure, AuthSignResult>>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -551,7 +690,7 @@ class _$_AuthState implements _AuthState {
   @override
   final bool isSubmitting;
   @override
-  final Option<Either<AuthFailure, OauthSignResult>> authFailureOrSuccessOption;
+  final Option<Either<AuthFailure, AuthSignResult>> authFailureOrSuccessOption;
   @override
   final AuthStatus status;
   @override
@@ -591,7 +730,7 @@ class _$_AuthState implements _AuthState {
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {required final bool isSubmitting,
-      required final Option<Either<AuthFailure, OauthSignResult>>
+      required final Option<Either<AuthFailure, AuthSignResult>>
           authFailureOrSuccessOption,
       required final AuthStatus status,
       required final User? user}) = _$_AuthState;
@@ -599,7 +738,7 @@ abstract class _AuthState implements AuthState {
   @override
   bool get isSubmitting;
   @override
-  Option<Either<AuthFailure, OauthSignResult>> get authFailureOrSuccessOption;
+  Option<Either<AuthFailure, AuthSignResult>> get authFailureOrSuccessOption;
   @override
   AuthStatus get status;
   @override

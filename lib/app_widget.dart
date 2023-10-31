@@ -75,7 +75,7 @@ class MainAppState extends State<MainApp> {
                 },
               ),
               BlocProvider<AuthBloc>(
-                create: (context) => authBloc,
+                create: (context) => authBloc..add(const AuthEvent.checkAuth()),
                 lazy: false,
               ),
             ],

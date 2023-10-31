@@ -20,10 +20,14 @@ UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserDto {
+  @JsonKey(name: 'id')
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'nickname')
   String get nickname => throw _privateConstructorUsedError;
   @JsonKey(name: 'location')
   UserLocationDto? get location => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image')
+  String? get profileImage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,8 +40,10 @@ abstract class $UserDtoCopyWith<$Res> {
       _$UserDtoCopyWithImpl<$Res, UserDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'nickname') String nickname,
-      @JsonKey(name: 'location') UserLocationDto? location});
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'nickname') String nickname,
+      @JsonKey(name: 'location') UserLocationDto? location,
+      @JsonKey(name: 'image') String? profileImage});
 
   $UserLocationDtoCopyWith<$Res>? get location;
 }
@@ -55,10 +61,16 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? nickname = null,
     Object? location = freezed,
+    Object? profileImage = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -67,6 +79,10 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as UserLocationDto?,
+      profileImage: freezed == profileImage
+          ? _value.profileImage
+          : profileImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -91,8 +107,10 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'nickname') String nickname,
-      @JsonKey(name: 'location') UserLocationDto? location});
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'nickname') String nickname,
+      @JsonKey(name: 'location') UserLocationDto? location,
+      @JsonKey(name: 'image') String? profileImage});
 
   @override
   $UserLocationDtoCopyWith<$Res>? get location;
@@ -108,10 +126,16 @@ class __$$_UserDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? nickname = null,
     Object? location = freezed,
+    Object? profileImage = freezed,
   }) {
     return _then(_$_UserDto(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -120,6 +144,10 @@ class __$$_UserDtoCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as UserLocationDto?,
+      profileImage: freezed == profileImage
+          ? _value.profileImage
+          : profileImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -128,23 +156,31 @@ class __$$_UserDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserDto extends _UserDto {
   const _$_UserDto(
-      {@JsonKey(name: 'nickname') required this.nickname,
-      @JsonKey(name: 'location') this.location})
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'nickname') required this.nickname,
+      @JsonKey(name: 'location') this.location,
+      @JsonKey(name: 'image') this.profileImage})
       : super._();
 
   factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
       _$$_UserDtoFromJson(json);
 
   @override
+  @JsonKey(name: 'id')
+  final int id;
+  @override
   @JsonKey(name: 'nickname')
   final String nickname;
   @override
   @JsonKey(name: 'location')
   final UserLocationDto? location;
+  @override
+  @JsonKey(name: 'image')
+  final String? profileImage;
 
   @override
   String toString() {
-    return 'UserDto(nickname: $nickname, location: $location)';
+    return 'UserDto(id: $id, nickname: $nickname, location: $location, profileImage: $profileImage)';
   }
 
   @override
@@ -152,15 +188,19 @@ class _$_UserDto extends _UserDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserDto &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
             (identical(other.location, location) ||
-                other.location == location));
+                other.location == location) &&
+            (identical(other.profileImage, profileImage) ||
+                other.profileImage == profileImage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, nickname, location);
+  int get hashCode =>
+      Object.hash(runtimeType, id, nickname, location, profileImage);
 
   @JsonKey(ignore: true)
   @override
@@ -178,18 +218,26 @@ class _$_UserDto extends _UserDto {
 
 abstract class _UserDto extends UserDto {
   const factory _UserDto(
-      {@JsonKey(name: 'nickname') required final String nickname,
-      @JsonKey(name: 'location') final UserLocationDto? location}) = _$_UserDto;
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'nickname') required final String nickname,
+      @JsonKey(name: 'location') final UserLocationDto? location,
+      @JsonKey(name: 'image') final String? profileImage}) = _$_UserDto;
   const _UserDto._() : super._();
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
 
+  @override
+  @JsonKey(name: 'id')
+  int get id;
   @override
   @JsonKey(name: 'nickname')
   String get nickname;
   @override
   @JsonKey(name: 'location')
   UserLocationDto? get location;
+  @override
+  @JsonKey(name: 'image')
+  String? get profileImage;
   @override
   @JsonKey(ignore: true)
   _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>

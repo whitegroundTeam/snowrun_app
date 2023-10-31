@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/auth/auth_failure.dart';
+import 'package:snowrun_app/domain/auth/auth_sign_result.dart';
 import 'package:snowrun_app/domain/auth/i_auth_repository.dart';
 import 'package:snowrun_app/domain/auth/value_objects.dart';
 
@@ -36,14 +37,14 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   }
 
   Future<void> _performActionOnAuthFacadeWithEmailAndPassword(
-      Future<Either<AuthFailure, Unit>> Function({
+      Future<Either<AuthFailure, AuthSignResult>> Function({
       required EmailAddress emailAddress,
       required Password password,
       })
       forwardedCall,
       Emitter<SignInFormState> emit,
       ) async {
-    Either<AuthFailure, Unit> failureOrSuccess;
+    Either<AuthFailure, AuthSignResult> failureOrSuccess;
 
     final isEmailValid = state.emailAddress.isValid();
     final isPasswordValid = state.password.isValid();

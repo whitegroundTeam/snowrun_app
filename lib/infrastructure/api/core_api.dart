@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/infrastructure/api/authenticated_http_client.dart';
 import 'package:snowrun_app/infrastructure/auth/auth_dtos.dart';
 import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
@@ -133,6 +132,11 @@ class CoreApi {
   Uri _getUri(String path, Map<String, dynamic>? queryParams) =>
       Uri.https(_baseUrl, path, queryParams);
 
+  Future<Response> me() => _requestWrapper(
+        method: HttpMethod.get,
+        path: "/auth/users/me",
+      );
+
   Future<Response> signWithIdToken(IdTokenRequestDto idTokenRequestDto) =>
       _requestWrapper(
         method: HttpMethod.post,
@@ -147,11 +151,6 @@ class CoreApi {
         bodyParam: createBoundaryDto.toJson(),
       );
 
-  Future<Response> getUsers() => _requestWrapper(
-        method: HttpMethod.get,
-        path: "/users/",
-      );
-
   Future<Response> updateUserCurrentLocation(UserLocationDto userLocationDto) =>
       _requestWrapper(
         method: HttpMethod.post,
@@ -159,14 +158,9 @@ class CoreApi {
         bodyParam: userLocationDto.toJson(),
       );
 
-  Future<Response> updatePushToken(String token) async {
-    final uri = Uri.http(_baseUrl, "/account/pushtoken/");
-
-    final Response response = await client.post(
-      uri,
-      body: {'token': token},
-    );
-
-    return response;
-  }
+  Future<Response> updatePushToken(String token) async => _requestWrapper(
+        method: HttpMethod.post,
+        path: "/account/pushtoken/",
+        bodyParam: {"token": token},
+      );
 }

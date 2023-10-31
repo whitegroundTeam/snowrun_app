@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUsers,
     required TResult Function(double lat, double lng) updateCurrentLocation,
     required TResult Function(String token) savePushToken,
     required TResult Function(User user) saveUser,
@@ -26,7 +25,6 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUsers,
     TResult? Function(double lat, double lng)? updateCurrentLocation,
     TResult? Function(String token)? savePushToken,
     TResult? Function(User user)? saveUser,
@@ -34,7 +32,6 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUsers,
     TResult Function(double lat, double lng)? updateCurrentLocation,
     TResult Function(String token)? savePushToken,
     TResult Function(User user)? saveUser,
@@ -43,7 +40,6 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetUsers value) getUsers,
     required TResult Function(_UpdateCurrentLocation value)
         updateCurrentLocation,
     required TResult Function(_SavePushToken value) savePushToken,
@@ -52,7 +48,6 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetUsers value)? getUsers,
     TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
     TResult? Function(_SavePushToken value)? savePushToken,
     TResult? Function(_SaveUser value)? saveUser,
@@ -60,7 +55,6 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetUsers value)? getUsers,
     TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
     TResult Function(_SavePushToken value)? savePushToken,
     TResult Function(_SaveUser value)? saveUser,
@@ -84,121 +78,6 @@ class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_GetUsersCopyWith<$Res> {
-  factory _$$_GetUsersCopyWith(
-          _$_GetUsers value, $Res Function(_$_GetUsers) then) =
-      __$$_GetUsersCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_GetUsersCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$_GetUsers>
-    implements _$$_GetUsersCopyWith<$Res> {
-  __$$_GetUsersCopyWithImpl(
-      _$_GetUsers _value, $Res Function(_$_GetUsers) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_GetUsers implements _GetUsers {
-  const _$_GetUsers();
-
-  @override
-  String toString() {
-    return 'UserEvent.getUsers()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetUsers);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getUsers,
-    required TResult Function(double lat, double lng) updateCurrentLocation,
-    required TResult Function(String token) savePushToken,
-    required TResult Function(User user) saveUser,
-  }) {
-    return getUsers();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUsers,
-    TResult? Function(double lat, double lng)? updateCurrentLocation,
-    TResult? Function(String token)? savePushToken,
-    TResult? Function(User user)? saveUser,
-  }) {
-    return getUsers?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUsers,
-    TResult Function(double lat, double lng)? updateCurrentLocation,
-    TResult Function(String token)? savePushToken,
-    TResult Function(User user)? saveUser,
-    required TResult orElse(),
-  }) {
-    if (getUsers != null) {
-      return getUsers();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetUsers value) getUsers,
-    required TResult Function(_UpdateCurrentLocation value)
-        updateCurrentLocation,
-    required TResult Function(_SavePushToken value) savePushToken,
-    required TResult Function(_SaveUser value) saveUser,
-  }) {
-    return getUsers(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetUsers value)? getUsers,
-    TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
-    TResult? Function(_SavePushToken value)? savePushToken,
-    TResult? Function(_SaveUser value)? saveUser,
-  }) {
-    return getUsers?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetUsers value)? getUsers,
-    TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
-    TResult Function(_SavePushToken value)? savePushToken,
-    TResult Function(_SaveUser value)? saveUser,
-    required TResult orElse(),
-  }) {
-    if (getUsers != null) {
-      return getUsers(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetUsers implements UserEvent {
-  const factory _GetUsers() = _$_GetUsers;
 }
 
 /// @nodoc
@@ -274,7 +153,6 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUsers,
     required TResult Function(double lat, double lng) updateCurrentLocation,
     required TResult Function(String token) savePushToken,
     required TResult Function(User user) saveUser,
@@ -285,7 +163,6 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUsers,
     TResult? Function(double lat, double lng)? updateCurrentLocation,
     TResult? Function(String token)? savePushToken,
     TResult? Function(User user)? saveUser,
@@ -296,7 +173,6 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUsers,
     TResult Function(double lat, double lng)? updateCurrentLocation,
     TResult Function(String token)? savePushToken,
     TResult Function(User user)? saveUser,
@@ -311,7 +187,6 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetUsers value) getUsers,
     required TResult Function(_UpdateCurrentLocation value)
         updateCurrentLocation,
     required TResult Function(_SavePushToken value) savePushToken,
@@ -323,7 +198,6 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetUsers value)? getUsers,
     TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
     TResult? Function(_SavePushToken value)? savePushToken,
     TResult? Function(_SaveUser value)? saveUser,
@@ -334,7 +208,6 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetUsers value)? getUsers,
     TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
     TResult Function(_SavePushToken value)? savePushToken,
     TResult Function(_SaveUser value)? saveUser,
@@ -422,7 +295,6 @@ class _$_SavePushToken implements _SavePushToken {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUsers,
     required TResult Function(double lat, double lng) updateCurrentLocation,
     required TResult Function(String token) savePushToken,
     required TResult Function(User user) saveUser,
@@ -433,7 +305,6 @@ class _$_SavePushToken implements _SavePushToken {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUsers,
     TResult? Function(double lat, double lng)? updateCurrentLocation,
     TResult? Function(String token)? savePushToken,
     TResult? Function(User user)? saveUser,
@@ -444,7 +315,6 @@ class _$_SavePushToken implements _SavePushToken {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUsers,
     TResult Function(double lat, double lng)? updateCurrentLocation,
     TResult Function(String token)? savePushToken,
     TResult Function(User user)? saveUser,
@@ -459,7 +329,6 @@ class _$_SavePushToken implements _SavePushToken {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetUsers value) getUsers,
     required TResult Function(_UpdateCurrentLocation value)
         updateCurrentLocation,
     required TResult Function(_SavePushToken value) savePushToken,
@@ -471,7 +340,6 @@ class _$_SavePushToken implements _SavePushToken {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetUsers value)? getUsers,
     TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
     TResult? Function(_SavePushToken value)? savePushToken,
     TResult? Function(_SaveUser value)? saveUser,
@@ -482,7 +350,6 @@ class _$_SavePushToken implements _SavePushToken {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetUsers value)? getUsers,
     TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
     TResult Function(_SavePushToken value)? savePushToken,
     TResult Function(_SaveUser value)? saveUser,
@@ -578,7 +445,6 @@ class _$_SaveUser implements _SaveUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUsers,
     required TResult Function(double lat, double lng) updateCurrentLocation,
     required TResult Function(String token) savePushToken,
     required TResult Function(User user) saveUser,
@@ -589,7 +455,6 @@ class _$_SaveUser implements _SaveUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUsers,
     TResult? Function(double lat, double lng)? updateCurrentLocation,
     TResult? Function(String token)? savePushToken,
     TResult? Function(User user)? saveUser,
@@ -600,7 +465,6 @@ class _$_SaveUser implements _SaveUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUsers,
     TResult Function(double lat, double lng)? updateCurrentLocation,
     TResult Function(String token)? savePushToken,
     TResult Function(User user)? saveUser,
@@ -615,7 +479,6 @@ class _$_SaveUser implements _SaveUser {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetUsers value) getUsers,
     required TResult Function(_UpdateCurrentLocation value)
         updateCurrentLocation,
     required TResult Function(_SavePushToken value) savePushToken,
@@ -627,7 +490,6 @@ class _$_SaveUser implements _SaveUser {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetUsers value)? getUsers,
     TResult? Function(_UpdateCurrentLocation value)? updateCurrentLocation,
     TResult? Function(_SavePushToken value)? savePushToken,
     TResult? Function(_SaveUser value)? saveUser,
@@ -638,7 +500,6 @@ class _$_SaveUser implements _SaveUser {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetUsers value)? getUsers,
     TResult Function(_UpdateCurrentLocation value)? updateCurrentLocation,
     TResult Function(_SavePushToken value)? savePushToken,
     TResult Function(_SaveUser value)? saveUser,

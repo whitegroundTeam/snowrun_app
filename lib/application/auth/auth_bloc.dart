@@ -1,10 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/auth/auth_failure.dart';
 import 'package:snowrun_app/domain/auth/i_auth_repository.dart';
-import 'package:snowrun_app/domain/auth/oauth_sign_result.dart';
+import 'package:snowrun_app/domain/auth/auth_sign_result.dart';
 import 'package:snowrun_app/domain/user/model/user.dart';
 
 part 'auth_event.dart';
@@ -31,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ),
     );
 
-    on<SignedOut>((event, emit) async {
+    on<_SignedOut>((event, emit) async {
       // final userList = await _localStore.removeCurrentUser();
       await _authRepository.signOut();
       //TODO : hive에서 인증 토큰 넣다 뻈다 해야함
@@ -42,14 +43,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       // } else {
       //   deviceBox.clear();
       // }
+
+
       emit(
         state.copyWith(user: null, status: AuthStatus.unauthenticated),
+      );
+    });
+
+    on<_CheckAuth>((event, emit) async {
+      final meOption = await _authRepository.me();
+      meOption.fold(
+            () {
+              debugPrint("HOHOHO111");
+              return emit(state.copyWith(user: null, status: AuthStatus.unauthenticated));
+            } ,
+            (user) {
+              debugPrint("HOHOHO222");
+              return emit(state.copyWith(user: user, status: AuthStatus.authenticated));
+        },
       );
     });
   }
 
   Future<void> _performActionOnAuthFacade(
-    Future<Either<AuthFailure, OauthSignResult>> Function() forwardedCall,
+    Future<Either<AuthFailure, AuthSignResult>> Function() forwardedCall,
     Emitter<AuthState> emit,
   ) async {
     emit(state.copyWith(

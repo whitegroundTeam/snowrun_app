@@ -6,7 +6,7 @@ enum AuthStatus { initial, progress, authenticated, unauthenticated }
 class AuthState with _$AuthState {
   const factory AuthState({
     required bool isSubmitting,
-    required Option<Either<AuthFailure, OauthSignResult>>
+    required Option<Either<AuthFailure, AuthSignResult>>
         authFailureOrSuccessOption,
     required AuthStatus status,
     required User? user,
@@ -15,9 +15,7 @@ class AuthState with _$AuthState {
   factory AuthState.initial() => AuthState(
         isSubmitting: false,
         authFailureOrSuccessOption: none(),
-        // status: AuthStatus.authenticated,
-        // user: User.empty(),
-        status: AuthStatus.unauthenticated,
+        status: AuthStatus.initial,
         user: null,
       );
 }

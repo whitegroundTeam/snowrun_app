@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:snowrun_app/domain/auth/auth_token.dart';
 import 'package:snowrun_app/domain/auth/sign_response.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
 
@@ -29,24 +30,46 @@ class SignResponseDto with _$SignResponseDto {
   const SignResponseDto._();
 
   const factory SignResponseDto({
-    @JsonKey(name: 'token') required String authToken,
+    @JsonKey(name: 'token') required AuthTokenDto token,
     @JsonKey(name: 'is_new_user') required bool isNewUser,
   }) = _SignResponseDto;
 
   factory SignResponseDto.fromDomain(SignResponse signResponse) {
     return SignResponseDto(
-      authToken: signResponse.authToken.getOrCrash(),
+      token: AuthTokenDto.fromDomain(signResponse.authToken),
       isNewUser: signResponse.isNewUser.getOrCrash(),
     );
   }
 
   SignResponse toDomain() {
     return SignResponse(
-      authToken: StringVO(authToken),
+      authToken: token.toDomain(),
       isNewUser: BooleanVO(isNewUser),
     );
   }
 
   factory SignResponseDto.fromJson(Map<String, dynamic> json) =>
       _$SignResponseDtoFromJson(json);
+}
+
+@freezed
+class AuthTokenDto with _$AuthTokenDto {
+  const AuthTokenDto._();
+
+  const factory AuthTokenDto({
+    @JsonKey(name: 'auth_token') required String authToken,
+  }) = _AuthTokenDto;
+
+  factory AuthTokenDto.fromDomain(AuthToken authToken) {
+    return AuthTokenDto(authToken: authToken.authToken.getOrCrash());
+  }
+
+  AuthToken toDomain() {
+    return AuthToken(
+      authToken: StringVO(authToken),
+    );
+  }
+
+  factory AuthTokenDto.fromJson(Map<String, dynamic> json) =>
+      _$AuthTokenDtoFromJson(json);
 }

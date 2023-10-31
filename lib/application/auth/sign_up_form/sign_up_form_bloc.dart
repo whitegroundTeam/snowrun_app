@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:snowrun_app/domain/auth/auth_failure.dart';
+import 'package:snowrun_app/domain/auth/auth_sign_result.dart';
 import 'package:snowrun_app/domain/auth/i_auth_repository.dart';
 import 'package:snowrun_app/domain/auth/value_objects.dart';
 
@@ -47,14 +48,14 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
   }
 
   Future<void> _performActionOnAuthFacadeWithEmailAndPassword(
-    Future<Either<AuthFailure, Unit>> Function({
+    Future<Either<AuthFailure, AuthSignResult>> Function({
       required EmailAddress emailAddress,
       required Password password,
     })
         forwardedCall,
     Emitter<SignUpFormState> emit,
   ) async {
-    Either<AuthFailure, Unit> failureOrSuccess;
+    Either<AuthFailure, AuthSignResult> failureOrSuccess;
 
     final isEmailValid = state.emailAddress.isValid();
     final isPasswordValid = state.password.isValid();

@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignResponse {
-  StringVO get authToken => throw _privateConstructorUsedError;
+  AuthToken get authToken => throw _privateConstructorUsedError;
   BooleanVO get isNewUser => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,9 @@ abstract class $SignResponseCopyWith<$Res> {
           SignResponse value, $Res Function(SignResponse) then) =
       _$SignResponseCopyWithImpl<$Res, SignResponse>;
   @useResult
-  $Res call({StringVO authToken, BooleanVO isNewUser});
+  $Res call({AuthToken authToken, BooleanVO isNewUser});
+
+  $AuthTokenCopyWith<$Res> get authToken;
 }
 
 /// @nodoc
@@ -53,12 +55,20 @@ class _$SignResponseCopyWithImpl<$Res, $Val extends SignResponse>
       authToken: null == authToken
           ? _value.authToken
           : authToken // ignore: cast_nullable_to_non_nullable
-              as StringVO,
+              as AuthToken,
       isNewUser: null == isNewUser
           ? _value.isNewUser
           : isNewUser // ignore: cast_nullable_to_non_nullable
               as BooleanVO,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthTokenCopyWith<$Res> get authToken {
+    return $AuthTokenCopyWith<$Res>(_value.authToken, (value) {
+      return _then(_value.copyWith(authToken: value) as $Val);
+    });
   }
 }
 
@@ -70,7 +80,10 @@ abstract class _$$_SignResponseCopyWith<$Res>
       __$$_SignResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StringVO authToken, BooleanVO isNewUser});
+  $Res call({AuthToken authToken, BooleanVO isNewUser});
+
+  @override
+  $AuthTokenCopyWith<$Res> get authToken;
 }
 
 /// @nodoc
@@ -91,7 +104,7 @@ class __$$_SignResponseCopyWithImpl<$Res>
       authToken: null == authToken
           ? _value.authToken
           : authToken // ignore: cast_nullable_to_non_nullable
-              as StringVO,
+              as AuthToken,
       isNewUser: null == isNewUser
           ? _value.isNewUser
           : isNewUser // ignore: cast_nullable_to_non_nullable
@@ -107,7 +120,7 @@ class _$_SignResponse extends _SignResponse {
       : super._();
 
   @override
-  final StringVO authToken;
+  final AuthToken authToken;
   @override
   final BooleanVO isNewUser;
 
@@ -139,12 +152,12 @@ class _$_SignResponse extends _SignResponse {
 
 abstract class _SignResponse extends SignResponse {
   const factory _SignResponse(
-      {required final StringVO authToken,
+      {required final AuthToken authToken,
       required final BooleanVO isNewUser}) = _$_SignResponse;
   const _SignResponse._() : super._();
 
   @override
-  StringVO get authToken;
+  AuthToken get authToken;
   @override
   BooleanVO get isNewUser;
   @override

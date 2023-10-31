@@ -19,10 +19,12 @@ import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_page.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
+import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
+import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 
 class HomePage extends StatefulWidget {
@@ -53,6 +55,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final isAuthenticated = context.read<AuthBloc>().state.user != null;
     final previewProfileImageHeight = MediaQuery.of(context).size.height / 6;
+    _showToken();
     return MultiBlocProvider(
       providers: [
         BlocListener<AuthBloc, AuthState>(
@@ -96,10 +99,9 @@ class HomePageState extends State<HomePage> {
 
                 FirebaseMessaging.instance.getToken().then((token) {
                   if (token != null) {
-                    //TODO : push token api 연동
-                    // context
-                    //     .read<UserBloc>()
-                    //     .add(UserEvent.savePushToken(token));
+                    context
+                        .read<UserBloc>()
+                        .add(UserEvent.savePushToken(token));
                   }
                 });
               },
@@ -170,11 +172,11 @@ class HomePageState extends State<HomePage> {
                               child: Hero(
                                 tag: "profileImage",
                                 child: Center(
-                                  child: Image.asset(
-                                    'assets/webp/profile_snow_ball_$imageNumber.webp',
-                                    height: previewProfileImageHeight,
-                                    width: previewProfileImageHeight,
-                                  ),
+                                  child: CommonNetworkImage(
+                                      height: previewProfileImageHeight,
+                                      width: previewProfileImageHeight,
+                                      imageBackgroundColor: Colors.transparent,
+                                      imageUrl: context.read<AuthBloc>().state.user?.image.getOrCrash() ?? ""),
                                 ),
                               ),
                             )
@@ -369,6 +371,10 @@ class HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  _showToken() async {
+    debugPrint("WTWTWT :: ${await getIt<HiveProvider>().getAuthToken()}");
   }
 
   _checkLocationPermission() async {

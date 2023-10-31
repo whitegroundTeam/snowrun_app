@@ -673,7 +673,7 @@ mixin _$SignUpFormState {
   ConfirmPassword get confirmPassword => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+  Option<Either<AuthFailure, AuthSignResult>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -693,7 +693,7 @@ abstract class $SignUpFormStateCopyWith<$Res> {
       ConfirmPassword confirmPassword,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, AuthSignResult>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -740,7 +740,7 @@ class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
       authFailureOrSuccessOption: null == authFailureOrSuccessOption
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<AuthFailure, AuthSignResult>>,
     ) as $Val);
   }
 }
@@ -759,7 +759,7 @@ abstract class _$$_SignUpFormStateCopyWith<$Res>
       ConfirmPassword confirmPassword,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, AuthSignResult>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -804,7 +804,7 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: null == authFailureOrSuccessOption
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<AuthFailure, AuthSignResult>>,
     ));
   }
 }
@@ -831,7 +831,7 @@ class _$_SignUpFormState implements _SignUpFormState {
   @override
   final bool isSubmitting;
   @override
-  final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
+  final Option<Either<AuthFailure, AuthSignResult>> authFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -883,7 +883,7 @@ abstract class _SignUpFormState implements SignUpFormState {
       required final ConfirmPassword confirmPassword,
       required final bool showErrorMessages,
       required final bool isSubmitting,
-      required final Option<Either<AuthFailure, Unit>>
+      required final Option<Either<AuthFailure, AuthSignResult>>
           authFailureOrSuccessOption}) = _$_SignUpFormState;
 
   @override
@@ -897,7 +897,7 @@ abstract class _SignUpFormState implements SignUpFormState {
   @override
   bool get isSubmitting;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  Option<Either<AuthFailure, AuthSignResult>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_SignUpFormStateCopyWith<_$_SignUpFormState> get copyWith =>

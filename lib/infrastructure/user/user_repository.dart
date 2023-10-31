@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
 import 'package:snowrun_app/domain/user/i_user_repository.dart';
@@ -40,7 +41,7 @@ class UserRepository implements IUserRepository {
   @override
   Future<Either<UserFailure, List<User>>> getUsers() async {
     // //FIXME : 임시로 넣어둔거
-    final testUser = [User(nickname: StringVO("dansnow"), location: UserLocation(lat: DoubleVO(37.7363675), lng: DoubleVO(128.8795658)))];
+    final testUser = [User(id: IntVO(4891248921), nickname: StringVO("dansnow"), location: UserLocation(lat: DoubleVO(37.7363675), lng: DoubleVO(128.8795658)), image: StringVO(""))];
     return right(testUser);
     // final response = await _api.getUsers();
     // if (response.statusCode == 200) {
