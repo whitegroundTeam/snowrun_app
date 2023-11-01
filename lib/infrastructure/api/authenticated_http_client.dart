@@ -51,7 +51,7 @@ class AuthenticatedHttpClient extends http.BaseClient {
     if (response.bodyBytes.isEmpty) {
       result += '\t[body]: ${null}\n';
     } else {
-      result += '\t[body]: ${response.body}\n';
+      result += '\t[body]: ${utf8.decode(response.bodyBytes)}\n';
     }
 
     if (response.statusCode.toString().startsWith("2")) {
