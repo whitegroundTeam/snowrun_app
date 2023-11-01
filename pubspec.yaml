@@ -92,7 +92,6 @@ flutter:
 
   assets:
     - assets/lottie/
-    - assets/images/onboarding/
     - assets/png/
     - assets/webp/
     - assets/webp/2x/

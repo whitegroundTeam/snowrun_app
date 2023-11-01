@@ -62,6 +62,7 @@ class CoreApi {
 
       final infoJson =
           json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      // ignore: unused_local_variable
       final errorResponse = AppErrorDto.fromJson(infoJson).toDomain();
 
       return response;

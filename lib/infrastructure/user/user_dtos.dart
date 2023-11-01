@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
 import 'package:snowrun_app/domain/user/model/user.dart';

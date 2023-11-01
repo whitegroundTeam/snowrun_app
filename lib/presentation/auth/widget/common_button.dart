@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/text/label_text.dart';
 
 class CommonButton extends StatefulWidget {
-  Color? buttonColor = AppStyle.secondaryBackground;
-  Color? textColor = AppStyle.white;
-  Color? iconColor;
-  String? iconPath;
-  String? text;
-  Function? onTap;
-  String? iconHeroTag;
-  bool? isPrimary;
+  final Color? buttonColor;
+  final Color? textColor;
+  final Color? iconColor;
+  final String? iconPath;
+  final String? text;
+  final Function? onTap;
+  final String? iconHeroTag;
+  final bool? isPrimary;
 
-  CommonButton(
+  const CommonButton(
       {super.key,
-      this.buttonColor,
-      this.textColor,
+      this.buttonColor = AppStyle.secondaryBackground,
+      this.textColor = AppStyle.white,
       this.iconColor,
       this.iconPath,
       this.iconHeroTag,

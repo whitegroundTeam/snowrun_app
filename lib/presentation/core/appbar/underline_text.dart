@@ -3,10 +3,16 @@ import 'package:flutter/widgets.dart';
 class UnderlineText extends StatefulWidget {
   final Widget textWidget;
   final Color underlineColor;
-  double? width = 2.0;
-  double? padding = 0.0;
+  final double? width;
+  final double? padding;
 
-  UnderlineText(this.textWidget, this.underlineColor, {super.key, this.width, this.padding});
+  const UnderlineText(
+    this.textWidget,
+    this.underlineColor, {
+    super.key,
+    this.width = 2.0,
+    this.padding = 0.0,
+  });
 
   @override
   State createState() => UnderlineTextState();
@@ -15,7 +21,6 @@ class UnderlineText extends StatefulWidget {
 class UnderlineTextState extends State<UnderlineText> {
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(
         border: Border(

@@ -1,18 +1,7 @@
-import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
-import 'package:snowrun_app/application/location/location_bloc.dart';
-import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/domain/user/model/user.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
@@ -95,8 +84,8 @@ class SettingPageState extends State<SettingPage> {
                               horizontal: 24,
                               vertical: 12,
                             ),
-                            child: UnderlineText(
-                              const TitleText(
+                            child: const UnderlineText(
+                              TitleText(
                                 title: "로그아웃 하기",
                                 fontSize: 16,
                                 color: AppStyle.white,

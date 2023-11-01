@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
 import 'package:snowrun_app/domain/user/i_user_repository.dart';
@@ -10,7 +9,6 @@ import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/domain/user/model/user_location.dart';
 import 'package:snowrun_app/domain/user/user_failure.dart';
 import 'package:snowrun_app/infrastructure/api/core_api.dart';
-import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
 
 import 'package:snowrun_app/infrastructure/user/user_dtos.dart';
 

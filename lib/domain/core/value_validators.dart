@@ -1,9 +1,5 @@
-// Package imports:
 import 'package:snowrun_app/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
-
-// Project imports:
 
 Either<ValueFailure<String>, String> validateMaxStringLength(
   String input,

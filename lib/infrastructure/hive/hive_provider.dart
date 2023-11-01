@@ -63,7 +63,7 @@ class HiveProvider {
 
   Future<String> setAuthToken(String authToken) async {
     if (authToken.isEmpty) return Future.value("");
-    debugPrint("FLUTTER_CORE :: HIVE :: setAuthToken => ${authToken}");
+    debugPrint("FLUTTER_CORE :: HIVE :: setAuthToken => $authToken");
     await secureStorage.write(key: cachedAuthTokenKey, value: authToken);
     return authToken;
   }

@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/toast/toast_bloc.dart';

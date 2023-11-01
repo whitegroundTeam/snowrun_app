@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -39,7 +38,7 @@ class ResultPageState extends State<ResultPage>{
                           color: Colors.yellow,
                           height: 80,
                           alignment: Alignment.center,
-                          child: Text('영역 ${index}'),
+                          child: Text('영역 $index'),
                         ),
                       ),
                     );

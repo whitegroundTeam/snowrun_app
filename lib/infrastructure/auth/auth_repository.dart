@@ -2,20 +2,16 @@
 import 'dart:convert';
 import 'dart:math';
 
-// Flutter imports:
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// Package imports:
 import 'package:crypto/crypto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart' as http;
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:snowrun_app/domain/auth/auth_method.dart';
-import 'package:snowrun_app/domain/auth/sign_response.dart';
 import 'package:snowrun_app/domain/user/model/app_user.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/auth/auth_failure.dart';
@@ -98,6 +94,7 @@ class AuthRepository implements IAuthRepository {
             as Map<String, dynamic>;
         final signResponseDto = SignResponseDto.fromJson(infoJson);
 
+        // FIXME: AuthMethod 전달 필요.
         updateLocalStore(
             authToken: signResponseDto.token.authToken, authMethod: AuthMethod.apple);
         return right(
@@ -210,8 +207,10 @@ class AuthRepository implements IAuthRepository {
       } else {
         return left(const AuthFailure.serverError());
       }
+    // ignore: unused_catch_clause
     } on FirebaseAuthException catch (e) {
       return left(const AuthFailure.serverError());
+    // ignore: unused_catch_clause
     } on Exception catch (e) {
       return left(const AuthFailure.serverError());
     }

@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:dartz/dartz.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:geolocator_platform_interface/src/models/position.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/location/i_location_repository.dart';
 import 'package:snowrun_app/domain/location/location_failure.dart';
