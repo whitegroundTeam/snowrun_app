@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
@@ -45,13 +46,11 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                   );
                 },
                 (_) {
-                  context.go('/home');
-                  // context.go("/home", replace: true);
-                  // context.router.popUntilRoot();
-                  // context.router.replace(HomeRoute(initialTab: 0));
-                  // context
-                  //     .read<AuthBloc>()
-                  //     .add(const AuthEvent.authCheckRequested());
+
+                  context.go('/');
+                  context
+                      .read<AuthBloc>()
+                      .add(const AuthEvent.checkAuth());
                 },
               ),
             );

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
@@ -27,7 +28,6 @@ class SignInPage extends StatefulWidget {
 
 class SignInPageState extends State<SignInPage> {
   final hiveProvider = getIt<HiveProvider>();
-  final authBloc = getIt<AuthBloc>();
   Color selectedColor = Colors.white;
 
   @override
@@ -54,7 +54,7 @@ class SignInPageState extends State<SignInPage> {
       iconPath: 'assets/webp/apple_logo.webp',
       text: "애플로 로그인 하기",
       onTap: () {
-        authBloc.add(const AuthEvent.signWithApplePressed());
+        context.read<AuthBloc>().add(const AuthEvent.signWithApplePressed());
       },
     );
 
@@ -62,7 +62,7 @@ class SignInPageState extends State<SignInPage> {
       iconPath: 'assets/webp/google_logo.webp',
       text: "구글로 로그인 하기",
       onTap: () {
-        authBloc.add(const AuthEvent.signWithGooglePressed());
+        context.read<AuthBloc>().add(const AuthEvent.signWithGooglePressed());
       },
     );
 
@@ -70,7 +70,7 @@ class SignInPageState extends State<SignInPage> {
     List<Widget> otherSignInMethodButtons = [];
     if (recentlySignInMethod == AuthMethod.email) {
       recentlySignInMethodButton = emailSignInButton;
-      if(isIos) {
+      if (isIos) {
         otherSignInMethodButtons = [appleSignInButton, googleSignInButton];
       } else {
         otherSignInMethodButtons = [googleSignInButton];
@@ -80,112 +80,142 @@ class SignInPageState extends State<SignInPage> {
       otherSignInMethodButtons = [googleSignInButton, emailSignInButton];
     } else if (recentlySignInMethod == AuthMethod.google) {
       recentlySignInMethodButton = googleSignInButton;
-      if(isIos) {
+      if (isIos) {
         otherSignInMethodButtons = [appleSignInButton, emailSignInButton];
-      } else{
+      } else {
         otherSignInMethodButtons = [emailSignInButton];
       }
     }
 
     if (recentlySignInMethodButton == null) {
-      if(isIos) {
+      if (isIos) {
         otherSignInMethodButtons = [
           googleSignInButton,
           appleSignInButton,
           emailSignInButton
         ];
       } else {
-        otherSignInMethodButtons = [
-          googleSignInButton,
-          emailSignInButton
-        ];
+        otherSignInMethodButtons = [googleSignInButton, emailSignInButton];
       }
     }
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          CustomScrollView(
-            physics: bouncingScrollPhysics,
-            slivers: [
-              const CommonAppBar(
-                isSliver: true,
-                appBarType: AppBarType.back,
+    return MultiBlocProvider(
+      providers: [
+        BlocListener<AuthBloc, AuthState>(
+          bloc: context.read<AuthBloc>(),
+          listener: (context, state) {
+            state.authFailureOrSuccessOption.fold(
+                  () {},
+                  (either) => either.fold(
+                    (failure) {
+                  showToast(
+                    failure.map(
+                      cancelledByUser: (e) => "취소하셨습니다.",
+                      serverError: (e) => "알 수 없는 에러가 발생하였습니다.",
+                      emailAlreadyInUse: (e) => "이미 사용중인 이메일입니다.",
+                      invalidEmailAndPasswordCombination: (e) =>
+                      "아이디 혹은 패스워드가 잘못되었습니다.",
+                      isNotExistUser: (e) => "이미 존재하는 사용자입니다.",
+                    ),
+                  );
+                },
+                    (_) {
+                      context.go('/');
+                      context
+                          .read<AuthBloc>()
+                          .add(const AuthEvent.checkAuth());
+                },
               ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: Image.asset(
-                          'assets/webp/snow_ball_white.webp',
-                          height: previewProfileImageHeight,
-                          width: previewProfileImageHeight,
+            );
+            // if (state.status == AuthStatus.authenticated ||
+            //     state.status == AuthStatus.unauthenticated) {
+            //   // context.pop();
+            // }
+          },
+        ),
+      ],
+      child: Scaffold(
+        body: Stack(
+          children: [
+            CustomScrollView(
+              physics: bouncingScrollPhysics,
+              slivers: [
+                const CommonAppBar(
+                  isSliver: true,
+                  appBarType: AppBarType.back,
+                ),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Image.asset(
+                            'assets/webp/snow_ball_white.webp',
+                            height: previewProfileImageHeight,
+                            width: previewProfileImageHeight,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      if (recentlySignInMethodButton != null) ...[
-                        const TitleText(
-                          title: "가장 최근에 사용한",
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        recentlySignInMethodButton,
                         const SizedBox(
                           height: 24,
                         ),
-                      ],
-                      ...otherSignInMethodButtons
-                          .map(
-                            (e) => Column(
-                              children: [
-                                const SizedBox(
-                                  height: 12,
-                                ),
-                                e,
-                              ],
-                            ),
-                          )
-                          .toList(),
-                      const SizedBox(
-                        height: 36,
-                      ),
-                      Center(
-                        child: CommonDetector(
-                          onTap: () {
-                            context.push("/signUp");
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 24,
-                              vertical: 12,
-                            ),
-                            child: UnderlineText(
-                              TitleText(
-                                title: "이메일로 가입하기",
-                                fontSize: 14,
-                                color: AppStyle.white,
+                        if (recentlySignInMethodButton != null) ...[
+                          const TitleText(
+                            title: "가장 최근에 사용한",
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          recentlySignInMethodButton,
+                        ],
+                        ...otherSignInMethodButtons
+                            .map(
+                              (e) => Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                  e,
+                                ],
                               ),
-                              AppStyle.white,
-                              width: 1,
+                            )
+                            .toList(),
+                        const SizedBox(
+                          height: 36,
+                        ),
+                        Center(
+                          child: CommonDetector(
+                            onTap: () {
+                              context.push("/signUp");
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 12,
+                              ),
+                              child: UnderlineText(
+                                TitleText(
+                                  title: "이메일로 가입하기",
+                                  fontSize: 14,
+                                  color: AppStyle.white,
+                                ),
+                                AppStyle.white,
+                                width: 1,
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -11,6 +11,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/domain/auth/auth_method.dart';
 import 'package:snowrun_app/domain/user/model/app_user.dart';
 import 'package:injectable/injectable.dart';
@@ -96,7 +97,8 @@ class AuthRepository implements IAuthRepository {
 
         // FIXME: AuthMethod 전달 필요.
         updateLocalStore(
-            authToken: signResponseDto.token.authToken, authMethod: AuthMethod.apple);
+            authToken: signResponseDto.token.authToken,
+            authMethod: AuthMethod.email);
         return right(
           const AuthSignResult(
             isNewUser: true,
@@ -144,7 +146,8 @@ class AuthRepository implements IAuthRepository {
         final signResponseDto = SignResponseDto.fromJson(infoJson);
 
         updateLocalStore(
-            authToken: signResponseDto.token.authToken, authMethod: AuthMethod.apple);
+            authToken: signResponseDto.token.authToken,
+            authMethod: AuthMethod.email);
         return right(
           AuthSignResult(
             isNewUser: signResponseDto.isNewUser,
@@ -196,7 +199,8 @@ class AuthRepository implements IAuthRepository {
         final signResponseDto = SignResponseDto.fromJson(infoJson);
 
         updateLocalStore(
-            authToken: signResponseDto.token.authToken, authMethod: AuthMethod.apple);
+            authToken: signResponseDto.token.authToken,
+            authMethod: AuthMethod.google);
 
         return right(
           AuthSignResult(
@@ -207,10 +211,10 @@ class AuthRepository implements IAuthRepository {
       } else {
         return left(const AuthFailure.serverError());
       }
-    // ignore: unused_catch_clause
+      // ignore: unused_catch_clause
     } on FirebaseAuthException catch (e) {
       return left(const AuthFailure.serverError());
-    // ignore: unused_catch_clause
+      // ignore: unused_catch_clause
     } on Exception catch (e) {
       return left(const AuthFailure.serverError());
     }
@@ -250,7 +254,8 @@ class AuthRepository implements IAuthRepository {
         final signResponseDto = SignResponseDto.fromJson(infoJson);
 
         updateLocalStore(
-            authToken: signResponseDto.token.authToken, authMethod: AuthMethod.apple);
+            authToken: signResponseDto.token.authToken,
+            authMethod: AuthMethod.apple);
 
         return right(
           AuthSignResult(
@@ -274,7 +279,7 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<void> signOut() => Future.wait([
-        hiveProvider.setAuthToken(""),
+        hiveProvider.deleteAuthToken(),
         _googleSignIn.signOut(),
         _firebaseAuth.signOut(),
       ]);
@@ -294,9 +299,10 @@ class AuthRepository implements IAuthRepository {
   }
 
   updateLocalStore(
-      {required String authToken, required AuthMethod authMethod}) {
-    hiveProvider.setAuthToken(authToken);
-    hiveProvider.setRecentlySignInMethod(authMethod.description);
+      {required String authToken, required AuthMethod authMethod}) async {
+    await hiveProvider.setAuthToken(authToken);
+    await hiveProvider.setRecentlySignInMethod(authMethod.description);
+    // me();
   }
 
   @override

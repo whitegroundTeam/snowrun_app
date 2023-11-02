@@ -44,7 +44,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       //   deviceBox.clear();
       // }
 
-
       emit(
         state.copyWith(user: null, status: AuthStatus.unauthenticated),
       );
@@ -53,13 +52,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_CheckAuth>((event, emit) async {
       final meOption = await _authRepository.me();
       meOption.fold(
-            () {
-              debugPrint("HOHOHO111");
-              return emit(state.copyWith(user: null, status: AuthStatus.unauthenticated));
-            } ,
-            (user) {
-              debugPrint("HOHOHO222");
-              return emit(state.copyWith(user: user, status: AuthStatus.authenticated));
+        () {
+          return emit(
+              state.copyWith(user: null, status: AuthStatus.unauthenticated));
+        },
+        (user) {
+          return emit(
+              state.copyWith(user: user, status: AuthStatus.authenticated));
         },
       );
     });
