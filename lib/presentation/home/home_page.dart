@@ -45,7 +45,6 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final previewProfileImageHeight = MediaQuery.of(context).size.height / 6;
-    _showToken();
     return MultiBlocProvider(
       providers: [
         BlocListener<AuthBloc, AuthState>(
@@ -185,7 +184,6 @@ class HomePageState extends State<HomePage> {
                                   ),
                                 )
                               :
-                              //TODO : 아바타 user
                               CommonDetector(
                                   needAuth: true,
                                   onTap: () {
@@ -229,9 +227,7 @@ class HomePageState extends State<HomePage> {
                         const SizedBox(
                           height: 16,
                         ),
-                        isAuthenticated &&
-                                authState.user?.image.getOrCrash().isNotEmpty ==
-                                    true
+                        isAuthenticated
                             ? Text(
                                 authState.user?.nickname.getOrCrash() ?? '',
                                 style: const TextStyle(
@@ -248,7 +244,7 @@ class HomePageState extends State<HomePage> {
                               ),
 
                         const SizedBox(
-                          height: 24,
+                          height: 96,
                         ),
                         Text(
                           isAuthenticated ? "인증 됐다" : "인증 안됐다",
@@ -401,10 +397,6 @@ class HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  _showToken() async {
-    debugPrint("WTWTWT :: ${await getIt<HiveProvider>().getAuthToken()}");
   }
 
   _checkLocationPermission() async {

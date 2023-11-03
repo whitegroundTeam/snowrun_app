@@ -34,3 +34,29 @@ Map<String, dynamic> _$$_UserLocationDtoToJson(_$_UserLocationDto instance) =>
       'lat': instance.lat,
       'lng': instance.lng,
     };
+
+_$_SnowBallProfileImageDto _$$_SnowBallProfileImageDtoFromJson(
+        Map<String, dynamic> json) =>
+    _$_SnowBallProfileImageDto(
+      key: json['key'] as String,
+      url: json['url'] as String,
+    );
+
+Map<String, dynamic> _$$_SnowBallProfileImageDtoToJson(
+        _$_SnowBallProfileImageDto instance) =>
+    <String, dynamic>{
+      'key': instance.key,
+      'url': instance.url,
+    };
+
+_$_UpdateProfileByTypeRequestDto _$$_UpdateProfileByTypeRequestDtoFromJson(
+        Map<String, dynamic> json) =>
+    _$_UpdateProfileByTypeRequestDto(
+      type: json['type'] as String,
+    );
+
+Map<String, dynamic> _$$_UpdateProfileByTypeRequestDtoToJson(
+        _$_UpdateProfileByTypeRequestDto instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+    };

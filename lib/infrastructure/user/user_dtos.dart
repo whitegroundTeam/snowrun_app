@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
+import 'package:snowrun_app/domain/user/model/snow_ball_profile_image.dart';
 import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/domain/user/model/user_location.dart';
 
@@ -65,4 +66,50 @@ class UserLocationDto with _$UserLocationDto {
 
   factory UserLocationDto.fromJson(Map<String, dynamic> json) =>
       _$UserLocationDtoFromJson(json);
+}
+
+@freezed
+class SnowBallProfileImageDto with _$SnowBallProfileImageDto {
+  const SnowBallProfileImageDto._();
+
+  const factory SnowBallProfileImageDto({
+    @JsonKey(name: 'key') required String key,
+    @JsonKey(name: 'url') required String url,
+  }) = _SnowBallProfileImageDto;
+
+  factory SnowBallProfileImageDto.fromDomain(
+      SnowBallProfileImage snowBallProfileImage) {
+    return SnowBallProfileImageDto(
+      key: snowBallProfileImage.key.getOrCrash(),
+      url: snowBallProfileImage.url.getOrCrash(),
+    );
+  }
+
+  SnowBallProfileImage toDomain() {
+    return SnowBallProfileImage(
+      key: StringVO(key),
+      url: StringVO(url),
+    );
+  }
+
+  factory SnowBallProfileImageDto.fromJson(Map<String, dynamic> json) =>
+      _$SnowBallProfileImageDtoFromJson(json);
+}
+
+@freezed
+class UpdateProfileByTypeRequestDto with _$UpdateProfileByTypeRequestDto {
+  const UpdateProfileByTypeRequestDto._();
+
+  const factory UpdateProfileByTypeRequestDto({
+    @JsonKey(name: 'type') required String type,
+  }) = _UpdateProfileByTypeRequestDto;
+
+  factory UpdateProfileByTypeRequestDto.fromDomain(String type) {
+    return UpdateProfileByTypeRequestDto(
+      type: type,
+    );
+  }
+
+  factory UpdateProfileByTypeRequestDto.fromJson(Map<String, dynamic> json) =>
+      _$UpdateProfileByTypeRequestDtoFromJson(json);
 }

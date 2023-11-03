@@ -15,6 +15,7 @@ import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
+import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
@@ -29,6 +30,7 @@ class SignInPage extends StatefulWidget {
 class SignInPageState extends State<SignInPage> {
   final hiveProvider = getIt<HiveProvider>();
   Color selectedColor = Colors.white;
+  bool isShowLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,7 @@ class SignInPageState extends State<SignInPage> {
       iconPath: 'assets/webp/apple_logo.webp',
       text: "애플로 로그인 하기",
       onTap: () {
+        _showLoading();
         context.read<AuthBloc>().add(const AuthEvent.signWithApplePressed());
       },
     );
@@ -62,6 +65,7 @@ class SignInPageState extends State<SignInPage> {
       iconPath: 'assets/webp/google_logo.webp',
       text: "구글로 로그인 하기",
       onTap: () {
+        _showLoading();
         context.read<AuthBloc>().add(const AuthEvent.signWithGooglePressed());
       },
     );
@@ -76,7 +80,9 @@ class SignInPageState extends State<SignInPage> {
         otherSignInMethodButtons = [googleSignInButton];
       }
     } else if (recentlySignInMethod == AuthMethod.apple) {
-      recentlySignInMethodButton = appleSignInButton;
+      if(isIos) {
+        recentlySignInMethodButton = appleSignInButton;
+      }
       otherSignInMethodButtons = [googleSignInButton, emailSignInButton];
     } else if (recentlySignInMethod == AuthMethod.google) {
       recentlySignInMethodButton = googleSignInButton;
@@ -105,32 +111,28 @@ class SignInPageState extends State<SignInPage> {
           bloc: context.read<AuthBloc>(),
           listener: (context, state) {
             state.authFailureOrSuccessOption.fold(
-                  () {},
-                  (either) => either.fold(
-                    (failure) {
+              () {
+              },
+              (either) => either.fold(
+                (failure) {
+                  _hideLoading();
                   showToast(
                     failure.map(
                       cancelledByUser: (e) => "취소하셨습니다.",
                       serverError: (e) => "알 수 없는 에러가 발생하였습니다.",
                       emailAlreadyInUse: (e) => "이미 사용중인 이메일입니다.",
                       invalidEmailAndPasswordCombination: (e) =>
-                      "아이디 혹은 패스워드가 잘못되었습니다.",
+                          "아이디 혹은 패스워드가 잘못되었습니다.",
                       isNotExistUser: (e) => "이미 존재하는 사용자입니다.",
                     ),
                   );
                 },
-                    (_) {
-                      context.go('/');
-                      context
-                          .read<AuthBloc>()
-                          .add(const AuthEvent.checkAuth());
+                (_) {
+                  context.go('/');
+                  context.read<AuthBloc>().add(const AuthEvent.checkAuth());
                 },
               ),
             );
-            // if (state.status == AuthStatus.authenticated ||
-            //     state.status == AuthStatus.unauthenticated) {
-            //   // context.pop();
-            // }
           },
         ),
       ],
@@ -214,6 +216,16 @@ class SignInPageState extends State<SignInPage> {
                 ),
               ],
             ),
+            Positioned(
+              top: 56,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Visibility(
+                visible: isShowLoading,
+                child: const CommonLoading(),
+              ),
+            ),
           ],
         ),
       ),
@@ -276,6 +288,26 @@ class SignInPageState extends State<SignInPage> {
         ),
       ),
     );
+  }
+
+  _showLoading(){
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if(!isShowLoading) {
+        setState(() {
+          isShowLoading = true;
+        });
+      }
+    });
+  }
+
+  _hideLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if(isShowLoading) {
+        setState(() {
+          isShowLoading = false;
+        });
+      }
+    });
   }
 
   _showOpenSettingDialog() async {

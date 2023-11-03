@@ -32,7 +32,6 @@ class SettingPageState extends State<SettingPage> {
             bloc: context.read<AuthBloc>(),
             builder: (context, state) {
               final isAuthenticated = state.user != null;
-              _showToken();
               return CustomScrollView(
                 physics: bouncingScrollPhysics,
                 slivers: [
@@ -120,9 +119,5 @@ class SettingPageState extends State<SettingPage> {
         ],
       ),
     );
-  }
-
-  _showToken() async {
-    debugPrint("WTWTWT :: ${await getIt<HiveProvider>().getAuthToken()}");
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 
@@ -39,7 +40,7 @@ class BackAppBarState extends State<BackAppBar>
         children: [
           CommonDetector(
             onTap: () {
-              // context.router.pop();
+              context.pop();
             },
             child: Container(
               padding: const EdgeInsets.only(

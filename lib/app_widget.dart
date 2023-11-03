@@ -87,7 +87,9 @@ class MainAppState extends State<MainApp> {
                   //     color: Colors.white.withOpacity(0.6),
                   //   ),
                   // ),
-                  SafeArea(top: false, child: child ?? const SizedBox()),
+                  child == null
+                      ? const SizedBox()
+                      : SafeArea(top: false, child: child),
                   Positioned(
                     bottom: 72,
                     right: 0,

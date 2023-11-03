@@ -8,6 +8,7 @@ import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
+import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 
@@ -21,19 +22,33 @@ class EmailSignUpPage extends StatefulWidget {
 class EmailSignUpPageState extends State<EmailSignUpPage> {
   final hiveProvider = getIt<HiveProvider>();
   Color selectedColor = Colors.white;
+  bool isShowLoading = false;
+  final signUpFormBloc = getIt<SignUpFormBloc>();
 
   @override
   Widget build(BuildContext context) {
     final previewProfileImageHeight = MediaQuery.of(context).size.height / 4;
-    return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt<SignUpFormBloc>(),
-        child: BlocConsumer<SignUpFormBloc, SignUpFormState>(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SignUpFormBloc>(
+          create: (context) => signUpFormBloc,
+          lazy: false,
+        ),
+        BlocListener<AuthBloc, AuthState>(
+          listener: (context, state) {
+            _hideLoading();
+            context.go('/');
+          },
+        ),
+      ],
+      child: Scaffold(
+        body: BlocConsumer<SignUpFormBloc, SignUpFormState>(
           listener: (context, state) {
             state.authFailureOrSuccessOption.fold(
               () {},
               (either) => either.fold(
                 (failure) {
+                  _hideLoading();
                   showToast(
                     failure.map(
                       cancelledByUser: (e) => "취소하셨습니다.",
@@ -46,11 +61,7 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                   );
                 },
                 (_) {
-
-                  context.go('/');
-                  context
-                      .read<AuthBloc>()
-                      .add(const AuthEvent.checkAuth());
+                  context.read<AuthBloc>().add(const AuthEvent.checkAuth());
                 },
               ),
             );
@@ -117,18 +128,22 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                 onChanged: (value) => context
                                     .read<SignUpFormBloc>()
                                     .add(SignUpFormEvent.emailChanged(value)),
-                                validator: (_) => context
-                                    .read<SignUpFormBloc>()
-                                    .state
-                                    .emailAddress
-                                    .value
-                                    .fold(
-                                      (f) => f.maybeMap(
-                                    invalidEmail: (_) => '유효한 이메일 주소가 아닙니다.',
-                                    orElse: () => null,
-                                  ),
-                                      (r) => null,
-                                ),
+                                validator: (_) {
+                                  _hideLoading();
+                                  return context
+                                      .read<SignUpFormBloc>()
+                                      .state
+                                      .emailAddress
+                                      .value
+                                      .fold(
+                                        (f) => f.maybeMap(
+                                      invalidEmail: (_) =>
+                                      '유효한 이메일 주소가 아닙니다.',
+                                      orElse: () => null,
+                                    ),
+                                        (r) => null,
+                                  );
+                                },
                               ),
                               const SizedBox(height: 8),
                               TextFormField(
@@ -163,19 +178,24 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                 autocorrect: false,
                                 onChanged: (value) => context
                                     .read<SignUpFormBloc>()
-                                    .add(SignUpFormEvent.passwordChanged(value)),
-                                validator: (_) => context
-                                    .read<SignUpFormBloc>()
-                                    .state
-                                    .password
-                                    .value
-                                    .fold(
-                                      (f) => f.maybeMap(
-                                    shortPassword: (_) => '비밀번호는 6자 이상 작성해주세요.',
-                                    orElse: () => null,
-                                  ),
-                                      (r) => null,
-                                ),
+                                    .add(
+                                        SignUpFormEvent.passwordChanged(value)),
+                                validator: (_) {
+                                  _hideLoading();
+                                  return context
+                                      .read<SignUpFormBloc>()
+                                      .state
+                                      .password
+                                      .value
+                                      .fold(
+                                        (f) => f.maybeMap(
+                                      shortPassword: (_) =>
+                                      '비밀번호는 6자 이상 작성해주세요.',
+                                      orElse: () => null,
+                                    ),
+                                        (r) => null,
+                                  );
+                                },
                               ),
                               const SizedBox(height: 8),
                               TextFormField(
@@ -210,16 +230,20 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                 autocorrect: false,
                                 onChanged: (value) => context
                                     .read<SignUpFormBloc>()
-                                    .add(SignUpFormEvent.confirmPasswordChanged(value)),
-
+                                    .add(SignUpFormEvent.confirmPasswordChanged(
+                                        value)),
                                 validator: (_) {
+                                  _hideLoading();
                                   final confirmPassword = context
                                       .read<SignUpFormBloc>()
                                       .state
                                       .confirmPassword;
-                                  final password =
-                                      context.read<SignUpFormBloc>().state.password;
-                                  if (confirmPassword.isValid() && password.isValid()) {
+                                  final password = context
+                                      .read<SignUpFormBloc>()
+                                      .state
+                                      .password;
+                                  if (confirmPassword.isValid() &&
+                                      password.isValid()) {
                                     if (confirmPassword.getOrCrash() !=
                                         password.getOrCrash()) {
                                       return "비밀번호가 일치하지 않습니다.";
@@ -237,10 +261,11 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                 onTap: () {
                                   FocusScope.of(context).unfocus();
                                   if (!state.isSubmitting) {
+                                    _showLoading();
                                     context.read<SignUpFormBloc>().add(
-                                      const SignUpFormEvent
-                                          .registerWithEmailAndPasswordPressed(),
-                                    );
+                                          const SignUpFormEvent
+                                              .registerWithEmailAndPasswordPressed(),
+                                        );
                                   }
                                 },
                                 text: "스노우런 시작하기!",
@@ -252,11 +277,41 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                     ),
                   ],
                 ),
+                Positioned(
+                  top: 56,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Visibility(
+                    visible: isShowLoading,
+                    child: const CommonLoading(),
+                  ),
+                ),
               ],
             );
           },
         ),
       ),
     );
+  }
+
+  _showLoading(){
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if(!isShowLoading) {
+        setState(() {
+          isShowLoading = true;
+        });
+      }
+    });
+  }
+
+  _hideLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if(isShowLoading) {
+        setState(() {
+          isShowLoading = false;
+        });
+      }
+    });
   }
 }

@@ -17,20 +17,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   final IUserRepository _repository;
 
   UserBloc(this._repository) : super(UserState.initial()) {
-    on<UserEvent>((event, emit) async {
-      emit(state.copyWith(status: UserStatus.progressGetUsers));
-      final failureOrResponse = await _repository.getUsers();
-      emit(
-        failureOrResponse.fold(
-          (f) => state.copyWith(status: UserStatus.failureGetUsers),
-          (users) => state.copyWith(
-            status: UserStatus.successGetUsers,
-            users: users,
-          ),
-        ),
-      );
-    });
-
     on<_UpdateCurrentLocation>((event, emit) async {
       emit(state.copyWith(status: UserStatus.progressUpdateCurrentLocation));
       final failureOrResponse = await _repository.updateCurrentLocation(

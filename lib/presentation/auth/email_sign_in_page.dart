@@ -12,6 +12,7 @@ import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
+import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 
@@ -25,19 +26,33 @@ class EmailSignInPage extends StatefulWidget {
 class EmailSignInPageState extends State<EmailSignInPage> {
   final hiveProvider = getIt<HiveProvider>();
   Color selectedColor = Colors.white;
+  bool isShowLoading = false;
+  final signInFormBloc = getIt<SignInFormBloc>();
 
   @override
   Widget build(BuildContext context) {
     final previewProfileImageHeight = MediaQuery.of(context).size.height / 4;
-    return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt<SignInFormBloc>(),
-        child: BlocConsumer<SignInFormBloc, SignInFormState>(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SignInFormBloc>(
+          create: (context) => signInFormBloc,
+          lazy: false,
+        ),
+        BlocListener<AuthBloc, AuthState>(
+          listener: (context, state) {
+            _hideLoading();
+            context.go('/');
+          },
+        ),
+      ],
+      child: Scaffold(
+        body: BlocConsumer<SignInFormBloc, SignInFormState>(
           listener: (context, state) {
             state.authFailureOrSuccessOption.fold(
               () {},
               (either) => either.fold(
                 (failure) {
+                  _hideLoading();
                   showToast(
                     failure.map(
                       cancelledByUser: (e) => "취소하셨습니다.",
@@ -50,10 +65,7 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                   );
                 },
                 (_) {
-                  context.go('/');
-                  context
-                      .read<AuthBloc>()
-                      .add(const AuthEvent.checkAuth());
+                  context.read<AuthBloc>().add(const AuthEvent.checkAuth());
                 },
               ),
             );
@@ -123,18 +135,22 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                                 onChanged: (value) => context
                                     .read<SignInFormBloc>()
                                     .add(SignInFormEvent.emailChanged(value)),
-                                validator: (_) => context
-                                    .read<SignInFormBloc>()
-                                    .state
-                                    .emailAddress
-                                    .value
-                                    .fold(
-                                      (f) => f.maybeMap(
-                                        invalidEmail: (_) => '유효한 이메일 주소가 아닙니다.',
-                                        orElse: () => null,
-                                      ),
-                                      (r) => null,
+                                validator: (_) {
+                                  _hideLoading();
+                                  return context
+                                      .read<SignInFormBloc>()
+                                      .state
+                                      .emailAddress
+                                      .value
+                                      .fold(
+                                        (f) => f.maybeMap(
+                                      invalidEmail: (_) =>
+                                      '유효한 이메일 주소가 아닙니다.',
+                                      orElse: () => null,
                                     ),
+                                        (r) => null,
+                                  );
+                                },
                               ),
                               const SizedBox(height: 8),
                               TextFormField(
@@ -169,20 +185,24 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                                 autocorrect: false,
                                 onChanged: (value) => context
                                     .read<SignInFormBloc>()
-                                    .add(SignInFormEvent.passwordChanged(value)),
-                                validator: (_) => context
-                                    .read<SignInFormBloc>()
-                                    .state
-                                    .password
-                                    .value
-                                    .fold(
-                                      (f) => f.maybeMap(
-                                        shortPassword: (_) =>
-                                            '비밀번호는 6자 이상 작성해주세요.',
-                                        orElse: () => null,
-                                      ),
-                                      (r) => null,
-                                    ),
+                                    .add(SignInFormEvent.passwordChanged(
+                                        value)),
+                                validator: (_) {
+                                  _hideLoading();
+                                  return context
+                                      .read<SignInFormBloc>()
+                                      .state
+                                      .password
+                                      .value
+                                      .fold(
+                                        (f) => f.maybeMap(
+                                          shortPassword: (_) =>
+                                              '비밀번호는 6자 이상 작성해주세요.',
+                                          orElse: () => null,
+                                        ),
+                                        (r) => null,
+                                      );
+                                },
                               ),
                               const SizedBox(
                                 height: 56,
@@ -193,10 +213,11 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                                 onTap: () {
                                   FocusScope.of(context).unfocus();
                                   if (!state.isSubmitting) {
+                                    _showLoading();
                                     context.read<SignInFormBloc>().add(
-                                      const SignInFormEvent
-                                          .signInWithEmailAndPasswordPressed(),
-                                    );
+                                          const SignInFormEvent
+                                              .signInWithEmailAndPasswordPressed(),
+                                        );
                                   }
                                 },
                                 text: "로그인 하기",
@@ -207,6 +228,16 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                       ),
                     ),
                   ],
+                ),
+                Positioned(
+                  top: 56,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Visibility(
+                    visible: isShowLoading,
+                    child: const CommonLoading(),
+                  ),
                 ),
               ],
             );
@@ -275,6 +306,26 @@ class EmailSignInPageState extends State<EmailSignInPage> {
         ),
       ),
     );
+  }
+
+  _showLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!isShowLoading) {
+        setState(() {
+          isShowLoading = true;
+        });
+      }
+    });
+  }
+
+  _hideLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (isShowLoading) {
+        setState(() {
+          isShowLoading = false;
+        });
+      }
+    });
   }
 
   _showOpenSettingDialog() async {

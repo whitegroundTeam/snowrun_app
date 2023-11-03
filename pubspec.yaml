@@ -54,7 +54,7 @@ dependencies:
   device_info_plus: ^9.1.0
 
   intl: ^0.18.1
-  app_settings: ^5.0.0
+  app_settings: ^5.1.1
   flutter_blurhash: ^0.7.0
 
   smooth_page_indicator: ^1.1.0
@@ -92,6 +92,8 @@ flutter:
 
   assets:
     - assets/lottie/
+    - assets/images/onboarding/
+    - assets/images/permission/
     - assets/png/
     - assets/webp/
     - assets/webp/2x/

@@ -59,12 +59,6 @@ class CoreApi {
       if (response.statusCode == 200) {
         return response;
       }
-
-      final infoJson =
-          json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-      // ignore: unused_local_variable
-      final errorResponse = AppErrorDto.fromJson(infoJson).toDomain();
-
       return response;
     });
   }
@@ -133,11 +127,13 @@ class CoreApi {
   Uri _getUri(String path, Map<String, dynamic>? queryParams) =>
       Uri.https(_baseUrl, path, queryParams);
 
+  /// Auth
   Future<Response> me() => _requestWrapper(
         method: HttpMethod.get,
         path: "/auth/users/me",
       );
 
+  /// Account
   Future<Response> signWithIdToken(IdTokenRequestDto idTokenRequestDto) =>
       _requestWrapper(
         method: HttpMethod.post,
@@ -145,23 +141,37 @@ class CoreApi {
         bodyParam: idTokenRequestDto.toJson(),
       );
 
-  Future<Response> createBoundaries(CreateBoundaryDto createBoundaryDto) =>
-      _requestWrapper(
+  Future<Response> updatePushToken(String token) async => _requestWrapper(
         method: HttpMethod.post,
-        path: "/boundaries/",
-        bodyParam: createBoundaryDto.toJson(),
+        path: "/account/pushtoken/",
+        bodyParam: {"token": token},
       );
 
   Future<Response> updateUserCurrentLocation(UserLocationDto userLocationDto) =>
       _requestWrapper(
         method: HttpMethod.post,
-        path: "/users/update_location/",
+        path: "/account/update_location/",
         bodyParam: userLocationDto.toJson(),
       );
 
-  Future<Response> updatePushToken(String token) async => _requestWrapper(
+  Future<Response> updateProfileImage(
+          UpdateProfileByTypeRequestDto updateProfileByTypeRequestDto) =>
+      _requestWrapper(
         method: HttpMethod.post,
-        path: "/account/pushtoken/",
-        bodyParam: {"token": token},
+        path: "/account/profile-image-by-type/",
+        bodyParam: updateProfileByTypeRequestDto.toJson(),
+      );
+
+  Future<Response> getSnowBallProfileImages() => _requestWrapper(
+        method: HttpMethod.get,
+        path: "/account/default-profile-images/",
+      );
+
+  /// Boundaries
+  Future<Response> createBoundaries(CreateBoundaryDto createBoundaryDto) =>
+      _requestWrapper(
+        method: HttpMethod.post,
+        path: "/boundaries/",
+        bodyParam: createBoundaryDto.toJson(),
       );
 }

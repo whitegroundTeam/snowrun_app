@@ -8,6 +8,14 @@ enum UserStatus {
   progressUpdateCurrentLocation,
   successUpdateCurrentLocation,
   failureUpdateCurrentLocation,
+
+  progressGetSnowBallProfileImages,
+  successGetSnowBallProfileImages,
+  failureGetSnowBallProfileImages,
+
+  progressUpdateProfileImage,
+  successUpdateProfileImage,
+  failureUpdateProfileImage,
 }
 
 @freezed

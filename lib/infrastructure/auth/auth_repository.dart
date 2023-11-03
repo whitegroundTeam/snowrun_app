@@ -302,7 +302,6 @@ class AuthRepository implements IAuthRepository {
       {required String authToken, required AuthMethod authMethod}) async {
     await hiveProvider.setAuthToken(authToken);
     await hiveProvider.setRecentlySignInMethod(authMethod.description);
-    // me();
   }
 
   @override
