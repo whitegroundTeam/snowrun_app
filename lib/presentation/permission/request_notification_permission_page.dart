@@ -14,6 +14,7 @@ class RequestNotificationPermissionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imageHeight = MediaQuery.of(context).size.height / 3;
     final textTheme = Theme.of(context).textTheme;
     return BlocProvider(
       create: (context) => getIt<PermissionActorBloc>(),
@@ -44,22 +45,25 @@ class RequestNotificationPermissionPage extends StatelessWidget {
                       bottom: Constants.kSpacing * 2,
                     ),
                     child: Text(
-                      "가지고 있는 내 아이템\n대신 등록하고 알림을 보내드려요",
+                      "알림을 받고 함께 타보세요!",
                       textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
                       style: textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Colors.black,
+                        color: AppStyle.white,
+                        height: 1.4,
                       ),
                     ),
                   ),
                   Expanded(
-                    child: Padding(
+                    child: Container(
+                      alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(
                         horizontal: Constants.kSpacing,
                       ),
                       child: Image.asset(
-                        "assets/png/app_icon_256.png",
+                        "assets/images/permission/permission_push.webp",
+                        width: imageHeight,
+                        height: imageHeight,
                       ),
                     ),
                   ),
@@ -73,8 +77,7 @@ class RequestNotificationPermissionPage extends StatelessWidget {
                         Expanded(
                           child: CommonButton(
                             text: "나중에",
-                            onTap: () =>
-                                goToLocationPermissionPage(context),
+                            onTap: () => goToLocationPermissionPage(context),
                           ),
                         ),
                         const SizedBox(width: Constants.kSpacing),

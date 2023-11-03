@@ -17,6 +17,7 @@ class RequestLocationPermissionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imageHeight = MediaQuery.of(context).size.height / 3;
     final textTheme = Theme.of(context).textTheme;
     return BlocProvider(
       create: (context) => getIt<PermissionActorBloc>(),
@@ -46,11 +47,12 @@ class RequestLocationPermissionPage extends StatelessWidget {
                       top: Constants.kSpacing * 3,
                     ),
                     child: Text(
-                      "오늘의 날씨 정보를\n자동으로 기록하고 싶나요?",
+                      "라이딩의 재미를 더 느껴보실래요?",
                       textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.w500,
+                        color: AppStyle.white,
                       ),
                     ),
                   ),
@@ -61,10 +63,12 @@ class RequestLocationPermissionPage extends StatelessWidget {
                       top: Constants.kSpacing,
                     ),
                     child: Text(
-                      "'허용'을 누르면 스타일 인증샷에 날씨 정보가 자동 기록돼요",
+                      "'허용'을 누르면 라이딩 상황을 알 수 있고 공유할 수 있어요!",
                       textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis,
-                      style: textTheme.bodyMedium,
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: AppStyle.white,
+                      ),
                     ),
                   ),
                   Expanded(
@@ -75,8 +79,9 @@ class RequestLocationPermissionPage extends StatelessWidget {
                         vertical: Constants.kSpacing * 3,
                       ),
                       child: Image.asset(
-                        "assets/png/splash_app_icon.png",
-                        fit: BoxFit.cover,
+                        "assets/images/permission/permission_location.webp",
+                        width: imageHeight,
+                        height: imageHeight,
                       ),
                     ),
                   ),
