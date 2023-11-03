@@ -48,9 +48,8 @@ class RequestAttPermissionPage extends StatelessWidget {
                       top: Constants.kSpacing * 3,
                     ),
                     child: Text(
-                      "함께 스키/스노우보드를 타요!",
+                      "겨울을 즐기는데 도움이 되고 싶어요!",
                       textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
                       style: textTheme.bodyMedium?.copyWith(
                           fontSize: 24,
                           fontWeight: FontWeight.w500,
@@ -64,9 +63,8 @@ class RequestAttPermissionPage extends StatelessWidget {
                       top: Constants.kSpacing,
                     ),
                     child: Text(
-                      "'허용'을 누르면 언제든 ㅁㄴㅇㄹㅁㄴㅇㄹ",
+                      "'허용'을 눌러주세요🥰",
                       textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
                       style: textTheme.bodyMedium
                           ?.copyWith(fontSize: 12, color: AppStyle.white),
                     ),

@@ -49,7 +49,6 @@ class RequestLocationPermissionPage extends StatelessWidget {
                     child: Text(
                       "라이딩의 재미를 더 느껴보실래요?",
                       textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
                       style: textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.w500,
                         color: AppStyle.white,
@@ -65,7 +64,6 @@ class RequestLocationPermissionPage extends StatelessWidget {
                     child: Text(
                       "'허용'을 누르면 라이딩 상황을 알 수 있고 공유할 수 있어요!",
                       textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
                       style: textTheme.bodyMedium?.copyWith(
                         color: AppStyle.white,
                       ),
