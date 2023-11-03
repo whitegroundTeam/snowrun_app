@@ -129,7 +129,6 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                     .read<SignUpFormBloc>()
                                     .add(SignUpFormEvent.emailChanged(value)),
                                 validator: (_) {
-                                  _hideLoading();
                                   return context
                                       .read<SignUpFormBloc>()
                                       .state
@@ -137,8 +136,10 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                       .value
                                       .fold(
                                         (f) => f.maybeMap(
-                                      invalidEmail: (_) =>
-                                      '유효한 이메일 주소가 아닙니다.',
+                                      invalidEmail: (_) {
+                                        _hideLoading();
+                                        return '유효한 이메일 주소가 아닙니다.';
+                                      },
                                       orElse: () => null,
                                     ),
                                         (r) => null,
@@ -181,7 +182,6 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                     .add(
                                         SignUpFormEvent.passwordChanged(value)),
                                 validator: (_) {
-                                  _hideLoading();
                                   return context
                                       .read<SignUpFormBloc>()
                                       .state
@@ -189,8 +189,10 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                       .value
                                       .fold(
                                         (f) => f.maybeMap(
-                                      shortPassword: (_) =>
-                                      '비밀번호는 6자 이상 작성해주세요.',
+                                      shortPassword: (_) {
+                                        _hideLoading();
+                                        return '비밀번호는 6자 이상 작성해주세요.';
+                                      },
                                       orElse: () => null,
                                     ),
                                         (r) => null,
@@ -233,7 +235,6 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                     .add(SignUpFormEvent.confirmPasswordChanged(
                                         value)),
                                 validator: (_) {
-                                  _hideLoading();
                                   final confirmPassword = context
                                       .read<SignUpFormBloc>()
                                       .state
@@ -246,6 +247,7 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                       password.isValid()) {
                                     if (confirmPassword.getOrCrash() !=
                                         password.getOrCrash()) {
+                                      _hideLoading();
                                       return "비밀번호가 일치하지 않습니다.";
                                     }
                                   }

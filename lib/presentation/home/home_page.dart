@@ -114,6 +114,7 @@ class HomePageState extends State<HomePage> {
           bloc: context.read<AuthBloc>(),
           builder: (context, authState) {
             final isAuthenticated = authState.user != null;
+            debugPrint("WTWTWTT :: ${authState.status}  //  ${authState.user}");
             return BlocBuilder<CheckPermissionBloc, CheckPermissionState>(
               bloc: context.read<CheckPermissionBloc>()
                 ..add(const CheckPermissionEvent.checkInitialPermissions()),

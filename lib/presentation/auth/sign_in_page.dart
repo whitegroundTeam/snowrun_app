@@ -7,6 +7,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:snowrun_app/domain/auth/auth_method.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
@@ -31,6 +32,7 @@ class SignInPageState extends State<SignInPage> {
   final hiveProvider = getIt<HiveProvider>();
   Color selectedColor = Colors.white;
   bool isShowLoading = false;
+  final signInFormBloc = getIt<SignInFormBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,7 @@ class SignInPageState extends State<SignInPage> {
       text: "애플로 로그인 하기",
       onTap: () {
         _showLoading();
-        context.read<AuthBloc>().add(const AuthEvent.signWithApplePressed());
+        signInFormBloc.add(const SignInFormEvent.signWithApplePressed());
       },
     );
 
@@ -66,7 +68,7 @@ class SignInPageState extends State<SignInPage> {
       text: "구글로 로그인 하기",
       onTap: () {
         _showLoading();
-        context.read<AuthBloc>().add(const AuthEvent.signWithGooglePressed());
+        signInFormBloc.add(const SignInFormEvent.signWithGooglePressed());
       },
     );
 
@@ -80,7 +82,7 @@ class SignInPageState extends State<SignInPage> {
         otherSignInMethodButtons = [googleSignInButton];
       }
     } else if (recentlySignInMethod == AuthMethod.apple) {
-      if(isIos) {
+      if (isIos) {
         recentlySignInMethodButton = appleSignInButton;
       }
       otherSignInMethodButtons = [googleSignInButton, emailSignInButton];
@@ -107,12 +109,22 @@ class SignInPageState extends State<SignInPage> {
 
     return MultiBlocProvider(
       providers: [
+        BlocProvider<SignInFormBloc>(
+          create: (context) => signInFormBloc,
+          lazy: false,
+        ),
         BlocListener<AuthBloc, AuthState>(
-          bloc: context.read<AuthBloc>(),
+          listener: (context, state) {
+            _hideLoading();
+            context.go('/');
+          },
+        ),
+      ],
+      child: Scaffold(
+        body: BlocConsumer<SignInFormBloc, SignInFormState>(
           listener: (context, state) {
             state.authFailureOrSuccessOption.fold(
-              () {
-              },
+              () {},
               (either) => either.fold(
                 (failure) {
                   _hideLoading();
@@ -128,105 +140,104 @@ class SignInPageState extends State<SignInPage> {
                   );
                 },
                 (_) {
-                  context.go('/');
                   context.read<AuthBloc>().add(const AuthEvent.checkAuth());
                 },
               ),
             );
           },
-        ),
-      ],
-      child: Scaffold(
-        body: Stack(
-          children: [
-            CustomScrollView(
-              physics: bouncingScrollPhysics,
-              slivers: [
-                const CommonAppBar(
-                  isSliver: true,
-                  appBarType: AppBarType.back,
-                ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
+          builder: (context, state) {
+            return Stack(
+              children: [
+                CustomScrollView(
+                  physics: bouncingScrollPhysics,
+                  slivers: [
+                    const CommonAppBar(
+                      isSliver: true,
+                      appBarType: AppBarType.back,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
-                          child: Image.asset(
-                            'assets/webp/snow_ball_white.webp',
-                            height: previewProfileImageHeight,
-                            width: previewProfileImageHeight,
-                          ),
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 24,
                         ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        if (recentlySignInMethodButton != null) ...[
-                          const TitleText(
-                            title: "가장 최근에 사용한",
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          recentlySignInMethodButton,
-                        ],
-                        ...otherSignInMethodButtons
-                            .map(
-                              (e) => Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 12,
-                                  ),
-                                  e,
-                                ],
-                              ),
-                            )
-                            .toList(),
-                        const SizedBox(
-                          height: 36,
-                        ),
-                        Center(
-                          child: CommonDetector(
-                            onTap: () {
-                              context.push("/signUp");
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 24,
-                                vertical: 12,
-                              ),
-                              child: UnderlineText(
-                                TitleText(
-                                  title: "이메일로 가입하기",
-                                  fontSize: 14,
-                                  color: AppStyle.white,
-                                ),
-                                AppStyle.white,
-                                width: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Image.asset(
+                                'assets/webp/snow_ball_white.webp',
+                                height: previewProfileImageHeight,
+                                width: previewProfileImageHeight,
                               ),
                             ),
-                          ),
-                        )
-                      ],
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            if (recentlySignInMethodButton != null) ...[
+                              const TitleText(
+                                title: "가장 최근에 사용한",
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              recentlySignInMethodButton,
+                            ],
+                            ...otherSignInMethodButtons
+                                .map(
+                                  (e) => Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 12,
+                                      ),
+                                      e,
+                                    ],
+                                  ),
+                                )
+                                .toList(),
+                            const SizedBox(
+                              height: 36,
+                            ),
+                            Center(
+                              child: CommonDetector(
+                                onTap: () {
+                                  context.push("/signUp");
+                                },
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 24,
+                                    vertical: 12,
+                                  ),
+                                  child: UnderlineText(
+                                    TitleText(
+                                      title: "이메일로 가입하기",
+                                      fontSize: 14,
+                                      color: AppStyle.white,
+                                    ),
+                                    AppStyle.white,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
+                  ],
+                ),
+                Positioned(
+                  top: 56,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Visibility(
+                    visible: isShowLoading,
+                    child: const CommonLoading(),
                   ),
                 ),
               ],
-            ),
-            Positioned(
-              top: 56,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: Visibility(
-                visible: isShowLoading,
-                child: const CommonLoading(),
-              ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
@@ -290,9 +301,9 @@ class SignInPageState extends State<SignInPage> {
     );
   }
 
-  _showLoading(){
+  _showLoading() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if(!isShowLoading) {
+      if (!isShowLoading) {
         setState(() {
           isShowLoading = true;
         });
@@ -302,7 +313,7 @@ class SignInPageState extends State<SignInPage> {
 
   _hideLoading() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if(isShowLoading) {
+      if (isShowLoading) {
         setState(() {
           isShowLoading = false;
         });

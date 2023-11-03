@@ -49,7 +49,8 @@ class EmailSignInPageState extends State<EmailSignInPage> {
         body: BlocConsumer<SignInFormBloc, SignInFormState>(
           listener: (context, state) {
             state.authFailureOrSuccessOption.fold(
-              () {},
+              () {
+              },
               (either) => either.fold(
                 (failure) {
                   _hideLoading();
@@ -136,7 +137,6 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                                     .read<SignInFormBloc>()
                                     .add(SignInFormEvent.emailChanged(value)),
                                 validator: (_) {
-                                  _hideLoading();
                                   return context
                                       .read<SignInFormBloc>()
                                       .state
@@ -144,12 +144,14 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                                       .value
                                       .fold(
                                         (f) => f.maybeMap(
-                                      invalidEmail: (_) =>
-                                      '유효한 이메일 주소가 아닙니다.',
-                                      orElse: () => null,
-                                    ),
+                                          invalidEmail: (_) {
+                                            _hideLoading();
+                                            return '유효한 이메일 주소가 아닙니다.';
+                                          },
+                                          orElse: () => null,
+                                        ),
                                         (r) => null,
-                                  );
+                                      );
                                 },
                               ),
                               const SizedBox(height: 8),
@@ -185,10 +187,9 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                                 autocorrect: false,
                                 onChanged: (value) => context
                                     .read<SignInFormBloc>()
-                                    .add(SignInFormEvent.passwordChanged(
-                                        value)),
+                                    .add(
+                                        SignInFormEvent.passwordChanged(value)),
                                 validator: (_) {
-                                  _hideLoading();
                                   return context
                                       .read<SignInFormBloc>()
                                       .state
@@ -196,8 +197,10 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                                       .value
                                       .fold(
                                         (f) => f.maybeMap(
-                                          shortPassword: (_) =>
-                                              '비밀번호는 6자 이상 작성해주세요.',
+                                          shortPassword: (_) {
+                                            _hideLoading();
+                                            return '비밀번호는 6자 이상 작성해주세요.';
+                                          },
                                           orElse: () => null,
                                         ),
                                         (r) => null,

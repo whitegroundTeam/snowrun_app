@@ -291,6 +291,9 @@ class EditProfileImagePageState extends State<EditProfileImagePage> {
             ),
             Positioned(
               top: 56,
+              left: 0,
+              right: 0,
+              bottom: 0,
               child: Visibility(
                 visible: isShowLoading,
                 child: const CommonLoading(),
