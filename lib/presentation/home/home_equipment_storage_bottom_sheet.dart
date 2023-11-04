@@ -126,8 +126,8 @@ class HomeEquipmentStorageBottomSheetState
                     ],
                   ),
                   borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
                   ),
                   boxShadow: [
                     BoxShadow(
@@ -152,16 +152,13 @@ class HomeEquipmentStorageBottomSheetState
                       color: AppStyle.white,
                       fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(
-                      width: 2,
-                    ),
                     Image.asset(
                       'assets/webp/arrow_right.webp',
                       height: 24,
                       width: 24,
                     ),
                     const SizedBox(
-                      width: 8,
+                      width: 16,
                     ),
                   ],
                 ),
