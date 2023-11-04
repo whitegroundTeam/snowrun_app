@@ -4,6 +4,7 @@ import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
+import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
@@ -47,9 +48,6 @@ class SettingPageState extends State<SettingPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(
-                            height: 36,
-                          ),
                           Hero(
                             tag: "settingTag",
                             child: Center(
@@ -66,7 +64,7 @@ class SettingPageState extends State<SettingPage> {
                           //   iconColor: AppStyle.black,
                           //   buttonColor: AppStyle.white,
                           //   iconPath: 'assets/webp/apple_logo.webp',
-                          //   text: "애플로 로그인 하기",
+                          //   text: "앱 버전 v0.0.1",
                           //   onTap: () {},
                           // ),
                           // const SizedBox(height: 48,),

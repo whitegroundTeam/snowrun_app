@@ -69,11 +69,7 @@ class CommonAppBarState extends State<CommonAppBar> {
   @override
   Widget build(BuildContext context) {
     if (appBarType == AppBarType.home) {
-      if (isSliver) {
-        return const HomeAppBar();
-      } else {
-        // 교촌에 정책 없음
-      }
+      return const HomeAppBar();
     } else if (appBarType == AppBarType.close) {
       if (isSliver) {
         return SliverCloseAppBar(

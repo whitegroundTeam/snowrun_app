@@ -5,8 +5,9 @@ class TitleText extends StatefulWidget {
   final String title;
   final double? fontSize;
   final Color? color;
+  final FontWeight? fontWeight;
 
-  const TitleText({super.key, required this.title, this.fontSize, this.color});
+  const TitleText({super.key, required this.title, this.fontSize, this.color, this.fontWeight});
 
   @override
   State createState() => TitleTextState();
@@ -19,7 +20,7 @@ class TitleTextState extends State<TitleText> {
       widget.title,
       style: TextStyle(
         fontSize: widget.fontSize ?? 16.0,
-        fontWeight: FontWeight.w500,
+        fontWeight: widget.fontWeight ?? FontWeight.w500,
         height: 1.2,
         color: widget.color ?? AppStyle.white,
       ),
