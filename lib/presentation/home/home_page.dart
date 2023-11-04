@@ -20,6 +20,7 @@ import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
+import 'package:snowrun_app/presentation/home/home_equipment_storage_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
 import 'package:snowrun_app/presentation/home/home_start_riding_widget.dart';
 
@@ -38,6 +39,9 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showEquipmentStorageBottomSheet(context);
+    });
   }
 
   void handleRemoteConfig() {
