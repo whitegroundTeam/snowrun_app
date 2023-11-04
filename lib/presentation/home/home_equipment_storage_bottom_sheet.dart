@@ -140,7 +140,7 @@ class HomeEquipmentStorageBottomSheetState
                 margin: const EdgeInsets.only(
                   right: 24,
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 width: MediaQuery.sizeOf(context).width,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
