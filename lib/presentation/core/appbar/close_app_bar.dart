@@ -7,12 +7,14 @@ class CloseAppBar extends StatefulWidget {
   final String? title;
   final bool? isShowShadow;
   final Color backgroundColor;
+  final Function? onClickCloseButton;
 
   const CloseAppBar({
     super.key,
     this.title,
     this.isShowShadow,
     this.backgroundColor = AppStyle.background,
+    this.onClickCloseButton,
   });
 
   @override
@@ -30,6 +32,7 @@ class CloseAppBarState extends State<CloseAppBar> {
       backgroundColor: widget.backgroundColor,
       leading: CommonDetector(
         onTap: () {
+          widget.onClickCloseButton?.call();
           context.pop();
         },
         child: SizedBox(
@@ -37,7 +40,7 @@ class CloseAppBarState extends State<CloseAppBar> {
           height: 32,
           child: Center(
             child: Image.asset(
-              'assets/webp/arrow_left.webp',
+              'assets/webp/close.webp',
               width: 24,
               height: 24,
               color: AppStyle.white,
@@ -48,12 +51,15 @@ class CloseAppBarState extends State<CloseAppBar> {
       // automaticallyImplyLeading: false,
       title: Align(
         alignment: Alignment.center,
-        child: Text(
-          widget.title ?? "",
-          style: const TextStyle(
-            color: AppStyle.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 32,),
+          child: Text(
+            widget.title ?? "",
+            style: const TextStyle(
+              color: AppStyle.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ),

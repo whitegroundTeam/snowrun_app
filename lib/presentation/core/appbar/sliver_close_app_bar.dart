@@ -7,12 +7,14 @@ class SliverCloseAppBar extends StatefulWidget {
   final String? title;
   final bool? isShowShadow;
   final Color backgroundColor;
+  final Function? onClickCloseButton;
 
   const SliverCloseAppBar({
     super.key,
     this.title,
     this.isShowShadow,
     this.backgroundColor = AppStyle.background,
+    this.onClickCloseButton,
   });
 
   @override
@@ -32,6 +34,7 @@ class SliverCloseAppBarState extends State<SliverCloseAppBar> {
       titleSpacing: 0,
       leading: CommonDetector(
         onTap: () {
+          widget.onClickCloseButton?.call();
           context.pop();
         },
         child: SizedBox(
@@ -48,12 +51,15 @@ class SliverCloseAppBarState extends State<SliverCloseAppBar> {
       ),
       title: Align(
         alignment: Alignment.center,
-        child: Text(
-          widget.title ?? "",
-          style: const TextStyle(
-            color: AppStyle.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 32,),
+          child: Text(
+            widget.title ?? "",
+            style: const TextStyle(
+              color: AppStyle.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ),

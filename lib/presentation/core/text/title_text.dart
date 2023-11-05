@@ -19,6 +19,7 @@ class TitleTextState extends State<TitleText> {
     return Text(
       widget.title,
       style: TextStyle(
+        fontFamily: "Pretendard",
         fontSize: widget.fontSize ?? 16.0,
         fontWeight: widget.fontWeight ?? FontWeight.w500,
         height: 1.2,

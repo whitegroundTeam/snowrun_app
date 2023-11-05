@@ -172,7 +172,7 @@ class HomeEquipmentStorageBottomSheetState
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 24,
               ),
             ],
           ),

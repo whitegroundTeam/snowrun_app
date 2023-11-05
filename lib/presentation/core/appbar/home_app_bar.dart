@@ -19,7 +19,6 @@ class HomeAppBarState extends State<HomeAppBar> {
         ),
         alignment: Alignment.topRight,
         child: CommonDetector(
-          delay: 300,
           onTap: () {
             context.push('/setting');
           },

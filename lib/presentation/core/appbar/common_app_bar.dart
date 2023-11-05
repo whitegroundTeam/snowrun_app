@@ -25,8 +25,8 @@ enum AppBarType {
       return defaultValue;
     }
     return AppBarType.values.firstWhere(
-            (element) =>
-        element.name.toUpperCase() == element.description.toUpperCase(),
+        (element) =>
+            element.name.toUpperCase() == element.description.toUpperCase(),
         orElse: () => defaultValue);
   }
 }
@@ -38,6 +38,7 @@ class CommonAppBar extends StatefulWidget {
   final bool? isShowShadow;
   final String? actionButtonText;
   final Function? onClickActionButton;
+  final Function? onClickCloseButton;
   final Color backgroundColor;
 
   const CommonAppBar({
@@ -48,6 +49,7 @@ class CommonAppBar extends StatefulWidget {
     this.isSliver,
     this.actionButtonText,
     this.onClickActionButton,
+    this.onClickCloseButton,
     this.backgroundColor = AppStyle.background,
   });
 
@@ -76,12 +78,14 @@ class CommonAppBarState extends State<CommonAppBar> {
           title: widget.title,
           isShowShadow: widget.isShowShadow,
           backgroundColor: widget.backgroundColor,
+          onClickCloseButton: widget.onClickCloseButton,
         );
       } else {
         return CloseAppBar(
           title: widget.title,
           isShowShadow: widget.isShowShadow,
           backgroundColor: widget.backgroundColor,
+          onClickCloseButton: widget.onClickCloseButton,
         );
       }
     } else {

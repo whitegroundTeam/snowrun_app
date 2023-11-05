@@ -35,6 +35,7 @@ class HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+
       showEquipmentStorageBottomSheet(context);
     });
   }

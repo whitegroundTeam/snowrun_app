@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_in_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_up_page.dart';
+import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
 import 'package:snowrun_app/presentation/edit_profile_image_page/edit_profile_image_page.dart';
 import 'package:snowrun_app/presentation/home/home_page.dart';
 import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
@@ -69,18 +70,25 @@ final GoRouter router = GoRouter(
         return const RequestAttPermissionPage();
       },
     ),
-
     GoRoute(
       path: '/locationPermission',
       builder: (BuildContext context, GoRouterState state) {
         return const RequestLocationPermissionPage();
       },
     ),
-
     GoRoute(
       path: '/notificationPermission',
       builder: (BuildContext context, GoRouterState state) {
         return const RequestNotificationPermissionPage();
+      },
+    ),
+    GoRoute(
+      path: '/webview',
+      builder: (BuildContext context, GoRouterState state) {
+        final Map<String, String> extra = state.extra as Map<String, String>;
+        final String url = extra['url']!;
+        final String? title = extra['title'];
+        return CommonWebViewPage(url: url, title: title);
       },
     ),
   ],
