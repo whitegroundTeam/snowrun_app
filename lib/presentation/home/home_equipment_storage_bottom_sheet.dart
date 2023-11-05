@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
@@ -114,53 +115,60 @@ class HomeEquipmentStorageBottomSheetState
               const SizedBox(
                 height: 4,
               ),
-              Container(
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                      Color(0xFFFFB74D), // 밝은 색상
-                      Color(0xFFF57C00), // 중간 색상
-                      Color(0xFFEF6C00), // 더 진한 색상
+              BounceInLeft(
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Color(0xFFFFB74D), // 밝은 색상
+                        Color(0xFFF57C00), // 중간 색상
+                        Color(0xFFEF6C00), // 더 진한 색상
+                      ],
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(100),
+                      bottomRight: Radius.circular(100),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 15,
+                        offset: const Offset(0, 7),
+                      ),
                     ],
                   ),
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(100),
-                    bottomRight: Radius.circular(100),
+                  margin: const EdgeInsets.only(
+                    right: 24,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 15,
-                      offset: const Offset(0, 7),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  width: MediaQuery.sizeOf(context).width,
+                  child: CommonDetector(
+                    onTap: () {
+                      //TODO : 보관하러가기 스모어 링크
+                    },
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Spacer(),
+                        const TitleText(
+                          title: "보관하러 가기",
+                          fontSize: 20,
+                          color: AppStyle.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        Image.asset(
+                          'assets/webp/arrow_right.webp',
+                          height: 24,
+                          width: 24,
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                margin: const EdgeInsets.only(
-                  right: 24,
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                width: MediaQuery.sizeOf(context).width,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Spacer(),
-                    const TitleText(
-                      title: "보관하러 가기",
-                      fontSize: 20,
-                      color: AppStyle.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    Image.asset(
-                      'assets/webp/arrow_right.webp',
-                      height: 24,
-                      width: 24,
-                    ),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                  ],
+                  ),
                 ),
               ),
               const SizedBox(

@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:app_settings/app_settings.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -11,17 +10,13 @@ import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
-import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
-import 'package:snowrun_app/presentation/core/appbar/home_app_bar.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
-import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/home/home_equipment_storage_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
+import 'package:snowrun_app/presentation/home/home_ridings_widget.dart';
 import 'package:snowrun_app/presentation/home/home_start_riding_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -122,6 +117,7 @@ class HomePageState extends State<HomePage> {
                           ),
                           HomeProfileWidget(),
                           HomeStartRidingWidget(),
+                          HomeRidingsWidget(),
                         ],
                       ),
                     );
