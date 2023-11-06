@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
+import 'package:snowrun_app/presentation/core/formatters.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/utils.dart';
 
@@ -28,6 +29,7 @@ class EditRidingRoomNameBottomSheetState
   );
   int currentPosition = 0;
   TextEditingController linkTextController = TextEditingController();
+  static const int maxNickNameLength = 30;
 
   @override
   void initState() {
@@ -49,7 +51,7 @@ class EditRidingRoomNameBottomSheetState
   Widget build(BuildContext context) {
     return Padding(
       padding:
-      EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: SingleChildScrollView(
         child: Stack(
           children: [
@@ -61,7 +63,7 @@ class EditRidingRoomNameBottomSheetState
                   topLeft: Radius.circular(8),
                 ),
                 border:
-                Border.all(color: AppStyle.accentColor, width: radiusWidth),
+                    Border.all(color: AppStyle.accentColor, width: radiusWidth),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,11 +120,13 @@ class EditRidingRoomNameBottomSheetState
                     ),
                     child: TextFormField(
                       controller: linkTextController,
-                      keyboardType: TextInputType.url,
+                      keyboardType: TextInputType.text,
                       cursorColor: AppStyle.white,
+                      maxLength: maxNickNameLength,
                       decoration: InputDecoration(
                         fillColor: AppStyle.background,
-                        counterText: "0/30",
+                        counterText:
+                            "${linkTextController.text.characters.length}/$maxNickNameLength",
                         counterStyle: const TextStyle(
                           color: AppStyle.secondaryTextColor,
                           fontWeight: FontWeight.w400,
@@ -143,7 +147,7 @@ class EditRidingRoomNameBottomSheetState
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                          const BorderSide(color: AppStyle.white, width: 2),
+                              const BorderSide(color: AppStyle.white, width: 2),
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
@@ -155,11 +159,16 @@ class EditRidingRoomNameBottomSheetState
                       autocorrect: false,
                       autofocus: true,
                       onChanged: (value) {
+                        setState(() {});
                         return;
                       },
                       validator: (_) {
                         return '오오오오오';
                       },
+                      inputFormatters: [
+                        CustomLengthLimitingTextInputFormatter(
+                            maxNickNameLength),
+                      ],
                     ),
                   ),
                   const SizedBox(
@@ -186,7 +195,7 @@ class EditRidingRoomNameBottomSheetState
                                 ],
                               ),
                               borderRadius:
-                              const BorderRadius.all(Radius.circular(8)),
+                                  const BorderRadius.all(Radius.circular(8)),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.2),
@@ -239,8 +248,8 @@ class EditRidingRoomNameBottomSheetState
 }
 
 void showEditRidingRoomNameBottomSheet(
-    BuildContext context,
-    ) {
+  BuildContext context,
+) {
   showModalBottomSheet(
     context: context,
     builder: (context) {
@@ -279,14 +288,14 @@ void showEditRidingRoomNameBottomSheet(
     /// timeout 기능 -> 입력한 Duration 이후 onTimeout 함수 호출됨
   )
 
-  /// 7초 후  호출
+      /// 7초 후  호출
       .timeout(const Duration(seconds: 10), onTimeout: () {
-    // context.pop();
-  })
+        // context.pop();
+      })
 
-  /// then -> 바텀시트 닫은 경우 호출됨
+      /// then -> 바텀시트 닫은 경우 호출됨
       .then((value) {})
 
-  /// whenComplete -> then 다음에 호출됨
+      /// whenComplete -> then 다음에 호출됨
       .whenComplete(() {});
 }
