@@ -29,7 +29,7 @@ class CommonToastState extends State<CommonToast> with SingleTickerProviderState
     message = widget.message;
 
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
 
@@ -88,7 +88,7 @@ class CommonToastState extends State<CommonToast> with SingleTickerProviderState
                   decoration: BoxDecoration(
                     color: AppStyle.toastBackground,
                     // color: KyochonStyles.yellow,
-                    borderRadius: BorderRadius.circular(1.0),
+                    borderRadius: BorderRadius.circular(16.0),
                     // 원하는 모양에 따라 반경을 조절
                     boxShadow: const [
                       BoxShadow(
@@ -102,9 +102,9 @@ class CommonToastState extends State<CommonToast> with SingleTickerProviderState
                   child: Text(
                     message ?? "",
                     style: const TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: AppStyle.toastText,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
@@ -117,7 +117,7 @@ class CommonToastState extends State<CommonToast> with SingleTickerProviderState
 
   _startAnimation() {
     _controller.forward();
-    _timer = Timer(const Duration(milliseconds: 1500), () {
+    _timer = Timer(const Duration(milliseconds: 2000), () {
       _controller.reverse();
       context.read<ToastBloc>().add(const ToastEvent.reset());
     });

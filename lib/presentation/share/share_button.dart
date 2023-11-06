@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
+import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 
 class ShareButton extends StatefulWidget {
   const ShareButton({super.key});
@@ -21,8 +22,11 @@ class ShareButtonState extends State<ShareButton> {
           bottomLeft: Radius.circular(4),
         ),
       ),
-      child: const CommonDetector(
-        child: Padding(
+      child: CommonDetector(
+        onTap: () {
+          showToast("공유 링크가 복사되었습니다 😆");
+        },
+        child: const Padding(
           padding: EdgeInsets.only(
             left: 12,
             right: 30,

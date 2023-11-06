@@ -16,9 +16,9 @@ class AppStyle {
   static const Color secondaryTextColor = Color(0xffA09FA6);
 
   //Toast
-  static const Color toastBackground = Color(0xff3C3C47);
+  static const Color toastBackground = accentColor;
   static const Color toastActionButtonBackground = Color(0xff4D4C5B);
-  static const Color toastText = Color(0xffffffff);
+  static const Color toastText = black;
 
   static TextTheme kTextTheme = const TextTheme().apply(
     fontFamily: kFontFamily,

@@ -51,15 +51,6 @@ class RidingPageState extends State<RidingPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: AppStyle.transparent,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarDividerColor: AppStyle.background,
-        systemNavigationBarColor: AppStyle.background,
-        systemNavigationBarIconBrightness: Brightness.dark,
-      ));
-    });
     _timer =
         Timer.periodic(const Duration(seconds: 10), (Timer t) => _getUsers());
   }
@@ -181,16 +172,25 @@ class RidingPageState extends State<RidingPage> {
                             const SizedBox(
                               width: 8,
                             ),
-                            Center(
-                              child: TitleText(
-                                title: tempRidingName.length > 10
-                                    ? "${tempRidingName.substring(0, 10)}..."
-                                    : tempRidingName,
-                                fontSize: 16,
-                                color: AppStyle.white,
-                                fontWeight: FontWeight.w500,
-                                maxLine: 1,
-                                textOverFlow: TextOverflow.ellipsis,
+                            CommonDetector(
+                              onTap: () {
+                                RidingDashboardPage.pushRidingDashboardPage(
+                                    context);
+                              },
+                              child: Center(
+                                child: Hero(
+                                  tag: "ridingRoomName",
+                                  child: TitleText(
+                                    title: tempRidingName.length > 10
+                                        ? "${tempRidingName.substring(0, 10)}..."
+                                        : tempRidingName,
+                                    fontSize: 16,
+                                    color: AppStyle.white,
+                                    fontWeight: FontWeight.w500,
+                                    maxLine: 1,
+                                    textOverFlow: TextOverflow.ellipsis,
+                                  ),
+                                ),
                               ),
                             ),
                             CommonDetector(
@@ -212,23 +212,29 @@ class RidingPageState extends State<RidingPage> {
                               ),
                             ),
                             const Spacer(),
-                            const PlayersCountsWidget(indexes: [
-                              8,
-                              4,
-                              2,
-                              1,
-                              2,
-                              3,
-                              4,
-                              5,
-                              6,
-                              7,
-                              2,
-                              3,
-                              13,
-                              12,
-                              13
-                            ]),
+                            CommonDetector(
+                              onTap: () {
+                                RidingDashboardPage.pushRidingDashboardPage(
+                                    context);
+                              },
+                              child: const PlayersCountsWidget(indexes: [
+                                8,
+                                4,
+                                2,
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6,
+                                7,
+                                2,
+                                3,
+                                13,
+                                12,
+                                13
+                              ]),
+                            ),
                           ],
                         ),
                       ),
@@ -469,9 +475,15 @@ class RidingPageState extends State<RidingPage> {
         marginBottom: 48,
       ),
     );
+    mapboxMap.attribution.updateSettings(
+      AttributionSettings(
+        marginBottom: 48,
+      ),
+    );
     mapboxMap.annotations.createPointAnnotationManager().then((value) async {
       pointAnnotationManager = value;
     });
+    mapboxMap.compass.updateSettings(CompassSettings(position: OrnamentPosition.BOTTOM_LEFT, marginBottom: 96));
     setState(() {
       isCreatedMap = true;
     });

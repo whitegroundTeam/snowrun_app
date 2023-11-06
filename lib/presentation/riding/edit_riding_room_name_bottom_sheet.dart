@@ -7,18 +7,18 @@ import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/utils.dart';
 
-class InputInviteRidingRoomLinkBottomSheet extends StatefulWidget {
-  const InputInviteRidingRoomLinkBottomSheet({
+class EditRidingRoomNameBottomSheet extends StatefulWidget {
+  const EditRidingRoomNameBottomSheet({
     super.key,
   });
 
   @override
-  InputInviteRidingRoomLinkBottomSheetState createState() =>
-      InputInviteRidingRoomLinkBottomSheetState();
+  EditRidingRoomNameBottomSheetState createState() =>
+      EditRidingRoomNameBottomSheetState();
 }
 
-class InputInviteRidingRoomLinkBottomSheetState
-    extends State<InputInviteRidingRoomLinkBottomSheet>
+class EditRidingRoomNameBottomSheetState
+    extends State<EditRidingRoomNameBottomSheet>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   static const double radiusWidth = 2.0;
@@ -49,7 +49,7 @@ class InputInviteRidingRoomLinkBottomSheetState
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: SingleChildScrollView(
         child: Stack(
           children: [
@@ -61,7 +61,7 @@ class InputInviteRidingRoomLinkBottomSheetState
                   topLeft: Radius.circular(8),
                 ),
                 border:
-                    Border.all(color: AppStyle.accentColor, width: radiusWidth),
+                Border.all(color: AppStyle.accentColor, width: radiusWidth),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +76,7 @@ class InputInviteRidingRoomLinkBottomSheetState
                         child: Padding(
                           padding: EdgeInsets.only(left: 20, right: 16),
                           child: TitleText(
-                            title: "라이딩 방에 입장하기",
+                            title: "라이딩 이름 변경",
                             fontSize: 20,
                             color: AppStyle.white,
                             fontWeight: FontWeight.w500,
@@ -103,7 +103,7 @@ class InputInviteRidingRoomLinkBottomSheetState
                       horizontal: 20,
                     ),
                     child: TitleText(
-                      title: "공유 받은 라이딩 방의 초대 링크가 필요해요!",
+                      title: "함께하는 사람들을 대표하는 멋진 이름을 지어주세요!",
                       fontSize: 14,
                       color: AppStyle.accentColor,
                       fontWeight: FontWeight.w400,
@@ -111,43 +111,6 @@ class InputInviteRidingRoomLinkBottomSheetState
                   ),
                   const SizedBox(
                     height: 36,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                    ),
-                    child: Row(
-                      children: [
-                        CommonDetector(
-                          onTap: () async {
-                            final text = await getClipboardText();
-                            linkTextController.text = text.trim();
-                          },
-                          child: const UnderlineText(
-                            TitleText(
-                              title: "붙여넣기",
-                              fontSize: 20,
-                              color: AppStyle.secondaryTextColor,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            AppStyle.secondaryTextColor,
-                            width: 2,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        const TitleText(
-                          title: "혹은",
-                          fontSize: 16,
-                          color: AppStyle.white,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 16,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -159,8 +122,14 @@ class InputInviteRidingRoomLinkBottomSheetState
                       cursorColor: AppStyle.white,
                       decoration: InputDecoration(
                         fillColor: AppStyle.background,
+                        counterText: "0/30",
+                        counterStyle: const TextStyle(
+                          color: AppStyle.secondaryTextColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                        ),
                         filled: true,
-                        hintText: '초대 링크 입력하기',
+                        hintText: '새로운 이름을 넣어주세요',
                         hintStyle: const TextStyle(
                           color: AppStyle.secondaryTextColor,
                           fontWeight: FontWeight.w400,
@@ -174,7 +143,7 @@ class InputInviteRidingRoomLinkBottomSheetState
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(color: AppStyle.white, width: 2),
+                          const BorderSide(color: AppStyle.white, width: 2),
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
@@ -184,7 +153,7 @@ class InputInviteRidingRoomLinkBottomSheetState
                         fontSize: 20,
                       ),
                       autocorrect: false,
-                      autofocus: false,
+                      autofocus: true,
                       onChanged: (value) {
                         return;
                       },
@@ -200,38 +169,44 @@ class InputInviteRidingRoomLinkBottomSheetState
                     children: [
                       const Expanded(child: SizedBox()),
                       Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              colors: [
-                                Color(0xFFFFB74D), // 밝은 색상
-                                Color(0xFFF57C00), // 중간 색상
-                                Color(0xFFEF6C00), // 더 진한 색상
+                        child: CommonDetector(
+                          onTap: () {
+                            //TODO : 수정하기 요청 후 성공/실패 여부 체크
+                            // context.pop();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  Color(0xFFFFB74D), // 밝은 색상
+                                  Color(0xFFF57C00), // 중간 색상
+                                  Color(0xFFEF6C00), // 더 진한 색상
+                                ],
+                              ),
+                              borderRadius:
+                              const BorderRadius.all(Radius.circular(8)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 15,
+                                  offset: const Offset(0, 7),
+                                ),
                               ],
                             ),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
-                                blurRadius: 15,
-                                offset: const Offset(0, 7),
+                            margin: const EdgeInsets.only(
+                              left: 12,
+                              right: 24,
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            child: const Center(
+                              child: TitleText(
+                                title: "수정하기",
+                                fontSize: 18,
+                                color: AppStyle.white,
+                                fontWeight: FontWeight.bold,
                               ),
-                            ],
-                          ),
-                          margin: const EdgeInsets.only(
-                            left: 12,
-                            right: 24,
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: const Center(
-                            child: TitleText(
-                              title: "시작하기",
-                              fontSize: 18,
-                              color: AppStyle.white,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -263,13 +238,13 @@ class InputInviteRidingRoomLinkBottomSheetState
   }
 }
 
-void showInputInviteRidingRoomLinkBottomSheet(
-  BuildContext context,
-) {
+void showEditRidingRoomNameBottomSheet(
+    BuildContext context,
+    ) {
   showModalBottomSheet(
     context: context,
     builder: (context) {
-      return const InputInviteRidingRoomLinkBottomSheet();
+      return const EditRidingRoomNameBottomSheet();
     },
     elevation: 50,
 
@@ -304,14 +279,14 @@ void showInputInviteRidingRoomLinkBottomSheet(
     /// timeout 기능 -> 입력한 Duration 이후 onTimeout 함수 호출됨
   )
 
-      /// 7초 후  호출
+  /// 7초 후  호출
       .timeout(const Duration(seconds: 10), onTimeout: () {
-        // context.pop();
-      })
+    // context.pop();
+  })
 
-      /// then -> 바텀시트 닫은 경우 호출됨
+  /// then -> 바텀시트 닫은 경우 호출됨
       .then((value) {})
 
-      /// whenComplete -> then 다음에 호출됨
+  /// whenComplete -> then 다음에 호출됨
       .whenComplete(() {});
 }
