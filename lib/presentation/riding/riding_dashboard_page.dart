@@ -7,6 +7,7 @@ import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/riding/edit_riding_room_name_bottom_sheet.dart';
+import 'package:snowrun_app/presentation/riding/exit_riding_room_caution_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/share/share_button.dart';
 
 class RidingDashboardPage extends StatefulWidget {
@@ -167,18 +168,23 @@ class RidingDashboardPageState extends State<RidingDashboardPage> {
               },
             ),
           ),
-          Container(
-            color: AppStyle.secondaryBackground,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-              vertical: 16,
-            ),
-            child: const Center(
-              child: TitleText(
-                title: "이 라이딩 종료하기",
-                fontSize: 16,
-                color: AppStyle.secondaryTextColor,
-                fontWeight: FontWeight.bold,
+          CommonDetector(
+            onTap: () {
+              showExitRidingRoomCautionBottomSheet(context, true);
+            },
+            child: Container(
+              color: AppStyle.secondaryBackground,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 16,
+              ),
+              child: const Center(
+                child: TitleText(
+                  title: "이 라이딩 종료하기",
+                  fontSize: 16,
+                  color: AppStyle.secondaryTextColor,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
