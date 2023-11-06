@@ -115,6 +115,7 @@ class SignInPageState extends State<SignInPage> {
         ),
         BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
+            //TODO : 바로 홈으로 보내는게 아니라, 화면 걍 callback 날려주기
             _hideLoading();
             context.go('/');
           },

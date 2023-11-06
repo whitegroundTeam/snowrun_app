@@ -142,7 +142,7 @@ class EditProfileImagePageState extends State<EditProfileImagePage> {
                           horizontal: 48,
                         ),
                         child: const Text(
-                          "이 눈송이는 말이죠.. 독특한 그런 무언가의 스토리가 있어요",
+                          "이 눈송이는 말이죠.. 독특한 어떤 스토리가 있어요",
                           style: TextStyle(
                               fontSize: 18,
                               color: AppStyle.secondaryTextColor,

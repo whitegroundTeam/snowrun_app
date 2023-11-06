@@ -31,7 +31,7 @@ class EmailSignInPageState extends State<EmailSignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    final previewProfileImageHeight = MediaQuery.of(context).size.height / 4;
+    final previewProfileImageHeight = MediaQuery.of(context).size.height / 5;
     return MultiBlocProvider(
       providers: [
         BlocProvider<SignInFormBloc>(
@@ -97,12 +97,13 @@ class EmailSignInPageState extends State<EmailSignInPage> {
                                 tag: "emailSignInTag",
                                 child: Center(
                                   child: Image.asset(
-                                    'assets/webp/email.webp',
+                                    'assets/webp/email_big.webp',
                                     height: previewProfileImageHeight,
                                     width: previewProfileImageHeight,
                                   ),
                                 ),
                               ),
+                              const SizedBox(height: 32,),
                               TextFormField(
                                 keyboardType: TextInputType.emailAddress,
                                 cursorColor: AppStyle.white,

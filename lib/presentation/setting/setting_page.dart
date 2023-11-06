@@ -73,7 +73,7 @@ class SettingPageState extends State<SettingPage> {
                                   const Expanded(
                                     child: TitleText(
                                       title: "업데이트 하고 새로운 기능 사용하기!",
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       color: AppStyle.accentColor,
                                       fontWeight: FontWeight.w400,
                                     ),

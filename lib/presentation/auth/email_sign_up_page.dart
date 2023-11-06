@@ -27,7 +27,7 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    final previewProfileImageHeight = MediaQuery.of(context).size.height / 4;
+    final previewProfileImageHeight = MediaQuery.of(context).size.height / 5;
     return MultiBlocProvider(
       providers: [
         BlocProvider<SignUpFormBloc>(
@@ -90,11 +90,12 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                             children: [
                               Center(
                                 child: Image.asset(
-                                  'assets/webp/email.webp',
+                                  'assets/webp/email_big.webp',
                                   height: previewProfileImageHeight,
                                   width: previewProfileImageHeight,
                                 ),
                               ),
+                              const SizedBox(height: 32,),
                               TextFormField(
                                 keyboardType: TextInputType.emailAddress,
                                 cursorColor: AppStyle.white,

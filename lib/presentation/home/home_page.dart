@@ -31,13 +31,11 @@ class HomePageState extends State<HomePage> {
       GetIt.instance<FirebaseRemoteConfig>();
   int imageNumber = 0;
 
+  bool isShowEquipmentStorageBottomSheet = false;
+
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-
-      showEquipmentStorageBottomSheet(context);
-    });
   }
 
   void handleRemoteConfig() {
@@ -109,6 +107,13 @@ class HomePageState extends State<HomePage> {
                     body: SizedBox(),
                   ),
                   initPermissionsUnNeeded: (e) {
+                    if (!isShowEquipmentStorageBottomSheet) {
+                      Future.delayed(const Duration(seconds: 1), () {
+                        showEquipmentStorageBottomSheet(context);
+                      });
+                      isShowEquipmentStorageBottomSheet = true;
+                    }
+
                     return const Scaffold(
                       body: CustomScrollView(
                         physics: bouncingScrollPhysics,

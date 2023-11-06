@@ -44,152 +44,157 @@ class HomeEquipmentStorageBottomSheetState
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: AppStyle.secondaryBackground,
-            borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(8),
-              topLeft: Radius.circular(8),
+    return Padding(
+      padding:
+      EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: AppStyle.secondaryBackground,
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(8),
+                topLeft: Radius.circular(8),
+              ),
+              border: Border.all(color: AppStyle.accentColor, width: radiusWidth),
             ),
-            border: Border.all(color: AppStyle.accentColor, width: radiusWidth),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(
-                height: 12,
-              ),
-              Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 24, right: 16),
-                    child: TitleText(
-                      title: "장비 보관하기 번거로우시죠?",
-                      fontSize: 24,
-                      color: AppStyle.white,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const Spacer(),
-                  CommonDetector(
-                    onTap: () {
-                      context.pop();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Image.asset(
-                        'assets/webp/close.webp',
-                        height: 24,
-                        width: 24,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 24,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(
+                  height: 12,
                 ),
-                child: TitleText(
-                  title: "스노우런이 도와드릴게요!",
-                  fontSize: 20,
-                  color: AppStyle.accentColor,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(
-                height: 72,
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 12, right: 24),
-                child: TitleText(
-                  title: "데크, 바인딩, 부츠 등 어느 장비든",
-                  fontSize: 16,
-                  color: AppStyle.white,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              BounceInLeft(
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        Color(0xFFFFB74D), // 밝은 색상
-                        Color(0xFFF57C00), // 중간 색상
-                        Color(0xFFEF6C00), // 더 진한 색상
-                      ],
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(100),
-                      bottomRight: Radius.circular(100),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 15,
-                        offset: const Offset(0, 7),
-                      ),
-                    ],
-                  ),
-                  margin: const EdgeInsets.only(
-                    right: 24,
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  width: MediaQuery.sizeOf(context).width,
-                  child: CommonDetector(
-                    onTap: () {
-                      //TODO : 보관하러가기 스모어 링크
-                    },
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Spacer(),
-                        const TitleText(
-                          title: "보관하러 가기",
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 20, right: 16),
+                        child: TitleText(
+                          title: "장비 보관하기 번거로우시죠?",
                           fontSize: 20,
                           color: AppStyle.white,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
-                        Image.asset(
-                          'assets/webp/arrow_right.webp',
+                      ),
+                    ),
+                    CommonDetector(
+                      onTap: () {
+                        context.pop();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Image.asset(
+                          'assets/webp/close.webp',
                           height: 24,
                           width: 24,
                         ),
-                        const SizedBox(
-                          width: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
+                  child: TitleText(
+                    title: "스노우런이 도와드릴게요!",
+                    fontSize: 18,
+                    color: AppStyle.accentColor,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                const SizedBox(
+                  height: 72,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 12, right: 24),
+                  child: TitleText(
+                    title: "데크, 바인딩, 부츠 등 어느 장비든",
+                    fontSize: 16,
+                    color: AppStyle.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                BounceInLeft(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Color(0xFFFFB74D), // 밝은 색상
+                          Color(0xFFF57C00), // 중간 색상
+                          Color(0xFFEF6C00), // 더 진한 색상
+                        ],
+                      ),
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(100),
+                        bottomRight: Radius.circular(100),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 15,
+                          offset: const Offset(0, 7),
                         ),
                       ],
                     ),
+                    margin: const EdgeInsets.only(
+                      right: 24,
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    width: MediaQuery.sizeOf(context).width,
+                    child: CommonDetector(
+                      onTap: () {
+                        //TODO : 보관하러가기 스모어 링크
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Spacer(),
+                          const TitleText(
+                            title: "보관하러 가기",
+                            fontSize: 18,
+                            color: AppStyle.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          Image.asset(
+                            'assets/webp/arrow_right.webp',
+                            height: 24,
+                            width: 24,
+                          ),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Container(
-            margin: const EdgeInsets.symmetric(
-              horizontal: radiusWidth,
+                const SizedBox(
+                  height: 24,
+                ),
+              ],
             ),
-            height: 20,
-            color: AppStyle.secondaryBackground,
           ),
-        ),
-      ],
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              margin: const EdgeInsets.symmetric(
+                horizontal: radiusWidth,
+              ),
+              height: 20,
+              color: AppStyle.secondaryBackground,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
