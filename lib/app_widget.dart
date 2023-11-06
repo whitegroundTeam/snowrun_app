@@ -32,7 +32,7 @@ class MainAppState extends State<MainApp> {
     });
     WidgetsBinding.instance.addPostFrameCallback((_) {
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
+        statusBarColor: AppStyle.transparent,
         statusBarIconBrightness: Brightness.light,
         systemNavigationBarDividerColor: AppStyle.background,
         systemNavigationBarColor: AppStyle.background,

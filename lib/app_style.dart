@@ -11,6 +11,7 @@ class AppStyle {
   static const Color secondaryBackground = Color(0xff18171E);
   static const Color actionIconColor = Color(0xff62626B);
   static const Color accentColor = Color(0xffFF8C00);
+  static const Color line = Color(0x4DFFFFFF);
 
   static const Color secondaryTextColor = Color(0xffA09FA6);
 

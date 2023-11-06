@@ -6,8 +6,10 @@ class TitleText extends StatefulWidget {
   final double? fontSize;
   final Color? color;
   final FontWeight? fontWeight;
+  final int? maxLine;
+  final TextOverflow? textOverFlow;
 
-  const TitleText({super.key, required this.title, this.fontSize, this.color, this.fontWeight});
+  const TitleText({super.key, required this.title, this.fontSize, this.color, this.fontWeight, this.maxLine, this.textOverFlow});
 
   @override
   State createState() => TitleTextState();
@@ -18,6 +20,9 @@ class TitleTextState extends State<TitleText> {
   Widget build(BuildContext context) {
     return Text(
       widget.title,
+      textScaleFactor: 1.0,
+      maxLines: widget.maxLine,
+      overflow: widget.textOverFlow,
       style: TextStyle(
         fontFamily: "Pretendard",
         fontSize: widget.fontSize ?? 16.0,

@@ -217,7 +217,7 @@ void showEquipmentStorageBottomSheet(
     isDismissible: true,
 
     /// 바텀시트 아닌 영역의 컬러
-    barrierColor: AppStyle.background.withOpacity(0.85),
+    barrierColor: AppStyle.background.withOpacity(0.7),
 
     /// 바텀시트 배경 컬러
     backgroundColor: AppStyle.transparent,

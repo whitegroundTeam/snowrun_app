@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/application/riding/riding_page.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/riding/input_invite_riding_room_link_bottom_sheet.dart';
@@ -19,7 +21,11 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
         children: [
           CommonDetector(
             needAuth: true,
-            onTap: () {},
+            onTap: () {
+              RidingPage.pushRidingPage(context);
+              // CommonWebViewPage.pushCommonWebView(
+              //     context, "https://www.naver.com/", "이용약관");
+            },
             child: Container(
               decoration: BoxDecoration(
                 color: AppStyle.secondaryBackground,

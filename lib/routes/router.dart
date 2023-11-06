@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:snowrun_app/application/riding/riding_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_in_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_up_page.dart';
 import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
@@ -11,6 +12,7 @@ import 'package:snowrun_app/presentation/permission/request_location_permission_
 import 'package:snowrun_app/presentation/permission/request_notification_permission_page.dart';
 import 'package:snowrun_app/presentation/record/recording_page.dart';
 import 'package:snowrun_app/presentation/record/result_page.dart';
+import 'package:snowrun_app/presentation/riding/riding_dashboard_page.dart';
 import 'package:snowrun_app/presentation/setting/setting_page.dart';
 
 final GoRouter router = GoRouter(
@@ -32,6 +34,24 @@ final GoRouter router = GoRouter(
       path: '/recording',
       builder: (BuildContext context, GoRouterState state) {
         return const RecordingPage();
+      },
+    ),
+    GoRoute(
+      path: '/riding',
+      builder: (BuildContext context, GoRouterState state) {
+        // final Map<String, String> extra = state.extra as Map<String, String>;
+        // final String url = extra['url']!;
+        // final String? title = extra['title'];
+        return const RidingPage();
+      },
+    ),
+    GoRoute(
+      path: '/ridingDashboard',
+      builder: (BuildContext context, GoRouterState state) {
+        // final Map<String, String> extra = state.extra as Map<String, String>;
+        // final String url = extra['url']!;
+        // final String? title = extra['title'];
+        return const RidingDashboardPage();
       },
     ),
     GoRoute(

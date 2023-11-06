@@ -27,135 +27,131 @@ class SettingPageState extends State<SettingPage> {
     final previewProfileImageHeight = MediaQuery.of(context).size.height / 6;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          BlocBuilder<AuthBloc, AuthState>(
-            bloc: context.read<AuthBloc>(),
-            builder: (context, state) {
-              final isAuthenticated = state.user != null;
-              return CustomScrollView(
-                physics: bouncingScrollPhysics,
-                slivers: [
-                  const CommonAppBar(
-                    isSliver: true,
-                    appBarType: AppBarType.back,
+      body: BlocBuilder<AuthBloc, AuthState>(
+        bloc: context.read<AuthBloc>(),
+        builder: (context, state) {
+          final isAuthenticated = state.user != null;
+          return CustomScrollView(
+            physics: bouncingScrollPhysics,
+            slivers: [
+              const CommonAppBar(
+                isSliver: true,
+                appBarType: AppBarType.back,
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
                   ),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Hero(
+                        tag: "settingTag",
+                        child: Center(
+                          child: Image.asset(
+                            'assets/webp/setting_big.webp',
+                            height: previewProfileImageHeight,
+                            width: previewProfileImageHeight,
+                          ),
+                        ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Hero(
-                            tag: "settingTag",
-                            child: Center(
-                              child: Image.asset(
-                                'assets/webp/setting_big.webp',
-                                height: previewProfileImageHeight,
-                                width: previewProfileImageHeight,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 56,
-                          ),
-                          SettingActionWidget(
-                            title: "앱 버전",
-                            value: "0.0.1",
-                            isVisibleArrow: false,
-                            bottomExpandWidget: Container(
-                              padding:
-                                  const EdgeInsets.only(top: 16, bottom: 0),
-                              child: Row(
-                                children: [
-                                  const Expanded(
-                                    child: TitleText(
-                                      title: "업데이트 하고 새로운 기능 사용하기!",
-                                      fontSize: 16,
-                                      color: AppStyle.accentColor,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Image.asset(
-                                    'assets/webp/arrow_right.webp',
-                                    width: 24,
-                                    height: 24,
-                                    color: AppStyle.accentColor,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          SettingActionWidget(title: "알림", onTap: () {
-                            openAppSettings();
-                          }),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          SettingActionWidget(
-                            title: "이용약관",
-                            onTap: () {
-                              CommonWebViewPage.pushCommonWebView(
-                                  context, "https://www.naver.com/", "이용약관");
-                            },
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          SettingActionWidget(
-                            title: "개인정보 처리방침",
-                            onTap: () {
-                              CommonWebViewPage.pushCommonWebView(context,
-                                  "https://www.naver.com/", "개인정보 처리방침");
-                            },
-                          ),
-                          Visibility(
-                            visible: isAuthenticated,
-                            child: Center(
-                              child: CommonDetector(
-                                onTap: () {
-                                  context
-                                      .read<AuthBloc>()
-                                      .add(const AuthEvent.signedOut());
-                                },
-                                child: Container(
-                                  margin: const EdgeInsets.only(
-                                    top: 48,
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 24,
-                                    vertical: 12,
-                                  ),
-                                  child: const UnderlineText(
-                                    TitleText(
-                                      title: "로그아웃 하기",
-                                      fontSize: 16,
-                                      color: AppStyle.white,
-                                    ),
-                                    AppStyle.white,
-                                    width: 1,
-                                  ),
+                      const SizedBox(
+                        height: 56,
+                      ),
+                      SettingActionWidget(
+                        title: "앱 버전",
+                        value: "0.0.1",
+                        isVisibleArrow: false,
+                        bottomExpandWidget: Container(
+                          padding:
+                              const EdgeInsets.only(top: 16, bottom: 0),
+                          child: Row(
+                            children: [
+                              const Expanded(
+                                child: TitleText(
+                                  title: "업데이트 하고 새로운 기능 사용하기!",
+                                  fontSize: 16,
+                                  color: AppStyle.accentColor,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
-                            ),
-                          )
-                        ],
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Image.asset(
+                                'assets/webp/arrow_right.webp',
+                                width: 24,
+                                height: 24,
+                                color: AppStyle.accentColor,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      SettingActionWidget(title: "알림", onTap: () {
+                        openAppSettings();
+                      }),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      SettingActionWidget(
+                        title: "이용약관",
+                        onTap: () {
+                          CommonWebViewPage.pushCommonWebView(
+                              context, "https://www.naver.com/", "이용약관");
+                        },
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      SettingActionWidget(
+                        title: "개인정보 처리방침",
+                        onTap: () {
+                          CommonWebViewPage.pushCommonWebView(context,
+                              "https://www.naver.com/", "개인정보 처리방침");
+                        },
+                      ),
+                      Visibility(
+                        visible: isAuthenticated,
+                        child: Center(
+                          child: CommonDetector(
+                            onTap: () {
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const AuthEvent.signedOut());
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(
+                                top: 48,
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 12,
+                              ),
+                              child: const UnderlineText(
+                                TitleText(
+                                  title: "로그아웃 하기",
+                                  fontSize: 16,
+                                  color: AppStyle.white,
+                                ),
+                                AppStyle.white,
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                ],
-              );
-            },
-          ),
-        ],
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
