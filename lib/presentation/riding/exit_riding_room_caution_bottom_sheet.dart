@@ -103,6 +103,7 @@ class ExitRidingRoomCautionBottomSheetState
                       ),
                     ],
                   ),
+                  const SizedBox(height: 12,),
                   const Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 20,
@@ -115,7 +116,7 @@ class ExitRidingRoomCautionBottomSheetState
                     ),
                   ),
                   const SizedBox(
-                    height: ,
+                    height: 4,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
