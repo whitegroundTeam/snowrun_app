@@ -24,7 +24,7 @@ class ShareButtonState extends State<ShareButton> {
       ),
       child: CommonDetector(
         onTap: () {
-          showToast("공유 링크가 복사되었습니다 😆");
+          showToast(context, "공유 링크가 복사되었습니다 😆");
         },
         child: const Padding(
           padding: EdgeInsets.only(

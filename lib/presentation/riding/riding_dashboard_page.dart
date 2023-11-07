@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/riding/edit_riding_room_name_bottom_sheet.dart';
-import 'package:snowrun_app/presentation/riding/exit_riding_room_caution_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/share/share_button.dart';
 
 class RidingDashboardPage extends StatefulWidget {
@@ -68,7 +67,7 @@ class RidingDashboardPageState extends State<RidingDashboardPage> {
           ),
           Container(
             margin: const EdgeInsets.symmetric(
-              horizontal: 24,
+              horizontal: 20,
             ),
             padding: const EdgeInsets.only(
               bottom: 20,
@@ -77,8 +76,8 @@ class RidingDashboardPageState extends State<RidingDashboardPage> {
             decoration: BoxDecoration(
               color: AppStyle.secondaryBackground.withOpacity(0.95),
               borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(4),
-                bottomLeft: Radius.circular(4),
+                topLeft: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
               ),
             ),
             child: Column(
@@ -170,7 +169,16 @@ class RidingDashboardPageState extends State<RidingDashboardPage> {
           ),
           CommonDetector(
             onTap: () {
-              showExitRidingRoomCautionBottomSheet(context, true);
+              const isMaster = true;
+              showCommonBottomSheet(
+                context,
+                title: "이 라이딩을 종료하시겠어요?",
+                accentDescription: "즐거운 시간 보내셨나요??😆",
+                description: isMaster
+                    ? "방장님이 라이딩을 종료하면 모든 플레이어들의 라이딩이 종료돼요.\n\n그래도 이 라이딩을 종료하시겠어요?"
+                    : "라이딩을 종료하면 참여중인 라이딩 목록에서 이 라이딩이 사라져요.\n\n그래도 이 라이딩을 종료하시겠어요?",
+                positiveButtonText: "종료하기",
+              );
             },
             child: Container(
               color: AppStyle.secondaryBackground,

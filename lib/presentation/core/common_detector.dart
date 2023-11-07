@@ -83,7 +83,7 @@ class CommonDetectorState extends State<CommonDetector>
                       Duration(milliseconds: widget.delay ?? defaultDelay)) {
                 if (widget.needAuth == true) {
                   if (!isAuthenticated) {
-                    showToast("로그인이 필요해요!");
+                    showToast(context, "로그인이 필요해요!");
                     context.push("/signIn");
                   } else {
                     widget.onTap?.call();

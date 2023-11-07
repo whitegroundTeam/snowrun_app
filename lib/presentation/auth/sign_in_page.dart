@@ -130,6 +130,7 @@ class SignInPageState extends State<SignInPage> {
                 (failure) {
                   _hideLoading();
                   showToast(
+                    context,
                     failure.map(
                       cancelledByUser: (e) => "취소하셨습니다.",
                       serverError: (e) => "알 수 없는 에러가 발생하였습니다.",
@@ -330,6 +331,7 @@ class SignInPageState extends State<SignInPage> {
         negativeButtonText: "취소", onPressedButton: () async {
       AppSettings.openAppSettings(type: AppSettingsType.location);
       showToast(
+        context,
         "위치 권한 허용 후 다시 시도해주세요.",
       );
 

@@ -8,6 +8,7 @@ import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
+import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
@@ -64,8 +65,7 @@ class SettingPageState extends State<SettingPage> {
                         value: "0.0.1",
                         isVisibleArrow: false,
                         bottomExpandWidget: Container(
-                          padding:
-                              const EdgeInsets.only(top: 16, bottom: 0),
+                          padding: const EdgeInsets.only(top: 16, bottom: 0),
                           child: Row(
                             children: [
                               const Expanded(
@@ -92,9 +92,11 @@ class SettingPageState extends State<SettingPage> {
                       const SizedBox(
                         height: 12,
                       ),
-                      SettingActionWidget(title: "알림", onTap: () {
-                        openAppSettings();
-                      }),
+                      SettingActionWidget(
+                          title: "알림",
+                          onTap: () {
+                            openAppSettings();
+                          }),
                       const SizedBox(
                         height: 12,
                       ),
@@ -111,8 +113,20 @@ class SettingPageState extends State<SettingPage> {
                       SettingActionWidget(
                         title: "개인정보 처리방침",
                         onTap: () {
-                          CommonWebViewPage.pushCommonWebView(context,
-                              "https://www.naver.com/", "개인정보 처리방침");
+                          CommonWebViewPage.pushCommonWebView(
+                              context, "https://www.naver.com/", "개인정보 처리방침");
+                        },
+                      ),
+                      SettingActionWidget(
+                        title: "공용바텀시트 테스트",
+                        onTap: () {
+                          showCommonBottomSheet(
+                            context,
+                            title: "장비 보관하기 번거로우시죠?",
+                            accentDescription: "스노우런이 도와드릴게요!",
+                            actionButtonDescriptionText: "데크, 바인딩, 부츠 등 어느 장비든",
+                            actionButtonText: "보관하러 가기"
+                          );
                         },
                       ),
                       Visibility(

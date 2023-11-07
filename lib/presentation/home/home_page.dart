@@ -11,10 +11,10 @@ import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
+import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
-import 'package:snowrun_app/presentation/home/home_equipment_storage_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
 import 'package:snowrun_app/presentation/home/home_ridings_widget.dart';
 import 'package:snowrun_app/presentation/home/home_start_riding_widget.dart';
@@ -109,7 +109,23 @@ class HomePageState extends State<HomePage> {
                   initPermissionsUnNeeded: (e) {
                     if (!isShowEquipmentStorageBottomSheet) {
                       Future.delayed(const Duration(seconds: 1), () {
-                        showEquipmentStorageBottomSheet(context);
+                        showCommonBottomSheet(
+                            context,
+                            title: "장비 보관하기 번거로우시죠?",
+                            accentDescription: "스노우런이 도와드릴게요!",
+                            actionButtonDescriptionText: "데크, 바인딩, 부츠 등 어느 장비든",
+                            actionButtonText: "보관하러 가기"
+                        );
+
+                        // showCommonBottomSheet(
+                        //   context,
+                        //   title: "업데이트가 꼭 필요해요",
+                        //   accentDescription:
+                        //       "더욱 즐겁게 겨울을 나실 수 있게 새로운 기능이 추가되었어요.\n업데이트 해주실거죠?😆",
+                        //   actionButtonDescriptionText: "최신버전으로",
+                        //   actionButtonText: "업데이트하러 가기",
+                        //   canClose: false,
+                        // );
                       });
                       isShowEquipmentStorageBottomSheet = true;
                     }
@@ -210,6 +226,7 @@ class HomePageState extends State<HomePage> {
         negativeButtonText: "취소", onPressedButton: () async {
       AppSettings.openAppSettings(type: AppSettingsType.location);
       showToast(
+        context,
         "위치 권한 허용 후 다시 시도해주세요.",
       );
 

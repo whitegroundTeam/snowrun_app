@@ -137,8 +137,8 @@ class CommonToastState extends State<CommonToast> with SingleTickerProviderState
   }
 }
 
-showToast(String message) {
+showToast(BuildContext context, String message) {
   WidgetsBinding.instance.addPostFrameCallback((_) {
-    getIt<ToastBloc>().add(ToastEvent.show(message));
+    context.read<ToastBloc>().add(ToastEvent.show(message));
   });
 }

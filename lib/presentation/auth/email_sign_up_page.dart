@@ -50,6 +50,7 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                 (failure) {
                   _hideLoading();
                   showToast(
+                    context,
                     failure.map(
                       cancelledByUser: (e) => "취소하셨습니다.",
                       serverError: (e) => "알 수 없는 에러가 발생하였습니다.",

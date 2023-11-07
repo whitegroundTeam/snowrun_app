@@ -65,6 +65,7 @@ class MainAppState extends State<MainApp> {
                 lazy: false,
               ),
               BlocListener<ToastBloc, ToastState>(
+                bloc: toastBloc,
                 listener: (context, state) {
                   commonToastKey.currentState?.updateMessage(state.message);
                 },
