@@ -277,7 +277,7 @@ mixin _$RidingPlayerDto {
   @JsonKey(name: 'room')
   int get room => throw _privateConstructorUsedError;
   @JsonKey(name: 'location')
-  UserLocationDto get location => throw _privateConstructorUsedError;
+  UserLocationDto? get location => throw _privateConstructorUsedError;
   @JsonKey(name: 'location_updated_at')
   DateTime get locationUpdatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image')
@@ -300,11 +300,11 @@ abstract class $RidingPlayerDtoCopyWith<$Res> {
       @JsonKey(name: 'user') int user,
       @JsonKey(name: 'nickname') String nickname,
       @JsonKey(name: 'room') int room,
-      @JsonKey(name: 'location') UserLocationDto location,
+      @JsonKey(name: 'location') UserLocationDto? location,
       @JsonKey(name: 'location_updated_at') DateTime locationUpdatedAt,
       @JsonKey(name: 'profile_image') String profileImage});
 
-  $UserLocationDtoCopyWith<$Res> get location;
+  $UserLocationDtoCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -324,7 +324,7 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
     Object? user = null,
     Object? nickname = null,
     Object? room = null,
-    Object? location = null,
+    Object? location = freezed,
     Object? locationUpdatedAt = null,
     Object? profileImage = null,
   }) {
@@ -345,10 +345,10 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
           ? _value.room
           : room // ignore: cast_nullable_to_non_nullable
               as int,
-      location: null == location
+      location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as UserLocationDto,
+              as UserLocationDto?,
       locationUpdatedAt: null == locationUpdatedAt
           ? _value.locationUpdatedAt
           : locationUpdatedAt // ignore: cast_nullable_to_non_nullable
@@ -362,8 +362,12 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
 
   @override
   @pragma('vm:prefer-inline')
-  $UserLocationDtoCopyWith<$Res> get location {
-    return $UserLocationDtoCopyWith<$Res>(_value.location, (value) {
+  $UserLocationDtoCopyWith<$Res>? get location {
+    if (_value.location == null) {
+      return null;
+    }
+
+    return $UserLocationDtoCopyWith<$Res>(_value.location!, (value) {
       return _then(_value.copyWith(location: value) as $Val);
     });
   }
@@ -382,12 +386,12 @@ abstract class _$$_RidingPlayerDtoCopyWith<$Res>
       @JsonKey(name: 'user') int user,
       @JsonKey(name: 'nickname') String nickname,
       @JsonKey(name: 'room') int room,
-      @JsonKey(name: 'location') UserLocationDto location,
+      @JsonKey(name: 'location') UserLocationDto? location,
       @JsonKey(name: 'location_updated_at') DateTime locationUpdatedAt,
       @JsonKey(name: 'profile_image') String profileImage});
 
   @override
-  $UserLocationDtoCopyWith<$Res> get location;
+  $UserLocationDtoCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -405,7 +409,7 @@ class __$$_RidingPlayerDtoCopyWithImpl<$Res>
     Object? user = null,
     Object? nickname = null,
     Object? room = null,
-    Object? location = null,
+    Object? location = freezed,
     Object? locationUpdatedAt = null,
     Object? profileImage = null,
   }) {
@@ -426,10 +430,10 @@ class __$$_RidingPlayerDtoCopyWithImpl<$Res>
           ? _value.room
           : room // ignore: cast_nullable_to_non_nullable
               as int,
-      location: null == location
+      location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as UserLocationDto,
+              as UserLocationDto?,
       locationUpdatedAt: null == locationUpdatedAt
           ? _value.locationUpdatedAt
           : locationUpdatedAt // ignore: cast_nullable_to_non_nullable
@@ -450,7 +454,7 @@ class _$_RidingPlayerDto extends _RidingPlayerDto {
       @JsonKey(name: 'user') required this.user,
       @JsonKey(name: 'nickname') required this.nickname,
       @JsonKey(name: 'room') required this.room,
-      @JsonKey(name: 'location') required this.location,
+      @JsonKey(name: 'location') this.location,
       @JsonKey(name: 'location_updated_at') required this.locationUpdatedAt,
       @JsonKey(name: 'profile_image') required this.profileImage})
       : super._();
@@ -472,7 +476,7 @@ class _$_RidingPlayerDto extends _RidingPlayerDto {
   final int room;
   @override
   @JsonKey(name: 'location')
-  final UserLocationDto location;
+  final UserLocationDto? location;
   @override
   @JsonKey(name: 'location_updated_at')
   final DateTime locationUpdatedAt;
@@ -528,7 +532,7 @@ abstract class _RidingPlayerDto extends RidingPlayerDto {
           @JsonKey(name: 'user') required final int user,
           @JsonKey(name: 'nickname') required final String nickname,
           @JsonKey(name: 'room') required final int room,
-          @JsonKey(name: 'location') required final UserLocationDto location,
+          @JsonKey(name: 'location') final UserLocationDto? location,
           @JsonKey(name: 'location_updated_at')
           required final DateTime locationUpdatedAt,
           @JsonKey(name: 'profile_image') required final String profileImage}) =
@@ -552,7 +556,7 @@ abstract class _RidingPlayerDto extends RidingPlayerDto {
   int get room;
   @override
   @JsonKey(name: 'location')
-  UserLocationDto get location;
+  UserLocationDto? get location;
   @override
   @JsonKey(name: 'location_updated_at')
   DateTime get locationUpdatedAt;

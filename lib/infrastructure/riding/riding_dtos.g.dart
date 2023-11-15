@@ -32,8 +32,9 @@ _$_RidingPlayerDto _$$_RidingPlayerDtoFromJson(Map<String, dynamic> json) =>
       user: json['user'] as int,
       nickname: json['nickname'] as String,
       room: json['room'] as int,
-      location:
-          UserLocationDto.fromJson(json['location'] as Map<String, dynamic>),
+      location: json['location'] == null
+          ? null
+          : UserLocationDto.fromJson(json['location'] as Map<String, dynamic>),
       locationUpdatedAt: DateTime.parse(json['location_updated_at'] as String),
       profileImage: json['profile_image'] as String,
     );
