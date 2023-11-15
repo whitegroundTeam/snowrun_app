@@ -126,7 +126,7 @@ class CoreApi {
   }
 
   Uri _getUri(String path, Map<String, dynamic>? queryParams) =>
-      Uri.https(_baseUrl, path, queryParams);
+      Uri.http(_baseUrl, path, queryParams);
 
   /// Auth
   Future<Response> me() => _requestWrapper(
@@ -199,6 +199,7 @@ class CoreApi {
   Future<Response> createRidingRoom() => _requestWrapper(
         method: HttpMethod.post,
         path: "/riding-room/",
+        bodyParam: {},
       );
 
   Future<Response> updateRidingRoomName(int ridingRoomId,
