@@ -9,12 +9,16 @@ import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
+import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
+import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
+import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
+import 'package:snowrun_app/presentation/home/home_bottom_band.dart';
 import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
 import 'package:snowrun_app/presentation/home/home_ridings_widget.dart';
 import 'package:snowrun_app/presentation/home/home_start_riding_widget.dart';
@@ -109,13 +113,11 @@ class HomePageState extends State<HomePage> {
                   initPermissionsUnNeeded: (e) {
                     if (!isShowEquipmentStorageBottomSheet) {
                       Future.delayed(const Duration(seconds: 1), () {
-                        showCommonBottomSheet(
-                            context,
+                        showCommonBottomSheet(context,
                             title: "장비 보관하기 번거로우시죠?",
                             accentDescription: "스노우런이 도와드릴게요!",
                             actionButtonDescriptionText: "데크, 바인딩, 부츠 등 어느 장비든",
-                            actionButtonText: "보관하러 가기"
-                        );
+                            actionButtonText: "보관하러 가기");
 
                         // showCommonBottomSheet(
                         //   context,
@@ -131,15 +133,22 @@ class HomePageState extends State<HomePage> {
                     }
 
                     return const Scaffold(
-                      body: CustomScrollView(
-                        physics: bouncingScrollPhysics,
-                        slivers: [
-                          CommonAppBar(
-                            appBarType: AppBarType.home,
+                      body: Column(
+                        children: [
+                          Expanded(
+                            child: CustomScrollView(
+                              physics: bouncingScrollPhysics,
+                              slivers: [
+                                CommonAppBar(
+                                  appBarType: AppBarType.home,
+                                ),
+                                HomeProfileWidget(),
+                                HomeStartRidingWidget(),
+                                HomeRidingsWidget(),
+                              ],
+                            ),
                           ),
-                          HomeProfileWidget(),
-                          HomeStartRidingWidget(),
-                          HomeRidingsWidget(),
+                          HomeBottomBand(),
                         ],
                       ),
                     );

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/permission/permission_actor/permission_actor_bloc.dart';
 import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
+import 'package:snowrun_app/presentation/core/common_button.dart';
 import 'package:snowrun_app/presentation/core/constants.dart';
 
 class RequestNotificationPermissionPage extends StatelessWidget {

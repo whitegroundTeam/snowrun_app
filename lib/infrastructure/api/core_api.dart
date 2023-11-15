@@ -8,6 +8,7 @@ import 'package:snowrun_app/infrastructure/api/authenticated_http_client.dart';
 import 'package:snowrun_app/infrastructure/auth/auth_dtos.dart';
 import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
 import 'package:snowrun_app/infrastructure/place/place_dtos.dart';
+import 'package:snowrun_app/infrastructure/riding/riding_dtos.dart';
 import 'package:snowrun_app/infrastructure/user/user_dtos.dart';
 
 enum HttpMethod {
@@ -20,7 +21,7 @@ enum HttpMethod {
 
 @singleton
 class CoreApi {
-  static const defaultPageSize = 10;
+  static const defaultPageSize = 30;
   final _baseUrl = dotenv.env['BASE_URL'] ?? "";
   final Map<String, String> _baseHeaders = {
     "Content-Type": "application/json; charset=utf-8"
@@ -173,5 +174,51 @@ class CoreApi {
         method: HttpMethod.post,
         path: "/boundaries/",
         bodyParam: createBoundaryDto.toJson(),
+      );
+
+  /// Riding
+  Future<Response> getRidingRooms({int? limit, int? offset}) => _requestWrapper(
+          method: HttpMethod.get,
+          path: "/riding-room/",
+          queryParams: {
+            'limit': "$defaultPageSize",
+            'offset': "0",
+          });
+
+  Future<Response> getRidingRoom(int ridingRoomId) => _requestWrapper(
+        method: HttpMethod.get,
+        path: "/riding-room/{room_id}/",
+        pathParams: {'room_id': "$ridingRoomId"},
+      );
+
+  Future<Response> deleteRidingRoom(int roomId) => _requestWrapper(
+      method: HttpMethod.delete,
+      path: "/riding-room/{room_id}/",
+      pathParams: {'room_id': '$roomId'});
+
+  Future<Response> createRidingRoom() => _requestWrapper(
+        method: HttpMethod.post,
+        path: "/riding-room/",
+      );
+
+  Future<Response> updateRidingRoomName(int ridingRoomId,
+          UpdateRidingRoomNameRequestDto updateRidingRoomNameRequestDto) =>
+      _requestWrapper(
+        method: HttpMethod.post,
+        path: "/riding-room/{room_id}/update-name",
+        pathParams: {'room_id': "$ridingRoomId"},
+        bodyParam: updateRidingRoomNameRequestDto.toJson(),
+      );
+
+  Future<Response> exitRidingRoom(int ridingRoomId) => _requestWrapper(
+        method: HttpMethod.post,
+        path: "/riding-room/{room_id}/out",
+        pathParams: {'room_id': "$ridingRoomId"},
+      );
+
+  Future<Response> joinRidingRoom(int ridingRoomId) => _requestWrapper(
+        method: HttpMethod.post,
+        path: "/riding-room/{room_id}/join",
+        pathParams: {'room_id': "$ridingRoomId"},
       );
 }

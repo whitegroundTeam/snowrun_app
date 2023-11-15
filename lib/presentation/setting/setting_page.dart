@@ -5,7 +5,7 @@ import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
+import 'package:snowrun_app/presentation/core/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
 import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';

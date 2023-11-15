@@ -12,7 +12,7 @@ import 'package:snowrun_app/application/profile/profile_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/domain/user/model/snow_ball_profile_image.dart';
 import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
+import 'package:snowrun_app/presentation/core/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_loading.dart';

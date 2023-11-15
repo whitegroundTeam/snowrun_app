@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
+import 'package:snowrun_app/presentation/core/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/constants.dart';
 import 'package:snowrun_app/presentation/core/squarebars.dart';

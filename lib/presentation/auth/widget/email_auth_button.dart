@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
+import 'package:snowrun_app/presentation/core/common_button.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 
 class EmailAuthButton extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:snowrun_app/application/riding/riding_page.dart';
+import 'package:snowrun_app/presentation/riding/riding_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_in_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_up_page.dart';
 import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
@@ -39,10 +39,9 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/riding',
       builder: (BuildContext context, GoRouterState state) {
-        // final Map<String, String> extra = state.extra as Map<String, String>;
-        // final String url = extra['url']!;
-        // final String? title = extra['title'];
-        return const RidingPage();
+        final Map<String, int> extra = state.extra as Map<String, int>;
+        final int ridingRoomId = extra['ridingRoomId'] ?? -1;
+        return RidingPage(ridingRoomId: ridingRoomId);
       },
     ),
     GoRoute(
@@ -106,7 +105,7 @@ final GoRouter router = GoRouter(
       path: '/webview',
       builder: (BuildContext context, GoRouterState state) {
         final Map<String, String> extra = state.extra as Map<String, String>;
-        final String url = extra['url']!;
+        final String url = extra['url'] ?? "";
         final String? title = extra['title'];
         return CommonWebViewPage(url: url, title: title);
       },

@@ -88,10 +88,10 @@ class CommonDetectorState extends State<CommonDetector>
                   } else {
                     widget.onTap?.call();
                   }
-                  lastClickTime = now;
                 } else {
                   widget.onTap?.call();
                 }
+                lastClickTime = now;
               }
               return value;
             });

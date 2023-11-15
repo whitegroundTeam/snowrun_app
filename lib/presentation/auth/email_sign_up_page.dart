@@ -6,7 +6,7 @@ import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/auth/widget/common_button.dart';
+import 'package:snowrun_app/presentation/core/common_button.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';

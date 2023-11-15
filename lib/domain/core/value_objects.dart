@@ -69,15 +69,15 @@ class ObjectId extends ValueObject<int> {
   const ObjectId._(this.value);
 }
 
-class CreatedAtVO extends ValueObject<DateTime> {
+class DateTimeVO extends ValueObject<DateTime> {
   @override
   final Either<ValueFailure<DateTime>, DateTime> value;
 
-  factory CreatedAtVO(DateTime input) {
-    return CreatedAtVO._(right(input));
+  factory DateTimeVO(DateTime input) {
+    return DateTimeVO._(right(input));
   }
 
-  const CreatedAtVO._(this.value);
+  const DateTimeVO._(this.value);
 }
 
 class CountVO extends ValueObject<int> {
@@ -216,6 +216,8 @@ class ListVO<T> extends ValueObject<List<T>> {
   factory ListVO(List<T> input) {
     return ListVO._(right(input));
   }
+
+  factory ListVO.empty() => ListVO([]);
 
   const ListVO._(this.value);
 }
