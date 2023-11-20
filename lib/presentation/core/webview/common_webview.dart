@@ -75,7 +75,7 @@ class CommonWebViewPageState extends State<CommonWebViewPage> {
                   child: InAppWebView(
                     key: webViewKey,
                     initialUrlRequest:
-                        URLRequest(url: WebUri("https://www.naver.com/")),
+                        URLRequest(url: WebUri(widget.url)),
                     initialSettings: settings,
                     // initialOptions: options,
                     pullToRefreshController: pullToRefreshController,

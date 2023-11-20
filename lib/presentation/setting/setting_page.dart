@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
@@ -23,6 +24,7 @@ class SettingPage extends StatefulWidget {
 }
 
 class SettingPageState extends State<SettingPage> {
+
   @override
   Widget build(BuildContext context) {
     final previewProfileImageHeight = MediaQuery.of(context).size.height / 6;
@@ -32,6 +34,9 @@ class SettingPageState extends State<SettingPage> {
         bloc: context.read<AuthBloc>(),
         builder: (context, state) {
           final isAuthenticated = state.user != null;
+
+          //TODO : repository로 빼야함
+
           return CustomScrollView(
             physics: bouncingScrollPhysics,
             slivers: [
@@ -104,7 +109,9 @@ class SettingPageState extends State<SettingPage> {
                         title: "이용약관",
                         onTap: () {
                           CommonWebViewPage.pushCommonWebView(
-                              context, "https://www.naver.com/", "이용약관");
+                              context,
+                              "https://snowrun-server-bucket-production.s3.ap-northeast-2.amazonaws.com/terms/terms_of_service/terms_of_service.html",
+                              "이용약관");
                         },
                       ),
                       const SizedBox(
@@ -114,19 +121,21 @@ class SettingPageState extends State<SettingPage> {
                         title: "개인정보 처리방침",
                         onTap: () {
                           CommonWebViewPage.pushCommonWebView(
-                              context, "https://www.naver.com/", "개인정보 처리방침");
+                              context,
+                              "https://snowrun-server-bucket-production.s3.ap-northeast-2.amazonaws.com/terms/privacy_policy/privacy_policy.html",
+                              "개인정보 처리방침");
                         },
                       ),
+                      const SizedBox(
+                        height: 12,
+                      ),
                       SettingActionWidget(
-                        title: "공용바텀시트 테스트",
+                        title: "위치기반서비스 이용약관",
                         onTap: () {
-                          showCommonBottomSheet(
-                            context,
-                            title: "장비 보관하기 번거로우시죠?",
-                            accentDescription: "스노우런이 도와드릴게요!",
-                            actionButtonDescriptionText: "데크, 바인딩, 부츠 등 어느 장비든",
-                            actionButtonText: "보관하러 가기"
-                          );
+                          CommonWebViewPage.pushCommonWebView(
+                              context,
+                              "https://snowrun-server-bucket-production.s3.ap-northeast-2.amazonaws.com/terms/location/location.html",
+                              "위치기반서비스 이용약관");
                         },
                       ),
                       Visibility(

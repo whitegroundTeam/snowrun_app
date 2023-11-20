@@ -189,7 +189,7 @@ class InputInviteRidingRoomLinkBottomSheetState
                         return;
                       },
                       validator: (_) {
-                        return '오오오오오';
+                        return '양식을 지켜주세요!';
                       },
                     ),
                   ),

@@ -296,7 +296,7 @@ class CommonBottomSheetState extends State<CommonBottomSheet>
                         width: MediaQuery.sizeOf(context).width,
                         child: CommonDetector(
                           onTap: () {
-                            //TODO : 보관하러가기 스모어 링크
+                            widget.onClickActionButton?.call();
                           },
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,

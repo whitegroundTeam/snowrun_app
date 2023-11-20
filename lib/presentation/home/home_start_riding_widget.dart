@@ -5,6 +5,7 @@ import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
 import 'package:snowrun_app/injection.dart';
+import 'package:snowrun_app/presentation/core/loading_dialog.dart';
 import 'package:snowrun_app/presentation/riding/riding_page.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
@@ -20,6 +21,7 @@ class HomeStartRidingWidget extends StatefulWidget {
 
 class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
   final ridingActorBloc = getIt<RidingActorBloc>();
+  late LoadingDialog loader = LoadingDialog(context);
 
 
   @override
@@ -32,14 +34,14 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
           BlocListener<RidingActorBloc, RidingActorState>(
             bloc: ridingActorBloc,
             listener: (context, state) {
-              //TODO : 성공, 실패
+              debugPrint("WTWTWT :: ${state.status}");
               final ridingRoomId = state.ridingRoom?.id.getOrCrash();
               if (state.status == DefaultStatus.success &&
                   ridingRoomId != null) {
                 RidingPage.pushRidingPage(context, ridingRoomId);
               } else {
-                RidingPage.pushRidingPage(context, 0);
               }
+              loader.hide();
             },
           ),
         ],
@@ -50,7 +52,7 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                 CommonDetector(
                   needAuth: true,
                   onTap: () {
-                    // RidingPage.pushRidingPage(context, 0);
+                    loader.show();
                     ridingActorBloc.add(
                         const RidingActorEvent.createRidingRoom());
                   },
@@ -132,7 +134,7 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                     margin: const EdgeInsets.only(
                       left: 24,
                       right: 24,
-                      top: 4,
+                      top: 8,
                     ),
                     padding: const EdgeInsets.only(
                       top: 12,
@@ -140,7 +142,7 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                     ),
                     child: const Center(
                       child: TitleText(
-                        title: "초대 링크로 시작하기",
+                        title: "다른 라이딩에 참여하기",
                         fontSize: 16,
                         color: AppStyle.white,
                         fontWeight: FontWeight.w400,

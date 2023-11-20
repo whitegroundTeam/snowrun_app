@@ -41,7 +41,10 @@ class CommonButtonState extends State<CommonButton> {
         decoration: widget.isPrimary == true
             ? BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFFFFFF44), Color(0xFFFF1F00)],
+                  colors: [
+                    Color(0xFFE0E044),
+                    Color(0xFFFF1F00),
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),

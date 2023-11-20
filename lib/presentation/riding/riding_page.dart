@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:app_settings/app_settings.dart';
+import 'package:geolocator/geolocator.dart' as geolocator;
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,14 +10,20 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/location/location_bloc.dart';
+import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_detail/riding_detail_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
+import 'package:snowrun_app/domain/riding/riding_player.dart';
 import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
+import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
+import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/riding/players_counts_widget.dart';
 import 'package:snowrun_app/presentation/riding/riding_dashboard_page.dart';
 import 'package:snowrun_app/presentation/share/share_button.dart';
@@ -23,7 +31,10 @@ import 'package:snowrun_app/presentation/share/share_button.dart';
 class RidingPage extends StatefulWidget {
   final int ridingRoomId;
 
-  const RidingPage({super.key, required this.ridingRoomId});
+  const RidingPage({
+    super.key,
+    required this.ridingRoomId,
+  });
 
   @override
   State createState() => RidingPageState();
@@ -43,8 +54,8 @@ class RidingPage extends StatefulWidget {
 
 class RidingPageState extends State<RidingPage> {
   final _locationBloc = getIt<LocationBloc>();
-  final _userBloc = getIt<UserBloc>();
   final _ridingDetailBloc = getIt<RidingDetailBloc>();
+  final _ridingActorBloc = getIt<RidingActorBloc>();
 
   Timer? _timer;
 
@@ -53,9 +64,12 @@ class RidingPageState extends State<RidingPage> {
   PointAnnotationManager? pointAnnotationManager;
   bool isCreatedMap = false;
 
+  RidingPlayer? selectedRidingPlayer;
+
   @override
   void initState() {
     super.initState();
+
     // _timer =
     //     Timer.periodic(const Duration(seconds: 10), (Timer t) => _getUsers());
 
@@ -79,327 +93,367 @@ class RidingPageState extends State<RidingPage> {
         topOfBottomAreaHeight + bottomDividerHeight + bottomOfBottomAreaHeight;
     const mapViewBottomPadding = -12.0;
 
-    const tempRidingName = "라이딩 #ABCED 이름이이이이이있다요오오오";
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<RidingDetailBloc>(
           create: (context) => _ridingDetailBloc
-            // ..add(RidingDetailEvent.getRidingRoom(widget.ridingRoomId)),
+            ..add(RidingDetailEvent.getRidingRoom(widget.ridingRoomId)),
         ),
-        BlocProvider<UserBloc>(create: (context) => _userBloc),
+        BlocProvider<RidingActorBloc>(
+          create: (context) => _ridingActorBloc,
+        ),
+        // BlocProvider<UserBloc>(create: (context) => context.read<UserBloc>()),
         BlocProvider<LocationBloc>(create: (context) => _locationBloc
             //   ..add(const LocationEvent.getCurrentLocation()),
             ),
         BlocListener<LocationBloc, LocationState>(
           listener: (context, state) async {
             if (state.status == LocationStatus.successGetCurrentLocation) {
-              _userBloc.add(UserEvent.updateCurrentLocation(
+              context.read<UserBloc>().add(UserEvent.updateCurrentLocation(
                   state.userLocation.lat.getOrCrash(),
                   state.userLocation.lng.getOrCrash()));
             }
           },
         ),
-        BlocListener<UserBloc, UserState>(
+        BlocListener<RidingDetailBloc, RidingDetailState>(
           listener: (context, state) async {
+            if (state.status == DefaultStatus.success) {
+              updateMarkers(state.ridingRoom?.players.getOrCrash() ?? []);
+            }
+          },
+        ),
+        BlocListener<UserBloc, UserState>(
+          bloc: context.read<UserBloc>(),
+          listener: (context, state) async {
+            // await updateMarkers(state.users);
             if (state.status == UserStatus.successGetUsers) {
-              await updateMarkers(state.users);
             } else if (state.status ==
                 UserStatus.successUpdateCurrentLocation) {
               // _userBloc.add(const UserEvent.getUsers());
+              _ridingDetailBloc
+                  .add(RidingDetailEvent.getRidingRoom(widget.ridingRoomId));
             }
           },
         ),
       ],
-      child: BlocBuilder<RidingDetailBloc, RidingDetailState>(
+      child: BlocBuilder<RidingActorBloc, RidingActorState>(
         builder: (context, state) {
-          return Scaffold(
-            body: Stack(
-              children: [
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: bottomAreaHeight + mapViewBottomPadding,
-                  child: MapWidget(
-                    key: const ValueKey('mapWidget'),
-                    resourceOptions: ResourceOptions(
-                      accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? "",
-                    ),
-                    onMapCreated: _onMapCreated,
-                    styleUri: "mapbox://styles/mapbox/outdoors-v12",
-                    cameraOptions: CameraOptions(
-                      anchor: ScreenCoordinate(x: 0, y: 0),
-                      zoom: 14,
-                      pitch: 30,
-                      center: Point(
-                        coordinates: Position(
-                          // 126.6338237,
-                          // 37.4064278,
-                          128.6803521,
-                          37.6390034,
+          return BlocBuilder<RidingDetailBloc, RidingDetailState>(
+            builder: (context, state) {
+              final ridingRoom = state.ridingRoom;
+              String ridingRoomName = ridingRoom?.name.getOrCrash() ?? "";
+              selectedRidingPlayer = ridingRoom?.players
+                  .getOrCrash()
+                  .firstWhere((player) =>
+                      player.userId.getOrCrash() ==
+                      context.read<AuthBloc>().state.user?.id.getOrCrash());
+
+              debugPrint("WTWTWT :: ${selectedRidingPlayer?.location} ");
+              mapboxMap?.setCamera(CameraOptions(
+                anchor: ScreenCoordinate(x: 0, y: 0),
+                zoom: 14,
+                center: Point(
+                  coordinates: Position(
+                    selectedRidingPlayer?.location?.lng.getOrCrash() ??
+                        128.6803521,
+                    selectedRidingPlayer?.location?.lat.getOrCrash() ??
+                        37.6390034,
+                  ),
+                ).toJson(),
+              ));
+
+              return Scaffold(
+                body: Stack(
+                  children: [
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: bottomAreaHeight + mapViewBottomPadding,
+                      child: MapWidget(
+                        key: const ValueKey('mapWidget'),
+                        resourceOptions: ResourceOptions(
+                          accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? "",
                         ),
-                      ).toJson(),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 8,
-                  bottom: bottomAreaHeight + 16,
-                  child: CommonDetector(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: AppStyle.secondaryBackground.withOpacity(0.95),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      padding: const EdgeInsets.all(12),
-                      child: Image.asset(
-                        'assets/webp/refresh.webp',
-                        color: AppStyle.white,
-                        width: 24,
-                        height: 24,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                      color: AppStyle.secondaryBackground,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(12),
-                        topLeft: Radius.circular(12),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: topOfBottomAreaHeight,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                CommonDetector(
-                                  onTap: () {
-                                    RidingDashboardPage.pushRidingDashboardPage(
-                                        context);
-                                  },
-                                  child: Center(
-                                    child: Hero(
-                                      tag: "ridingRoomName",
-                                      child: TitleText(
-                                        title: tempRidingName.length > 10
-                                            ? "${tempRidingName.substring(0, 10)}..."
-                                            : tempRidingName,
-                                        fontSize: 16,
-                                        color: AppStyle.white,
-                                        fontWeight: FontWeight.w500,
-                                        maxLine: 1,
-                                        textOverFlow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                CommonDetector(
-                                  onTap: () {
-                                    RidingDashboardPage.pushRidingDashboardPage(
-                                        context);
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 8,
-                                    ),
-                                    child: Image.asset(
-                                      'assets/webp/setting.webp',
-                                      color: AppStyle.white,
-                                      width: 24,
-                                      height: 24,
-                                    ),
-                                  ),
-                                ),
-                                const Spacer(),
-                                CommonDetector(
-                                  onTap: () {
-                                    RidingDashboardPage.pushRidingDashboardPage(
-                                        context);
-                                  },
-                                  child: const PlayersCountsWidget(indexes: [
-                                    8,
-                                    4,
-                                    2,
-                                    1,
-                                    2,
-                                    3,
-                                    4,
-                                    5,
-                                    6,
-                                    7,
-                                    2,
-                                    3,
-                                    13,
-                                    12,
-                                    13
-                                  ]),
-                                ),
-                              ],
+                        onMapCreated: _onMapCreated,
+                        styleUri: "mapbox://styles/mapbox/outdoors-v12",
+                        cameraOptions: CameraOptions(
+                          anchor: ScreenCoordinate(x: 0, y: 0),
+                          zoom: 14,
+                          center: Point(
+                            coordinates: Position(
+                              selectedRidingPlayer?.location?.lng
+                                      .getOrCrash() ??
+                                  128.6803521,
+                              selectedRidingPlayer?.location?.lat
+                                      .getOrCrash() ??
+                                  37.6390034,
                             ),
+                          ).toJson(),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 8,
+                      bottom: bottomAreaHeight + 16,
+                      child: CommonDetector(
+                        onTap: () {
+                          _updateUserLocation();
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color:
+                                AppStyle.secondaryBackground.withOpacity(0.95),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          const Divider(
-                            height: bottomDividerHeight,
-                            color: AppStyle.line,
+                          padding: const EdgeInsets.all(12),
+                          child: Image.asset(
+                            'assets/webp/refresh.webp',
+                            color: AppStyle.white,
+                            width: 24,
+                            height: 24,
                           ),
-                          SizedBox(
-                            height: bottomOfBottomAreaHeight,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                const CommonNetworkImage(
-                                    height: 56,
-                                    width: 56,
-                                    imageBackgroundColor: AppStyle.transparent,
-                                    imageUrl:
-                                        "https://snowrun-server-bucket-production.s3.ap-northeast-2.amazonaws.com/profile/profile_snow_ball_12.webp"),
-                                const SizedBox(
-                                  width: 16,
-                                ),
-                                const Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      TitleText(
-                                        title: "눈송이 #JFJD",
-                                        fontSize: 20,
-                                        color: AppStyle.white,
-                                        fontWeight: FontWeight.w700,
-                                        maxLine: 1,
-                                        textOverFlow: TextOverflow.ellipsis,
-                                      ),
-                                      SizedBox(
-                                        height: 2,
-                                      ),
-                                      TitleText(
-                                        title: "2028.09.14 업데이트",
-                                        fontSize: 16,
-                                        color: AppStyle.secondaryTextColor,
-                                        fontWeight: FontWeight.w500,
-                                        maxLine: 1,
-                                        textOverFlow: TextOverflow.ellipsis,
-                                      ),
-                                      //TODO : 업데이트 시간
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 12,
-                                ),
-                                Container(
-                                  width: 48,
-                                  height: 56,
-                                  decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                      colors: [
-                                        Color(0xFFFFB74D), // 밝은 색상
-                                        Color(0xFFF57C00), // 중간 색상
-                                        Color(0xFFEF6C00), // 더 진한 색상
-                                      ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: const BoxDecoration(
+                          color: AppStyle.secondaryBackground,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(12),
+                            topLeft: Radius.circular(12),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: topOfBottomAreaHeight,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(
+                                      width: 8,
                                     ),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(8)),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.2),
-                                        blurRadius: 15,
-                                        offset: const Offset(0, 7),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: 4,
-                                      ),
-                                      Expanded(
-                                        child: Image.asset(
-                                          'assets/webp/hey.webp',
-                                          // width: 32,
-                                          // height: 32,
+                                    CommonDetector(
+                                      onTap: () {
+                                        RidingDashboardPage
+                                            .pushRidingDashboardPage(context);
+                                      },
+                                      child: Center(
+                                        child: Hero(
+                                          tag: "ridingRoomName",
+                                          child: TitleText(
+                                            title: ridingRoomName.length > 10
+                                                ? "${ridingRoomName.substring(0, 10)}..."
+                                                : ridingRoomName,
+                                            fontSize: 16,
+                                            color: AppStyle.white,
+                                            fontWeight: FontWeight.w500,
+                                            maxLine: 1,
+                                            textOverFlow: TextOverflow.ellipsis,
+                                          ),
                                         ),
                                       ),
-                                      const TitleText(
-                                        title: "부르기",
-                                        fontSize: 12,
-                                        color: AppStyle.white,
-                                        fontWeight: FontWeight.w700,
+                                    ),
+                                    CommonDetector(
+                                      onTap: () {
+                                        RidingDashboardPage
+                                            .pushRidingDashboardPage(context);
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 8,
+                                          vertical: 8,
+                                        ),
+                                        child: Image.asset(
+                                          'assets/webp/setting.webp',
+                                          color: AppStyle.white,
+                                          width: 24,
+                                          height: 24,
+                                        ),
                                       ),
-                                      const SizedBox(
-                                        height: 4,
+                                    ),
+                                    const Spacer(),
+                                    CommonDetector(
+                                      onTap: () {
+                                        RidingDashboardPage
+                                            .pushRidingDashboardPage(context);
+                                      },
+                                      child: PlayersCountsWidget(
+                                        players:
+                                            ridingRoom?.players.getOrCrash() ??
+                                                [],
+                                        maxPlayersCount: ridingRoom?.players
+                                                .getOrCrash()
+                                                .length ??
+                                            0,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(
-                                  width: 8,
+                              ),
+                              const Divider(
+                                height: bottomDividerHeight,
+                                color: AppStyle.line,
+                              ),
+                              SizedBox(
+                                height: bottomOfBottomAreaHeight,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(
+                                      width: 8,
+                                    ),
+                                    CommonNetworkImage(
+                                        height: 56,
+                                        width: 56,
+                                        imageBackgroundColor:
+                                            AppStyle.transparent,
+                                        imageUrl: selectedRidingPlayer
+                                                ?.profileImage
+                                                .getOrCrash() ??
+                                            ""),
+                                    const SizedBox(
+                                      width: 16,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          TitleText(
+                                            title: selectedRidingPlayer
+                                                    ?.nickname
+                                                    .getOrCrash() ??
+                                                "",
+                                            fontSize: 20,
+                                            color: AppStyle.white,
+                                            fontWeight: FontWeight.w700,
+                                            maxLine: 1,
+                                            textOverFlow: TextOverflow.ellipsis,
+                                          ),
+                                          const SizedBox(
+                                            height: 2,
+                                          ),
+                                          // TODO : 하루 지나면
+                                          TitleText(
+                                            title:
+                                                "${selectedRidingPlayer?.locationUpdatedAt.format('yy.MM.dd hh:mm')} 업데이트",
+                                            fontSize: 16,
+                                            color: AppStyle.secondaryTextColor,
+                                            fontWeight: FontWeight.w500,
+                                            maxLine: 1,
+                                            textOverFlow: TextOverflow.ellipsis,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    Container(
+                                      width: 64,
+                                      height: 56,
+                                      decoration: BoxDecoration(
+                                        gradient: const LinearGradient(
+                                          begin: Alignment.centerLeft,
+                                          end: Alignment.centerRight,
+                                          colors: [
+                                            Color(0xFFFFB74D),
+                                            Color(0xFFF57C00),
+                                            Color(0xFFEF6C00),
+                                          ],
+                                        ),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(8)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.2),
+                                            blurRadius: 15,
+                                            offset: const Offset(0, 7),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 4,
+                                          ),
+                                          Expanded(
+                                            child: Image.asset(
+                                              'assets/webp/hey.webp',
+                                              // width: 32,
+                                              // height: 32,
+                                            ),
+                                          ),
+                                          const TitleText(
+                                            title: "부르기",
+                                            fontSize: 12,
+                                            color: AppStyle.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                          const SizedBox(
+                                            height: 4,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).padding.top + 12,
+                      left: 0,
+                      right: 0,
+                      child: Row(
+                        children: [
+                          CommonDetector(
+                            onTap: () {
+                              context.pop();
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 8),
+                              margin: const EdgeInsets.only(
+                                left: 16,
+                                right: 12,
+                                bottom: 4,
+                                top: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                  color: AppStyle.secondaryBackground
+                                      .withOpacity(0.95),
+                                  shape: BoxShape.circle),
+                              child: Image.asset(
+                                'assets/webp/arrow_left.webp',
+                                color: AppStyle.white,
+                              ),
                             ),
                           ),
+                          const Spacer(),
+                          const ShareButton(),
                         ],
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                Positioned(
-                  top: MediaQuery.of(context).padding.top + 12,
-                  left: 0,
-                  right: 0,
-                  child: Row(
-                    children: [
-                      CommonDetector(
-                        onTap: () {
-                          context.pop();
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 8),
-                          margin: const EdgeInsets.only(
-                            left: 16,
-                            right: 12,
-                            bottom: 4,
-                            top: 4,
-                          ),
-                          decoration: BoxDecoration(
-                              color: AppStyle.secondaryBackground
-                                  .withOpacity(0.95),
-                              shape: BoxShape.circle),
-                          child: Image.asset(
-                            'assets/webp/arrow_left.webp',
-                            color: AppStyle.white,
-                          ),
-                        ),
-                      ),
-                      const Spacer(),
-                      const ShareButton(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              );
+            },
           );
         },
       ),
@@ -482,8 +536,8 @@ class RidingPageState extends State<RidingPage> {
   //       });
   // }
 
-  void _getUsers() {
-    // _locationBloc.add(const LocationEvent.getCurrentLocation());
+  void _updateUserLocation() {
+    _checkLocationPermission();
   }
 
   _onMapCreated(MapboxMap mapboxMap) {
@@ -510,47 +564,50 @@ class RidingPageState extends State<RidingPage> {
     });
   }
 
-  updateMarkers(List<User> users) async {
+  updateMarkers(List<RidingPlayer> ridingPlayers) async {
     if (!isCreatedMap) {
       return;
     }
-    debugPrint("UPDATEMARKERS :: ${users.length}");
+    double adjustedIconSize = adjustIconSizeForDevice(context, 0.1);
     pointAnnotationManager?.deleteAll();
-    for (var user in users) {
-      String avatarPath = "assets/webp/snowrun_icon.png";
-      if (user.nickname.getOrCrash() == "줄리") {
-        avatarPath = "assets/webp/julie_avatar.png";
-      } else if (user.nickname.getOrCrash() == "댄") {
-        avatarPath = "assets/webp/dan_avatar.png";
-      } else if (user.nickname.getOrCrash() == "케틀린") {
-        avatarPath = "assets/webp/kathlyn_avatar.png";
-      } else if (user.nickname.getOrCrash() == "루만") {
-        avatarPath = "assets/webp/luman_avatar.png";
-      }
-
-      final ByteData bytes = await rootBundle.load(avatarPath);
-      final Uint8List avatarData = bytes.buffer.asUint8List();
-      double? lat = user.location?.lat.getOrCrash();
-      double? lng = user.location?.lng.getOrCrash();
+    for (var ridingPlayer in ridingPlayers) {
+      String imageUrl = ridingPlayer.profileImage.getOrCrash();
+      Uint8List avatarData = await fetchImageAsUint8List(imageUrl);
+      double? lat = ridingPlayer.location?.lat.getOrCrash();
+      double? lng = ridingPlayer.location?.lng.getOrCrash();
 
       if (lat != null && lng != null) {
+
         pointAnnotationManager
             ?.create(PointAnnotationOptions(
                 geometry: Point(coordinates: Position(lng, lat)).toJson(),
-                textField: user.nickname.getOrCrash(),
-                textSize: 24,
-                textHaloColor: 0xffffaacc,
-                // textAnchor: TextAnchor.BOTTOM,
-                textColor: 0xff00ddff,
+                textField: ridingPlayer.nickname.getOrCrash(),
+                textSize: 16,
+                textColor: 0xff000000,
                 textHaloWidth: 30,
-                textOffset: [0.0, -2.0],
-                iconSize: 1.0,
+                textOffset: [0.0, -1.5],
+                iconSize: 0.05,
                 iconOffset: [0.0, -5.0],
-                symbolSortKey: 10,
+                symbolSortKey: ridingPlayer.id.getOrCrash().toDouble(),
                 image: avatarData))
             .then((value) => pointAnnotation = value);
       }
     }
+  }
+
+  Future<Uint8List> fetchImageAsUint8List(String imageUrl) async {
+    final response = await http.get(Uri.parse(imageUrl));
+    if (response.statusCode == 200) {
+      return response.bodyBytes;
+    } else {
+      throw Exception('Failed to load image');
+    }
+  }
+
+  double adjustIconSizeForDevice(BuildContext context, double baseSize) {
+    debugPrint("WTWWTWT :: ${MediaQuery.of(context).size.width}");
+    double devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    return baseSize / devicePixelRatio;
   }
 
   _addTestMarker() async {
@@ -686,13 +743,38 @@ class RidingPageState extends State<RidingPage> {
     //     .then((value) => pointAnnotation = value);
   }
 
-  Future<Uint8List> fetchImage(String imageUrl) async {
-    final response = await http.get(Uri.parse(imageUrl));
-
-    if (response.statusCode == 200) {
-      return response.bodyBytes;
-    } else {
-      throw Exception('Failed to load image');
+  _checkLocationPermission() async {
+    if (!await geolocator.Geolocator.isLocationServiceEnabled()) {
+      _showOpenSettingDialog();
     }
+
+    final checkedPermission = await geolocator.Geolocator.requestPermission();
+
+    if (checkedPermission == geolocator.LocationPermission.always ||
+        checkedPermission == geolocator.LocationPermission.whileInUse) {
+      if (!mounted) return;
+      _locationBloc.add(const LocationEvent.getCurrentLocation());
+    } else {
+      _showOpenSettingDialog();
+    }
+  }
+
+  _showOpenSettingDialog() async {
+    if (!mounted) return;
+    await showCommonDialog(context,
+        buttonText: "설정으로 이동",
+        title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
+        negativeButtonText: "취소", onPressedButton: () async {
+          AppSettings.openAppSettings(type: AppSettingsType.location);
+          showToast(
+            context,
+            "위치 권한 허용 후 다시 시도해주세요.",
+          );
+
+          if (!mounted) return;
+          context.pop();
+        }, onPressedNegativeButton: () {
+          context.pop();
+        });
   }
 }

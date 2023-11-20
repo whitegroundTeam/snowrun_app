@@ -26,6 +26,8 @@ mixin _$RidingRoomDto {
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_private')
   bool get isPrivate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'me')
+  RidingPlayerDto? get me => throw _privateConstructorUsedError;
   @JsonKey(name: 'players')
   List<RidingPlayerDto> get players => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_players')
@@ -47,8 +49,11 @@ abstract class $RidingRoomDtoCopyWith<$Res> {
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'name') String name,
       @JsonKey(name: 'is_private') bool isPrivate,
+      @JsonKey(name: 'me') RidingPlayerDto? me,
       @JsonKey(name: 'players') List<RidingPlayerDto> players,
       @JsonKey(name: 'total_players') int totalPlayers});
+
+  $RidingPlayerDtoCopyWith<$Res>? get me;
 }
 
 /// @nodoc
@@ -67,6 +72,7 @@ class _$RidingRoomDtoCopyWithImpl<$Res, $Val extends RidingRoomDto>
     Object? id = null,
     Object? name = null,
     Object? isPrivate = null,
+    Object? me = freezed,
     Object? players = null,
     Object? totalPlayers = null,
   }) {
@@ -83,6 +89,10 @@ class _$RidingRoomDtoCopyWithImpl<$Res, $Val extends RidingRoomDto>
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
               as bool,
+      me: freezed == me
+          ? _value.me
+          : me // ignore: cast_nullable_to_non_nullable
+              as RidingPlayerDto?,
       players: null == players
           ? _value.players
           : players // ignore: cast_nullable_to_non_nullable
@@ -92,6 +102,18 @@ class _$RidingRoomDtoCopyWithImpl<$Res, $Val extends RidingRoomDto>
           : totalPlayers // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RidingPlayerDtoCopyWith<$Res>? get me {
+    if (_value.me == null) {
+      return null;
+    }
+
+    return $RidingPlayerDtoCopyWith<$Res>(_value.me!, (value) {
+      return _then(_value.copyWith(me: value) as $Val);
+    });
   }
 }
 
@@ -107,8 +129,12 @@ abstract class _$$_RidingRoomDtoCopyWith<$Res>
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'name') String name,
       @JsonKey(name: 'is_private') bool isPrivate,
+      @JsonKey(name: 'me') RidingPlayerDto? me,
       @JsonKey(name: 'players') List<RidingPlayerDto> players,
       @JsonKey(name: 'total_players') int totalPlayers});
+
+  @override
+  $RidingPlayerDtoCopyWith<$Res>? get me;
 }
 
 /// @nodoc
@@ -125,6 +151,7 @@ class __$$_RidingRoomDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? isPrivate = null,
+    Object? me = freezed,
     Object? players = null,
     Object? totalPlayers = null,
   }) {
@@ -141,6 +168,10 @@ class __$$_RidingRoomDtoCopyWithImpl<$Res>
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
               as bool,
+      me: freezed == me
+          ? _value.me
+          : me // ignore: cast_nullable_to_non_nullable
+              as RidingPlayerDto?,
       players: null == players
           ? _value._players
           : players // ignore: cast_nullable_to_non_nullable
@@ -160,6 +191,7 @@ class _$_RidingRoomDto extends _RidingRoomDto {
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'is_private') required this.isPrivate,
+      @JsonKey(name: 'me') this.me,
       @JsonKey(name: 'players') required final List<RidingPlayerDto> players,
       @JsonKey(name: 'total_players') required this.totalPlayers})
       : _players = players,
@@ -177,6 +209,9 @@ class _$_RidingRoomDto extends _RidingRoomDto {
   @override
   @JsonKey(name: 'is_private')
   final bool isPrivate;
+  @override
+  @JsonKey(name: 'me')
+  final RidingPlayerDto? me;
   final List<RidingPlayerDto> _players;
   @override
   @JsonKey(name: 'players')
@@ -192,7 +227,7 @@ class _$_RidingRoomDto extends _RidingRoomDto {
 
   @override
   String toString() {
-    return 'RidingRoomDto(id: $id, name: $name, isPrivate: $isPrivate, players: $players, totalPlayers: $totalPlayers)';
+    return 'RidingRoomDto(id: $id, name: $name, isPrivate: $isPrivate, me: $me, players: $players, totalPlayers: $totalPlayers)';
   }
 
   @override
@@ -204,6 +239,7 @@ class _$_RidingRoomDto extends _RidingRoomDto {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isPrivate, isPrivate) ||
                 other.isPrivate == isPrivate) &&
+            (identical(other.me, me) || other.me == me) &&
             const DeepCollectionEquality().equals(other._players, _players) &&
             (identical(other.totalPlayers, totalPlayers) ||
                 other.totalPlayers == totalPlayers));
@@ -211,7 +247,7 @@ class _$_RidingRoomDto extends _RidingRoomDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, isPrivate,
+  int get hashCode => Object.hash(runtimeType, id, name, isPrivate, me,
       const DeepCollectionEquality().hash(_players), totalPlayers);
 
   @JsonKey(ignore: true)
@@ -233,6 +269,7 @@ abstract class _RidingRoomDto extends RidingRoomDto {
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'name') required final String name,
       @JsonKey(name: 'is_private') required final bool isPrivate,
+      @JsonKey(name: 'me') final RidingPlayerDto? me,
       @JsonKey(name: 'players') required final List<RidingPlayerDto> players,
       @JsonKey(name: 'total_players')
       required final int totalPlayers}) = _$_RidingRoomDto;
@@ -250,6 +287,9 @@ abstract class _RidingRoomDto extends RidingRoomDto {
   @override
   @JsonKey(name: 'is_private')
   bool get isPrivate;
+  @override
+  @JsonKey(name: 'me')
+  RidingPlayerDto? get me;
   @override
   @JsonKey(name: 'players')
   List<RidingPlayerDto> get players;
@@ -282,6 +322,8 @@ mixin _$RidingPlayerDto {
   DateTime get locationUpdatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image')
   String get profileImage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_owner')
+  bool get isOwner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -302,7 +344,8 @@ abstract class $RidingPlayerDtoCopyWith<$Res> {
       @JsonKey(name: 'room') int room,
       @JsonKey(name: 'location') UserLocationDto? location,
       @JsonKey(name: 'location_updated_at') DateTime locationUpdatedAt,
-      @JsonKey(name: 'profile_image') String profileImage});
+      @JsonKey(name: 'profile_image') String profileImage,
+      @JsonKey(name: 'is_owner') bool isOwner});
 
   $UserLocationDtoCopyWith<$Res>? get location;
 }
@@ -327,6 +370,7 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
     Object? location = freezed,
     Object? locationUpdatedAt = null,
     Object? profileImage = null,
+    Object? isOwner = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -357,6 +401,10 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as String,
+      isOwner: null == isOwner
+          ? _value.isOwner
+          : isOwner // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -388,7 +436,8 @@ abstract class _$$_RidingPlayerDtoCopyWith<$Res>
       @JsonKey(name: 'room') int room,
       @JsonKey(name: 'location') UserLocationDto? location,
       @JsonKey(name: 'location_updated_at') DateTime locationUpdatedAt,
-      @JsonKey(name: 'profile_image') String profileImage});
+      @JsonKey(name: 'profile_image') String profileImage,
+      @JsonKey(name: 'is_owner') bool isOwner});
 
   @override
   $UserLocationDtoCopyWith<$Res>? get location;
@@ -412,6 +461,7 @@ class __$$_RidingPlayerDtoCopyWithImpl<$Res>
     Object? location = freezed,
     Object? locationUpdatedAt = null,
     Object? profileImage = null,
+    Object? isOwner = null,
   }) {
     return _then(_$_RidingPlayerDto(
       id: null == id
@@ -442,6 +492,10 @@ class __$$_RidingPlayerDtoCopyWithImpl<$Res>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as String,
+      isOwner: null == isOwner
+          ? _value.isOwner
+          : isOwner // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -456,7 +510,8 @@ class _$_RidingPlayerDto extends _RidingPlayerDto {
       @JsonKey(name: 'room') required this.room,
       @JsonKey(name: 'location') this.location,
       @JsonKey(name: 'location_updated_at') required this.locationUpdatedAt,
-      @JsonKey(name: 'profile_image') required this.profileImage})
+      @JsonKey(name: 'profile_image') required this.profileImage,
+      @JsonKey(name: 'is_owner') required this.isOwner})
       : super._();
 
   factory _$_RidingPlayerDto.fromJson(Map<String, dynamic> json) =>
@@ -483,10 +538,13 @@ class _$_RidingPlayerDto extends _RidingPlayerDto {
   @override
   @JsonKey(name: 'profile_image')
   final String profileImage;
+  @override
+  @JsonKey(name: 'is_owner')
+  final bool isOwner;
 
   @override
   String toString() {
-    return 'RidingPlayerDto(id: $id, user: $user, nickname: $nickname, room: $room, location: $location, locationUpdatedAt: $locationUpdatedAt, profileImage: $profileImage)';
+    return 'RidingPlayerDto(id: $id, user: $user, nickname: $nickname, room: $room, location: $location, locationUpdatedAt: $locationUpdatedAt, profileImage: $profileImage, isOwner: $isOwner)';
   }
 
   @override
@@ -504,13 +562,14 @@ class _$_RidingPlayerDto extends _RidingPlayerDto {
             (identical(other.locationUpdatedAt, locationUpdatedAt) ||
                 other.locationUpdatedAt == locationUpdatedAt) &&
             (identical(other.profileImage, profileImage) ||
-                other.profileImage == profileImage));
+                other.profileImage == profileImage) &&
+            (identical(other.isOwner, isOwner) || other.isOwner == isOwner));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, user, nickname, room,
-      location, locationUpdatedAt, profileImage);
+      location, locationUpdatedAt, profileImage, isOwner);
 
   @JsonKey(ignore: true)
   @override
@@ -535,7 +594,8 @@ abstract class _RidingPlayerDto extends RidingPlayerDto {
           @JsonKey(name: 'location') final UserLocationDto? location,
           @JsonKey(name: 'location_updated_at')
           required final DateTime locationUpdatedAt,
-          @JsonKey(name: 'profile_image') required final String profileImage}) =
+          @JsonKey(name: 'profile_image') required final String profileImage,
+          @JsonKey(name: 'is_owner') required final bool isOwner}) =
       _$_RidingPlayerDto;
   const _RidingPlayerDto._() : super._();
 
@@ -563,6 +623,9 @@ abstract class _RidingPlayerDto extends RidingPlayerDto {
   @override
   @JsonKey(name: 'profile_image')
   String get profileImage;
+  @override
+  @JsonKey(name: 'is_owner')
+  bool get isOwner;
   @override
   @JsonKey(ignore: true)
   _$$_RidingPlayerDtoCopyWith<_$_RidingPlayerDto> get copyWith =>

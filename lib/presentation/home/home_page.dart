@@ -18,6 +18,7 @@ import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
+import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
 import 'package:snowrun_app/presentation/home/home_bottom_band.dart';
 import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
 import 'package:snowrun_app/presentation/home/home_ridings_widget.dart';
@@ -117,7 +118,11 @@ class HomePageState extends State<HomePage> {
                             title: "장비 보관하기 번거로우시죠?",
                             accentDescription: "스노우런이 도와드릴게요!",
                             actionButtonDescriptionText: "데크, 바인딩, 부츠 등 어느 장비든",
-                            actionButtonText: "보관하러 가기");
+                            actionButtonText: "보관하러 가기",
+                            onClickActionButton: () {
+                          CommonWebViewPage.pushCommonWebView(context,
+                              "https://smore.im/form/VhD3HQMVVy", "장비 보관 신청서");
+                        });
 
                         // showCommonBottomSheet(
                         //   context,
@@ -164,85 +169,5 @@ class HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  // CommonButton(
-  //   onTap: () {
-  //     _checkLocationPermission();
-  //   },
-  //   text: "라이딩화면으로 이동하기",
-  // )
-
-  // Expanded(
-  //   child: SizedBox(),
-  // )
-
-  // const SizedBox(
-  //   height: 32,
-  // ),
-  // Center(
-  //   child: Container(
-  //     width: 100,
-  //     height: 100,
-  // decoration: BoxDecoration(
-  //   borderRadius:
-  //   BorderRadius.circular(16),
-  //   // borderSide: const BorderSide(color: Colors.white, width: 2),
-  //   // badgeColor:
-  //   // const Color(0xffDA1E28),
-  // ),
-  //     child: ClipRRect(
-  //       borderRadius: BorderRadius.circular(4),
-  //       child: Stack(
-  //         children: [
-  //           const BlurHash(hash: "LHTOE1q8g1oxqMeWf7e;gdfjfQfQ",),
-  //           Container(
-  //             margin: const EdgeInsets.all(2),
-  //             color: AppStyle.background,
-  //           )
-  //           // Positioned(
-  //           //   right: 4, left: 4, top: 4, bottom: 4,
-  //           //   child: Container(
-  //           //     color: AppStyle.background,
-  //           //   ),),
-  //         ],
-  //       ),
-  //     ),
-  //   ),
-  // ),
-
-  _checkLocationPermission() async {
-    if (!await Geolocator.isLocationServiceEnabled()) {
-      _showOpenSettingDialog();
-    }
-
-    final checkedPermission = await Geolocator.requestPermission();
-
-    if (checkedPermission == LocationPermission.always ||
-        checkedPermission == LocationPermission.whileInUse) {
-      if (!mounted) return;
-      context.push("/recording");
-    } else {
-      _showOpenSettingDialog();
-    }
-  }
-
-  _showOpenSettingDialog() async {
-    if (!mounted) return;
-    await showCommonDialog(context,
-        buttonText: "설정으로 이동",
-        title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
-        negativeButtonText: "취소", onPressedButton: () async {
-      AppSettings.openAppSettings(type: AppSettingsType.location);
-      showToast(
-        context,
-        "위치 권한 허용 후 다시 시도해주세요.",
-      );
-
-      if (!mounted) return;
-      context.pop();
-    }, onPressedNegativeButton: () {
-      context.pop();
-    });
   }
 }

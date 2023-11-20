@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/application/default_status.dart';
@@ -22,10 +23,12 @@ class RidingActorBloc extends Bloc<RidingActorEvent, RidingActorState> {
       emit(
         failureOrResponse.fold(
           (f) => state.copyWith(status: DefaultStatus.failure),
-          (createdRidingRoom) => state.copyWith(
-            status: DefaultStatus.success,
-            ridingRoom: createdRidingRoom,
-          ),
+          (createdRidingRoom) {
+            return state.copyWith(
+              status: DefaultStatus.success,
+              ridingRoom: createdRidingRoom,
+            );
+          },
         ),
       );
     });

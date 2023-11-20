@@ -23,6 +23,7 @@ mixin _$RidingPlayer {
   UserLocation? get location => throw _privateConstructorUsedError;
   DateTimeVO get locationUpdatedAt => throw _privateConstructorUsedError;
   StringVO get profileImage => throw _privateConstructorUsedError;
+  BooleanVO get isOwner => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RidingPlayerCopyWith<RidingPlayer> get copyWith =>
@@ -42,7 +43,8 @@ abstract class $RidingPlayerCopyWith<$Res> {
       IntVO roomId,
       UserLocation? location,
       DateTimeVO locationUpdatedAt,
-      StringVO profileImage});
+      StringVO profileImage,
+      BooleanVO isOwner});
 
   $UserLocationCopyWith<$Res>? get location;
 }
@@ -67,6 +69,7 @@ class _$RidingPlayerCopyWithImpl<$Res, $Val extends RidingPlayer>
     Object? location = freezed,
     Object? locationUpdatedAt = null,
     Object? profileImage = null,
+    Object? isOwner = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -97,6 +100,10 @@ class _$RidingPlayerCopyWithImpl<$Res, $Val extends RidingPlayer>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as StringVO,
+      isOwner: null == isOwner
+          ? _value.isOwner
+          : isOwner // ignore: cast_nullable_to_non_nullable
+              as BooleanVO,
     ) as $Val);
   }
 
@@ -128,7 +135,8 @@ abstract class _$$_RidingPlayerCopyWith<$Res>
       IntVO roomId,
       UserLocation? location,
       DateTimeVO locationUpdatedAt,
-      StringVO profileImage});
+      StringVO profileImage,
+      BooleanVO isOwner});
 
   @override
   $UserLocationCopyWith<$Res>? get location;
@@ -152,6 +160,7 @@ class __$$_RidingPlayerCopyWithImpl<$Res>
     Object? location = freezed,
     Object? locationUpdatedAt = null,
     Object? profileImage = null,
+    Object? isOwner = null,
   }) {
     return _then(_$_RidingPlayer(
       id: null == id
@@ -182,6 +191,10 @@ class __$$_RidingPlayerCopyWithImpl<$Res>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as StringVO,
+      isOwner: null == isOwner
+          ? _value.isOwner
+          : isOwner // ignore: cast_nullable_to_non_nullable
+              as BooleanVO,
     ));
   }
 }
@@ -196,7 +209,8 @@ class _$_RidingPlayer extends _RidingPlayer {
       required this.roomId,
       required this.location,
       required this.locationUpdatedAt,
-      required this.profileImage})
+      required this.profileImage,
+      required this.isOwner})
       : super._();
 
   @override
@@ -213,10 +227,12 @@ class _$_RidingPlayer extends _RidingPlayer {
   final DateTimeVO locationUpdatedAt;
   @override
   final StringVO profileImage;
+  @override
+  final BooleanVO isOwner;
 
   @override
   String toString() {
-    return 'RidingPlayer(id: $id, userId: $userId, nickname: $nickname, roomId: $roomId, location: $location, locationUpdatedAt: $locationUpdatedAt, profileImage: $profileImage)';
+    return 'RidingPlayer(id: $id, userId: $userId, nickname: $nickname, roomId: $roomId, location: $location, locationUpdatedAt: $locationUpdatedAt, profileImage: $profileImage, isOwner: $isOwner)';
   }
 
   @override
@@ -234,12 +250,13 @@ class _$_RidingPlayer extends _RidingPlayer {
             (identical(other.locationUpdatedAt, locationUpdatedAt) ||
                 other.locationUpdatedAt == locationUpdatedAt) &&
             (identical(other.profileImage, profileImage) ||
-                other.profileImage == profileImage));
+                other.profileImage == profileImage) &&
+            (identical(other.isOwner, isOwner) || other.isOwner == isOwner));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, nickname, roomId,
-      location, locationUpdatedAt, profileImage);
+      location, locationUpdatedAt, profileImage, isOwner);
 
   @JsonKey(ignore: true)
   @override
@@ -256,7 +273,8 @@ abstract class _RidingPlayer extends RidingPlayer {
       required final IntVO roomId,
       required final UserLocation? location,
       required final DateTimeVO locationUpdatedAt,
-      required final StringVO profileImage}) = _$_RidingPlayer;
+      required final StringVO profileImage,
+      required final BooleanVO isOwner}) = _$_RidingPlayer;
   const _RidingPlayer._() : super._();
 
   @override
@@ -273,6 +291,8 @@ abstract class _RidingPlayer extends RidingPlayer {
   DateTimeVO get locationUpdatedAt;
   @override
   StringVO get profileImage;
+  @override
+  BooleanVO get isOwner;
   @override
   @JsonKey(ignore: true)
   _$$_RidingPlayerCopyWith<_$_RidingPlayer> get copyWith =>

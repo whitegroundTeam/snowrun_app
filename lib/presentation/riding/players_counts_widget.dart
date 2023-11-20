@@ -1,14 +1,17 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/domain/riding/riding_player.dart';
 import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 
 class PlayersCountsWidget extends StatefulWidget {
-  final List<int> indexes;
+  final List<RidingPlayer> players;
+  final int maxPlayersCount;
 
-  const PlayersCountsWidget({super.key, required this.indexes});
+  const PlayersCountsWidget({super.key, required this.players, required this.maxPlayersCount});
 
   @override
   State createState() => PlayersCountsWidgetState();
@@ -20,7 +23,7 @@ class PlayersCountsWidgetState extends State<PlayersCountsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final moreCount = max(widget.indexes.length - maxDisplayCount, 0);
+    final moreCount = max(widget.players.length - maxDisplayCount, 0);
     return Row(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -30,8 +33,8 @@ class PlayersCountsWidgetState extends State<PlayersCountsWidget> {
           height: 16,
           child: Stack(
             children: List.generate(
-              min(widget.indexes.length, maxDisplayCount),
-              (index) => _buildProfileWidget(index, widget.indexes[index]),
+              min(widget.players.length, maxDisplayCount),
+              (index) => _buildProfileWidget(index, widget.players[index]),
             ),
           ),
         ),
@@ -39,16 +42,16 @@ class PlayersCountsWidgetState extends State<PlayersCountsWidget> {
           width: 4,
         ),
         Container(
-          constraints: const BoxConstraints(
-            minWidth: 42,
+          // color: Colors.pink,
+          constraints: BoxConstraints(
+            minWidth: min(widget.maxPlayersCount, maxDisplayCount+1) * 8,
           ),
           child: TitleText(
             title: moreCount > 0
                 ? moreCount > 999
                     ? "+999"
-                    : "+${moreCount}"
-                // : "+999"
-                : "",
+                    : "+$moreCount"
+                : "  ${widget.players.length}",
             fontSize: 14,
             color: AppStyle.white,
             fontWeight: FontWeight.bold,
@@ -58,14 +61,13 @@ class PlayersCountsWidgetState extends State<PlayersCountsWidget> {
     );
   }
 
-  Widget _buildProfileWidget(int index, int tempValue) {
+  Widget _buildProfileWidget(int index, RidingPlayer player) {
     return Positioned(
-      left: index * 8,
+      left: index * 8 + (maxDisplayCount - min(widget.players.length, maxDisplayCount)) * 8,
       child: CommonNetworkImage(
           width: 16,
           height: 16,
-          imageUrl:
-              "https://snowrun-server-bucket-production.s3.ap-northeast-2.amazonaws.com/profile/profile_snow_ball_$tempValue.webp"),
+          imageUrl: player.profileImage.getOrCrash()),
     );
   }
 }

@@ -18,6 +18,7 @@ class RidingPlayer with _$RidingPlayer {
     required UserLocation? location,
     required DateTimeVO locationUpdatedAt,
     required StringVO profileImage,
+    required BooleanVO isOwner,
   }) = _RidingPlayer;
 
   factory RidingPlayer.empty() => RidingPlayer(
@@ -28,6 +29,7 @@ class RidingPlayer with _$RidingPlayer {
         location: UserLocation.empty(),
         locationUpdatedAt: DateTimeVO(DateTime.now()),
         profileImage: StringVO(""),
+        isOwner: BooleanVO(false),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
@@ -39,6 +41,7 @@ class RidingPlayer with _$RidingPlayer {
         .andThen(roomId.failureOrUnit)
         .andThen(locationUpdatedAt.failureOrUnit)
         .andThen(profileImage.failureOrUnit)
+        .andThen(isOwner.failureOrUnit)
         .fold((f) => some(f), (_) => none());
   }
 }

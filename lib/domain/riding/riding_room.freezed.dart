@@ -19,6 +19,7 @@ mixin _$RidingRoom {
   IntVO get id => throw _privateConstructorUsedError;
   StringVO get name => throw _privateConstructorUsedError;
   BooleanVO get isPrivate => throw _privateConstructorUsedError;
+  RidingPlayer? get me => throw _privateConstructorUsedError;
   ListVO<RidingPlayer> get players => throw _privateConstructorUsedError;
   IntVO get totalPlayersCount => throw _privateConstructorUsedError;
 
@@ -37,8 +38,11 @@ abstract class $RidingRoomCopyWith<$Res> {
       {IntVO id,
       StringVO name,
       BooleanVO isPrivate,
+      RidingPlayer? me,
       ListVO<RidingPlayer> players,
       IntVO totalPlayersCount});
+
+  $RidingPlayerCopyWith<$Res>? get me;
 }
 
 /// @nodoc
@@ -57,6 +61,7 @@ class _$RidingRoomCopyWithImpl<$Res, $Val extends RidingRoom>
     Object? id = null,
     Object? name = null,
     Object? isPrivate = null,
+    Object? me = freezed,
     Object? players = null,
     Object? totalPlayersCount = null,
   }) {
@@ -73,6 +78,10 @@ class _$RidingRoomCopyWithImpl<$Res, $Val extends RidingRoom>
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
               as BooleanVO,
+      me: freezed == me
+          ? _value.me
+          : me // ignore: cast_nullable_to_non_nullable
+              as RidingPlayer?,
       players: null == players
           ? _value.players
           : players // ignore: cast_nullable_to_non_nullable
@@ -82,6 +91,18 @@ class _$RidingRoomCopyWithImpl<$Res, $Val extends RidingRoom>
           : totalPlayersCount // ignore: cast_nullable_to_non_nullable
               as IntVO,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RidingPlayerCopyWith<$Res>? get me {
+    if (_value.me == null) {
+      return null;
+    }
+
+    return $RidingPlayerCopyWith<$Res>(_value.me!, (value) {
+      return _then(_value.copyWith(me: value) as $Val);
+    });
   }
 }
 
@@ -97,8 +118,12 @@ abstract class _$$_RidingRoomCopyWith<$Res>
       {IntVO id,
       StringVO name,
       BooleanVO isPrivate,
+      RidingPlayer? me,
       ListVO<RidingPlayer> players,
       IntVO totalPlayersCount});
+
+  @override
+  $RidingPlayerCopyWith<$Res>? get me;
 }
 
 /// @nodoc
@@ -115,6 +140,7 @@ class __$$_RidingRoomCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? isPrivate = null,
+    Object? me = freezed,
     Object? players = null,
     Object? totalPlayersCount = null,
   }) {
@@ -131,6 +157,10 @@ class __$$_RidingRoomCopyWithImpl<$Res>
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
               as BooleanVO,
+      me: freezed == me
+          ? _value.me
+          : me // ignore: cast_nullable_to_non_nullable
+              as RidingPlayer?,
       players: null == players
           ? _value.players
           : players // ignore: cast_nullable_to_non_nullable
@@ -150,6 +180,7 @@ class _$_RidingRoom extends _RidingRoom {
       {required this.id,
       required this.name,
       required this.isPrivate,
+      required this.me,
       required this.players,
       required this.totalPlayersCount})
       : super._();
@@ -161,13 +192,15 @@ class _$_RidingRoom extends _RidingRoom {
   @override
   final BooleanVO isPrivate;
   @override
+  final RidingPlayer? me;
+  @override
   final ListVO<RidingPlayer> players;
   @override
   final IntVO totalPlayersCount;
 
   @override
   String toString() {
-    return 'RidingRoom(id: $id, name: $name, isPrivate: $isPrivate, players: $players, totalPlayersCount: $totalPlayersCount)';
+    return 'RidingRoom(id: $id, name: $name, isPrivate: $isPrivate, me: $me, players: $players, totalPlayersCount: $totalPlayersCount)';
   }
 
   @override
@@ -179,14 +212,15 @@ class _$_RidingRoom extends _RidingRoom {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isPrivate, isPrivate) ||
                 other.isPrivate == isPrivate) &&
+            (identical(other.me, me) || other.me == me) &&
             (identical(other.players, players) || other.players == players) &&
             (identical(other.totalPlayersCount, totalPlayersCount) ||
                 other.totalPlayersCount == totalPlayersCount));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, isPrivate, players, totalPlayersCount);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, isPrivate, me, players, totalPlayersCount);
 
   @JsonKey(ignore: true)
   @override
@@ -200,6 +234,7 @@ abstract class _RidingRoom extends RidingRoom {
       {required final IntVO id,
       required final StringVO name,
       required final BooleanVO isPrivate,
+      required final RidingPlayer? me,
       required final ListVO<RidingPlayer> players,
       required final IntVO totalPlayersCount}) = _$_RidingRoom;
   const _RidingRoom._() : super._();
@@ -210,6 +245,8 @@ abstract class _RidingRoom extends RidingRoom {
   StringVO get name;
   @override
   BooleanVO get isPrivate;
+  @override
+  RidingPlayer? get me;
   @override
   ListVO<RidingPlayer> get players;
   @override

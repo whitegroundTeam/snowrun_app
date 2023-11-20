@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'dart:ui';
 
+import 'package:intl/intl.dart';
 import 'package:snowrun_app/domain/core/errors.dart';
 import 'package:snowrun_app/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
@@ -75,6 +76,10 @@ class DateTimeVO extends ValueObject<DateTime> {
 
   factory DateTimeVO(DateTime input) {
     return DateTimeVO._(right(input));
+  }
+
+  String format(String format) {
+    return DateFormat(format).format(getOrCrash().toLocal());
   }
 
   const DateTimeVO._(this.value);

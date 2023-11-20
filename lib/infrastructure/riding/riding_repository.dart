@@ -31,7 +31,7 @@ class RidingRepository implements IRidingRepository {
   Future<Either<RidingFailure, RidingRoom>> createRidingRoom() async {
     final response = await _api.createRidingRoom();
 
-    if (response.statusCode != 200) {
+    if (response.statusCode < 200 || response.statusCode >= 300) {
       return left(const RidingFailure.unexpected());
     }
     final infoJson =
@@ -44,7 +44,7 @@ class RidingRepository implements IRidingRepository {
   Future<Either<RidingFailure, Unit>> deleteRidingRoom(int ridingRoomId) async {
     final response = await _api.deleteRidingRoom(ridingRoomId);
 
-    if (response.statusCode != 200) {
+    if (response.statusCode < 200 || response.statusCode >= 300) {
       return left(const RidingFailure.unexpected());
     }
     final infoJson =
@@ -57,7 +57,7 @@ class RidingRepository implements IRidingRepository {
       int ridingRoomId) async {
     final response = await _api.exitRidingRoom(ridingRoomId);
 
-    if (response.statusCode != 200) {
+    if (response.statusCode < 200 || response.statusCode >= 300) {
       return left(const RidingFailure.unexpected());
     }
     final infoJson =
@@ -70,7 +70,7 @@ class RidingRepository implements IRidingRepository {
       int ridingRoomId) async {
     final response = await _api.getRidingRoom(ridingRoomId);
 
-    if (response.statusCode != 200) {
+    if (response.statusCode < 200 || response.statusCode >= 300) {
       return left(const RidingFailure.unexpected());
     }
     final infoJson =
@@ -83,14 +83,14 @@ class RidingRepository implements IRidingRepository {
   Future<Either<RidingFailure, RidingRooms>> getRidingRooms() async {
     final response = await _api.getRidingRooms();
 
-    final PageResponseDto<RidingRoom> pageResponse =
-        PageResponseDto.fromHttpResponse(response, (jsonObject) {
-      return RidingRoomDto.fromJson(jsonObject).toDomain();
-    });
-
-    if (response.statusCode != 200) {
+    if (response.statusCode < 200 || response.statusCode >= 300) {
       return left(const RidingFailure.unexpected());
     }
+
+    final PageResponseDto<RidingRoom> pageResponse =
+    PageResponseDto.fromHttpResponse(response, (jsonObject) {
+      return RidingRoomDto.fromJson(jsonObject).toDomain();
+    });
 
     return right(RidingRooms(
       ridingRooms: ListVO(pageResponse.contents),
@@ -103,7 +103,7 @@ class RidingRepository implements IRidingRepository {
       int ridingRoomId) async {
     final response = await _api.joinRidingRoom(ridingRoomId);
 
-    if (response.statusCode != 200) {
+    if (response.statusCode < 200 || response.statusCode >= 300) {
       return left(const RidingFailure.unexpected());
     }
     final infoJson =
@@ -118,7 +118,7 @@ class RidingRepository implements IRidingRepository {
     final response = await _api.updateRidingRoomName(
         ridingRoomId, UpdateRidingRoomNameRequestDto.fromDomain(name));
 
-    if (response.statusCode != 200) {
+    if (response.statusCode < 200 || response.statusCode >= 300) {
       return left(const RidingFailure.unexpected());
     }
     final infoJson =

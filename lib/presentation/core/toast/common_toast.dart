@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/toast/toast_bloc.dart';
@@ -117,7 +118,7 @@ class CommonToastState extends State<CommonToast> with SingleTickerProviderState
 
   _startAnimation() {
     _controller.forward();
-    _timer = Timer(const Duration(milliseconds: 2000), () {
+    _timer = Timer(const Duration(milliseconds: 1500), () {
       _controller.reverse();
       context.read<ToastBloc>().add(const ToastEvent.reset());
     });
@@ -138,7 +139,19 @@ class CommonToastState extends State<CommonToast> with SingleTickerProviderState
 }
 
 showToast(BuildContext context, String message) {
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    context.read<ToastBloc>().add(ToastEvent.show(message));
-  });
+
+  //TODO : 버그가 있어서 우선 FlutterToast로 대체
+  Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: AppStyle.toastBackground,
+      textColor: AppStyle.toastText,
+      fontSize: 16.0
+  );
+  // WidgetsBinding.instance.addPostFrameCallback((_) {
+  //   context.read<ToastBloc>().add(ToastEvent.show(message));
+  //
+  // });
 }

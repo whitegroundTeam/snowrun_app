@@ -131,7 +131,7 @@ class CoreApi {
   /// Auth
   Future<Response> me() => _requestWrapper(
         method: HttpMethod.get,
-        path: "/auth/users/me",
+        path: "/auth/users/me/",
       );
 
   /// Account
@@ -151,7 +151,7 @@ class CoreApi {
   Future<Response> updateUserCurrentLocation(UserLocationDto userLocationDto) =>
       _requestWrapper(
         method: HttpMethod.post,
-        path: "/account/update_location/",
+        path: "/account/location/",
         bodyParam: userLocationDto.toJson(),
       );
 
@@ -206,20 +206,20 @@ class CoreApi {
           UpdateRidingRoomNameRequestDto updateRidingRoomNameRequestDto) =>
       _requestWrapper(
         method: HttpMethod.post,
-        path: "/riding-room/{room_id}/update-name",
+        path: "/riding-room/{room_id}/update-name/",
         pathParams: {'room_id': "$ridingRoomId"},
         bodyParam: updateRidingRoomNameRequestDto.toJson(),
       );
 
   Future<Response> exitRidingRoom(int ridingRoomId) => _requestWrapper(
         method: HttpMethod.post,
-        path: "/riding-room/{room_id}/out",
+        path: "/riding-room/{room_id}/out/",
         pathParams: {'room_id': "$ridingRoomId"},
       );
 
   Future<Response> joinRidingRoom(int ridingRoomId) => _requestWrapper(
         method: HttpMethod.post,
-        path: "/riding-room/{room_id}/join",
+        path: "/riding-room/{room_id}/join/",
         pathParams: {'room_id': "$ridingRoomId"},
       );
 }
