@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:app_settings/app_settings.dart';
 import 'package:geolocator/geolocator.dart' as geolocator;
@@ -39,16 +40,14 @@ class RidingPage extends StatefulWidget {
   @override
   State createState() => RidingPageState();
 
-  static pushRidingPage(
-    BuildContext context,
-    int ridingRoomId,
-  ) {
+  static pushRidingPage(BuildContext context, int ridingRoomId,
+      {Function? onResult}) {
     context.push(
       '/riding',
       extra: {
         'ridingRoomId': ridingRoomId,
       },
-    );
+    ).then((value) => onResult?.call());
   }
 }
 
@@ -65,10 +64,14 @@ class RidingPageState extends State<RidingPage> {
   bool isCreatedMap = false;
 
   RidingPlayer? selectedRidingPlayer;
+  bool isIos = false;
 
   @override
   void initState() {
     super.initState();
+    if (Platform.isIOS) {
+      isIos = true;
+    }
 
     // _timer =
     //     Timer.periodic(const Duration(seconds: 10), (Timer t) => _getUsers());
@@ -148,7 +151,6 @@ class RidingPageState extends State<RidingPage> {
                       player.userId.getOrCrash() ==
                       context.read<AuthBloc>().state.user?.id.getOrCrash());
 
-              debugPrint("WTWTWT :: ${selectedRidingPlayer?.location} ");
               mapboxMap?.setCamera(CameraOptions(
                 anchor: ScreenCoordinate(x: 0, y: 0),
                 zoom: 14,
@@ -250,8 +252,8 @@ class RidingPageState extends State<RidingPage> {
                                         child: Hero(
                                           tag: "ridingRoomName",
                                           child: TitleText(
-                                            title: ridingRoomName.length > 10
-                                                ? "${ridingRoomName.substring(0, 10)}..."
+                                            title: ridingRoomName.length > 15
+                                                ? "${ridingRoomName.substring(0, 15)}..."
                                                 : ridingRoomName,
                                             fontSize: 16,
                                             color: AppStyle.white,
@@ -344,10 +346,11 @@ class RidingPageState extends State<RidingPage> {
                                           const SizedBox(
                                             height: 2,
                                           ),
-                                          // TODO : 하루 지나면
                                           TitleText(
-                                            title:
-                                                "${selectedRidingPlayer?.locationUpdatedAt.format('yy.MM.dd hh:mm')} 업데이트",
+                                            title: getTimeDifferenceMessage(
+                                                selectedRidingPlayer
+                                                    ?.locationUpdatedAt
+                                                    .getOrCrash()),
                                             fontSize: 16,
                                             color: AppStyle.secondaryTextColor,
                                             fontWeight: FontWeight.w500,
@@ -577,7 +580,6 @@ class RidingPageState extends State<RidingPage> {
       double? lng = ridingPlayer.location?.lng.getOrCrash();
 
       if (lat != null && lng != null) {
-
         pointAnnotationManager
             ?.create(PointAnnotationOptions(
                 geometry: Point(coordinates: Position(lng, lat)).toJson(),
@@ -586,7 +588,7 @@ class RidingPageState extends State<RidingPage> {
                 textColor: 0xff000000,
                 textHaloWidth: 30,
                 textOffset: [0.0, -1.5],
-                iconSize: 0.05,
+                iconSize: isIos ? 0.05 : 0.1,
                 iconOffset: [0.0, -5.0],
                 symbolSortKey: ridingPlayer.id.getOrCrash().toDouble(),
                 image: avatarData))
@@ -765,16 +767,39 @@ class RidingPageState extends State<RidingPage> {
         buttonText: "설정으로 이동",
         title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
         negativeButtonText: "취소", onPressedButton: () async {
-          AppSettings.openAppSettings(type: AppSettingsType.location);
-          showToast(
-            context,
-            "위치 권한 허용 후 다시 시도해주세요.",
-          );
+      AppSettings.openAppSettings(type: AppSettingsType.location);
+      showToast(
+        context,
+        "위치 권한 허용 후 다시 시도해주세요.",
+      );
 
-          if (!mounted) return;
-          context.pop();
-        }, onPressedNegativeButton: () {
-          context.pop();
-        });
+      if (!mounted) return;
+      context.pop();
+    }, onPressedNegativeButton: () {
+      context.pop();
+    });
+  }
+
+  String getTimeDifferenceMessage(DateTime? updateDateTime) {
+    if (updateDateTime == null) return "업데이트 정보 없음";
+
+    final now = DateTime.now();
+    final difference = now.difference(updateDateTime);
+
+    if (difference.inDays >= 1) {
+      // 하루 이상 차이가 날 때
+      return "${difference.inDays}일 전 업데이트";
+    } else if (difference.inHours >= 1) {
+      // 1시간 이상, 1일 미만 차이가 날 때
+      final hours = difference.inHours;
+      final minutes = difference.inMinutes % 60; // 시간을 제외한 나머지 분
+      return "$hours시간 $minutes분 전 업데이트";
+    } else if (difference.inMinutes >= 1) {
+      // 1분 이상, 1시간 미만 차이가 날 때
+      return "${difference.inMinutes}분 전 업데이트";
+    } else {
+      // 1분 미만 차이가 날 때
+      return "방금 전 업데이트";
+    }
   }
 }

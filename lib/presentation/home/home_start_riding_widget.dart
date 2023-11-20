@@ -1,15 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/default_status.dart';
+import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/loading_dialog.dart';
 import 'package:snowrun_app/presentation/riding/riding_page.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/riding/input_invite_riding_room_link_bottom_sheet.dart';
 
 class HomeStartRidingWidget extends StatefulWidget {
@@ -23,24 +22,24 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
   final ridingActorBloc = getIt<RidingActorBloc>();
   late LoadingDialog loader = LoadingDialog(context);
 
-
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<RidingActorBloc>(
-              create: (context) => ridingActorBloc),
+          BlocProvider<RidingActorBloc>(create: (context) => ridingActorBloc),
           BlocListener<RidingActorBloc, RidingActorState>(
             bloc: ridingActorBloc,
             listener: (context, state) {
-              debugPrint("WTWTWT :: ${state.status}");
               final ridingRoomId = state.ridingRoom?.id.getOrCrash();
               if (state.status == DefaultStatus.success &&
                   ridingRoomId != null) {
-                RidingPage.pushRidingPage(context, ridingRoomId);
-              } else {
-              }
+                RidingPage.pushRidingPage(context, ridingRoomId, onResult: () {
+                  context
+                      .read<HomeRefreshBloc>()
+                      .add(const HomeRefreshEvent.refresh());
+                });
+              } else {}
               loader.hide();
             },
           ),
@@ -53,15 +52,14 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                   needAuth: true,
                   onTap: () {
                     loader.show();
-                    ridingActorBloc.add(
-                        const RidingActorEvent.createRidingRoom());
+                    ridingActorBloc
+                        .add(const RidingActorEvent.createRidingRoom());
                   },
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppStyle.secondaryBackground,
                       borderRadius: BorderRadius.circular(8),
-                      border:
-                      Border.all(color: AppStyle.accentColor, width: 2),
+                      border: Border.all(color: AppStyle.accentColor, width: 2),
                     ),
                     margin: const EdgeInsets.only(
                       left: 24,
@@ -124,9 +122,7 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                     showInputInviteRidingRoomLinkBottomSheet(context);
                   },
                   child: Container(
-                    width: MediaQuery
-                        .sizeOf(context)
-                        .width,
+                    width: MediaQuery.sizeOf(context).width,
                     decoration: BoxDecoration(
                       color: AppStyle.secondaryBackground,
                       borderRadius: BorderRadius.circular(8),

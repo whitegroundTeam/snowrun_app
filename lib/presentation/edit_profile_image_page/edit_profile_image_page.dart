@@ -24,6 +24,13 @@ class EditProfileImagePage extends StatefulWidget {
 
   @override
   State createState() => EditProfileImagePageState();
+
+  static pushEditProfileImagePage(BuildContext context,
+      {Function? onResult}) {
+    context.push(
+      '/editProfileImage',
+    ).then((value) => onResult?.call());
+  }
 }
 
 class EditProfileImagePageState extends State<EditProfileImagePage> {

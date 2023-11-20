@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_list/riding_list_bloc.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
@@ -9,9 +10,7 @@ import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/home/home_riding_item_widget.dart';
 
 class HomeRidingsWidget extends StatefulWidget {
-  final Function? onRefresh;
-
-  const HomeRidingsWidget({super.key, this.onRefresh});
+  const HomeRidingsWidget({super.key});
 
   @override
   State createState() => HomeRidingsWidgetState();
@@ -28,6 +27,12 @@ class HomeRidingsWidgetState extends State<HomeRidingsWidget> {
           BlocProvider<RidingListBloc>(
             create: (context) =>
                 ridingListBloc..add(const RidingListEvent.getRidingRooms()),
+          ),
+          BlocListener<HomeRefreshBloc, HomeRefreshState>(
+            bloc: context.read<HomeRefreshBloc>(),
+            listener: (context, state) {
+              ridingListBloc.add(const RidingListEvent.getRidingRooms());
+            },
           ),
         ],
         child: BlocBuilder<AuthBloc, AuthState>(

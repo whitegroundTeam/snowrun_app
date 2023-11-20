@@ -8,6 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
@@ -32,16 +33,12 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  final homeRefreshBloc = getIt<HomeRefreshBloc>();
   final FirebaseRemoteConfig remoteConfig =
       GetIt.instance<FirebaseRemoteConfig>();
   int imageNumber = 0;
 
   bool isShowEquipmentStorageBottomSheet = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   void handleRemoteConfig() {
     remoteConfig.fetchAndActivate().then((value) {
@@ -54,6 +51,8 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<HomeRefreshBloc>(
+            create: (context) => homeRefreshBloc),
         BlocListener<CheckPermissionBloc, CheckPermissionState>(
           bloc: context.read<CheckPermissionBloc>(),
           listenWhen: (p, c) {

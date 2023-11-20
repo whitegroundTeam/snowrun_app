@@ -19,17 +19,10 @@ class HomeBottomBandState extends State<HomeBottomBand> {
     return Container(
       height: 32,
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFFFB74D),
-            Color(0xFFF57C00),
-            Color(0xFFEF6C00),
-          ],
-        ),
+        color: AppStyle.accentColor
       ),
       child: CommonDetector(
+        needAuth: true,
         onTap: () {
           showCommonBottomSheet(context,
               title: "장비 보관하기 번거로우시죠?",
@@ -47,7 +40,7 @@ class HomeBottomBandState extends State<HomeBottomBand> {
             title: "장비 보관하러 가기",
             fontSize: 14,
             color: AppStyle.white,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ),

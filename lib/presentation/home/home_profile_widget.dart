@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_network_image.dart';
+import 'package:snowrun_app/presentation/edit_profile_image_page/edit_profile_image_page.dart';
 
 class HomeProfileWidget extends StatefulWidget {
   const HomeProfileWidget({super.key});
@@ -33,7 +35,11 @@ class HomeProfileWidgetState extends State<HomeProfileWidget> {
                     ? CommonDetector(
                         needAuth: true,
                         onTap: () {
-                          context.push('/editProfileImage');
+                          EditProfileImagePage.pushEditProfileImagePage(context, onResult: () {
+                            context
+                                .read<HomeRefreshBloc>()
+                                .add(const HomeRefreshEvent.refresh());
+                          });
                         },
                         child: Hero(
                           tag: "profileImage",
