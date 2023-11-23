@@ -69,25 +69,25 @@ class _$RidingListEventCopyWithImpl<$Res, $Val extends RidingListEvent>
 }
 
 /// @nodoc
-abstract class _$$_GetRidingRoomsCopyWith<$Res> {
-  factory _$$_GetRidingRoomsCopyWith(
-          _$_GetRidingRooms value, $Res Function(_$_GetRidingRooms) then) =
-      __$$_GetRidingRoomsCopyWithImpl<$Res>;
+abstract class _$$GetRidingRoomsImplCopyWith<$Res> {
+  factory _$$GetRidingRoomsImplCopyWith(_$GetRidingRoomsImpl value,
+          $Res Function(_$GetRidingRoomsImpl) then) =
+      __$$GetRidingRoomsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GetRidingRoomsCopyWithImpl<$Res>
-    extends _$RidingListEventCopyWithImpl<$Res, _$_GetRidingRooms>
-    implements _$$_GetRidingRoomsCopyWith<$Res> {
-  __$$_GetRidingRoomsCopyWithImpl(
-      _$_GetRidingRooms _value, $Res Function(_$_GetRidingRooms) _then)
+class __$$GetRidingRoomsImplCopyWithImpl<$Res>
+    extends _$RidingListEventCopyWithImpl<$Res, _$GetRidingRoomsImpl>
+    implements _$$GetRidingRoomsImplCopyWith<$Res> {
+  __$$GetRidingRoomsImplCopyWithImpl(
+      _$GetRidingRoomsImpl _value, $Res Function(_$GetRidingRoomsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GetRidingRooms implements _GetRidingRooms {
-  const _$_GetRidingRooms();
+class _$GetRidingRoomsImpl implements _GetRidingRooms {
+  const _$GetRidingRoomsImpl();
 
   @override
   String toString() {
@@ -97,7 +97,7 @@ class _$_GetRidingRooms implements _GetRidingRooms {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetRidingRooms);
+        (other.runtimeType == runtimeType && other is _$GetRidingRoomsImpl);
   }
 
   @override
@@ -161,7 +161,7 @@ class _$_GetRidingRooms implements _GetRidingRooms {
 }
 
 abstract class _GetRidingRooms implements RidingListEvent {
-  const factory _GetRidingRooms() = _$_GetRidingRooms;
+  const factory _GetRidingRooms() = _$GetRidingRoomsImpl;
 }
 
 /// @nodoc
@@ -213,22 +213,22 @@ class _$RidingListStateCopyWithImpl<$Res, $Val extends RidingListState>
 }
 
 /// @nodoc
-abstract class _$$_RidingListStateCopyWith<$Res>
+abstract class _$$RidingListStateImplCopyWith<$Res>
     implements $RidingListStateCopyWith<$Res> {
-  factory _$$_RidingListStateCopyWith(
-          _$_RidingListState value, $Res Function(_$_RidingListState) then) =
-      __$$_RidingListStateCopyWithImpl<$Res>;
+  factory _$$RidingListStateImplCopyWith(_$RidingListStateImpl value,
+          $Res Function(_$RidingListStateImpl) then) =
+      __$$RidingListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DefaultStatus status, List<RidingRoom> ridingRooms});
 }
 
 /// @nodoc
-class __$$_RidingListStateCopyWithImpl<$Res>
-    extends _$RidingListStateCopyWithImpl<$Res, _$_RidingListState>
-    implements _$$_RidingListStateCopyWith<$Res> {
-  __$$_RidingListStateCopyWithImpl(
-      _$_RidingListState _value, $Res Function(_$_RidingListState) _then)
+class __$$RidingListStateImplCopyWithImpl<$Res>
+    extends _$RidingListStateCopyWithImpl<$Res, _$RidingListStateImpl>
+    implements _$$RidingListStateImplCopyWith<$Res> {
+  __$$RidingListStateImplCopyWithImpl(
+      _$RidingListStateImpl _value, $Res Function(_$RidingListStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -237,7 +237,7 @@ class __$$_RidingListStateCopyWithImpl<$Res>
     Object? status = null,
     Object? ridingRooms = null,
   }) {
-    return _then(_$_RidingListState(
+    return _then(_$RidingListStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -252,8 +252,8 @@ class __$$_RidingListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RidingListState implements _RidingListState {
-  const _$_RidingListState(
+class _$RidingListStateImpl implements _RidingListState {
+  const _$RidingListStateImpl(
       {required this.status, required final List<RidingRoom> ridingRooms})
       : _ridingRooms = ridingRooms;
 
@@ -276,7 +276,7 @@ class _$_RidingListState implements _RidingListState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RidingListState &&
+            other is _$RidingListStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._ridingRooms, _ridingRooms));
@@ -289,14 +289,15 @@ class _$_RidingListState implements _RidingListState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RidingListStateCopyWith<_$_RidingListState> get copyWith =>
-      __$$_RidingListStateCopyWithImpl<_$_RidingListState>(this, _$identity);
+  _$$RidingListStateImplCopyWith<_$RidingListStateImpl> get copyWith =>
+      __$$RidingListStateImplCopyWithImpl<_$RidingListStateImpl>(
+          this, _$identity);
 }
 
 abstract class _RidingListState implements RidingListState {
   const factory _RidingListState(
       {required final DefaultStatus status,
-      required final List<RidingRoom> ridingRooms}) = _$_RidingListState;
+      required final List<RidingRoom> ridingRooms}) = _$RidingListStateImpl;
 
   @override
   DefaultStatus get status;
@@ -304,6 +305,6 @@ abstract class _RidingListState implements RidingListState {
   List<RidingRoom> get ridingRooms;
   @override
   @JsonKey(ignore: true)
-  _$$_RidingListStateCopyWith<_$_RidingListState> get copyWith =>
+  _$$RidingListStateImplCopyWith<_$RidingListStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

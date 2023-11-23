@@ -75,18 +75,19 @@ class _$ToastEventCopyWithImpl<$Res, $Val extends ToastEvent>
 }
 
 /// @nodoc
-abstract class _$$_ShowCopyWith<$Res> {
-  factory _$$_ShowCopyWith(_$_Show value, $Res Function(_$_Show) then) =
-      __$$_ShowCopyWithImpl<$Res>;
+abstract class _$$ShowImplCopyWith<$Res> {
+  factory _$$ShowImplCopyWith(
+          _$ShowImpl value, $Res Function(_$ShowImpl) then) =
+      __$$ShowImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_ShowCopyWithImpl<$Res>
-    extends _$ToastEventCopyWithImpl<$Res, _$_Show>
-    implements _$$_ShowCopyWith<$Res> {
-  __$$_ShowCopyWithImpl(_$_Show _value, $Res Function(_$_Show) _then)
+class __$$ShowImplCopyWithImpl<$Res>
+    extends _$ToastEventCopyWithImpl<$Res, _$ShowImpl>
+    implements _$$ShowImplCopyWith<$Res> {
+  __$$ShowImplCopyWithImpl(_$ShowImpl _value, $Res Function(_$ShowImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +95,7 @@ class __$$_ShowCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_Show(
+    return _then(_$ShowImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -105,8 +106,8 @@ class __$$_ShowCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Show implements _Show {
-  const _$_Show(this.message);
+class _$ShowImpl implements _Show {
+  const _$ShowImpl(this.message);
 
   @override
   final String message;
@@ -120,7 +121,7 @@ class _$_Show implements _Show {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Show &&
+            other is _$ShowImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -130,8 +131,8 @@ class _$_Show implements _Show {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShowCopyWith<_$_Show> get copyWith =>
-      __$$_ShowCopyWithImpl<_$_Show>(this, _$identity);
+  _$$ShowImplCopyWith<_$ShowImpl> get copyWith =>
+      __$$ShowImplCopyWithImpl<_$ShowImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -197,31 +198,34 @@ class _$_Show implements _Show {
 }
 
 abstract class _Show implements ToastEvent {
-  const factory _Show(final String message) = _$_Show;
+  const factory _Show(final String message) = _$ShowImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_ShowCopyWith<_$_Show> get copyWith => throw _privateConstructorUsedError;
+  _$$ShowImplCopyWith<_$ShowImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ResetCopyWith<$Res> {
-  factory _$$_ResetCopyWith(_$_Reset value, $Res Function(_$_Reset) then) =
-      __$$_ResetCopyWithImpl<$Res>;
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ResetCopyWithImpl<$Res>
-    extends _$ToastEventCopyWithImpl<$Res, _$_Reset>
-    implements _$$_ResetCopyWith<$Res> {
-  __$$_ResetCopyWithImpl(_$_Reset _value, $Res Function(_$_Reset) _then)
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$ToastEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Reset implements _Reset {
-  const _$_Reset();
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
 
   @override
   String toString() {
@@ -231,7 +235,7 @@ class _$_Reset implements _Reset {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Reset);
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
   }
 
   @override
@@ -301,7 +305,7 @@ class _$_Reset implements _Reset {
 }
 
 abstract class _Reset implements ToastEvent {
-  const factory _Reset() = _$_Reset;
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc
@@ -359,22 +363,22 @@ class _$ToastStateCopyWithImpl<$Res, $Val extends ToastState>
 }
 
 /// @nodoc
-abstract class _$$_ToastStateCopyWith<$Res>
+abstract class _$$ToastStateImplCopyWith<$Res>
     implements $ToastStateCopyWith<$Res> {
-  factory _$$_ToastStateCopyWith(
-          _$_ToastState value, $Res Function(_$_ToastState) then) =
-      __$$_ToastStateCopyWithImpl<$Res>;
+  factory _$$ToastStateImplCopyWith(
+          _$ToastStateImpl value, $Res Function(_$ToastStateImpl) then) =
+      __$$ToastStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DefaultStatus status, String? message, DateTime updatedAt});
 }
 
 /// @nodoc
-class __$$_ToastStateCopyWithImpl<$Res>
-    extends _$ToastStateCopyWithImpl<$Res, _$_ToastState>
-    implements _$$_ToastStateCopyWith<$Res> {
-  __$$_ToastStateCopyWithImpl(
-      _$_ToastState _value, $Res Function(_$_ToastState) _then)
+class __$$ToastStateImplCopyWithImpl<$Res>
+    extends _$ToastStateCopyWithImpl<$Res, _$ToastStateImpl>
+    implements _$$ToastStateImplCopyWith<$Res> {
+  __$$ToastStateImplCopyWithImpl(
+      _$ToastStateImpl _value, $Res Function(_$ToastStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -384,7 +388,7 @@ class __$$_ToastStateCopyWithImpl<$Res>
     Object? message = freezed,
     Object? updatedAt = null,
   }) {
-    return _then(_$_ToastState(
+    return _then(_$ToastStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -403,8 +407,8 @@ class __$$_ToastStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ToastState implements _ToastState {
-  const _$_ToastState(
+class _$ToastStateImpl implements _ToastState {
+  const _$ToastStateImpl(
       {required this.status, required this.message, required this.updatedAt});
 
   @override
@@ -423,7 +427,7 @@ class _$_ToastState implements _ToastState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ToastState &&
+            other is _$ToastStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -436,15 +440,15 @@ class _$_ToastState implements _ToastState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ToastStateCopyWith<_$_ToastState> get copyWith =>
-      __$$_ToastStateCopyWithImpl<_$_ToastState>(this, _$identity);
+  _$$ToastStateImplCopyWith<_$ToastStateImpl> get copyWith =>
+      __$$ToastStateImplCopyWithImpl<_$ToastStateImpl>(this, _$identity);
 }
 
 abstract class _ToastState implements ToastState {
   const factory _ToastState(
       {required final DefaultStatus status,
       required final String? message,
-      required final DateTime updatedAt}) = _$_ToastState;
+      required final DateTime updatedAt}) = _$ToastStateImpl;
 
   @override
   DefaultStatus get status;
@@ -454,6 +458,6 @@ abstract class _ToastState implements ToastState {
   DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_ToastStateCopyWith<_$_ToastState> get copyWith =>
+  _$$ToastStateImplCopyWith<_$ToastStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

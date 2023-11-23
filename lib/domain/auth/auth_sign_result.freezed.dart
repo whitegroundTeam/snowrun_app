@@ -63,22 +63,22 @@ class _$AuthSignResultCopyWithImpl<$Res, $Val extends AuthSignResult>
 }
 
 /// @nodoc
-abstract class _$$_AuthSignResultCopyWith<$Res>
+abstract class _$$AuthSignResultImplCopyWith<$Res>
     implements $AuthSignResultCopyWith<$Res> {
-  factory _$$_AuthSignResultCopyWith(
-          _$_AuthSignResult value, $Res Function(_$_AuthSignResult) then) =
-      __$$_AuthSignResultCopyWithImpl<$Res>;
+  factory _$$AuthSignResultImplCopyWith(_$AuthSignResultImpl value,
+          $Res Function(_$AuthSignResultImpl) then) =
+      __$$AuthSignResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isNewUser, AuthMethod provider});
 }
 
 /// @nodoc
-class __$$_AuthSignResultCopyWithImpl<$Res>
-    extends _$AuthSignResultCopyWithImpl<$Res, _$_AuthSignResult>
-    implements _$$_AuthSignResultCopyWith<$Res> {
-  __$$_AuthSignResultCopyWithImpl(
-      _$_AuthSignResult _value, $Res Function(_$_AuthSignResult) _then)
+class __$$AuthSignResultImplCopyWithImpl<$Res>
+    extends _$AuthSignResultCopyWithImpl<$Res, _$AuthSignResultImpl>
+    implements _$$AuthSignResultImplCopyWith<$Res> {
+  __$$AuthSignResultImplCopyWithImpl(
+      _$AuthSignResultImpl _value, $Res Function(_$AuthSignResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_AuthSignResultCopyWithImpl<$Res>
     Object? isNewUser = null,
     Object? provider = null,
   }) {
-    return _then(_$_AuthSignResult(
+    return _then(_$AuthSignResultImpl(
       isNewUser: null == isNewUser
           ? _value.isNewUser
           : isNewUser // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_AuthSignResultCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthSignResult implements _AuthSignResult {
-  const _$_AuthSignResult({required this.isNewUser, required this.provider});
+class _$AuthSignResultImpl implements _AuthSignResult {
+  const _$AuthSignResultImpl({required this.isNewUser, required this.provider});
 
   @override
   final bool isNewUser;
@@ -119,7 +119,7 @@ class _$_AuthSignResult implements _AuthSignResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthSignResult &&
+            other is _$AuthSignResultImpl &&
             (identical(other.isNewUser, isNewUser) ||
                 other.isNewUser == isNewUser) &&
             (identical(other.provider, provider) ||
@@ -132,14 +132,15 @@ class _$_AuthSignResult implements _AuthSignResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthSignResultCopyWith<_$_AuthSignResult> get copyWith =>
-      __$$_AuthSignResultCopyWithImpl<_$_AuthSignResult>(this, _$identity);
+  _$$AuthSignResultImplCopyWith<_$AuthSignResultImpl> get copyWith =>
+      __$$AuthSignResultImplCopyWithImpl<_$AuthSignResultImpl>(
+          this, _$identity);
 }
 
 abstract class _AuthSignResult implements AuthSignResult {
   const factory _AuthSignResult(
       {required final bool isNewUser,
-      required final AuthMethod provider}) = _$_AuthSignResult;
+      required final AuthMethod provider}) = _$AuthSignResultImpl;
 
   @override
   bool get isNewUser;
@@ -147,6 +148,6 @@ abstract class _AuthSignResult implements AuthSignResult {
   AuthMethod get provider;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthSignResultCopyWith<_$_AuthSignResult> get copyWith =>
+  _$$AuthSignResultImplCopyWith<_$AuthSignResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

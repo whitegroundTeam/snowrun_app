@@ -63,21 +63,22 @@ class _$VerticesCopyWithImpl<$Res, $Val extends Vertices>
 }
 
 /// @nodoc
-abstract class _$$_VerticesCopyWith<$Res> implements $VerticesCopyWith<$Res> {
-  factory _$$_VerticesCopyWith(
-          _$_Vertices value, $Res Function(_$_Vertices) then) =
-      __$$_VerticesCopyWithImpl<$Res>;
+abstract class _$$VerticesImplCopyWith<$Res>
+    implements $VerticesCopyWith<$Res> {
+  factory _$$VerticesImplCopyWith(
+          _$VerticesImpl value, $Res Function(_$VerticesImpl) then) =
+      __$$VerticesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({VerticesType type, ListVO<List<List<double>>> coordinates});
 }
 
 /// @nodoc
-class __$$_VerticesCopyWithImpl<$Res>
-    extends _$VerticesCopyWithImpl<$Res, _$_Vertices>
-    implements _$$_VerticesCopyWith<$Res> {
-  __$$_VerticesCopyWithImpl(
-      _$_Vertices _value, $Res Function(_$_Vertices) _then)
+class __$$VerticesImplCopyWithImpl<$Res>
+    extends _$VerticesCopyWithImpl<$Res, _$VerticesImpl>
+    implements _$$VerticesImplCopyWith<$Res> {
+  __$$VerticesImplCopyWithImpl(
+      _$VerticesImpl _value, $Res Function(_$VerticesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +87,7 @@ class __$$_VerticesCopyWithImpl<$Res>
     Object? type = null,
     Object? coordinates = null,
   }) {
-    return _then(_$_Vertices(
+    return _then(_$VerticesImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -101,8 +102,8 @@ class __$$_VerticesCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Vertices extends _Vertices {
-  const _$_Vertices({required this.type, required this.coordinates})
+class _$VerticesImpl extends _Vertices {
+  const _$VerticesImpl({required this.type, required this.coordinates})
       : super._();
 
   @override
@@ -119,7 +120,7 @@ class _$_Vertices extends _Vertices {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Vertices &&
+            other is _$VerticesImpl &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.coordinates, coordinates) ||
                 other.coordinates == coordinates));
@@ -131,14 +132,14 @@ class _$_Vertices extends _Vertices {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VerticesCopyWith<_$_Vertices> get copyWith =>
-      __$$_VerticesCopyWithImpl<_$_Vertices>(this, _$identity);
+  _$$VerticesImplCopyWith<_$VerticesImpl> get copyWith =>
+      __$$VerticesImplCopyWithImpl<_$VerticesImpl>(this, _$identity);
 }
 
 abstract class _Vertices extends Vertices {
   const factory _Vertices(
       {required final VerticesType type,
-      required final ListVO<List<List<double>>> coordinates}) = _$_Vertices;
+      required final ListVO<List<List<double>>> coordinates}) = _$VerticesImpl;
   const _Vertices._() : super._();
 
   @override
@@ -147,6 +148,6 @@ abstract class _Vertices extends Vertices {
   ListVO<List<List<double>>> get coordinates;
   @override
   @JsonKey(ignore: true)
-  _$$_VerticesCopyWith<_$_Vertices> get copyWith =>
+  _$$VerticesImplCopyWith<_$VerticesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

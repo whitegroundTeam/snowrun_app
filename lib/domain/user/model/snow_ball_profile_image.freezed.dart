@@ -64,22 +64,22 @@ class _$SnowBallProfileImageCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SnowBallProfileImageCopyWith<$Res>
+abstract class _$$SnowBallProfileImageImplCopyWith<$Res>
     implements $SnowBallProfileImageCopyWith<$Res> {
-  factory _$$_SnowBallProfileImageCopyWith(_$_SnowBallProfileImage value,
-          $Res Function(_$_SnowBallProfileImage) then) =
-      __$$_SnowBallProfileImageCopyWithImpl<$Res>;
+  factory _$$SnowBallProfileImageImplCopyWith(_$SnowBallProfileImageImpl value,
+          $Res Function(_$SnowBallProfileImageImpl) then) =
+      __$$SnowBallProfileImageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StringVO key, StringVO url});
 }
 
 /// @nodoc
-class __$$_SnowBallProfileImageCopyWithImpl<$Res>
-    extends _$SnowBallProfileImageCopyWithImpl<$Res, _$_SnowBallProfileImage>
-    implements _$$_SnowBallProfileImageCopyWith<$Res> {
-  __$$_SnowBallProfileImageCopyWithImpl(_$_SnowBallProfileImage _value,
-      $Res Function(_$_SnowBallProfileImage) _then)
+class __$$SnowBallProfileImageImplCopyWithImpl<$Res>
+    extends _$SnowBallProfileImageCopyWithImpl<$Res, _$SnowBallProfileImageImpl>
+    implements _$$SnowBallProfileImageImplCopyWith<$Res> {
+  __$$SnowBallProfileImageImplCopyWithImpl(_$SnowBallProfileImageImpl _value,
+      $Res Function(_$SnowBallProfileImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +88,7 @@ class __$$_SnowBallProfileImageCopyWithImpl<$Res>
     Object? key = null,
     Object? url = null,
   }) {
-    return _then(_$_SnowBallProfileImage(
+    return _then(_$SnowBallProfileImageImpl(
       key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -103,8 +103,8 @@ class __$$_SnowBallProfileImageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SnowBallProfileImage extends _SnowBallProfileImage {
-  const _$_SnowBallProfileImage({required this.key, required this.url})
+class _$SnowBallProfileImageImpl extends _SnowBallProfileImage {
+  const _$SnowBallProfileImageImpl({required this.key, required this.url})
       : super._();
 
   @override
@@ -121,7 +121,7 @@ class _$_SnowBallProfileImage extends _SnowBallProfileImage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SnowBallProfileImage &&
+            other is _$SnowBallProfileImageImpl &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.url, url) || other.url == url));
   }
@@ -132,15 +132,16 @@ class _$_SnowBallProfileImage extends _SnowBallProfileImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SnowBallProfileImageCopyWith<_$_SnowBallProfileImage> get copyWith =>
-      __$$_SnowBallProfileImageCopyWithImpl<_$_SnowBallProfileImage>(
-          this, _$identity);
+  _$$SnowBallProfileImageImplCopyWith<_$SnowBallProfileImageImpl>
+      get copyWith =>
+          __$$SnowBallProfileImageImplCopyWithImpl<_$SnowBallProfileImageImpl>(
+              this, _$identity);
 }
 
 abstract class _SnowBallProfileImage extends SnowBallProfileImage {
   const factory _SnowBallProfileImage(
       {required final StringVO key,
-      required final StringVO url}) = _$_SnowBallProfileImage;
+      required final StringVO url}) = _$SnowBallProfileImageImpl;
   const _SnowBallProfileImage._() : super._();
 
   @override
@@ -149,6 +150,6 @@ abstract class _SnowBallProfileImage extends SnowBallProfileImage {
   StringVO get url;
   @override
   @JsonKey(ignore: true)
-  _$$_SnowBallProfileImageCopyWith<_$_SnowBallProfileImage> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SnowBallProfileImageImplCopyWith<_$SnowBallProfileImageImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

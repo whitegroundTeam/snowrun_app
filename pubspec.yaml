@@ -58,7 +58,6 @@ dependencies:
 
   intl: ^0.18.1
   app_settings: ^5.1.1
-  flutter_blurhash: ^0.7.0
 
   smooth_page_indicator: ^1.1.0
   animated_text_kit: ^4.2.2

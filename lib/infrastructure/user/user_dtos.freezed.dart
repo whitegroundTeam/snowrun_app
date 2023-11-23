@@ -100,10 +100,10 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
 }
 
 /// @nodoc
-abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
-  factory _$$_UserDtoCopyWith(
-          _$_UserDto value, $Res Function(_$_UserDto) then) =
-      __$$_UserDtoCopyWithImpl<$Res>;
+abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
+  factory _$$UserDtoImplCopyWith(
+          _$UserDtoImpl value, $Res Function(_$UserDtoImpl) then) =
+      __$$UserDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,10 +117,11 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserDtoCopyWithImpl<$Res>
-    extends _$UserDtoCopyWithImpl<$Res, _$_UserDto>
-    implements _$$_UserDtoCopyWith<$Res> {
-  __$$_UserDtoCopyWithImpl(_$_UserDto _value, $Res Function(_$_UserDto) _then)
+class __$$UserDtoImplCopyWithImpl<$Res>
+    extends _$UserDtoCopyWithImpl<$Res, _$UserDtoImpl>
+    implements _$$UserDtoImplCopyWith<$Res> {
+  __$$UserDtoImplCopyWithImpl(
+      _$UserDtoImpl _value, $Res Function(_$UserDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +132,7 @@ class __$$_UserDtoCopyWithImpl<$Res>
     Object? location = freezed,
     Object? profileImage = freezed,
   }) {
-    return _then(_$_UserDto(
+    return _then(_$UserDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -154,16 +155,16 @@ class __$$_UserDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserDto extends _UserDto {
-  const _$_UserDto(
+class _$UserDtoImpl extends _UserDto {
+  const _$UserDtoImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'nickname') required this.nickname,
       @JsonKey(name: 'location') this.location,
       @JsonKey(name: 'image') this.profileImage})
       : super._();
 
-  factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserDtoFromJson(json);
+  factory _$UserDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -187,7 +188,7 @@ class _$_UserDto extends _UserDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserDto &&
+            other is _$UserDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
@@ -205,12 +206,12 @@ class _$_UserDto extends _UserDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>
-      __$$_UserDtoCopyWithImpl<_$_UserDto>(this, _$identity);
+  _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>
+      __$$UserDtoImplCopyWithImpl<_$UserDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserDtoToJson(
+    return _$$UserDtoImplToJson(
       this,
     );
   }
@@ -221,10 +222,10 @@ abstract class _UserDto extends UserDto {
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'nickname') required final String nickname,
       @JsonKey(name: 'location') final UserLocationDto? location,
-      @JsonKey(name: 'image') final String? profileImage}) = _$_UserDto;
+      @JsonKey(name: 'image') final String? profileImage}) = _$UserDtoImpl;
   const _UserDto._() : super._();
 
-  factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
+  factory _UserDto.fromJson(Map<String, dynamic> json) = _$UserDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -240,7 +241,7 @@ abstract class _UserDto extends UserDto {
   String? get profileImage;
   @override
   @JsonKey(ignore: true)
-  _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>
+  _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -301,11 +302,11 @@ class _$UserLocationDtoCopyWithImpl<$Res, $Val extends UserLocationDto>
 }
 
 /// @nodoc
-abstract class _$$_UserLocationDtoCopyWith<$Res>
+abstract class _$$UserLocationDtoImplCopyWith<$Res>
     implements $UserLocationDtoCopyWith<$Res> {
-  factory _$$_UserLocationDtoCopyWith(
-          _$_UserLocationDto value, $Res Function(_$_UserLocationDto) then) =
-      __$$_UserLocationDtoCopyWithImpl<$Res>;
+  factory _$$UserLocationDtoImplCopyWith(_$UserLocationDtoImpl value,
+          $Res Function(_$UserLocationDtoImpl) then) =
+      __$$UserLocationDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -313,11 +314,11 @@ abstract class _$$_UserLocationDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserLocationDtoCopyWithImpl<$Res>
-    extends _$UserLocationDtoCopyWithImpl<$Res, _$_UserLocationDto>
-    implements _$$_UserLocationDtoCopyWith<$Res> {
-  __$$_UserLocationDtoCopyWithImpl(
-      _$_UserLocationDto _value, $Res Function(_$_UserLocationDto) _then)
+class __$$UserLocationDtoImplCopyWithImpl<$Res>
+    extends _$UserLocationDtoCopyWithImpl<$Res, _$UserLocationDtoImpl>
+    implements _$$UserLocationDtoImplCopyWith<$Res> {
+  __$$UserLocationDtoImplCopyWithImpl(
+      _$UserLocationDtoImpl _value, $Res Function(_$UserLocationDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -326,7 +327,7 @@ class __$$_UserLocationDtoCopyWithImpl<$Res>
     Object? lat = null,
     Object? lng = null,
   }) {
-    return _then(_$_UserLocationDto(
+    return _then(_$UserLocationDtoImpl(
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
@@ -341,14 +342,14 @@ class __$$_UserLocationDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserLocationDto extends _UserLocationDto {
-  const _$_UserLocationDto(
+class _$UserLocationDtoImpl extends _UserLocationDto {
+  const _$UserLocationDtoImpl(
       {@JsonKey(name: 'lat') required this.lat,
       @JsonKey(name: 'lng') required this.lng})
       : super._();
 
-  factory _$_UserLocationDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserLocationDtoFromJson(json);
+  factory _$UserLocationDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserLocationDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'lat')
@@ -366,7 +367,7 @@ class _$_UserLocationDto extends _UserLocationDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserLocationDto &&
+            other is _$UserLocationDtoImpl &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng));
   }
@@ -378,12 +379,13 @@ class _$_UserLocationDto extends _UserLocationDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserLocationDtoCopyWith<_$_UserLocationDto> get copyWith =>
-      __$$_UserLocationDtoCopyWithImpl<_$_UserLocationDto>(this, _$identity);
+  _$$UserLocationDtoImplCopyWith<_$UserLocationDtoImpl> get copyWith =>
+      __$$UserLocationDtoImplCopyWithImpl<_$UserLocationDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserLocationDtoToJson(
+    return _$$UserLocationDtoImplToJson(
       this,
     );
   }
@@ -392,11 +394,11 @@ class _$_UserLocationDto extends _UserLocationDto {
 abstract class _UserLocationDto extends UserLocationDto {
   const factory _UserLocationDto(
       {@JsonKey(name: 'lat') required final double lat,
-      @JsonKey(name: 'lng') required final double lng}) = _$_UserLocationDto;
+      @JsonKey(name: 'lng') required final double lng}) = _$UserLocationDtoImpl;
   const _UserLocationDto._() : super._();
 
   factory _UserLocationDto.fromJson(Map<String, dynamic> json) =
-      _$_UserLocationDto.fromJson;
+      _$UserLocationDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'lat')
@@ -406,7 +408,7 @@ abstract class _UserLocationDto extends UserLocationDto {
   double get lng;
   @override
   @JsonKey(ignore: true)
-  _$$_UserLocationDtoCopyWith<_$_UserLocationDto> get copyWith =>
+  _$$UserLocationDtoImplCopyWith<_$UserLocationDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -469,11 +471,12 @@ class _$SnowBallProfileImageDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SnowBallProfileImageDtoCopyWith<$Res>
+abstract class _$$SnowBallProfileImageDtoImplCopyWith<$Res>
     implements $SnowBallProfileImageDtoCopyWith<$Res> {
-  factory _$$_SnowBallProfileImageDtoCopyWith(_$_SnowBallProfileImageDto value,
-          $Res Function(_$_SnowBallProfileImageDto) then) =
-      __$$_SnowBallProfileImageDtoCopyWithImpl<$Res>;
+  factory _$$SnowBallProfileImageDtoImplCopyWith(
+          _$SnowBallProfileImageDtoImpl value,
+          $Res Function(_$SnowBallProfileImageDtoImpl) then) =
+      __$$SnowBallProfileImageDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -481,12 +484,13 @@ abstract class _$$_SnowBallProfileImageDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SnowBallProfileImageDtoCopyWithImpl<$Res>
+class __$$SnowBallProfileImageDtoImplCopyWithImpl<$Res>
     extends _$SnowBallProfileImageDtoCopyWithImpl<$Res,
-        _$_SnowBallProfileImageDto>
-    implements _$$_SnowBallProfileImageDtoCopyWith<$Res> {
-  __$$_SnowBallProfileImageDtoCopyWithImpl(_$_SnowBallProfileImageDto _value,
-      $Res Function(_$_SnowBallProfileImageDto) _then)
+        _$SnowBallProfileImageDtoImpl>
+    implements _$$SnowBallProfileImageDtoImplCopyWith<$Res> {
+  __$$SnowBallProfileImageDtoImplCopyWithImpl(
+      _$SnowBallProfileImageDtoImpl _value,
+      $Res Function(_$SnowBallProfileImageDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -495,7 +499,7 @@ class __$$_SnowBallProfileImageDtoCopyWithImpl<$Res>
     Object? key = null,
     Object? url = null,
   }) {
-    return _then(_$_SnowBallProfileImageDto(
+    return _then(_$SnowBallProfileImageDtoImpl(
       key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -510,14 +514,14 @@ class __$$_SnowBallProfileImageDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SnowBallProfileImageDto extends _SnowBallProfileImageDto {
-  const _$_SnowBallProfileImageDto(
+class _$SnowBallProfileImageDtoImpl extends _SnowBallProfileImageDto {
+  const _$SnowBallProfileImageDtoImpl(
       {@JsonKey(name: 'key') required this.key,
       @JsonKey(name: 'url') required this.url})
       : super._();
 
-  factory _$_SnowBallProfileImageDto.fromJson(Map<String, dynamic> json) =>
-      _$$_SnowBallProfileImageDtoFromJson(json);
+  factory _$SnowBallProfileImageDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SnowBallProfileImageDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'key')
@@ -535,7 +539,7 @@ class _$_SnowBallProfileImageDto extends _SnowBallProfileImageDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SnowBallProfileImageDto &&
+            other is _$SnowBallProfileImageDtoImpl &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.url, url) || other.url == url));
   }
@@ -547,14 +551,13 @@ class _$_SnowBallProfileImageDto extends _SnowBallProfileImageDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SnowBallProfileImageDtoCopyWith<_$_SnowBallProfileImageDto>
-      get copyWith =>
-          __$$_SnowBallProfileImageDtoCopyWithImpl<_$_SnowBallProfileImageDto>(
-              this, _$identity);
+  _$$SnowBallProfileImageDtoImplCopyWith<_$SnowBallProfileImageDtoImpl>
+      get copyWith => __$$SnowBallProfileImageDtoImplCopyWithImpl<
+          _$SnowBallProfileImageDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SnowBallProfileImageDtoToJson(
+    return _$$SnowBallProfileImageDtoImplToJson(
       this,
     );
   }
@@ -564,11 +567,11 @@ abstract class _SnowBallProfileImageDto extends SnowBallProfileImageDto {
   const factory _SnowBallProfileImageDto(
           {@JsonKey(name: 'key') required final String key,
           @JsonKey(name: 'url') required final String url}) =
-      _$_SnowBallProfileImageDto;
+      _$SnowBallProfileImageDtoImpl;
   const _SnowBallProfileImageDto._() : super._();
 
   factory _SnowBallProfileImageDto.fromJson(Map<String, dynamic> json) =
-      _$_SnowBallProfileImageDto.fromJson;
+      _$SnowBallProfileImageDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'key')
@@ -578,7 +581,7 @@ abstract class _SnowBallProfileImageDto extends SnowBallProfileImageDto {
   String get url;
   @override
   @JsonKey(ignore: true)
-  _$$_SnowBallProfileImageDtoCopyWith<_$_SnowBallProfileImageDto>
+  _$$SnowBallProfileImageDtoImplCopyWith<_$SnowBallProfileImageDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -635,25 +638,25 @@ class _$UpdateProfileByTypeRequestDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UpdateProfileByTypeRequestDtoCopyWith<$Res>
+abstract class _$$UpdateProfileByTypeRequestDtoImplCopyWith<$Res>
     implements $UpdateProfileByTypeRequestDtoCopyWith<$Res> {
-  factory _$$_UpdateProfileByTypeRequestDtoCopyWith(
-          _$_UpdateProfileByTypeRequestDto value,
-          $Res Function(_$_UpdateProfileByTypeRequestDto) then) =
-      __$$_UpdateProfileByTypeRequestDtoCopyWithImpl<$Res>;
+  factory _$$UpdateProfileByTypeRequestDtoImplCopyWith(
+          _$UpdateProfileByTypeRequestDtoImpl value,
+          $Res Function(_$UpdateProfileByTypeRequestDtoImpl) then) =
+      __$$UpdateProfileByTypeRequestDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'type') String type});
 }
 
 /// @nodoc
-class __$$_UpdateProfileByTypeRequestDtoCopyWithImpl<$Res>
+class __$$UpdateProfileByTypeRequestDtoImplCopyWithImpl<$Res>
     extends _$UpdateProfileByTypeRequestDtoCopyWithImpl<$Res,
-        _$_UpdateProfileByTypeRequestDto>
-    implements _$$_UpdateProfileByTypeRequestDtoCopyWith<$Res> {
-  __$$_UpdateProfileByTypeRequestDtoCopyWithImpl(
-      _$_UpdateProfileByTypeRequestDto _value,
-      $Res Function(_$_UpdateProfileByTypeRequestDto) _then)
+        _$UpdateProfileByTypeRequestDtoImpl>
+    implements _$$UpdateProfileByTypeRequestDtoImplCopyWith<$Res> {
+  __$$UpdateProfileByTypeRequestDtoImplCopyWithImpl(
+      _$UpdateProfileByTypeRequestDtoImpl _value,
+      $Res Function(_$UpdateProfileByTypeRequestDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -661,7 +664,7 @@ class __$$_UpdateProfileByTypeRequestDtoCopyWithImpl<$Res>
   $Res call({
     Object? type = null,
   }) {
-    return _then(_$_UpdateProfileByTypeRequestDto(
+    return _then(_$UpdateProfileByTypeRequestDtoImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -672,14 +675,15 @@ class __$$_UpdateProfileByTypeRequestDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UpdateProfileByTypeRequestDto extends _UpdateProfileByTypeRequestDto {
-  const _$_UpdateProfileByTypeRequestDto(
+class _$UpdateProfileByTypeRequestDtoImpl
+    extends _UpdateProfileByTypeRequestDto {
+  const _$UpdateProfileByTypeRequestDtoImpl(
       {@JsonKey(name: 'type') required this.type})
       : super._();
 
-  factory _$_UpdateProfileByTypeRequestDto.fromJson(
+  factory _$UpdateProfileByTypeRequestDtoImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_UpdateProfileByTypeRequestDtoFromJson(json);
+      _$$UpdateProfileByTypeRequestDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'type')
@@ -694,7 +698,7 @@ class _$_UpdateProfileByTypeRequestDto extends _UpdateProfileByTypeRequestDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateProfileByTypeRequestDto &&
+            other is _$UpdateProfileByTypeRequestDtoImpl &&
             (identical(other.type, type) || other.type == type));
   }
 
@@ -705,13 +709,14 @@ class _$_UpdateProfileByTypeRequestDto extends _UpdateProfileByTypeRequestDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateProfileByTypeRequestDtoCopyWith<_$_UpdateProfileByTypeRequestDto>
-      get copyWith => __$$_UpdateProfileByTypeRequestDtoCopyWithImpl<
-          _$_UpdateProfileByTypeRequestDto>(this, _$identity);
+  _$$UpdateProfileByTypeRequestDtoImplCopyWith<
+          _$UpdateProfileByTypeRequestDtoImpl>
+      get copyWith => __$$UpdateProfileByTypeRequestDtoImplCopyWithImpl<
+          _$UpdateProfileByTypeRequestDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UpdateProfileByTypeRequestDtoToJson(
+    return _$$UpdateProfileByTypeRequestDtoImplToJson(
       this,
     );
   }
@@ -721,17 +726,18 @@ abstract class _UpdateProfileByTypeRequestDto
     extends UpdateProfileByTypeRequestDto {
   const factory _UpdateProfileByTypeRequestDto(
           {@JsonKey(name: 'type') required final String type}) =
-      _$_UpdateProfileByTypeRequestDto;
+      _$UpdateProfileByTypeRequestDtoImpl;
   const _UpdateProfileByTypeRequestDto._() : super._();
 
   factory _UpdateProfileByTypeRequestDto.fromJson(Map<String, dynamic> json) =
-      _$_UpdateProfileByTypeRequestDto.fromJson;
+      _$UpdateProfileByTypeRequestDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'type')
   String get type;
   @override
   @JsonKey(ignore: true)
-  _$$_UpdateProfileByTypeRequestDtoCopyWith<_$_UpdateProfileByTypeRequestDto>
+  _$$UpdateProfileByTypeRequestDtoImplCopyWith<
+          _$UpdateProfileByTypeRequestDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

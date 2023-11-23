@@ -96,11 +96,11 @@ class _$AppErrorDtoCopyWithImpl<$Res, $Val extends AppErrorDto>
 }
 
 /// @nodoc
-abstract class _$$_AppErrorDtoCopyWith<$Res>
+abstract class _$$AppErrorDtoImplCopyWith<$Res>
     implements $AppErrorDtoCopyWith<$Res> {
-  factory _$$_AppErrorDtoCopyWith(
-          _$_AppErrorDto value, $Res Function(_$_AppErrorDto) then) =
-      __$$_AppErrorDtoCopyWithImpl<$Res>;
+  factory _$$AppErrorDtoImplCopyWith(
+          _$AppErrorDtoImpl value, $Res Function(_$AppErrorDtoImpl) then) =
+      __$$AppErrorDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -112,11 +112,11 @@ abstract class _$$_AppErrorDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppErrorDtoCopyWithImpl<$Res>
-    extends _$AppErrorDtoCopyWithImpl<$Res, _$_AppErrorDto>
-    implements _$$_AppErrorDtoCopyWith<$Res> {
-  __$$_AppErrorDtoCopyWithImpl(
-      _$_AppErrorDto _value, $Res Function(_$_AppErrorDto) _then)
+class __$$AppErrorDtoImplCopyWithImpl<$Res>
+    extends _$AppErrorDtoCopyWithImpl<$Res, _$AppErrorDtoImpl>
+    implements _$$AppErrorDtoImplCopyWith<$Res> {
+  __$$AppErrorDtoImplCopyWithImpl(
+      _$AppErrorDtoImpl _value, $Res Function(_$AppErrorDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +128,7 @@ class __$$_AppErrorDtoCopyWithImpl<$Res>
     Object? detail = freezed,
     Object? status = null,
   }) {
-    return _then(_$_AppErrorDto(
+    return _then(_$AppErrorDtoImpl(
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -155,8 +155,8 @@ class __$$_AppErrorDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppErrorDto extends _AppErrorDto {
-  const _$_AppErrorDto(
+class _$AppErrorDtoImpl extends _AppErrorDto {
+  const _$AppErrorDtoImpl(
       {@JsonKey(name: 'code') this.code,
       @JsonKey(name: 'type') this.type,
       @JsonKey(name: 'title') this.title,
@@ -164,8 +164,8 @@ class _$_AppErrorDto extends _AppErrorDto {
       @JsonKey(name: 'status') required this.status})
       : super._();
 
-  factory _$_AppErrorDto.fromJson(Map<String, dynamic> json) =>
-      _$$_AppErrorDtoFromJson(json);
+  factory _$AppErrorDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AppErrorDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'code')
@@ -192,7 +192,7 @@ class _$_AppErrorDto extends _AppErrorDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppErrorDto &&
+            other is _$AppErrorDtoImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.title, title) || other.title == title) &&
@@ -208,12 +208,12 @@ class _$_AppErrorDto extends _AppErrorDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppErrorDtoCopyWith<_$_AppErrorDto> get copyWith =>
-      __$$_AppErrorDtoCopyWithImpl<_$_AppErrorDto>(this, _$identity);
+  _$$AppErrorDtoImplCopyWith<_$AppErrorDtoImpl> get copyWith =>
+      __$$AppErrorDtoImplCopyWithImpl<_$AppErrorDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppErrorDtoToJson(
+    return _$$AppErrorDtoImplToJson(
       this,
     );
   }
@@ -225,11 +225,11 @@ abstract class _AppErrorDto extends AppErrorDto {
       @JsonKey(name: 'type') final String? type,
       @JsonKey(name: 'title') final String? title,
       @JsonKey(name: 'detail') final String? detail,
-      @JsonKey(name: 'status') required final int status}) = _$_AppErrorDto;
+      @JsonKey(name: 'status') required final int status}) = _$AppErrorDtoImpl;
   const _AppErrorDto._() : super._();
 
   factory _AppErrorDto.fromJson(Map<String, dynamic> json) =
-      _$_AppErrorDto.fromJson;
+      _$AppErrorDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'code')
@@ -248,6 +248,6 @@ abstract class _AppErrorDto extends AppErrorDto {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$_AppErrorDtoCopyWith<_$_AppErrorDto> get copyWith =>
+  _$$AppErrorDtoImplCopyWith<_$AppErrorDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

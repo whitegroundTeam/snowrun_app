@@ -77,20 +77,20 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
 }
 
 /// @nodoc
-abstract class _$$_UpdateProfileImageCopyWith<$Res> {
-  factory _$$_UpdateProfileImageCopyWith(_$_UpdateProfileImage value,
-          $Res Function(_$_UpdateProfileImage) then) =
-      __$$_UpdateProfileImageCopyWithImpl<$Res>;
+abstract class _$$UpdateProfileImageImplCopyWith<$Res> {
+  factory _$$UpdateProfileImageImplCopyWith(_$UpdateProfileImageImpl value,
+          $Res Function(_$UpdateProfileImageImpl) then) =
+      __$$UpdateProfileImageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String profileImageType});
 }
 
 /// @nodoc
-class __$$_UpdateProfileImageCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_UpdateProfileImage>
-    implements _$$_UpdateProfileImageCopyWith<$Res> {
-  __$$_UpdateProfileImageCopyWithImpl(
-      _$_UpdateProfileImage _value, $Res Function(_$_UpdateProfileImage) _then)
+class __$$UpdateProfileImageImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$UpdateProfileImageImpl>
+    implements _$$UpdateProfileImageImplCopyWith<$Res> {
+  __$$UpdateProfileImageImplCopyWithImpl(_$UpdateProfileImageImpl _value,
+      $Res Function(_$UpdateProfileImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +98,7 @@ class __$$_UpdateProfileImageCopyWithImpl<$Res>
   $Res call({
     Object? profileImageType = null,
   }) {
-    return _then(_$_UpdateProfileImage(
+    return _then(_$UpdateProfileImageImpl(
       null == profileImageType
           ? _value.profileImageType
           : profileImageType // ignore: cast_nullable_to_non_nullable
@@ -109,8 +109,8 @@ class __$$_UpdateProfileImageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateProfileImage implements _UpdateProfileImage {
-  const _$_UpdateProfileImage(this.profileImageType);
+class _$UpdateProfileImageImpl implements _UpdateProfileImage {
+  const _$UpdateProfileImageImpl(this.profileImageType);
 
   @override
   final String profileImageType;
@@ -124,7 +124,7 @@ class _$_UpdateProfileImage implements _UpdateProfileImage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateProfileImage &&
+            other is _$UpdateProfileImageImpl &&
             (identical(other.profileImageType, profileImageType) ||
                 other.profileImageType == profileImageType));
   }
@@ -135,8 +135,8 @@ class _$_UpdateProfileImage implements _UpdateProfileImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateProfileImageCopyWith<_$_UpdateProfileImage> get copyWith =>
-      __$$_UpdateProfileImageCopyWithImpl<_$_UpdateProfileImage>(
+  _$$UpdateProfileImageImplCopyWith<_$UpdateProfileImageImpl> get copyWith =>
+      __$$UpdateProfileImageImplCopyWithImpl<_$UpdateProfileImageImpl>(
           this, _$identity);
 
   @override
@@ -206,35 +206,36 @@ class _$_UpdateProfileImage implements _UpdateProfileImage {
 
 abstract class _UpdateProfileImage implements ProfileEvent {
   const factory _UpdateProfileImage(final String profileImageType) =
-      _$_UpdateProfileImage;
+      _$UpdateProfileImageImpl;
 
   String get profileImageType;
   @JsonKey(ignore: true)
-  _$$_UpdateProfileImageCopyWith<_$_UpdateProfileImage> get copyWith =>
+  _$$UpdateProfileImageImplCopyWith<_$UpdateProfileImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetSnowBallProfileImagesCopyWith<$Res> {
-  factory _$$_GetSnowBallProfileImagesCopyWith(
-          _$_GetSnowBallProfileImages value,
-          $Res Function(_$_GetSnowBallProfileImages) then) =
-      __$$_GetSnowBallProfileImagesCopyWithImpl<$Res>;
+abstract class _$$GetSnowBallProfileImagesImplCopyWith<$Res> {
+  factory _$$GetSnowBallProfileImagesImplCopyWith(
+          _$GetSnowBallProfileImagesImpl value,
+          $Res Function(_$GetSnowBallProfileImagesImpl) then) =
+      __$$GetSnowBallProfileImagesImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GetSnowBallProfileImagesCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_GetSnowBallProfileImages>
-    implements _$$_GetSnowBallProfileImagesCopyWith<$Res> {
-  __$$_GetSnowBallProfileImagesCopyWithImpl(_$_GetSnowBallProfileImages _value,
-      $Res Function(_$_GetSnowBallProfileImages) _then)
+class __$$GetSnowBallProfileImagesImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$GetSnowBallProfileImagesImpl>
+    implements _$$GetSnowBallProfileImagesImplCopyWith<$Res> {
+  __$$GetSnowBallProfileImagesImplCopyWithImpl(
+      _$GetSnowBallProfileImagesImpl _value,
+      $Res Function(_$GetSnowBallProfileImagesImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GetSnowBallProfileImages implements _GetSnowBallProfileImages {
-  const _$_GetSnowBallProfileImages();
+class _$GetSnowBallProfileImagesImpl implements _GetSnowBallProfileImages {
+  const _$GetSnowBallProfileImagesImpl();
 
   @override
   String toString() {
@@ -245,7 +246,7 @@ class _$_GetSnowBallProfileImages implements _GetSnowBallProfileImages {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetSnowBallProfileImages);
+            other is _$GetSnowBallProfileImagesImpl);
   }
 
   @override
@@ -317,7 +318,7 @@ class _$_GetSnowBallProfileImages implements _GetSnowBallProfileImages {
 }
 
 abstract class _GetSnowBallProfileImages implements ProfileEvent {
-  const factory _GetSnowBallProfileImages() = _$_GetSnowBallProfileImages;
+  const factory _GetSnowBallProfileImages() = _$GetSnowBallProfileImagesImpl;
 }
 
 /// @nodoc
@@ -371,11 +372,11 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
 }
 
 /// @nodoc
-abstract class _$$_ProfileStateCopyWith<$Res>
+abstract class _$$ProfileStateImplCopyWith<$Res>
     implements $ProfileStateCopyWith<$Res> {
-  factory _$$_ProfileStateCopyWith(
-          _$_ProfileState value, $Res Function(_$_ProfileState) then) =
-      __$$_ProfileStateCopyWithImpl<$Res>;
+  factory _$$ProfileStateImplCopyWith(
+          _$ProfileStateImpl value, $Res Function(_$ProfileStateImpl) then) =
+      __$$ProfileStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -383,11 +384,11 @@ abstract class _$$_ProfileStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProfileStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_ProfileState>
-    implements _$$_ProfileStateCopyWith<$Res> {
-  __$$_ProfileStateCopyWithImpl(
-      _$_ProfileState _value, $Res Function(_$_ProfileState) _then)
+class __$$ProfileStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileStateImpl>
+    implements _$$ProfileStateImplCopyWith<$Res> {
+  __$$ProfileStateImplCopyWithImpl(
+      _$ProfileStateImpl _value, $Res Function(_$ProfileStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -396,7 +397,7 @@ class __$$_ProfileStateCopyWithImpl<$Res>
     Object? status = null,
     Object? snowBallProfileImages = freezed,
   }) {
-    return _then(_$_ProfileState(
+    return _then(_$ProfileStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -411,8 +412,8 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProfileState implements _ProfileState {
-  const _$_ProfileState(
+class _$ProfileStateImpl implements _ProfileState {
+  const _$ProfileStateImpl(
       {required this.status,
       required final List<SnowBallProfileImage>? snowBallProfileImages})
       : _snowBallProfileImages = snowBallProfileImages;
@@ -439,7 +440,7 @@ class _$_ProfileState implements _ProfileState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProfileState &&
+            other is _$ProfileStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._snowBallProfileImages, _snowBallProfileImages));
@@ -452,15 +453,15 @@ class _$_ProfileState implements _ProfileState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>
-      __$$_ProfileStateCopyWithImpl<_$_ProfileState>(this, _$identity);
+  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
+      __$$ProfileStateImplCopyWithImpl<_$ProfileStateImpl>(this, _$identity);
 }
 
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
           {required final UserStatus status,
           required final List<SnowBallProfileImage>? snowBallProfileImages}) =
-      _$_ProfileState;
+      _$ProfileStateImpl;
 
   @override
   UserStatus get status;
@@ -468,6 +469,6 @@ abstract class _ProfileState implements ProfileState {
   List<SnowBallProfileImage>? get snowBallProfileImages;
   @override
   @JsonKey(ignore: true)
-  _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>
+  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

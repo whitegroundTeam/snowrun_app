@@ -55,18 +55,21 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
 }
 
 /// @nodoc
-abstract class _$$_PlaceCopyWith<$Res> implements $PlaceCopyWith<$Res> {
-  factory _$$_PlaceCopyWith(_$_Place value, $Res Function(_$_Place) then) =
-      __$$_PlaceCopyWithImpl<$Res>;
+abstract class _$$PlaceImplCopyWith<$Res> implements $PlaceCopyWith<$Res> {
+  factory _$$PlaceImplCopyWith(
+          _$PlaceImpl value, $Res Function(_$PlaceImpl) then) =
+      __$$PlaceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StringVO name});
 }
 
 /// @nodoc
-class __$$_PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res, _$_Place>
-    implements _$$_PlaceCopyWith<$Res> {
-  __$$_PlaceCopyWithImpl(_$_Place _value, $Res Function(_$_Place) _then)
+class __$$PlaceImplCopyWithImpl<$Res>
+    extends _$PlaceCopyWithImpl<$Res, _$PlaceImpl>
+    implements _$$PlaceImplCopyWith<$Res> {
+  __$$PlaceImplCopyWithImpl(
+      _$PlaceImpl _value, $Res Function(_$PlaceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -74,7 +77,7 @@ class __$$_PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res, _$_Place>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_Place(
+    return _then(_$PlaceImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -85,8 +88,8 @@ class __$$_PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res, _$_Place>
 
 /// @nodoc
 
-class _$_Place extends _Place {
-  const _$_Place({required this.name}) : super._();
+class _$PlaceImpl extends _Place {
+  const _$PlaceImpl({required this.name}) : super._();
 
   @override
   final StringVO name;
@@ -100,7 +103,7 @@ class _$_Place extends _Place {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Place &&
+            other is _$PlaceImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -110,18 +113,18 @@ class _$_Place extends _Place {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlaceCopyWith<_$_Place> get copyWith =>
-      __$$_PlaceCopyWithImpl<_$_Place>(this, _$identity);
+  _$$PlaceImplCopyWith<_$PlaceImpl> get copyWith =>
+      __$$PlaceImplCopyWithImpl<_$PlaceImpl>(this, _$identity);
 }
 
 abstract class _Place extends Place {
-  const factory _Place({required final StringVO name}) = _$_Place;
+  const factory _Place({required final StringVO name}) = _$PlaceImpl;
   const _Place._() : super._();
 
   @override
   StringVO get name;
   @override
   @JsonKey(ignore: true)
-  _$$_PlaceCopyWith<_$_Place> get copyWith =>
+  _$$PlaceImplCopyWith<_$PlaceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

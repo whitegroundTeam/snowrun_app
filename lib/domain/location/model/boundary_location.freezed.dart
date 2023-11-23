@@ -58,22 +58,22 @@ class _$BoundaryLocationCopyWithImpl<$Res, $Val extends BoundaryLocation>
 }
 
 /// @nodoc
-abstract class _$$_BoundaryLocationCopyWith<$Res>
+abstract class _$$BoundaryLocationImplCopyWith<$Res>
     implements $BoundaryLocationCopyWith<$Res> {
-  factory _$$_BoundaryLocationCopyWith(
-          _$_BoundaryLocation value, $Res Function(_$_BoundaryLocation) then) =
-      __$$_BoundaryLocationCopyWithImpl<$Res>;
+  factory _$$BoundaryLocationImplCopyWith(_$BoundaryLocationImpl value,
+          $Res Function(_$BoundaryLocationImpl) then) =
+      __$$BoundaryLocationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ListVO<List<List<double>>> coordinates});
 }
 
 /// @nodoc
-class __$$_BoundaryLocationCopyWithImpl<$Res>
-    extends _$BoundaryLocationCopyWithImpl<$Res, _$_BoundaryLocation>
-    implements _$$_BoundaryLocationCopyWith<$Res> {
-  __$$_BoundaryLocationCopyWithImpl(
-      _$_BoundaryLocation _value, $Res Function(_$_BoundaryLocation) _then)
+class __$$BoundaryLocationImplCopyWithImpl<$Res>
+    extends _$BoundaryLocationCopyWithImpl<$Res, _$BoundaryLocationImpl>
+    implements _$$BoundaryLocationImplCopyWith<$Res> {
+  __$$BoundaryLocationImplCopyWithImpl(_$BoundaryLocationImpl _value,
+      $Res Function(_$BoundaryLocationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -81,7 +81,7 @@ class __$$_BoundaryLocationCopyWithImpl<$Res>
   $Res call({
     Object? coordinates = null,
   }) {
-    return _then(_$_BoundaryLocation(
+    return _then(_$BoundaryLocationImpl(
       coordinates: null == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
@@ -92,8 +92,8 @@ class __$$_BoundaryLocationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_BoundaryLocation extends _BoundaryLocation {
-  const _$_BoundaryLocation({required this.coordinates}) : super._();
+class _$BoundaryLocationImpl extends _BoundaryLocation {
+  const _$BoundaryLocationImpl({required this.coordinates}) : super._();
 
   @override
   final ListVO<List<List<double>>> coordinates;
@@ -107,7 +107,7 @@ class _$_BoundaryLocation extends _BoundaryLocation {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BoundaryLocation &&
+            other is _$BoundaryLocationImpl &&
             (identical(other.coordinates, coordinates) ||
                 other.coordinates == coordinates));
   }
@@ -118,20 +118,21 @@ class _$_BoundaryLocation extends _BoundaryLocation {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BoundaryLocationCopyWith<_$_BoundaryLocation> get copyWith =>
-      __$$_BoundaryLocationCopyWithImpl<_$_BoundaryLocation>(this, _$identity);
+  _$$BoundaryLocationImplCopyWith<_$BoundaryLocationImpl> get copyWith =>
+      __$$BoundaryLocationImplCopyWithImpl<_$BoundaryLocationImpl>(
+          this, _$identity);
 }
 
 abstract class _BoundaryLocation extends BoundaryLocation {
   const factory _BoundaryLocation(
           {required final ListVO<List<List<double>>> coordinates}) =
-      _$_BoundaryLocation;
+      _$BoundaryLocationImpl;
   const _BoundaryLocation._() : super._();
 
   @override
   ListVO<List<List<double>>> get coordinates;
   @override
   @JsonKey(ignore: true)
-  _$$_BoundaryLocationCopyWith<_$_BoundaryLocation> get copyWith =>
+  _$$BoundaryLocationImplCopyWith<_$BoundaryLocationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

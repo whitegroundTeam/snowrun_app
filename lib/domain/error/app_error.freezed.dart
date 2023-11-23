@@ -74,21 +74,22 @@ class _$AppErrorCopyWithImpl<$Res, $Val extends AppError>
 }
 
 /// @nodoc
-abstract class _$$_AppErrorCopyWith<$Res> implements $AppErrorCopyWith<$Res> {
-  factory _$$_AppErrorCopyWith(
-          _$_AppError value, $Res Function(_$_AppError) then) =
-      __$$_AppErrorCopyWithImpl<$Res>;
+abstract class _$$AppErrorImplCopyWith<$Res>
+    implements $AppErrorCopyWith<$Res> {
+  factory _$$AppErrorImplCopyWith(
+          _$AppErrorImpl value, $Res Function(_$AppErrorImpl) then) =
+      __$$AppErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({IntVO statusCode, StringVO title, StringVO detail, StringVO type});
 }
 
 /// @nodoc
-class __$$_AppErrorCopyWithImpl<$Res>
-    extends _$AppErrorCopyWithImpl<$Res, _$_AppError>
-    implements _$$_AppErrorCopyWith<$Res> {
-  __$$_AppErrorCopyWithImpl(
-      _$_AppError _value, $Res Function(_$_AppError) _then)
+class __$$AppErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorCopyWithImpl<$Res, _$AppErrorImpl>
+    implements _$$AppErrorImplCopyWith<$Res> {
+  __$$AppErrorImplCopyWithImpl(
+      _$AppErrorImpl _value, $Res Function(_$AppErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +100,7 @@ class __$$_AppErrorCopyWithImpl<$Res>
     Object? detail = null,
     Object? type = null,
   }) {
-    return _then(_$_AppError(
+    return _then(_$AppErrorImpl(
       statusCode: null == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
@@ -122,8 +123,8 @@ class __$$_AppErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppError extends _AppError {
-  const _$_AppError(
+class _$AppErrorImpl extends _AppError {
+  const _$AppErrorImpl(
       {required this.statusCode,
       required this.title,
       required this.detail,
@@ -148,7 +149,7 @@ class _$_AppError extends _AppError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppError &&
+            other is _$AppErrorImpl &&
             (identical(other.statusCode, statusCode) ||
                 other.statusCode == statusCode) &&
             (identical(other.title, title) || other.title == title) &&
@@ -162,8 +163,8 @@ class _$_AppError extends _AppError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppErrorCopyWith<_$_AppError> get copyWith =>
-      __$$_AppErrorCopyWithImpl<_$_AppError>(this, _$identity);
+  _$$AppErrorImplCopyWith<_$AppErrorImpl> get copyWith =>
+      __$$AppErrorImplCopyWithImpl<_$AppErrorImpl>(this, _$identity);
 }
 
 abstract class _AppError extends AppError {
@@ -171,7 +172,7 @@ abstract class _AppError extends AppError {
       {required final IntVO statusCode,
       required final StringVO title,
       required final StringVO detail,
-      required final StringVO type}) = _$_AppError;
+      required final StringVO type}) = _$AppErrorImpl;
   const _AppError._() : super._();
 
   @override
@@ -184,6 +185,6 @@ abstract class _AppError extends AppError {
   StringVO get type;
   @override
   @JsonKey(ignore: true)
-  _$$_AppErrorCopyWith<_$_AppError> get copyWith =>
+  _$$AppErrorImplCopyWith<_$AppErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

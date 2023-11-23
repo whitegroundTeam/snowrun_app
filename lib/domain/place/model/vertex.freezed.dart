@@ -55,19 +55,21 @@ class _$VertexCopyWithImpl<$Res, $Val extends Vertex>
 }
 
 /// @nodoc
-abstract class _$$_VertexCopyWith<$Res> implements $VertexCopyWith<$Res> {
-  factory _$$_VertexCopyWith(_$_Vertex value, $Res Function(_$_Vertex) then) =
-      __$$_VertexCopyWithImpl<$Res>;
+abstract class _$$VertexImplCopyWith<$Res> implements $VertexCopyWith<$Res> {
+  factory _$$VertexImplCopyWith(
+          _$VertexImpl value, $Res Function(_$VertexImpl) then) =
+      __$$VertexImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ListVO<List<double>> coordinates});
 }
 
 /// @nodoc
-class __$$_VertexCopyWithImpl<$Res>
-    extends _$VertexCopyWithImpl<$Res, _$_Vertex>
-    implements _$$_VertexCopyWith<$Res> {
-  __$$_VertexCopyWithImpl(_$_Vertex _value, $Res Function(_$_Vertex) _then)
+class __$$VertexImplCopyWithImpl<$Res>
+    extends _$VertexCopyWithImpl<$Res, _$VertexImpl>
+    implements _$$VertexImplCopyWith<$Res> {
+  __$$VertexImplCopyWithImpl(
+      _$VertexImpl _value, $Res Function(_$VertexImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -75,7 +77,7 @@ class __$$_VertexCopyWithImpl<$Res>
   $Res call({
     Object? coordinates = null,
   }) {
-    return _then(_$_Vertex(
+    return _then(_$VertexImpl(
       coordinates: null == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
@@ -86,8 +88,8 @@ class __$$_VertexCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Vertex extends _Vertex {
-  const _$_Vertex({required this.coordinates}) : super._();
+class _$VertexImpl extends _Vertex {
+  const _$VertexImpl({required this.coordinates}) : super._();
 
   @override
   final ListVO<List<double>> coordinates;
@@ -101,7 +103,7 @@ class _$_Vertex extends _Vertex {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Vertex &&
+            other is _$VertexImpl &&
             (identical(other.coordinates, coordinates) ||
                 other.coordinates == coordinates));
   }
@@ -112,19 +114,19 @@ class _$_Vertex extends _Vertex {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VertexCopyWith<_$_Vertex> get copyWith =>
-      __$$_VertexCopyWithImpl<_$_Vertex>(this, _$identity);
+  _$$VertexImplCopyWith<_$VertexImpl> get copyWith =>
+      __$$VertexImplCopyWithImpl<_$VertexImpl>(this, _$identity);
 }
 
 abstract class _Vertex extends Vertex {
   const factory _Vertex({required final ListVO<List<double>> coordinates}) =
-      _$_Vertex;
+      _$VertexImpl;
   const _Vertex._() : super._();
 
   @override
   ListVO<List<double>> get coordinates;
   @override
   @JsonKey(ignore: true)
-  _$$_VertexCopyWith<_$_Vertex> get copyWith =>
+  _$$VertexImplCopyWith<_$VertexImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

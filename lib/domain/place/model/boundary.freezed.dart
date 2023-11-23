@@ -56,21 +56,22 @@ class _$BoundaryCopyWithImpl<$Res, $Val extends Boundary>
 }
 
 /// @nodoc
-abstract class _$$_BoundaryCopyWith<$Res> implements $BoundaryCopyWith<$Res> {
-  factory _$$_BoundaryCopyWith(
-          _$_Boundary value, $Res Function(_$_Boundary) then) =
-      __$$_BoundaryCopyWithImpl<$Res>;
+abstract class _$$BoundaryImplCopyWith<$Res>
+    implements $BoundaryCopyWith<$Res> {
+  factory _$$BoundaryImplCopyWith(
+          _$BoundaryImpl value, $Res Function(_$BoundaryImpl) then) =
+      __$$BoundaryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StringVO name});
 }
 
 /// @nodoc
-class __$$_BoundaryCopyWithImpl<$Res>
-    extends _$BoundaryCopyWithImpl<$Res, _$_Boundary>
-    implements _$$_BoundaryCopyWith<$Res> {
-  __$$_BoundaryCopyWithImpl(
-      _$_Boundary _value, $Res Function(_$_Boundary) _then)
+class __$$BoundaryImplCopyWithImpl<$Res>
+    extends _$BoundaryCopyWithImpl<$Res, _$BoundaryImpl>
+    implements _$$BoundaryImplCopyWith<$Res> {
+  __$$BoundaryImplCopyWithImpl(
+      _$BoundaryImpl _value, $Res Function(_$BoundaryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +79,7 @@ class __$$_BoundaryCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_Boundary(
+    return _then(_$BoundaryImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -89,8 +90,8 @@ class __$$_BoundaryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Boundary extends _Boundary {
-  const _$_Boundary({required this.name}) : super._();
+class _$BoundaryImpl extends _Boundary {
+  const _$BoundaryImpl({required this.name}) : super._();
 
   @override
   final StringVO name;
@@ -104,7 +105,7 @@ class _$_Boundary extends _Boundary {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Boundary &&
+            other is _$BoundaryImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -114,18 +115,18 @@ class _$_Boundary extends _Boundary {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BoundaryCopyWith<_$_Boundary> get copyWith =>
-      __$$_BoundaryCopyWithImpl<_$_Boundary>(this, _$identity);
+  _$$BoundaryImplCopyWith<_$BoundaryImpl> get copyWith =>
+      __$$BoundaryImplCopyWithImpl<_$BoundaryImpl>(this, _$identity);
 }
 
 abstract class _Boundary extends Boundary {
-  const factory _Boundary({required final StringVO name}) = _$_Boundary;
+  const factory _Boundary({required final StringVO name}) = _$BoundaryImpl;
   const _Boundary._() : super._();
 
   @override
   StringVO get name;
   @override
   @JsonKey(ignore: true)
-  _$$_BoundaryCopyWith<_$_Boundary> get copyWith =>
+  _$$BoundaryImplCopyWith<_$BoundaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -99,11 +99,11 @@ class _$PlaceFailureCopyWithImpl<$Res, $Val extends PlaceFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res>
+abstract class _$$UnexpectedImplCopyWith<$Res>
     implements $PlaceFailureCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AppError appError});
@@ -113,11 +113,11 @@ abstract class _$$_UnexpectedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$PlaceFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$PlaceFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$_UnexpectedCopyWithImpl<$Res>
   $Res call({
     Object? appError = null,
   }) {
-    return _then(_$_Unexpected(
+    return _then(_$UnexpectedImpl(
       null == appError
           ? _value.appError
           : appError // ignore: cast_nullable_to_non_nullable
@@ -136,8 +136,8 @@ class __$$_UnexpectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected(this.appError);
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl(this.appError);
 
   @override
   final AppError appError;
@@ -151,7 +151,7 @@ class _$_Unexpected implements _Unexpected {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Unexpected &&
+            other is _$UnexpectedImpl &&
             (identical(other.appError, appError) ||
                 other.appError == appError));
   }
@@ -162,8 +162,8 @@ class _$_Unexpected implements _Unexpected {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
-      __$$_UnexpectedCopyWithImpl<_$_Unexpected>(this, _$identity);
+  _$$UnexpectedImplCopyWith<_$UnexpectedImpl> get copyWith =>
+      __$$UnexpectedImplCopyWithImpl<_$UnexpectedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -223,12 +223,12 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements PlaceFailure {
-  const factory _Unexpected(final AppError appError) = _$_Unexpected;
+  const factory _Unexpected(final AppError appError) = _$UnexpectedImpl;
 
   @override
   AppError get appError;
   @override
   @JsonKey(ignore: true)
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
+  _$$UnexpectedImplCopyWith<_$UnexpectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

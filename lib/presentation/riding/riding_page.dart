@@ -15,10 +15,10 @@ import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/location/location_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
+import 'package:snowrun_app/application/riding/riding_controller/riding_controller_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_detail/riding_detail_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/domain/riding/riding_player.dart';
-import 'package:snowrun_app/domain/user/model/user.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
@@ -55,6 +55,7 @@ class RidingPageState extends State<RidingPage> {
   final _locationBloc = getIt<LocationBloc>();
   final _ridingDetailBloc = getIt<RidingDetailBloc>();
   final _ridingActorBloc = getIt<RidingActorBloc>();
+  final _ridingControllerBloc = getIt<RidingControllerBloc>();
 
   Timer? _timer;
 
@@ -98,6 +99,9 @@ class RidingPageState extends State<RidingPage> {
 
     return MultiBlocProvider(
       providers: [
+        BlocProvider<RidingControllerBloc>(
+          create: (context) => _ridingControllerBloc,
+        ),
         BlocProvider<RidingDetailBloc>(
           create: (context) => _ridingDetailBloc
             ..add(RidingDetailEvent.getRidingRoom(widget.ridingRoomId)),
@@ -171,7 +175,9 @@ class RidingPageState extends State<RidingPage> {
                       top: 0,
                       left: 0,
                       right: 0,
-                      bottom: bottomAreaHeight + mapViewBottomPadding,
+                      // bottom: bottomAreaHeight + mapViewBottomPadding,
+                      bottom: MediaQuery.sizeOf(context).height * 0.1 +
+                          mapViewBottomPadding,
                       child: MapWidget(
                         key: const ValueKey('mapWidget'),
                         resourceOptions: ResourceOptions(
@@ -198,26 +204,37 @@ class RidingPageState extends State<RidingPage> {
                     Positioned(
                       right: 8,
                       bottom: bottomAreaHeight + 16,
-                      child: CommonDetector(
-                        onTap: () {
-                          _updateUserLocation();
+                      child: BlocBuilder<RidingControllerBloc,
+                          RidingControllerState>(
+                        builder: (context, state) {
+
+                          return AnimatedOpacity(
+                            opacity: 1.0,
+                            duration: const Duration(milliseconds: 1000),
+                            child: CommonDetector(
+                              onTap: () {
+                                _updateUserLocation();
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: AppStyle.secondaryBackground
+                                      .withOpacity(0.95),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                padding: const EdgeInsets.all(12),
+                                child: Image.asset(
+                                  'assets/webp/refresh.webp',
+                                  color: AppStyle.white,
+                                  width: 24,
+                                  height: 24,
+                                ),
+                              ),
+                            ),
+                          );
                         },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color:
-                                AppStyle.secondaryBackground.withOpacity(0.95),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          padding: const EdgeInsets.all(12),
-                          child: Image.asset(
-                            'assets/webp/refresh.webp',
-                            color: AppStyle.white,
-                            width: 24,
-                            height: 24,
-                          ),
-                        ),
                       ),
                     ),
+
                     Positioned(
                       bottom: 0,
                       child: Container(

@@ -65,11 +65,11 @@ class _$LocationDtoCopyWithImpl<$Res, $Val extends LocationDto>
 }
 
 /// @nodoc
-abstract class _$$_LocationDtoCopyWith<$Res>
+abstract class _$$LocationDtoImplCopyWith<$Res>
     implements $LocationDtoCopyWith<$Res> {
-  factory _$$_LocationDtoCopyWith(
-          _$_LocationDto value, $Res Function(_$_LocationDto) then) =
-      __$$_LocationDtoCopyWithImpl<$Res>;
+  factory _$$LocationDtoImplCopyWith(
+          _$LocationDtoImpl value, $Res Function(_$LocationDtoImpl) then) =
+      __$$LocationDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -77,11 +77,11 @@ abstract class _$$_LocationDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LocationDtoCopyWithImpl<$Res>
-    extends _$LocationDtoCopyWithImpl<$Res, _$_LocationDto>
-    implements _$$_LocationDtoCopyWith<$Res> {
-  __$$_LocationDtoCopyWithImpl(
-      _$_LocationDto _value, $Res Function(_$_LocationDto) _then)
+class __$$LocationDtoImplCopyWithImpl<$Res>
+    extends _$LocationDtoCopyWithImpl<$Res, _$LocationDtoImpl>
+    implements _$$LocationDtoImplCopyWith<$Res> {
+  __$$LocationDtoImplCopyWithImpl(
+      _$LocationDtoImpl _value, $Res Function(_$LocationDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -89,7 +89,7 @@ class __$$_LocationDtoCopyWithImpl<$Res>
   $Res call({
     Object? coordinates = null,
   }) {
-    return _then(_$_LocationDto(
+    return _then(_$LocationDtoImpl(
       coordinates: null == coordinates
           ? _value._coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
@@ -100,15 +100,15 @@ class __$$_LocationDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LocationDto extends _LocationDto {
-  const _$_LocationDto(
+class _$LocationDtoImpl extends _LocationDto {
+  const _$LocationDtoImpl(
       {@JsonKey(name: 'coordinates')
       required final List<List<List<double>>> coordinates})
       : _coordinates = coordinates,
         super._();
 
-  factory _$_LocationDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LocationDtoFromJson(json);
+  factory _$LocationDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LocationDtoImplFromJson(json);
 
   final List<List<List<double>>> _coordinates;
   @override
@@ -128,7 +128,7 @@ class _$_LocationDto extends _LocationDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LocationDto &&
+            other is _$LocationDtoImpl &&
             const DeepCollectionEquality()
                 .equals(other._coordinates, _coordinates));
   }
@@ -141,12 +141,12 @@ class _$_LocationDto extends _LocationDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LocationDtoCopyWith<_$_LocationDto> get copyWith =>
-      __$$_LocationDtoCopyWithImpl<_$_LocationDto>(this, _$identity);
+  _$$LocationDtoImplCopyWith<_$LocationDtoImpl> get copyWith =>
+      __$$LocationDtoImplCopyWithImpl<_$LocationDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LocationDtoToJson(
+    return _$$LocationDtoImplToJson(
       this,
     );
   }
@@ -155,17 +155,17 @@ class _$_LocationDto extends _LocationDto {
 abstract class _LocationDto extends LocationDto {
   const factory _LocationDto(
       {@JsonKey(name: 'coordinates')
-      required final List<List<List<double>>> coordinates}) = _$_LocationDto;
+      required final List<List<List<double>>> coordinates}) = _$LocationDtoImpl;
   const _LocationDto._() : super._();
 
   factory _LocationDto.fromJson(Map<String, dynamic> json) =
-      _$_LocationDto.fromJson;
+      _$LocationDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'coordinates')
   List<List<List<double>>> get coordinates;
   @override
   @JsonKey(ignore: true)
-  _$$_LocationDtoCopyWith<_$_LocationDto> get copyWith =>
+  _$$LocationDtoImplCopyWith<_$LocationDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

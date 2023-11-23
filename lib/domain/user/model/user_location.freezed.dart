@@ -63,22 +63,22 @@ class _$UserLocationCopyWithImpl<$Res, $Val extends UserLocation>
 }
 
 /// @nodoc
-abstract class _$$_UserLocationCopyWith<$Res>
+abstract class _$$UserLocationImplCopyWith<$Res>
     implements $UserLocationCopyWith<$Res> {
-  factory _$$_UserLocationCopyWith(
-          _$_UserLocation value, $Res Function(_$_UserLocation) then) =
-      __$$_UserLocationCopyWithImpl<$Res>;
+  factory _$$UserLocationImplCopyWith(
+          _$UserLocationImpl value, $Res Function(_$UserLocationImpl) then) =
+      __$$UserLocationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DoubleVO lat, DoubleVO lng});
 }
 
 /// @nodoc
-class __$$_UserLocationCopyWithImpl<$Res>
-    extends _$UserLocationCopyWithImpl<$Res, _$_UserLocation>
-    implements _$$_UserLocationCopyWith<$Res> {
-  __$$_UserLocationCopyWithImpl(
-      _$_UserLocation _value, $Res Function(_$_UserLocation) _then)
+class __$$UserLocationImplCopyWithImpl<$Res>
+    extends _$UserLocationCopyWithImpl<$Res, _$UserLocationImpl>
+    implements _$$UserLocationImplCopyWith<$Res> {
+  __$$UserLocationImplCopyWithImpl(
+      _$UserLocationImpl _value, $Res Function(_$UserLocationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_UserLocationCopyWithImpl<$Res>
     Object? lat = null,
     Object? lng = null,
   }) {
-    return _then(_$_UserLocation(
+    return _then(_$UserLocationImpl(
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_UserLocationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserLocation extends _UserLocation {
-  const _$_UserLocation({required this.lat, required this.lng}) : super._();
+class _$UserLocationImpl extends _UserLocation {
+  const _$UserLocationImpl({required this.lat, required this.lng}) : super._();
 
   @override
   final DoubleVO lat;
@@ -119,7 +119,7 @@ class _$_UserLocation extends _UserLocation {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserLocation &&
+            other is _$UserLocationImpl &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng));
   }
@@ -130,14 +130,14 @@ class _$_UserLocation extends _UserLocation {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserLocationCopyWith<_$_UserLocation> get copyWith =>
-      __$$_UserLocationCopyWithImpl<_$_UserLocation>(this, _$identity);
+  _$$UserLocationImplCopyWith<_$UserLocationImpl> get copyWith =>
+      __$$UserLocationImplCopyWithImpl<_$UserLocationImpl>(this, _$identity);
 }
 
 abstract class _UserLocation extends UserLocation {
   const factory _UserLocation(
       {required final DoubleVO lat,
-      required final DoubleVO lng}) = _$_UserLocation;
+      required final DoubleVO lng}) = _$UserLocationImpl;
   const _UserLocation._() : super._();
 
   @override
@@ -146,6 +146,6 @@ abstract class _UserLocation extends UserLocation {
   DoubleVO get lng;
   @override
   @JsonKey(ignore: true)
-  _$$_UserLocationCopyWith<_$_UserLocation> get copyWith =>
+  _$$UserLocationImplCopyWith<_$UserLocationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

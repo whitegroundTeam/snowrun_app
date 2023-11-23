@@ -63,22 +63,22 @@ class _$IdTokenRequestDtoCopyWithImpl<$Res, $Val extends IdTokenRequestDto>
 }
 
 /// @nodoc
-abstract class _$$_IdTokenRequestDtoCopyWith<$Res>
+abstract class _$$IdTokenRequestDtoImplCopyWith<$Res>
     implements $IdTokenRequestDtoCopyWith<$Res> {
-  factory _$$_IdTokenRequestDtoCopyWith(_$_IdTokenRequestDto value,
-          $Res Function(_$_IdTokenRequestDto) then) =
-      __$$_IdTokenRequestDtoCopyWithImpl<$Res>;
+  factory _$$IdTokenRequestDtoImplCopyWith(_$IdTokenRequestDtoImpl value,
+          $Res Function(_$IdTokenRequestDtoImpl) then) =
+      __$$IdTokenRequestDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'id_token') String idToken});
 }
 
 /// @nodoc
-class __$$_IdTokenRequestDtoCopyWithImpl<$Res>
-    extends _$IdTokenRequestDtoCopyWithImpl<$Res, _$_IdTokenRequestDto>
-    implements _$$_IdTokenRequestDtoCopyWith<$Res> {
-  __$$_IdTokenRequestDtoCopyWithImpl(
-      _$_IdTokenRequestDto _value, $Res Function(_$_IdTokenRequestDto) _then)
+class __$$IdTokenRequestDtoImplCopyWithImpl<$Res>
+    extends _$IdTokenRequestDtoCopyWithImpl<$Res, _$IdTokenRequestDtoImpl>
+    implements _$$IdTokenRequestDtoImplCopyWith<$Res> {
+  __$$IdTokenRequestDtoImplCopyWithImpl(_$IdTokenRequestDtoImpl _value,
+      $Res Function(_$IdTokenRequestDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +86,7 @@ class __$$_IdTokenRequestDtoCopyWithImpl<$Res>
   $Res call({
     Object? idToken = null,
   }) {
-    return _then(_$_IdTokenRequestDto(
+    return _then(_$IdTokenRequestDtoImpl(
       idToken: null == idToken
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
@@ -97,12 +97,13 @@ class __$$_IdTokenRequestDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_IdTokenRequestDto extends _IdTokenRequestDto {
-  const _$_IdTokenRequestDto({@JsonKey(name: 'id_token') required this.idToken})
+class _$IdTokenRequestDtoImpl extends _IdTokenRequestDto {
+  const _$IdTokenRequestDtoImpl(
+      {@JsonKey(name: 'id_token') required this.idToken})
       : super._();
 
-  factory _$_IdTokenRequestDto.fromJson(Map<String, dynamic> json) =>
-      _$$_IdTokenRequestDtoFromJson(json);
+  factory _$IdTokenRequestDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IdTokenRequestDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_token')
@@ -117,7 +118,7 @@ class _$_IdTokenRequestDto extends _IdTokenRequestDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IdTokenRequestDto &&
+            other is _$IdTokenRequestDtoImpl &&
             (identical(other.idToken, idToken) || other.idToken == idToken));
   }
 
@@ -128,13 +129,13 @@ class _$_IdTokenRequestDto extends _IdTokenRequestDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IdTokenRequestDtoCopyWith<_$_IdTokenRequestDto> get copyWith =>
-      __$$_IdTokenRequestDtoCopyWithImpl<_$_IdTokenRequestDto>(
+  _$$IdTokenRequestDtoImplCopyWith<_$IdTokenRequestDtoImpl> get copyWith =>
+      __$$IdTokenRequestDtoImplCopyWithImpl<_$IdTokenRequestDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IdTokenRequestDtoToJson(
+    return _$$IdTokenRequestDtoImplToJson(
       this,
     );
   }
@@ -143,18 +144,18 @@ class _$_IdTokenRequestDto extends _IdTokenRequestDto {
 abstract class _IdTokenRequestDto extends IdTokenRequestDto {
   const factory _IdTokenRequestDto(
           {@JsonKey(name: 'id_token') required final String idToken}) =
-      _$_IdTokenRequestDto;
+      _$IdTokenRequestDtoImpl;
   const _IdTokenRequestDto._() : super._();
 
   factory _IdTokenRequestDto.fromJson(Map<String, dynamic> json) =
-      _$_IdTokenRequestDto.fromJson;
+      _$IdTokenRequestDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_token')
   String get idToken;
   @override
   @JsonKey(ignore: true)
-  _$$_IdTokenRequestDtoCopyWith<_$_IdTokenRequestDto> get copyWith =>
+  _$$IdTokenRequestDtoImplCopyWith<_$IdTokenRequestDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -226,11 +227,11 @@ class _$SignResponseDtoCopyWithImpl<$Res, $Val extends SignResponseDto>
 }
 
 /// @nodoc
-abstract class _$$_SignResponseDtoCopyWith<$Res>
+abstract class _$$SignResponseDtoImplCopyWith<$Res>
     implements $SignResponseDtoCopyWith<$Res> {
-  factory _$$_SignResponseDtoCopyWith(
-          _$_SignResponseDto value, $Res Function(_$_SignResponseDto) then) =
-      __$$_SignResponseDtoCopyWithImpl<$Res>;
+  factory _$$SignResponseDtoImplCopyWith(_$SignResponseDtoImpl value,
+          $Res Function(_$SignResponseDtoImpl) then) =
+      __$$SignResponseDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -242,11 +243,11 @@ abstract class _$$_SignResponseDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SignResponseDtoCopyWithImpl<$Res>
-    extends _$SignResponseDtoCopyWithImpl<$Res, _$_SignResponseDto>
-    implements _$$_SignResponseDtoCopyWith<$Res> {
-  __$$_SignResponseDtoCopyWithImpl(
-      _$_SignResponseDto _value, $Res Function(_$_SignResponseDto) _then)
+class __$$SignResponseDtoImplCopyWithImpl<$Res>
+    extends _$SignResponseDtoCopyWithImpl<$Res, _$SignResponseDtoImpl>
+    implements _$$SignResponseDtoImplCopyWith<$Res> {
+  __$$SignResponseDtoImplCopyWithImpl(
+      _$SignResponseDtoImpl _value, $Res Function(_$SignResponseDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -255,7 +256,7 @@ class __$$_SignResponseDtoCopyWithImpl<$Res>
     Object? token = null,
     Object? isNewUser = null,
   }) {
-    return _then(_$_SignResponseDto(
+    return _then(_$SignResponseDtoImpl(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -270,14 +271,14 @@ class __$$_SignResponseDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SignResponseDto extends _SignResponseDto {
-  const _$_SignResponseDto(
+class _$SignResponseDtoImpl extends _SignResponseDto {
+  const _$SignResponseDtoImpl(
       {@JsonKey(name: 'token') required this.token,
       @JsonKey(name: 'is_new_user') required this.isNewUser})
       : super._();
 
-  factory _$_SignResponseDto.fromJson(Map<String, dynamic> json) =>
-      _$$_SignResponseDtoFromJson(json);
+  factory _$SignResponseDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SignResponseDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'token')
@@ -295,7 +296,7 @@ class _$_SignResponseDto extends _SignResponseDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SignResponseDto &&
+            other is _$SignResponseDtoImpl &&
             (identical(other.token, token) || other.token == token) &&
             (identical(other.isNewUser, isNewUser) ||
                 other.isNewUser == isNewUser));
@@ -308,12 +309,13 @@ class _$_SignResponseDto extends _SignResponseDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SignResponseDtoCopyWith<_$_SignResponseDto> get copyWith =>
-      __$$_SignResponseDtoCopyWithImpl<_$_SignResponseDto>(this, _$identity);
+  _$$SignResponseDtoImplCopyWith<_$SignResponseDtoImpl> get copyWith =>
+      __$$SignResponseDtoImplCopyWithImpl<_$SignResponseDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SignResponseDtoToJson(
+    return _$$SignResponseDtoImplToJson(
       this,
     );
   }
@@ -323,11 +325,11 @@ abstract class _SignResponseDto extends SignResponseDto {
   const factory _SignResponseDto(
           {@JsonKey(name: 'token') required final AuthTokenDto token,
           @JsonKey(name: 'is_new_user') required final bool isNewUser}) =
-      _$_SignResponseDto;
+      _$SignResponseDtoImpl;
   const _SignResponseDto._() : super._();
 
   factory _SignResponseDto.fromJson(Map<String, dynamic> json) =
-      _$_SignResponseDto.fromJson;
+      _$SignResponseDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'token')
@@ -337,7 +339,7 @@ abstract class _SignResponseDto extends SignResponseDto {
   bool get isNewUser;
   @override
   @JsonKey(ignore: true)
-  _$$_SignResponseDtoCopyWith<_$_SignResponseDto> get copyWith =>
+  _$$SignResponseDtoImplCopyWith<_$SignResponseDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -390,22 +392,22 @@ class _$AuthTokenDtoCopyWithImpl<$Res, $Val extends AuthTokenDto>
 }
 
 /// @nodoc
-abstract class _$$_AuthTokenDtoCopyWith<$Res>
+abstract class _$$AuthTokenDtoImplCopyWith<$Res>
     implements $AuthTokenDtoCopyWith<$Res> {
-  factory _$$_AuthTokenDtoCopyWith(
-          _$_AuthTokenDto value, $Res Function(_$_AuthTokenDto) then) =
-      __$$_AuthTokenDtoCopyWithImpl<$Res>;
+  factory _$$AuthTokenDtoImplCopyWith(
+          _$AuthTokenDtoImpl value, $Res Function(_$AuthTokenDtoImpl) then) =
+      __$$AuthTokenDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'auth_token') String authToken});
 }
 
 /// @nodoc
-class __$$_AuthTokenDtoCopyWithImpl<$Res>
-    extends _$AuthTokenDtoCopyWithImpl<$Res, _$_AuthTokenDto>
-    implements _$$_AuthTokenDtoCopyWith<$Res> {
-  __$$_AuthTokenDtoCopyWithImpl(
-      _$_AuthTokenDto _value, $Res Function(_$_AuthTokenDto) _then)
+class __$$AuthTokenDtoImplCopyWithImpl<$Res>
+    extends _$AuthTokenDtoCopyWithImpl<$Res, _$AuthTokenDtoImpl>
+    implements _$$AuthTokenDtoImplCopyWith<$Res> {
+  __$$AuthTokenDtoImplCopyWithImpl(
+      _$AuthTokenDtoImpl _value, $Res Function(_$AuthTokenDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -413,7 +415,7 @@ class __$$_AuthTokenDtoCopyWithImpl<$Res>
   $Res call({
     Object? authToken = null,
   }) {
-    return _then(_$_AuthTokenDto(
+    return _then(_$AuthTokenDtoImpl(
       authToken: null == authToken
           ? _value.authToken
           : authToken // ignore: cast_nullable_to_non_nullable
@@ -424,12 +426,13 @@ class __$$_AuthTokenDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthTokenDto extends _AuthTokenDto {
-  const _$_AuthTokenDto({@JsonKey(name: 'auth_token') required this.authToken})
+class _$AuthTokenDtoImpl extends _AuthTokenDto {
+  const _$AuthTokenDtoImpl(
+      {@JsonKey(name: 'auth_token') required this.authToken})
       : super._();
 
-  factory _$_AuthTokenDto.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthTokenDtoFromJson(json);
+  factory _$AuthTokenDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthTokenDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'auth_token')
@@ -444,7 +447,7 @@ class _$_AuthTokenDto extends _AuthTokenDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthTokenDto &&
+            other is _$AuthTokenDtoImpl &&
             (identical(other.authToken, authToken) ||
                 other.authToken == authToken));
   }
@@ -456,12 +459,12 @@ class _$_AuthTokenDto extends _AuthTokenDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthTokenDtoCopyWith<_$_AuthTokenDto> get copyWith =>
-      __$$_AuthTokenDtoCopyWithImpl<_$_AuthTokenDto>(this, _$identity);
+  _$$AuthTokenDtoImplCopyWith<_$AuthTokenDtoImpl> get copyWith =>
+      __$$AuthTokenDtoImplCopyWithImpl<_$AuthTokenDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthTokenDtoToJson(
+    return _$$AuthTokenDtoImplToJson(
       this,
     );
   }
@@ -470,17 +473,17 @@ class _$_AuthTokenDto extends _AuthTokenDto {
 abstract class _AuthTokenDto extends AuthTokenDto {
   const factory _AuthTokenDto(
           {@JsonKey(name: 'auth_token') required final String authToken}) =
-      _$_AuthTokenDto;
+      _$AuthTokenDtoImpl;
   const _AuthTokenDto._() : super._();
 
   factory _AuthTokenDto.fromJson(Map<String, dynamic> json) =
-      _$_AuthTokenDto.fromJson;
+      _$AuthTokenDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'auth_token')
   String get authToken;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthTokenDtoCopyWith<_$_AuthTokenDto> get copyWith =>
+  _$$AuthTokenDtoImplCopyWith<_$AuthTokenDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

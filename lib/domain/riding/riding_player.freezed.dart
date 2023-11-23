@@ -121,11 +121,11 @@ class _$RidingPlayerCopyWithImpl<$Res, $Val extends RidingPlayer>
 }
 
 /// @nodoc
-abstract class _$$_RidingPlayerCopyWith<$Res>
+abstract class _$$RidingPlayerImplCopyWith<$Res>
     implements $RidingPlayerCopyWith<$Res> {
-  factory _$$_RidingPlayerCopyWith(
-          _$_RidingPlayer value, $Res Function(_$_RidingPlayer) then) =
-      __$$_RidingPlayerCopyWithImpl<$Res>;
+  factory _$$RidingPlayerImplCopyWith(
+          _$RidingPlayerImpl value, $Res Function(_$RidingPlayerImpl) then) =
+      __$$RidingPlayerImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -143,11 +143,11 @@ abstract class _$$_RidingPlayerCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RidingPlayerCopyWithImpl<$Res>
-    extends _$RidingPlayerCopyWithImpl<$Res, _$_RidingPlayer>
-    implements _$$_RidingPlayerCopyWith<$Res> {
-  __$$_RidingPlayerCopyWithImpl(
-      _$_RidingPlayer _value, $Res Function(_$_RidingPlayer) _then)
+class __$$RidingPlayerImplCopyWithImpl<$Res>
+    extends _$RidingPlayerCopyWithImpl<$Res, _$RidingPlayerImpl>
+    implements _$$RidingPlayerImplCopyWith<$Res> {
+  __$$RidingPlayerImplCopyWithImpl(
+      _$RidingPlayerImpl _value, $Res Function(_$RidingPlayerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -162,7 +162,7 @@ class __$$_RidingPlayerCopyWithImpl<$Res>
     Object? profileImage = null,
     Object? isOwner = null,
   }) {
-    return _then(_$_RidingPlayer(
+    return _then(_$RidingPlayerImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -201,8 +201,8 @@ class __$$_RidingPlayerCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RidingPlayer extends _RidingPlayer {
-  const _$_RidingPlayer(
+class _$RidingPlayerImpl extends _RidingPlayer {
+  const _$RidingPlayerImpl(
       {required this.id,
       required this.userId,
       required this.nickname,
@@ -239,7 +239,7 @@ class _$_RidingPlayer extends _RidingPlayer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RidingPlayer &&
+            other is _$RidingPlayerImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.nickname, nickname) ||
@@ -261,8 +261,8 @@ class _$_RidingPlayer extends _RidingPlayer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RidingPlayerCopyWith<_$_RidingPlayer> get copyWith =>
-      __$$_RidingPlayerCopyWithImpl<_$_RidingPlayer>(this, _$identity);
+  _$$RidingPlayerImplCopyWith<_$RidingPlayerImpl> get copyWith =>
+      __$$RidingPlayerImplCopyWithImpl<_$RidingPlayerImpl>(this, _$identity);
 }
 
 abstract class _RidingPlayer extends RidingPlayer {
@@ -274,7 +274,7 @@ abstract class _RidingPlayer extends RidingPlayer {
       required final UserLocation? location,
       required final DateTimeVO locationUpdatedAt,
       required final StringVO profileImage,
-      required final BooleanVO isOwner}) = _$_RidingPlayer;
+      required final BooleanVO isOwner}) = _$RidingPlayerImpl;
   const _RidingPlayer._() : super._();
 
   @override
@@ -295,6 +295,6 @@ abstract class _RidingPlayer extends RidingPlayer {
   BooleanVO get isOwner;
   @override
   @JsonKey(ignore: true)
-  _$$_RidingPlayerCopyWith<_$_RidingPlayer> get copyWith =>
+  _$$RidingPlayerImplCopyWith<_$RidingPlayerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

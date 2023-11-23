@@ -118,11 +118,11 @@ class _$RidingRoomDtoCopyWithImpl<$Res, $Val extends RidingRoomDto>
 }
 
 /// @nodoc
-abstract class _$$_RidingRoomDtoCopyWith<$Res>
+abstract class _$$RidingRoomDtoImplCopyWith<$Res>
     implements $RidingRoomDtoCopyWith<$Res> {
-  factory _$$_RidingRoomDtoCopyWith(
-          _$_RidingRoomDto value, $Res Function(_$_RidingRoomDto) then) =
-      __$$_RidingRoomDtoCopyWithImpl<$Res>;
+  factory _$$RidingRoomDtoImplCopyWith(
+          _$RidingRoomDtoImpl value, $Res Function(_$RidingRoomDtoImpl) then) =
+      __$$RidingRoomDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -138,11 +138,11 @@ abstract class _$$_RidingRoomDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RidingRoomDtoCopyWithImpl<$Res>
-    extends _$RidingRoomDtoCopyWithImpl<$Res, _$_RidingRoomDto>
-    implements _$$_RidingRoomDtoCopyWith<$Res> {
-  __$$_RidingRoomDtoCopyWithImpl(
-      _$_RidingRoomDto _value, $Res Function(_$_RidingRoomDto) _then)
+class __$$RidingRoomDtoImplCopyWithImpl<$Res>
+    extends _$RidingRoomDtoCopyWithImpl<$Res, _$RidingRoomDtoImpl>
+    implements _$$RidingRoomDtoImplCopyWith<$Res> {
+  __$$RidingRoomDtoImplCopyWithImpl(
+      _$RidingRoomDtoImpl _value, $Res Function(_$RidingRoomDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -155,7 +155,7 @@ class __$$_RidingRoomDtoCopyWithImpl<$Res>
     Object? players = null,
     Object? totalPlayers = null,
   }) {
-    return _then(_$_RidingRoomDto(
+    return _then(_$RidingRoomDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -186,8 +186,8 @@ class __$$_RidingRoomDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RidingRoomDto extends _RidingRoomDto {
-  const _$_RidingRoomDto(
+class _$RidingRoomDtoImpl extends _RidingRoomDto {
+  const _$RidingRoomDtoImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'is_private') required this.isPrivate,
@@ -197,8 +197,8 @@ class _$_RidingRoomDto extends _RidingRoomDto {
       : _players = players,
         super._();
 
-  factory _$_RidingRoomDto.fromJson(Map<String, dynamic> json) =>
-      _$$_RidingRoomDtoFromJson(json);
+  factory _$RidingRoomDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RidingRoomDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -234,7 +234,7 @@ class _$_RidingRoomDto extends _RidingRoomDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RidingRoomDto &&
+            other is _$RidingRoomDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isPrivate, isPrivate) ||
@@ -253,12 +253,12 @@ class _$_RidingRoomDto extends _RidingRoomDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RidingRoomDtoCopyWith<_$_RidingRoomDto> get copyWith =>
-      __$$_RidingRoomDtoCopyWithImpl<_$_RidingRoomDto>(this, _$identity);
+  _$$RidingRoomDtoImplCopyWith<_$RidingRoomDtoImpl> get copyWith =>
+      __$$RidingRoomDtoImplCopyWithImpl<_$RidingRoomDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RidingRoomDtoToJson(
+    return _$$RidingRoomDtoImplToJson(
       this,
     );
   }
@@ -272,11 +272,11 @@ abstract class _RidingRoomDto extends RidingRoomDto {
       @JsonKey(name: 'me') final RidingPlayerDto? me,
       @JsonKey(name: 'players') required final List<RidingPlayerDto> players,
       @JsonKey(name: 'total_players')
-      required final int totalPlayers}) = _$_RidingRoomDto;
+      required final int totalPlayers}) = _$RidingRoomDtoImpl;
   const _RidingRoomDto._() : super._();
 
   factory _RidingRoomDto.fromJson(Map<String, dynamic> json) =
-      _$_RidingRoomDto.fromJson;
+      _$RidingRoomDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -298,7 +298,7 @@ abstract class _RidingRoomDto extends RidingRoomDto {
   int get totalPlayers;
   @override
   @JsonKey(ignore: true)
-  _$$_RidingRoomDtoCopyWith<_$_RidingRoomDto> get copyWith =>
+  _$$RidingRoomDtoImplCopyWith<_$RidingRoomDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -422,11 +422,11 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
 }
 
 /// @nodoc
-abstract class _$$_RidingPlayerDtoCopyWith<$Res>
+abstract class _$$RidingPlayerDtoImplCopyWith<$Res>
     implements $RidingPlayerDtoCopyWith<$Res> {
-  factory _$$_RidingPlayerDtoCopyWith(
-          _$_RidingPlayerDto value, $Res Function(_$_RidingPlayerDto) then) =
-      __$$_RidingPlayerDtoCopyWithImpl<$Res>;
+  factory _$$RidingPlayerDtoImplCopyWith(_$RidingPlayerDtoImpl value,
+          $Res Function(_$RidingPlayerDtoImpl) then) =
+      __$$RidingPlayerDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -444,11 +444,11 @@ abstract class _$$_RidingPlayerDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RidingPlayerDtoCopyWithImpl<$Res>
-    extends _$RidingPlayerDtoCopyWithImpl<$Res, _$_RidingPlayerDto>
-    implements _$$_RidingPlayerDtoCopyWith<$Res> {
-  __$$_RidingPlayerDtoCopyWithImpl(
-      _$_RidingPlayerDto _value, $Res Function(_$_RidingPlayerDto) _then)
+class __$$RidingPlayerDtoImplCopyWithImpl<$Res>
+    extends _$RidingPlayerDtoCopyWithImpl<$Res, _$RidingPlayerDtoImpl>
+    implements _$$RidingPlayerDtoImplCopyWith<$Res> {
+  __$$RidingPlayerDtoImplCopyWithImpl(
+      _$RidingPlayerDtoImpl _value, $Res Function(_$RidingPlayerDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -463,7 +463,7 @@ class __$$_RidingPlayerDtoCopyWithImpl<$Res>
     Object? profileImage = null,
     Object? isOwner = null,
   }) {
-    return _then(_$_RidingPlayerDto(
+    return _then(_$RidingPlayerDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -502,8 +502,8 @@ class __$$_RidingPlayerDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RidingPlayerDto extends _RidingPlayerDto {
-  const _$_RidingPlayerDto(
+class _$RidingPlayerDtoImpl extends _RidingPlayerDto {
+  const _$RidingPlayerDtoImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'user') required this.user,
       @JsonKey(name: 'nickname') required this.nickname,
@@ -514,8 +514,8 @@ class _$_RidingPlayerDto extends _RidingPlayerDto {
       @JsonKey(name: 'is_owner') required this.isOwner})
       : super._();
 
-  factory _$_RidingPlayerDto.fromJson(Map<String, dynamic> json) =>
-      _$$_RidingPlayerDtoFromJson(json);
+  factory _$RidingPlayerDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RidingPlayerDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -551,7 +551,7 @@ class _$_RidingPlayerDto extends _RidingPlayerDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RidingPlayerDto &&
+            other is _$RidingPlayerDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.nickname, nickname) ||
@@ -574,12 +574,13 @@ class _$_RidingPlayerDto extends _RidingPlayerDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RidingPlayerDtoCopyWith<_$_RidingPlayerDto> get copyWith =>
-      __$$_RidingPlayerDtoCopyWithImpl<_$_RidingPlayerDto>(this, _$identity);
+  _$$RidingPlayerDtoImplCopyWith<_$RidingPlayerDtoImpl> get copyWith =>
+      __$$RidingPlayerDtoImplCopyWithImpl<_$RidingPlayerDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RidingPlayerDtoToJson(
+    return _$$RidingPlayerDtoImplToJson(
       this,
     );
   }
@@ -596,11 +597,11 @@ abstract class _RidingPlayerDto extends RidingPlayerDto {
           required final DateTime locationUpdatedAt,
           @JsonKey(name: 'profile_image') required final String profileImage,
           @JsonKey(name: 'is_owner') required final bool isOwner}) =
-      _$_RidingPlayerDto;
+      _$RidingPlayerDtoImpl;
   const _RidingPlayerDto._() : super._();
 
   factory _RidingPlayerDto.fromJson(Map<String, dynamic> json) =
-      _$_RidingPlayerDto.fromJson;
+      _$RidingPlayerDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -628,7 +629,7 @@ abstract class _RidingPlayerDto extends RidingPlayerDto {
   bool get isOwner;
   @override
   @JsonKey(ignore: true)
-  _$$_RidingPlayerDtoCopyWith<_$_RidingPlayerDto> get copyWith =>
+  _$$RidingPlayerDtoImplCopyWith<_$RidingPlayerDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -685,25 +686,25 @@ class _$UpdateRidingRoomNameRequestDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UpdateRidingRoomNameRequestDtoCopyWith<$Res>
+abstract class _$$UpdateRidingRoomNameRequestDtoImplCopyWith<$Res>
     implements $UpdateRidingRoomNameRequestDtoCopyWith<$Res> {
-  factory _$$_UpdateRidingRoomNameRequestDtoCopyWith(
-          _$_UpdateRidingRoomNameRequestDto value,
-          $Res Function(_$_UpdateRidingRoomNameRequestDto) then) =
-      __$$_UpdateRidingRoomNameRequestDtoCopyWithImpl<$Res>;
+  factory _$$UpdateRidingRoomNameRequestDtoImplCopyWith(
+          _$UpdateRidingRoomNameRequestDtoImpl value,
+          $Res Function(_$UpdateRidingRoomNameRequestDtoImpl) then) =
+      __$$UpdateRidingRoomNameRequestDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$$_UpdateRidingRoomNameRequestDtoCopyWithImpl<$Res>
+class __$$UpdateRidingRoomNameRequestDtoImplCopyWithImpl<$Res>
     extends _$UpdateRidingRoomNameRequestDtoCopyWithImpl<$Res,
-        _$_UpdateRidingRoomNameRequestDto>
-    implements _$$_UpdateRidingRoomNameRequestDtoCopyWith<$Res> {
-  __$$_UpdateRidingRoomNameRequestDtoCopyWithImpl(
-      _$_UpdateRidingRoomNameRequestDto _value,
-      $Res Function(_$_UpdateRidingRoomNameRequestDto) _then)
+        _$UpdateRidingRoomNameRequestDtoImpl>
+    implements _$$UpdateRidingRoomNameRequestDtoImplCopyWith<$Res> {
+  __$$UpdateRidingRoomNameRequestDtoImplCopyWithImpl(
+      _$UpdateRidingRoomNameRequestDtoImpl _value,
+      $Res Function(_$UpdateRidingRoomNameRequestDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -711,7 +712,7 @@ class __$$_UpdateRidingRoomNameRequestDtoCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_UpdateRidingRoomNameRequestDto(
+    return _then(_$UpdateRidingRoomNameRequestDtoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -722,15 +723,15 @@ class __$$_UpdateRidingRoomNameRequestDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UpdateRidingRoomNameRequestDto
+class _$UpdateRidingRoomNameRequestDtoImpl
     extends _UpdateRidingRoomNameRequestDto {
-  const _$_UpdateRidingRoomNameRequestDto(
+  const _$UpdateRidingRoomNameRequestDtoImpl(
       {@JsonKey(name: 'name') required this.name})
       : super._();
 
-  factory _$_UpdateRidingRoomNameRequestDto.fromJson(
+  factory _$UpdateRidingRoomNameRequestDtoImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_UpdateRidingRoomNameRequestDtoFromJson(json);
+      _$$UpdateRidingRoomNameRequestDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -745,7 +746,7 @@ class _$_UpdateRidingRoomNameRequestDto
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateRidingRoomNameRequestDto &&
+            other is _$UpdateRidingRoomNameRequestDtoImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -756,13 +757,14 @@ class _$_UpdateRidingRoomNameRequestDto
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateRidingRoomNameRequestDtoCopyWith<_$_UpdateRidingRoomNameRequestDto>
-      get copyWith => __$$_UpdateRidingRoomNameRequestDtoCopyWithImpl<
-          _$_UpdateRidingRoomNameRequestDto>(this, _$identity);
+  _$$UpdateRidingRoomNameRequestDtoImplCopyWith<
+          _$UpdateRidingRoomNameRequestDtoImpl>
+      get copyWith => __$$UpdateRidingRoomNameRequestDtoImplCopyWithImpl<
+          _$UpdateRidingRoomNameRequestDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UpdateRidingRoomNameRequestDtoToJson(
+    return _$$UpdateRidingRoomNameRequestDtoImplToJson(
       this,
     );
   }
@@ -772,17 +774,18 @@ abstract class _UpdateRidingRoomNameRequestDto
     extends UpdateRidingRoomNameRequestDto {
   const factory _UpdateRidingRoomNameRequestDto(
           {@JsonKey(name: 'name') required final String name}) =
-      _$_UpdateRidingRoomNameRequestDto;
+      _$UpdateRidingRoomNameRequestDtoImpl;
   const _UpdateRidingRoomNameRequestDto._() : super._();
 
   factory _UpdateRidingRoomNameRequestDto.fromJson(Map<String, dynamic> json) =
-      _$_UpdateRidingRoomNameRequestDto.fromJson;
+      _$UpdateRidingRoomNameRequestDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_UpdateRidingRoomNameRequestDtoCopyWith<_$_UpdateRidingRoomNameRequestDto>
+  _$$UpdateRidingRoomNameRequestDtoImplCopyWith<
+          _$UpdateRidingRoomNameRequestDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

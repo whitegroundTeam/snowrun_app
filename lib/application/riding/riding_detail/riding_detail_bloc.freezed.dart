@@ -89,22 +89,22 @@ class _$RidingDetailEventCopyWithImpl<$Res, $Val extends RidingDetailEvent>
 }
 
 /// @nodoc
-abstract class _$$_GetRidingRoomCopyWith<$Res>
+abstract class _$$GetRidingRoomImplCopyWith<$Res>
     implements $RidingDetailEventCopyWith<$Res> {
-  factory _$$_GetRidingRoomCopyWith(
-          _$_GetRidingRoom value, $Res Function(_$_GetRidingRoom) then) =
-      __$$_GetRidingRoomCopyWithImpl<$Res>;
+  factory _$$GetRidingRoomImplCopyWith(
+          _$GetRidingRoomImpl value, $Res Function(_$GetRidingRoomImpl) then) =
+      __$$GetRidingRoomImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int ridingRoomId});
 }
 
 /// @nodoc
-class __$$_GetRidingRoomCopyWithImpl<$Res>
-    extends _$RidingDetailEventCopyWithImpl<$Res, _$_GetRidingRoom>
-    implements _$$_GetRidingRoomCopyWith<$Res> {
-  __$$_GetRidingRoomCopyWithImpl(
-      _$_GetRidingRoom _value, $Res Function(_$_GetRidingRoom) _then)
+class __$$GetRidingRoomImplCopyWithImpl<$Res>
+    extends _$RidingDetailEventCopyWithImpl<$Res, _$GetRidingRoomImpl>
+    implements _$$GetRidingRoomImplCopyWith<$Res> {
+  __$$GetRidingRoomImplCopyWithImpl(
+      _$GetRidingRoomImpl _value, $Res Function(_$GetRidingRoomImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$_GetRidingRoomCopyWithImpl<$Res>
   $Res call({
     Object? ridingRoomId = null,
   }) {
-    return _then(_$_GetRidingRoom(
+    return _then(_$GetRidingRoomImpl(
       null == ridingRoomId
           ? _value.ridingRoomId
           : ridingRoomId // ignore: cast_nullable_to_non_nullable
@@ -123,8 +123,8 @@ class __$$_GetRidingRoomCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetRidingRoom implements _GetRidingRoom {
-  const _$_GetRidingRoom(this.ridingRoomId);
+class _$GetRidingRoomImpl implements _GetRidingRoom {
+  const _$GetRidingRoomImpl(this.ridingRoomId);
 
   @override
   final int ridingRoomId;
@@ -138,7 +138,7 @@ class _$_GetRidingRoom implements _GetRidingRoom {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetRidingRoom &&
+            other is _$GetRidingRoomImpl &&
             (identical(other.ridingRoomId, ridingRoomId) ||
                 other.ridingRoomId == ridingRoomId));
   }
@@ -149,8 +149,8 @@ class _$_GetRidingRoom implements _GetRidingRoom {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetRidingRoomCopyWith<_$_GetRidingRoom> get copyWith =>
-      __$$_GetRidingRoomCopyWithImpl<_$_GetRidingRoom>(this, _$identity);
+  _$$GetRidingRoomImplCopyWith<_$GetRidingRoomImpl> get copyWith =>
+      __$$GetRidingRoomImplCopyWithImpl<_$GetRidingRoomImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -210,13 +210,13 @@ class _$_GetRidingRoom implements _GetRidingRoom {
 }
 
 abstract class _GetRidingRoom implements RidingDetailEvent {
-  const factory _GetRidingRoom(final int ridingRoomId) = _$_GetRidingRoom;
+  const factory _GetRidingRoom(final int ridingRoomId) = _$GetRidingRoomImpl;
 
   @override
   int get ridingRoomId;
   @override
   @JsonKey(ignore: true)
-  _$$_GetRidingRoomCopyWith<_$_GetRidingRoom> get copyWith =>
+  _$$GetRidingRoomImplCopyWith<_$GetRidingRoomImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -283,11 +283,11 @@ class _$RidingDetailStateCopyWithImpl<$Res, $Val extends RidingDetailState>
 }
 
 /// @nodoc
-abstract class _$$_RidingDetailStateCopyWith<$Res>
+abstract class _$$RidingDetailStateImplCopyWith<$Res>
     implements $RidingDetailStateCopyWith<$Res> {
-  factory _$$_RidingDetailStateCopyWith(_$_RidingDetailState value,
-          $Res Function(_$_RidingDetailState) then) =
-      __$$_RidingDetailStateCopyWithImpl<$Res>;
+  factory _$$RidingDetailStateImplCopyWith(_$RidingDetailStateImpl value,
+          $Res Function(_$RidingDetailStateImpl) then) =
+      __$$RidingDetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DefaultStatus status, RidingRoom? ridingRoom});
@@ -297,11 +297,11 @@ abstract class _$$_RidingDetailStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RidingDetailStateCopyWithImpl<$Res>
-    extends _$RidingDetailStateCopyWithImpl<$Res, _$_RidingDetailState>
-    implements _$$_RidingDetailStateCopyWith<$Res> {
-  __$$_RidingDetailStateCopyWithImpl(
-      _$_RidingDetailState _value, $Res Function(_$_RidingDetailState) _then)
+class __$$RidingDetailStateImplCopyWithImpl<$Res>
+    extends _$RidingDetailStateCopyWithImpl<$Res, _$RidingDetailStateImpl>
+    implements _$$RidingDetailStateImplCopyWith<$Res> {
+  __$$RidingDetailStateImplCopyWithImpl(_$RidingDetailStateImpl _value,
+      $Res Function(_$RidingDetailStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -310,7 +310,7 @@ class __$$_RidingDetailStateCopyWithImpl<$Res>
     Object? status = null,
     Object? ridingRoom = freezed,
   }) {
-    return _then(_$_RidingDetailState(
+    return _then(_$RidingDetailStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -325,8 +325,8 @@ class __$$_RidingDetailStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RidingDetailState implements _RidingDetailState {
-  const _$_RidingDetailState({required this.status, this.ridingRoom});
+class _$RidingDetailStateImpl implements _RidingDetailState {
+  const _$RidingDetailStateImpl({required this.status, this.ridingRoom});
 
   @override
   final DefaultStatus status;
@@ -342,7 +342,7 @@ class _$_RidingDetailState implements _RidingDetailState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RidingDetailState &&
+            other is _$RidingDetailStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.ridingRoom, ridingRoom) ||
                 other.ridingRoom == ridingRoom));
@@ -354,15 +354,15 @@ class _$_RidingDetailState implements _RidingDetailState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RidingDetailStateCopyWith<_$_RidingDetailState> get copyWith =>
-      __$$_RidingDetailStateCopyWithImpl<_$_RidingDetailState>(
+  _$$RidingDetailStateImplCopyWith<_$RidingDetailStateImpl> get copyWith =>
+      __$$RidingDetailStateImplCopyWithImpl<_$RidingDetailStateImpl>(
           this, _$identity);
 }
 
 abstract class _RidingDetailState implements RidingDetailState {
   const factory _RidingDetailState(
       {required final DefaultStatus status,
-      final RidingRoom? ridingRoom}) = _$_RidingDetailState;
+      final RidingRoom? ridingRoom}) = _$RidingDetailStateImpl;
 
   @override
   DefaultStatus get status;
@@ -370,6 +370,6 @@ abstract class _RidingDetailState implements RidingDetailState {
   RidingRoom? get ridingRoom;
   @override
   @JsonKey(ignore: true)
-  _$$_RidingDetailStateCopyWith<_$_RidingDetailState> get copyWith =>
+  _$$RidingDetailStateImplCopyWith<_$RidingDetailStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

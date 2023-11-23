@@ -73,11 +73,11 @@ class _$SignResponseCopyWithImpl<$Res, $Val extends SignResponse>
 }
 
 /// @nodoc
-abstract class _$$_SignResponseCopyWith<$Res>
+abstract class _$$SignResponseImplCopyWith<$Res>
     implements $SignResponseCopyWith<$Res> {
-  factory _$$_SignResponseCopyWith(
-          _$_SignResponse value, $Res Function(_$_SignResponse) then) =
-      __$$_SignResponseCopyWithImpl<$Res>;
+  factory _$$SignResponseImplCopyWith(
+          _$SignResponseImpl value, $Res Function(_$SignResponseImpl) then) =
+      __$$SignResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AuthToken authToken, BooleanVO isNewUser});
@@ -87,11 +87,11 @@ abstract class _$$_SignResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SignResponseCopyWithImpl<$Res>
-    extends _$SignResponseCopyWithImpl<$Res, _$_SignResponse>
-    implements _$$_SignResponseCopyWith<$Res> {
-  __$$_SignResponseCopyWithImpl(
-      _$_SignResponse _value, $Res Function(_$_SignResponse) _then)
+class __$$SignResponseImplCopyWithImpl<$Res>
+    extends _$SignResponseCopyWithImpl<$Res, _$SignResponseImpl>
+    implements _$$SignResponseImplCopyWith<$Res> {
+  __$$SignResponseImplCopyWithImpl(
+      _$SignResponseImpl _value, $Res Function(_$SignResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_SignResponseCopyWithImpl<$Res>
     Object? authToken = null,
     Object? isNewUser = null,
   }) {
-    return _then(_$_SignResponse(
+    return _then(_$SignResponseImpl(
       authToken: null == authToken
           ? _value.authToken
           : authToken // ignore: cast_nullable_to_non_nullable
@@ -115,8 +115,8 @@ class __$$_SignResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SignResponse extends _SignResponse {
-  const _$_SignResponse({required this.authToken, required this.isNewUser})
+class _$SignResponseImpl extends _SignResponse {
+  const _$SignResponseImpl({required this.authToken, required this.isNewUser})
       : super._();
 
   @override
@@ -133,7 +133,7 @@ class _$_SignResponse extends _SignResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SignResponse &&
+            other is _$SignResponseImpl &&
             (identical(other.authToken, authToken) ||
                 other.authToken == authToken) &&
             (identical(other.isNewUser, isNewUser) ||
@@ -146,14 +146,14 @@ class _$_SignResponse extends _SignResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SignResponseCopyWith<_$_SignResponse> get copyWith =>
-      __$$_SignResponseCopyWithImpl<_$_SignResponse>(this, _$identity);
+  _$$SignResponseImplCopyWith<_$SignResponseImpl> get copyWith =>
+      __$$SignResponseImplCopyWithImpl<_$SignResponseImpl>(this, _$identity);
 }
 
 abstract class _SignResponse extends SignResponse {
   const factory _SignResponse(
       {required final AuthToken authToken,
-      required final BooleanVO isNewUser}) = _$_SignResponse;
+      required final BooleanVO isNewUser}) = _$SignResponseImpl;
   const _SignResponse._() : super._();
 
   @override
@@ -162,6 +162,6 @@ abstract class _SignResponse extends SignResponse {
   BooleanVO get isNewUser;
   @override
   @JsonKey(ignore: true)
-  _$$_SignResponseCopyWith<_$_SignResponse> get copyWith =>
+  _$$SignResponseImplCopyWith<_$SignResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

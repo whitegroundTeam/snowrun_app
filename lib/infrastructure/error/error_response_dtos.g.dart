@@ -6,8 +6,8 @@ part of 'error_response_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AppErrorDto _$$_AppErrorDtoFromJson(Map<String, dynamic> json) =>
-    _$_AppErrorDto(
+_$AppErrorDtoImpl _$$AppErrorDtoImplFromJson(Map<String, dynamic> json) =>
+    _$AppErrorDtoImpl(
       code: json['code'] as String?,
       type: json['type'] as String?,
       title: json['title'] as String?,
@@ -15,7 +15,7 @@ _$_AppErrorDto _$$_AppErrorDtoFromJson(Map<String, dynamic> json) =>
       status: json['status'] as int,
     );
 
-Map<String, dynamic> _$$_AppErrorDtoToJson(_$_AppErrorDto instance) =>
+Map<String, dynamic> _$$AppErrorDtoImplToJson(_$AppErrorDtoImpl instance) =>
     <String, dynamic>{
       'code': instance.code,
       'type': instance.type,

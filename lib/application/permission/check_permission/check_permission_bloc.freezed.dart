@@ -71,25 +71,28 @@ class _$CheckPermissionEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CheckInitialPermissionsCopyWith<$Res> {
-  factory _$$_CheckInitialPermissionsCopyWith(_$_CheckInitialPermissions value,
-          $Res Function(_$_CheckInitialPermissions) then) =
-      __$$_CheckInitialPermissionsCopyWithImpl<$Res>;
+abstract class _$$CheckInitialPermissionsImplCopyWith<$Res> {
+  factory _$$CheckInitialPermissionsImplCopyWith(
+          _$CheckInitialPermissionsImpl value,
+          $Res Function(_$CheckInitialPermissionsImpl) then) =
+      __$$CheckInitialPermissionsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_CheckInitialPermissionsCopyWithImpl<$Res>
-    extends _$CheckPermissionEventCopyWithImpl<$Res, _$_CheckInitialPermissions>
-    implements _$$_CheckInitialPermissionsCopyWith<$Res> {
-  __$$_CheckInitialPermissionsCopyWithImpl(_$_CheckInitialPermissions _value,
-      $Res Function(_$_CheckInitialPermissions) _then)
+class __$$CheckInitialPermissionsImplCopyWithImpl<$Res>
+    extends _$CheckPermissionEventCopyWithImpl<$Res,
+        _$CheckInitialPermissionsImpl>
+    implements _$$CheckInitialPermissionsImplCopyWith<$Res> {
+  __$$CheckInitialPermissionsImplCopyWithImpl(
+      _$CheckInitialPermissionsImpl _value,
+      $Res Function(_$CheckInitialPermissionsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_CheckInitialPermissions implements _CheckInitialPermissions {
-  const _$_CheckInitialPermissions();
+class _$CheckInitialPermissionsImpl implements _CheckInitialPermissions {
+  const _$CheckInitialPermissionsImpl();
 
   @override
   String toString() {
@@ -100,7 +103,7 @@ class _$_CheckInitialPermissions implements _CheckInitialPermissions {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CheckInitialPermissions);
+            other is _$CheckInitialPermissionsImpl);
   }
 
   @override
@@ -165,7 +168,7 @@ class _$_CheckInitialPermissions implements _CheckInitialPermissions {
 }
 
 abstract class _CheckInitialPermissions implements CheckPermissionEvent {
-  const factory _CheckInitialPermissions() = _$_CheckInitialPermissions;
+  const factory _CheckInitialPermissions() = _$CheckInitialPermissionsImpl;
 }
 
 /// @nodoc
@@ -238,24 +241,25 @@ class _$CheckPermissionStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$CheckPermissionStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CheckPermissionStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -265,7 +269,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -343,29 +347,31 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements CheckPermissionState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_InitPermissionsNeededCopyWith<$Res> {
-  factory _$$_InitPermissionsNeededCopyWith(_$_InitPermissionsNeeded value,
-          $Res Function(_$_InitPermissionsNeeded) then) =
-      __$$_InitPermissionsNeededCopyWithImpl<$Res>;
+abstract class _$$InitPermissionsNeededImplCopyWith<$Res> {
+  factory _$$InitPermissionsNeededImplCopyWith(
+          _$InitPermissionsNeededImpl value,
+          $Res Function(_$InitPermissionsNeededImpl) then) =
+      __$$InitPermissionsNeededImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitPermissionsNeededCopyWithImpl<$Res>
-    extends _$CheckPermissionStateCopyWithImpl<$Res, _$_InitPermissionsNeeded>
-    implements _$$_InitPermissionsNeededCopyWith<$Res> {
-  __$$_InitPermissionsNeededCopyWithImpl(_$_InitPermissionsNeeded _value,
-      $Res Function(_$_InitPermissionsNeeded) _then)
+class __$$InitPermissionsNeededImplCopyWithImpl<$Res>
+    extends _$CheckPermissionStateCopyWithImpl<$Res,
+        _$InitPermissionsNeededImpl>
+    implements _$$InitPermissionsNeededImplCopyWith<$Res> {
+  __$$InitPermissionsNeededImplCopyWithImpl(_$InitPermissionsNeededImpl _value,
+      $Res Function(_$InitPermissionsNeededImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitPermissionsNeeded implements _InitPermissionsNeeded {
-  const _$_InitPermissionsNeeded();
+class _$InitPermissionsNeededImpl implements _InitPermissionsNeeded {
+  const _$InitPermissionsNeededImpl();
 
   @override
   String toString() {
@@ -375,7 +381,8 @@ class _$_InitPermissionsNeeded implements _InitPermissionsNeeded {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitPermissionsNeeded);
+        (other.runtimeType == runtimeType &&
+            other is _$InitPermissionsNeededImpl);
   }
 
   @override
@@ -453,29 +460,32 @@ class _$_InitPermissionsNeeded implements _InitPermissionsNeeded {
 }
 
 abstract class _InitPermissionsNeeded implements CheckPermissionState {
-  const factory _InitPermissionsNeeded() = _$_InitPermissionsNeeded;
+  const factory _InitPermissionsNeeded() = _$InitPermissionsNeededImpl;
 }
 
 /// @nodoc
-abstract class _$$_InitPermissionsUnNeededCopyWith<$Res> {
-  factory _$$_InitPermissionsUnNeededCopyWith(_$_InitPermissionsUnNeeded value,
-          $Res Function(_$_InitPermissionsUnNeeded) then) =
-      __$$_InitPermissionsUnNeededCopyWithImpl<$Res>;
+abstract class _$$InitPermissionsUnNeededImplCopyWith<$Res> {
+  factory _$$InitPermissionsUnNeededImplCopyWith(
+          _$InitPermissionsUnNeededImpl value,
+          $Res Function(_$InitPermissionsUnNeededImpl) then) =
+      __$$InitPermissionsUnNeededImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitPermissionsUnNeededCopyWithImpl<$Res>
-    extends _$CheckPermissionStateCopyWithImpl<$Res, _$_InitPermissionsUnNeeded>
-    implements _$$_InitPermissionsUnNeededCopyWith<$Res> {
-  __$$_InitPermissionsUnNeededCopyWithImpl(_$_InitPermissionsUnNeeded _value,
-      $Res Function(_$_InitPermissionsUnNeeded) _then)
+class __$$InitPermissionsUnNeededImplCopyWithImpl<$Res>
+    extends _$CheckPermissionStateCopyWithImpl<$Res,
+        _$InitPermissionsUnNeededImpl>
+    implements _$$InitPermissionsUnNeededImplCopyWith<$Res> {
+  __$$InitPermissionsUnNeededImplCopyWithImpl(
+      _$InitPermissionsUnNeededImpl _value,
+      $Res Function(_$InitPermissionsUnNeededImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitPermissionsUnNeeded implements _InitPermissionsUnNeeded {
-  const _$_InitPermissionsUnNeeded();
+class _$InitPermissionsUnNeededImpl implements _InitPermissionsUnNeeded {
+  const _$InitPermissionsUnNeededImpl();
 
   @override
   String toString() {
@@ -486,7 +496,7 @@ class _$_InitPermissionsUnNeeded implements _InitPermissionsUnNeeded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InitPermissionsUnNeeded);
+            other is _$InitPermissionsUnNeededImpl);
   }
 
   @override
@@ -564,5 +574,5 @@ class _$_InitPermissionsUnNeeded implements _InitPermissionsUnNeeded {
 }
 
 abstract class _InitPermissionsUnNeeded implements CheckPermissionState {
-  const factory _InitPermissionsUnNeeded() = _$_InitPermissionsUnNeeded;
+  const factory _InitPermissionsUnNeeded() = _$InitPermissionsUnNeededImpl;
 }

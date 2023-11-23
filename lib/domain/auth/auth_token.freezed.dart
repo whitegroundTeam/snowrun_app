@@ -56,21 +56,22 @@ class _$AuthTokenCopyWithImpl<$Res, $Val extends AuthToken>
 }
 
 /// @nodoc
-abstract class _$$_AuthTokenCopyWith<$Res> implements $AuthTokenCopyWith<$Res> {
-  factory _$$_AuthTokenCopyWith(
-          _$_AuthToken value, $Res Function(_$_AuthToken) then) =
-      __$$_AuthTokenCopyWithImpl<$Res>;
+abstract class _$$AuthTokenImplCopyWith<$Res>
+    implements $AuthTokenCopyWith<$Res> {
+  factory _$$AuthTokenImplCopyWith(
+          _$AuthTokenImpl value, $Res Function(_$AuthTokenImpl) then) =
+      __$$AuthTokenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StringVO authToken});
 }
 
 /// @nodoc
-class __$$_AuthTokenCopyWithImpl<$Res>
-    extends _$AuthTokenCopyWithImpl<$Res, _$_AuthToken>
-    implements _$$_AuthTokenCopyWith<$Res> {
-  __$$_AuthTokenCopyWithImpl(
-      _$_AuthToken _value, $Res Function(_$_AuthToken) _then)
+class __$$AuthTokenImplCopyWithImpl<$Res>
+    extends _$AuthTokenCopyWithImpl<$Res, _$AuthTokenImpl>
+    implements _$$AuthTokenImplCopyWith<$Res> {
+  __$$AuthTokenImplCopyWithImpl(
+      _$AuthTokenImpl _value, $Res Function(_$AuthTokenImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +79,7 @@ class __$$_AuthTokenCopyWithImpl<$Res>
   $Res call({
     Object? authToken = null,
   }) {
-    return _then(_$_AuthToken(
+    return _then(_$AuthTokenImpl(
       authToken: null == authToken
           ? _value.authToken
           : authToken // ignore: cast_nullable_to_non_nullable
@@ -89,8 +90,8 @@ class __$$_AuthTokenCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthToken extends _AuthToken {
-  const _$_AuthToken({required this.authToken}) : super._();
+class _$AuthTokenImpl extends _AuthToken {
+  const _$AuthTokenImpl({required this.authToken}) : super._();
 
   @override
   final StringVO authToken;
@@ -104,7 +105,7 @@ class _$_AuthToken extends _AuthToken {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthToken &&
+            other is _$AuthTokenImpl &&
             (identical(other.authToken, authToken) ||
                 other.authToken == authToken));
   }
@@ -115,18 +116,19 @@ class _$_AuthToken extends _AuthToken {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthTokenCopyWith<_$_AuthToken> get copyWith =>
-      __$$_AuthTokenCopyWithImpl<_$_AuthToken>(this, _$identity);
+  _$$AuthTokenImplCopyWith<_$AuthTokenImpl> get copyWith =>
+      __$$AuthTokenImplCopyWithImpl<_$AuthTokenImpl>(this, _$identity);
 }
 
 abstract class _AuthToken extends AuthToken {
-  const factory _AuthToken({required final StringVO authToken}) = _$_AuthToken;
+  const factory _AuthToken({required final StringVO authToken}) =
+      _$AuthTokenImpl;
   const _AuthToken._() : super._();
 
   @override
   StringVO get authToken;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthTokenCopyWith<_$_AuthToken> get copyWith =>
+  _$$AuthTokenImplCopyWith<_$AuthTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

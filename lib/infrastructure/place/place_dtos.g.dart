@@ -6,27 +6,28 @@ part of 'place_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PlaceDto _$$_PlaceDtoFromJson(Map<String, dynamic> json) => _$_PlaceDto(
+_$PlaceDtoImpl _$$PlaceDtoImplFromJson(Map<String, dynamic> json) =>
+    _$PlaceDtoImpl(
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$_PlaceDtoToJson(_$_PlaceDto instance) =>
+Map<String, dynamic> _$$PlaceDtoImplToJson(_$PlaceDtoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
     };
 
-_$_BoundaryDto _$$_BoundaryDtoFromJson(Map<String, dynamic> json) =>
-    _$_BoundaryDto(
+_$BoundaryDtoImpl _$$BoundaryDtoImplFromJson(Map<String, dynamic> json) =>
+    _$BoundaryDtoImpl(
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$_BoundaryDtoToJson(_$_BoundaryDto instance) =>
+Map<String, dynamic> _$$BoundaryDtoImplToJson(_$BoundaryDtoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
     };
 
-_$_VerticesDto _$$_VerticesDtoFromJson(Map<String, dynamic> json) =>
-    _$_VerticesDto(
+_$VerticesDtoImpl _$$VerticesDtoImplFromJson(Map<String, dynamic> json) =>
+    _$VerticesDtoImpl(
       type: json['type'] as String,
       coordinates: (json['coordinates'] as List<dynamic>)
           .map((e) => (e as List<dynamic>)
@@ -37,14 +38,15 @@ _$_VerticesDto _$$_VerticesDtoFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_VerticesDtoToJson(_$_VerticesDto instance) =>
+Map<String, dynamic> _$$VerticesDtoImplToJson(_$VerticesDtoImpl instance) =>
     <String, dynamic>{
       'type': instance.type,
       'coordinates': instance.coordinates,
     };
 
-_$_CreateBoundaryDto _$$_CreateBoundaryDtoFromJson(Map<String, dynamic> json) =>
-    _$_CreateBoundaryDto(
+_$CreateBoundaryDtoImpl _$$CreateBoundaryDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CreateBoundaryDtoImpl(
       placeId: json['place'] as int,
       name: json['name'] as String,
       type: json['type'] as int,
@@ -52,8 +54,8 @@ _$_CreateBoundaryDto _$$_CreateBoundaryDtoFromJson(Map<String, dynamic> json) =>
       vertices: VerticesDto.fromJson(json['vertices'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_CreateBoundaryDtoToJson(
-        _$_CreateBoundaryDto instance) =>
+Map<String, dynamic> _$$CreateBoundaryDtoImplToJson(
+        _$CreateBoundaryDtoImpl instance) =>
     <String, dynamic>{
       'place': instance.placeId,
       'name': instance.name,

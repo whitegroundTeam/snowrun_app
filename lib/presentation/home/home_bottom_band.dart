@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';

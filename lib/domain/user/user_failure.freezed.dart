@@ -83,25 +83,25 @@ class _$UserFailureCopyWithImpl<$Res, $Val extends UserFailure>
 }
 
 /// @nodoc
-abstract class _$$UnexpectedCopyWith<$Res> {
-  factory _$$UnexpectedCopyWith(
-          _$Unexpected value, $Res Function(_$Unexpected) then) =
-      __$$UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UnexpectedCopyWithImpl<$Res>
-    extends _$UserFailureCopyWithImpl<$Res, _$Unexpected>
-    implements _$$UnexpectedCopyWith<$Res> {
-  __$$UnexpectedCopyWithImpl(
-      _$Unexpected _value, $Res Function(_$Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$UserFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Unexpected implements Unexpected {
-  const _$Unexpected();
+class _$UnexpectedImpl implements Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -111,7 +111,7 @@ class _$Unexpected implements Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -189,29 +189,29 @@ class _$Unexpected implements Unexpected {
 }
 
 abstract class Unexpected implements UserFailure {
-  const factory Unexpected() = _$Unexpected;
+  const factory Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$ServerErrorCopyWith<$Res> {
-  factory _$$ServerErrorCopyWith(
-          _$ServerError value, $Res Function(_$ServerError) then) =
-      __$$ServerErrorCopyWithImpl<$Res>;
+abstract class _$$ServerErrorImplCopyWith<$Res> {
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ServerErrorCopyWithImpl<$Res>
-    extends _$UserFailureCopyWithImpl<$Res, _$ServerError>
-    implements _$$ServerErrorCopyWith<$Res> {
-  __$$ServerErrorCopyWithImpl(
-      _$ServerError _value, $Res Function(_$ServerError) _then)
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$UserFailureCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ServerError implements ServerError {
-  const _$ServerError();
+class _$ServerErrorImpl implements ServerError {
+  const _$ServerErrorImpl();
 
   @override
   String toString() {
@@ -221,7 +221,7 @@ class _$ServerError implements ServerError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ServerError);
+        (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
 
   @override
@@ -299,31 +299,31 @@ class _$ServerError implements ServerError {
 }
 
 abstract class ServerError implements UserFailure {
-  const factory ServerError() = _$ServerError;
+  const factory ServerError() = _$ServerErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$AlreadyExistedNicknameErrorCopyWith<$Res> {
-  factory _$$AlreadyExistedNicknameErrorCopyWith(
-          _$AlreadyExistedNicknameError value,
-          $Res Function(_$AlreadyExistedNicknameError) then) =
-      __$$AlreadyExistedNicknameErrorCopyWithImpl<$Res>;
+abstract class _$$AlreadyExistedNicknameErrorImplCopyWith<$Res> {
+  factory _$$AlreadyExistedNicknameErrorImplCopyWith(
+          _$AlreadyExistedNicknameErrorImpl value,
+          $Res Function(_$AlreadyExistedNicknameErrorImpl) then) =
+      __$$AlreadyExistedNicknameErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AlreadyExistedNicknameErrorCopyWithImpl<$Res>
-    extends _$UserFailureCopyWithImpl<$Res, _$AlreadyExistedNicknameError>
-    implements _$$AlreadyExistedNicknameErrorCopyWith<$Res> {
-  __$$AlreadyExistedNicknameErrorCopyWithImpl(
-      _$AlreadyExistedNicknameError _value,
-      $Res Function(_$AlreadyExistedNicknameError) _then)
+class __$$AlreadyExistedNicknameErrorImplCopyWithImpl<$Res>
+    extends _$UserFailureCopyWithImpl<$Res, _$AlreadyExistedNicknameErrorImpl>
+    implements _$$AlreadyExistedNicknameErrorImplCopyWith<$Res> {
+  __$$AlreadyExistedNicknameErrorImplCopyWithImpl(
+      _$AlreadyExistedNicknameErrorImpl _value,
+      $Res Function(_$AlreadyExistedNicknameErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AlreadyExistedNicknameError implements AlreadyExistedNicknameError {
-  const _$AlreadyExistedNicknameError();
+class _$AlreadyExistedNicknameErrorImpl implements AlreadyExistedNicknameError {
+  const _$AlreadyExistedNicknameErrorImpl();
 
   @override
   String toString() {
@@ -334,7 +334,7 @@ class _$AlreadyExistedNicknameError implements AlreadyExistedNicknameError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AlreadyExistedNicknameError);
+            other is _$AlreadyExistedNicknameErrorImpl);
   }
 
   @override
@@ -412,5 +412,6 @@ class _$AlreadyExistedNicknameError implements AlreadyExistedNicknameError {
 }
 
 abstract class AlreadyExistedNicknameError implements UserFailure {
-  const factory AlreadyExistedNicknameError() = _$AlreadyExistedNicknameError;
+  const factory AlreadyExistedNicknameError() =
+      _$AlreadyExistedNicknameErrorImpl;
 }

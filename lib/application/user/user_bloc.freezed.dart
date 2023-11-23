@@ -81,20 +81,21 @@ class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent>
 }
 
 /// @nodoc
-abstract class _$$_UpdateCurrentLocationCopyWith<$Res> {
-  factory _$$_UpdateCurrentLocationCopyWith(_$_UpdateCurrentLocation value,
-          $Res Function(_$_UpdateCurrentLocation) then) =
-      __$$_UpdateCurrentLocationCopyWithImpl<$Res>;
+abstract class _$$UpdateCurrentLocationImplCopyWith<$Res> {
+  factory _$$UpdateCurrentLocationImplCopyWith(
+          _$UpdateCurrentLocationImpl value,
+          $Res Function(_$UpdateCurrentLocationImpl) then) =
+      __$$UpdateCurrentLocationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double lat, double lng});
 }
 
 /// @nodoc
-class __$$_UpdateCurrentLocationCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$_UpdateCurrentLocation>
-    implements _$$_UpdateCurrentLocationCopyWith<$Res> {
-  __$$_UpdateCurrentLocationCopyWithImpl(_$_UpdateCurrentLocation _value,
-      $Res Function(_$_UpdateCurrentLocation) _then)
+class __$$UpdateCurrentLocationImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$UpdateCurrentLocationImpl>
+    implements _$$UpdateCurrentLocationImplCopyWith<$Res> {
+  __$$UpdateCurrentLocationImplCopyWithImpl(_$UpdateCurrentLocationImpl _value,
+      $Res Function(_$UpdateCurrentLocationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,7 +104,7 @@ class __$$_UpdateCurrentLocationCopyWithImpl<$Res>
     Object? lat = null,
     Object? lng = null,
   }) {
-    return _then(_$_UpdateCurrentLocation(
+    return _then(_$UpdateCurrentLocationImpl(
       null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
@@ -118,8 +119,8 @@ class __$$_UpdateCurrentLocationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
-  const _$_UpdateCurrentLocation(this.lat, this.lng);
+class _$UpdateCurrentLocationImpl implements _UpdateCurrentLocation {
+  const _$UpdateCurrentLocationImpl(this.lat, this.lng);
 
   @override
   final double lat;
@@ -135,7 +136,7 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateCurrentLocation &&
+            other is _$UpdateCurrentLocationImpl &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng));
   }
@@ -146,9 +147,9 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateCurrentLocationCopyWith<_$_UpdateCurrentLocation> get copyWith =>
-      __$$_UpdateCurrentLocationCopyWithImpl<_$_UpdateCurrentLocation>(
-          this, _$identity);
+  _$$UpdateCurrentLocationImplCopyWith<_$UpdateCurrentLocationImpl>
+      get copyWith => __$$UpdateCurrentLocationImplCopyWithImpl<
+          _$UpdateCurrentLocationImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -222,30 +223,30 @@ class _$_UpdateCurrentLocation implements _UpdateCurrentLocation {
 
 abstract class _UpdateCurrentLocation implements UserEvent {
   const factory _UpdateCurrentLocation(final double lat, final double lng) =
-      _$_UpdateCurrentLocation;
+      _$UpdateCurrentLocationImpl;
 
   double get lat;
   double get lng;
   @JsonKey(ignore: true)
-  _$$_UpdateCurrentLocationCopyWith<_$_UpdateCurrentLocation> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UpdateCurrentLocationImplCopyWith<_$UpdateCurrentLocationImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SavePushTokenCopyWith<$Res> {
-  factory _$$_SavePushTokenCopyWith(
-          _$_SavePushToken value, $Res Function(_$_SavePushToken) then) =
-      __$$_SavePushTokenCopyWithImpl<$Res>;
+abstract class _$$SavePushTokenImplCopyWith<$Res> {
+  factory _$$SavePushTokenImplCopyWith(
+          _$SavePushTokenImpl value, $Res Function(_$SavePushTokenImpl) then) =
+      __$$SavePushTokenImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String token});
 }
 
 /// @nodoc
-class __$$_SavePushTokenCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$_SavePushToken>
-    implements _$$_SavePushTokenCopyWith<$Res> {
-  __$$_SavePushTokenCopyWithImpl(
-      _$_SavePushToken _value, $Res Function(_$_SavePushToken) _then)
+class __$$SavePushTokenImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$SavePushTokenImpl>
+    implements _$$SavePushTokenImplCopyWith<$Res> {
+  __$$SavePushTokenImplCopyWithImpl(
+      _$SavePushTokenImpl _value, $Res Function(_$SavePushTokenImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -253,7 +254,7 @@ class __$$_SavePushTokenCopyWithImpl<$Res>
   $Res call({
     Object? token = null,
   }) {
-    return _then(_$_SavePushToken(
+    return _then(_$SavePushTokenImpl(
       null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -264,8 +265,8 @@ class __$$_SavePushTokenCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SavePushToken implements _SavePushToken {
-  const _$_SavePushToken(this.token);
+class _$SavePushTokenImpl implements _SavePushToken {
+  const _$SavePushTokenImpl(this.token);
 
   @override
   final String token;
@@ -279,7 +280,7 @@ class _$_SavePushToken implements _SavePushToken {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SavePushToken &&
+            other is _$SavePushTokenImpl &&
             (identical(other.token, token) || other.token == token));
   }
 
@@ -289,8 +290,8 @@ class _$_SavePushToken implements _SavePushToken {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SavePushTokenCopyWith<_$_SavePushToken> get copyWith =>
-      __$$_SavePushTokenCopyWithImpl<_$_SavePushToken>(this, _$identity);
+  _$$SavePushTokenImplCopyWith<_$SavePushTokenImpl> get copyWith =>
+      __$$SavePushTokenImplCopyWithImpl<_$SavePushTokenImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -363,19 +364,19 @@ class _$_SavePushToken implements _SavePushToken {
 }
 
 abstract class _SavePushToken implements UserEvent {
-  const factory _SavePushToken(final String token) = _$_SavePushToken;
+  const factory _SavePushToken(final String token) = _$SavePushTokenImpl;
 
   String get token;
   @JsonKey(ignore: true)
-  _$$_SavePushTokenCopyWith<_$_SavePushToken> get copyWith =>
+  _$$SavePushTokenImplCopyWith<_$SavePushTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SaveUserCopyWith<$Res> {
-  factory _$$_SaveUserCopyWith(
-          _$_SaveUser value, $Res Function(_$_SaveUser) then) =
-      __$$_SaveUserCopyWithImpl<$Res>;
+abstract class _$$SaveUserImplCopyWith<$Res> {
+  factory _$$SaveUserImplCopyWith(
+          _$SaveUserImpl value, $Res Function(_$SaveUserImpl) then) =
+      __$$SaveUserImplCopyWithImpl<$Res>;
   @useResult
   $Res call({User user});
 
@@ -383,11 +384,11 @@ abstract class _$$_SaveUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SaveUserCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$_SaveUser>
-    implements _$$_SaveUserCopyWith<$Res> {
-  __$$_SaveUserCopyWithImpl(
-      _$_SaveUser _value, $Res Function(_$_SaveUser) _then)
+class __$$SaveUserImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$SaveUserImpl>
+    implements _$$SaveUserImplCopyWith<$Res> {
+  __$$SaveUserImplCopyWithImpl(
+      _$SaveUserImpl _value, $Res Function(_$SaveUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -395,7 +396,7 @@ class __$$_SaveUserCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
   }) {
-    return _then(_$_SaveUser(
+    return _then(_$SaveUserImpl(
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -414,8 +415,8 @@ class __$$_SaveUserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SaveUser implements _SaveUser {
-  const _$_SaveUser(this.user);
+class _$SaveUserImpl implements _SaveUser {
+  const _$SaveUserImpl(this.user);
 
   @override
   final User user;
@@ -429,7 +430,7 @@ class _$_SaveUser implements _SaveUser {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SaveUser &&
+            other is _$SaveUserImpl &&
             (identical(other.user, user) || other.user == user));
   }
 
@@ -439,8 +440,8 @@ class _$_SaveUser implements _SaveUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SaveUserCopyWith<_$_SaveUser> get copyWith =>
-      __$$_SaveUserCopyWithImpl<_$_SaveUser>(this, _$identity);
+  _$$SaveUserImplCopyWith<_$SaveUserImpl> get copyWith =>
+      __$$SaveUserImplCopyWithImpl<_$SaveUserImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -513,11 +514,11 @@ class _$_SaveUser implements _SaveUser {
 }
 
 abstract class _SaveUser implements UserEvent {
-  const factory _SaveUser(final User user) = _$_SaveUser;
+  const factory _SaveUser(final User user) = _$SaveUserImpl;
 
   User get user;
   @JsonKey(ignore: true)
-  _$$_SaveUserCopyWith<_$_SaveUser> get copyWith =>
+  _$$SaveUserImplCopyWith<_$SaveUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -589,10 +590,11 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
 }
 
 /// @nodoc
-abstract class _$$_UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
-  factory _$$_UserStateCopyWith(
-          _$_UserState value, $Res Function(_$_UserState) then) =
-      __$$_UserStateCopyWithImpl<$Res>;
+abstract class _$$UserStateImplCopyWith<$Res>
+    implements $UserStateCopyWith<$Res> {
+  factory _$$UserStateImplCopyWith(
+          _$UserStateImpl value, $Res Function(_$UserStateImpl) then) =
+      __$$UserStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UserStatus status, List<User> users, User? user});
@@ -602,11 +604,11 @@ abstract class _$$_UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserStateCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$_UserState>
-    implements _$$_UserStateCopyWith<$Res> {
-  __$$_UserStateCopyWithImpl(
-      _$_UserState _value, $Res Function(_$_UserState) _then)
+class __$$UserStateImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$UserStateImpl>
+    implements _$$UserStateImplCopyWith<$Res> {
+  __$$UserStateImplCopyWithImpl(
+      _$UserStateImpl _value, $Res Function(_$UserStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -616,7 +618,7 @@ class __$$_UserStateCopyWithImpl<$Res>
     Object? users = null,
     Object? user = freezed,
   }) {
-    return _then(_$_UserState(
+    return _then(_$UserStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -635,8 +637,8 @@ class __$$_UserStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserState implements _UserState {
-  const _$_UserState(
+class _$UserStateImpl implements _UserState {
+  const _$UserStateImpl(
       {required this.status,
       required final List<User> users,
       required this.user})
@@ -664,7 +666,7 @@ class _$_UserState implements _UserState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserState &&
+            other is _$UserStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._users, _users) &&
             (identical(other.user, user) || other.user == user));
@@ -677,15 +679,15 @@ class _$_UserState implements _UserState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserStateCopyWith<_$_UserState> get copyWith =>
-      __$$_UserStateCopyWithImpl<_$_UserState>(this, _$identity);
+  _$$UserStateImplCopyWith<_$UserStateImpl> get copyWith =>
+      __$$UserStateImplCopyWithImpl<_$UserStateImpl>(this, _$identity);
 }
 
 abstract class _UserState implements UserState {
   const factory _UserState(
       {required final UserStatus status,
       required final List<User> users,
-      required final User? user}) = _$_UserState;
+      required final User? user}) = _$UserStateImpl;
 
   @override
   UserStatus get status;
@@ -695,6 +697,6 @@ abstract class _UserState implements UserState {
   User? get user;
   @override
   @JsonKey(ignore: true)
-  _$$_UserStateCopyWith<_$_UserState> get copyWith =>
+  _$$UserStateImplCopyWith<_$UserStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

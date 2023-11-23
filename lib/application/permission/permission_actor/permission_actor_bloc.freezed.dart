@@ -94,25 +94,25 @@ class _$PermissionActorEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PermissionHandledCopyWith<$Res> {
-  factory _$$PermissionHandledCopyWith(
-          _$PermissionHandled value, $Res Function(_$PermissionHandled) then) =
-      __$$PermissionHandledCopyWithImpl<$Res>;
+abstract class _$$PermissionHandledImplCopyWith<$Res> {
+  factory _$$PermissionHandledImplCopyWith(_$PermissionHandledImpl value,
+          $Res Function(_$PermissionHandledImpl) then) =
+      __$$PermissionHandledImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PermissionHandledCopyWithImpl<$Res>
-    extends _$PermissionActorEventCopyWithImpl<$Res, _$PermissionHandled>
-    implements _$$PermissionHandledCopyWith<$Res> {
-  __$$PermissionHandledCopyWithImpl(
-      _$PermissionHandled _value, $Res Function(_$PermissionHandled) _then)
+class __$$PermissionHandledImplCopyWithImpl<$Res>
+    extends _$PermissionActorEventCopyWithImpl<$Res, _$PermissionHandledImpl>
+    implements _$$PermissionHandledImplCopyWith<$Res> {
+  __$$PermissionHandledImplCopyWithImpl(_$PermissionHandledImpl _value,
+      $Res Function(_$PermissionHandledImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PermissionHandled implements PermissionHandled {
-  const _$PermissionHandled();
+class _$PermissionHandledImpl implements PermissionHandled {
+  const _$PermissionHandledImpl();
 
   @override
   String toString() {
@@ -122,7 +122,7 @@ class _$PermissionHandled implements PermissionHandled {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PermissionHandled);
+        (other.runtimeType == runtimeType && other is _$PermissionHandledImpl);
   }
 
   @override
@@ -210,32 +210,33 @@ class _$PermissionHandled implements PermissionHandled {
 }
 
 abstract class PermissionHandled implements PermissionActorEvent {
-  const factory PermissionHandled() = _$PermissionHandled;
+  const factory PermissionHandled() = _$PermissionHandledImpl;
 }
 
 /// @nodoc
-abstract class _$$RequestNotificationPermissionCopyWith<$Res> {
-  factory _$$RequestNotificationPermissionCopyWith(
-          _$RequestNotificationPermission value,
-          $Res Function(_$RequestNotificationPermission) then) =
-      __$$RequestNotificationPermissionCopyWithImpl<$Res>;
+abstract class _$$RequestNotificationPermissionImplCopyWith<$Res> {
+  factory _$$RequestNotificationPermissionImplCopyWith(
+          _$RequestNotificationPermissionImpl value,
+          $Res Function(_$RequestNotificationPermissionImpl) then) =
+      __$$RequestNotificationPermissionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RequestNotificationPermissionCopyWithImpl<$Res>
+class __$$RequestNotificationPermissionImplCopyWithImpl<$Res>
     extends _$PermissionActorEventCopyWithImpl<$Res,
-        _$RequestNotificationPermission>
-    implements _$$RequestNotificationPermissionCopyWith<$Res> {
-  __$$RequestNotificationPermissionCopyWithImpl(
-      _$RequestNotificationPermission _value,
-      $Res Function(_$RequestNotificationPermission) _then)
+        _$RequestNotificationPermissionImpl>
+    implements _$$RequestNotificationPermissionImplCopyWith<$Res> {
+  __$$RequestNotificationPermissionImplCopyWithImpl(
+      _$RequestNotificationPermissionImpl _value,
+      $Res Function(_$RequestNotificationPermissionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RequestNotificationPermission implements RequestNotificationPermission {
-  const _$RequestNotificationPermission();
+class _$RequestNotificationPermissionImpl
+    implements RequestNotificationPermission {
+  const _$RequestNotificationPermissionImpl();
 
   @override
   String toString() {
@@ -246,7 +247,7 @@ class _$RequestNotificationPermission implements RequestNotificationPermission {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RequestNotificationPermission);
+            other is _$RequestNotificationPermissionImpl);
   }
 
   @override
@@ -335,29 +336,29 @@ class _$RequestNotificationPermission implements RequestNotificationPermission {
 
 abstract class RequestNotificationPermission implements PermissionActorEvent {
   const factory RequestNotificationPermission() =
-      _$RequestNotificationPermission;
+      _$RequestNotificationPermissionImpl;
 }
 
 /// @nodoc
-abstract class _$$RequestAttPermissionCopyWith<$Res> {
-  factory _$$RequestAttPermissionCopyWith(_$RequestAttPermission value,
-          $Res Function(_$RequestAttPermission) then) =
-      __$$RequestAttPermissionCopyWithImpl<$Res>;
+abstract class _$$RequestAttPermissionImplCopyWith<$Res> {
+  factory _$$RequestAttPermissionImplCopyWith(_$RequestAttPermissionImpl value,
+          $Res Function(_$RequestAttPermissionImpl) then) =
+      __$$RequestAttPermissionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RequestAttPermissionCopyWithImpl<$Res>
-    extends _$PermissionActorEventCopyWithImpl<$Res, _$RequestAttPermission>
-    implements _$$RequestAttPermissionCopyWith<$Res> {
-  __$$RequestAttPermissionCopyWithImpl(_$RequestAttPermission _value,
-      $Res Function(_$RequestAttPermission) _then)
+class __$$RequestAttPermissionImplCopyWithImpl<$Res>
+    extends _$PermissionActorEventCopyWithImpl<$Res, _$RequestAttPermissionImpl>
+    implements _$$RequestAttPermissionImplCopyWith<$Res> {
+  __$$RequestAttPermissionImplCopyWithImpl(_$RequestAttPermissionImpl _value,
+      $Res Function(_$RequestAttPermissionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RequestAttPermission implements RequestAttPermission {
-  const _$RequestAttPermission();
+class _$RequestAttPermissionImpl implements RequestAttPermission {
+  const _$RequestAttPermissionImpl();
 
   @override
   String toString() {
@@ -367,7 +368,8 @@ class _$RequestAttPermission implements RequestAttPermission {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RequestAttPermission);
+        (other.runtimeType == runtimeType &&
+            other is _$RequestAttPermissionImpl);
   }
 
   @override
@@ -455,31 +457,32 @@ class _$RequestAttPermission implements RequestAttPermission {
 }
 
 abstract class RequestAttPermission implements PermissionActorEvent {
-  const factory RequestAttPermission() = _$RequestAttPermission;
+  const factory RequestAttPermission() = _$RequestAttPermissionImpl;
 }
 
 /// @nodoc
-abstract class _$$RequestLocationPermissionCopyWith<$Res> {
-  factory _$$RequestLocationPermissionCopyWith(
-          _$RequestLocationPermission value,
-          $Res Function(_$RequestLocationPermission) then) =
-      __$$RequestLocationPermissionCopyWithImpl<$Res>;
+abstract class _$$RequestLocationPermissionImplCopyWith<$Res> {
+  factory _$$RequestLocationPermissionImplCopyWith(
+          _$RequestLocationPermissionImpl value,
+          $Res Function(_$RequestLocationPermissionImpl) then) =
+      __$$RequestLocationPermissionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RequestLocationPermissionCopyWithImpl<$Res>
+class __$$RequestLocationPermissionImplCopyWithImpl<$Res>
     extends _$PermissionActorEventCopyWithImpl<$Res,
-        _$RequestLocationPermission>
-    implements _$$RequestLocationPermissionCopyWith<$Res> {
-  __$$RequestLocationPermissionCopyWithImpl(_$RequestLocationPermission _value,
-      $Res Function(_$RequestLocationPermission) _then)
+        _$RequestLocationPermissionImpl>
+    implements _$$RequestLocationPermissionImplCopyWith<$Res> {
+  __$$RequestLocationPermissionImplCopyWithImpl(
+      _$RequestLocationPermissionImpl _value,
+      $Res Function(_$RequestLocationPermissionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RequestLocationPermission implements RequestLocationPermission {
-  const _$RequestLocationPermission();
+class _$RequestLocationPermissionImpl implements RequestLocationPermission {
+  const _$RequestLocationPermissionImpl();
 
   @override
   String toString() {
@@ -490,7 +493,7 @@ class _$RequestLocationPermission implements RequestLocationPermission {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RequestLocationPermission);
+            other is _$RequestLocationPermissionImpl);
   }
 
   @override
@@ -578,7 +581,7 @@ class _$RequestLocationPermission implements RequestLocationPermission {
 }
 
 abstract class RequestLocationPermission implements PermissionActorEvent {
-  const factory RequestLocationPermission() = _$RequestLocationPermission;
+  const factory RequestLocationPermission() = _$RequestLocationPermissionImpl;
 }
 
 /// @nodoc
@@ -689,23 +692,25 @@ class _$PermissionActorStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ReadyCopyWith<$Res> {
-  factory _$$ReadyCopyWith(_$Ready value, $Res Function(_$Ready) then) =
-      __$$ReadyCopyWithImpl<$Res>;
+abstract class _$$ReadyImplCopyWith<$Res> {
+  factory _$$ReadyImplCopyWith(
+          _$ReadyImpl value, $Res Function(_$ReadyImpl) then) =
+      __$$ReadyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ReadyCopyWithImpl<$Res>
-    extends _$PermissionActorStateCopyWithImpl<$Res, _$Ready>
-    implements _$$ReadyCopyWith<$Res> {
-  __$$ReadyCopyWithImpl(_$Ready _value, $Res Function(_$Ready) _then)
+class __$$ReadyImplCopyWithImpl<$Res>
+    extends _$PermissionActorStateCopyWithImpl<$Res, _$ReadyImpl>
+    implements _$$ReadyImplCopyWith<$Res> {
+  __$$ReadyImplCopyWithImpl(
+      _$ReadyImpl _value, $Res Function(_$ReadyImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Ready implements Ready {
-  const _$Ready();
+class _$ReadyImpl implements Ready {
+  const _$ReadyImpl();
 
   @override
   String toString() {
@@ -715,7 +720,7 @@ class _$Ready implements Ready {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Ready);
+        (other.runtimeType == runtimeType && other is _$ReadyImpl);
   }
 
   @override
@@ -831,32 +836,32 @@ class _$Ready implements Ready {
 }
 
 abstract class Ready implements PermissionActorState {
-  const factory Ready() = _$Ready;
+  const factory Ready() = _$ReadyImpl;
 }
 
 /// @nodoc
-abstract class _$$PermissionLocationRequestedCopyWith<$Res> {
-  factory _$$PermissionLocationRequestedCopyWith(
-          _$PermissionLocationRequested value,
-          $Res Function(_$PermissionLocationRequested) then) =
-      __$$PermissionLocationRequestedCopyWithImpl<$Res>;
+abstract class _$$PermissionLocationRequestedImplCopyWith<$Res> {
+  factory _$$PermissionLocationRequestedImplCopyWith(
+          _$PermissionLocationRequestedImpl value,
+          $Res Function(_$PermissionLocationRequestedImpl) then) =
+      __$$PermissionLocationRequestedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PermissionLocationRequestedCopyWithImpl<$Res>
+class __$$PermissionLocationRequestedImplCopyWithImpl<$Res>
     extends _$PermissionActorStateCopyWithImpl<$Res,
-        _$PermissionLocationRequested>
-    implements _$$PermissionLocationRequestedCopyWith<$Res> {
-  __$$PermissionLocationRequestedCopyWithImpl(
-      _$PermissionLocationRequested _value,
-      $Res Function(_$PermissionLocationRequested) _then)
+        _$PermissionLocationRequestedImpl>
+    implements _$$PermissionLocationRequestedImplCopyWith<$Res> {
+  __$$PermissionLocationRequestedImplCopyWithImpl(
+      _$PermissionLocationRequestedImpl _value,
+      $Res Function(_$PermissionLocationRequestedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PermissionLocationRequested implements PermissionLocationRequested {
-  const _$PermissionLocationRequested();
+class _$PermissionLocationRequestedImpl implements PermissionLocationRequested {
+  const _$PermissionLocationRequestedImpl();
 
   @override
   String toString() {
@@ -867,7 +872,7 @@ class _$PermissionLocationRequested implements PermissionLocationRequested {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PermissionLocationRequested);
+            other is _$PermissionLocationRequestedImpl);
   }
 
   @override
@@ -983,33 +988,34 @@ class _$PermissionLocationRequested implements PermissionLocationRequested {
 }
 
 abstract class PermissionLocationRequested implements PermissionActorState {
-  const factory PermissionLocationRequested() = _$PermissionLocationRequested;
+  const factory PermissionLocationRequested() =
+      _$PermissionLocationRequestedImpl;
 }
 
 /// @nodoc
-abstract class _$$PermissionNotificationRequestedCopyWith<$Res> {
-  factory _$$PermissionNotificationRequestedCopyWith(
-          _$PermissionNotificationRequested value,
-          $Res Function(_$PermissionNotificationRequested) then) =
-      __$$PermissionNotificationRequestedCopyWithImpl<$Res>;
+abstract class _$$PermissionNotificationRequestedImplCopyWith<$Res> {
+  factory _$$PermissionNotificationRequestedImplCopyWith(
+          _$PermissionNotificationRequestedImpl value,
+          $Res Function(_$PermissionNotificationRequestedImpl) then) =
+      __$$PermissionNotificationRequestedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PermissionNotificationRequestedCopyWithImpl<$Res>
+class __$$PermissionNotificationRequestedImplCopyWithImpl<$Res>
     extends _$PermissionActorStateCopyWithImpl<$Res,
-        _$PermissionNotificationRequested>
-    implements _$$PermissionNotificationRequestedCopyWith<$Res> {
-  __$$PermissionNotificationRequestedCopyWithImpl(
-      _$PermissionNotificationRequested _value,
-      $Res Function(_$PermissionNotificationRequested) _then)
+        _$PermissionNotificationRequestedImpl>
+    implements _$$PermissionNotificationRequestedImplCopyWith<$Res> {
+  __$$PermissionNotificationRequestedImplCopyWithImpl(
+      _$PermissionNotificationRequestedImpl _value,
+      $Res Function(_$PermissionNotificationRequestedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PermissionNotificationRequested
+class _$PermissionNotificationRequestedImpl
     implements PermissionNotificationRequested {
-  const _$PermissionNotificationRequested();
+  const _$PermissionNotificationRequestedImpl();
 
   @override
   String toString() {
@@ -1020,7 +1026,7 @@ class _$PermissionNotificationRequested
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PermissionNotificationRequested);
+            other is _$PermissionNotificationRequestedImpl);
   }
 
   @override
@@ -1137,29 +1143,32 @@ class _$PermissionNotificationRequested
 
 abstract class PermissionNotificationRequested implements PermissionActorState {
   const factory PermissionNotificationRequested() =
-      _$PermissionNotificationRequested;
+      _$PermissionNotificationRequestedImpl;
 }
 
 /// @nodoc
-abstract class _$$PermissionAttRequestedCopyWith<$Res> {
-  factory _$$PermissionAttRequestedCopyWith(_$PermissionAttRequested value,
-          $Res Function(_$PermissionAttRequested) then) =
-      __$$PermissionAttRequestedCopyWithImpl<$Res>;
+abstract class _$$PermissionAttRequestedImplCopyWith<$Res> {
+  factory _$$PermissionAttRequestedImplCopyWith(
+          _$PermissionAttRequestedImpl value,
+          $Res Function(_$PermissionAttRequestedImpl) then) =
+      __$$PermissionAttRequestedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PermissionAttRequestedCopyWithImpl<$Res>
-    extends _$PermissionActorStateCopyWithImpl<$Res, _$PermissionAttRequested>
-    implements _$$PermissionAttRequestedCopyWith<$Res> {
-  __$$PermissionAttRequestedCopyWithImpl(_$PermissionAttRequested _value,
-      $Res Function(_$PermissionAttRequested) _then)
+class __$$PermissionAttRequestedImplCopyWithImpl<$Res>
+    extends _$PermissionActorStateCopyWithImpl<$Res,
+        _$PermissionAttRequestedImpl>
+    implements _$$PermissionAttRequestedImplCopyWith<$Res> {
+  __$$PermissionAttRequestedImplCopyWithImpl(
+      _$PermissionAttRequestedImpl _value,
+      $Res Function(_$PermissionAttRequestedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PermissionAttRequested implements PermissionAttRequested {
-  const _$PermissionAttRequested();
+class _$PermissionAttRequestedImpl implements PermissionAttRequested {
+  const _$PermissionAttRequestedImpl();
 
   @override
   String toString() {
@@ -1169,7 +1178,8 @@ class _$PermissionAttRequested implements PermissionAttRequested {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PermissionAttRequested);
+        (other.runtimeType == runtimeType &&
+            other is _$PermissionAttRequestedImpl);
   }
 
   @override
@@ -1285,33 +1295,33 @@ class _$PermissionAttRequested implements PermissionAttRequested {
 }
 
 abstract class PermissionAttRequested implements PermissionActorState {
-  const factory PermissionAttRequested() = _$PermissionAttRequested;
+  const factory PermissionAttRequested() = _$PermissionAttRequestedImpl;
 }
 
 /// @nodoc
-abstract class _$$PermissionLocationGrantedOrDeniedCopyWith<$Res> {
-  factory _$$PermissionLocationGrantedOrDeniedCopyWith(
-          _$PermissionLocationGrantedOrDenied value,
-          $Res Function(_$PermissionLocationGrantedOrDenied) then) =
-      __$$PermissionLocationGrantedOrDeniedCopyWithImpl<$Res>;
+abstract class _$$PermissionLocationGrantedOrDeniedImplCopyWith<$Res> {
+  factory _$$PermissionLocationGrantedOrDeniedImplCopyWith(
+          _$PermissionLocationGrantedOrDeniedImpl value,
+          $Res Function(_$PermissionLocationGrantedOrDeniedImpl) then) =
+      __$$PermissionLocationGrantedOrDeniedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PermissionLocationGrantedOrDeniedCopyWithImpl<$Res>
+class __$$PermissionLocationGrantedOrDeniedImplCopyWithImpl<$Res>
     extends _$PermissionActorStateCopyWithImpl<$Res,
-        _$PermissionLocationGrantedOrDenied>
-    implements _$$PermissionLocationGrantedOrDeniedCopyWith<$Res> {
-  __$$PermissionLocationGrantedOrDeniedCopyWithImpl(
-      _$PermissionLocationGrantedOrDenied _value,
-      $Res Function(_$PermissionLocationGrantedOrDenied) _then)
+        _$PermissionLocationGrantedOrDeniedImpl>
+    implements _$$PermissionLocationGrantedOrDeniedImplCopyWith<$Res> {
+  __$$PermissionLocationGrantedOrDeniedImplCopyWithImpl(
+      _$PermissionLocationGrantedOrDeniedImpl _value,
+      $Res Function(_$PermissionLocationGrantedOrDeniedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PermissionLocationGrantedOrDenied
+class _$PermissionLocationGrantedOrDeniedImpl
     implements PermissionLocationGrantedOrDenied {
-  const _$PermissionLocationGrantedOrDenied();
+  const _$PermissionLocationGrantedOrDeniedImpl();
 
   @override
   String toString() {
@@ -1322,7 +1332,7 @@ class _$PermissionLocationGrantedOrDenied
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PermissionLocationGrantedOrDenied);
+            other is _$PermissionLocationGrantedOrDeniedImpl);
   }
 
   @override
@@ -1440,33 +1450,33 @@ class _$PermissionLocationGrantedOrDenied
 abstract class PermissionLocationGrantedOrDenied
     implements PermissionActorState {
   const factory PermissionLocationGrantedOrDenied() =
-      _$PermissionLocationGrantedOrDenied;
+      _$PermissionLocationGrantedOrDeniedImpl;
 }
 
 /// @nodoc
-abstract class _$$PermissionNotificationGrantedOrDeniedCopyWith<$Res> {
-  factory _$$PermissionNotificationGrantedOrDeniedCopyWith(
-          _$PermissionNotificationGrantedOrDenied value,
-          $Res Function(_$PermissionNotificationGrantedOrDenied) then) =
-      __$$PermissionNotificationGrantedOrDeniedCopyWithImpl<$Res>;
+abstract class _$$PermissionNotificationGrantedOrDeniedImplCopyWith<$Res> {
+  factory _$$PermissionNotificationGrantedOrDeniedImplCopyWith(
+          _$PermissionNotificationGrantedOrDeniedImpl value,
+          $Res Function(_$PermissionNotificationGrantedOrDeniedImpl) then) =
+      __$$PermissionNotificationGrantedOrDeniedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PermissionNotificationGrantedOrDeniedCopyWithImpl<$Res>
+class __$$PermissionNotificationGrantedOrDeniedImplCopyWithImpl<$Res>
     extends _$PermissionActorStateCopyWithImpl<$Res,
-        _$PermissionNotificationGrantedOrDenied>
-    implements _$$PermissionNotificationGrantedOrDeniedCopyWith<$Res> {
-  __$$PermissionNotificationGrantedOrDeniedCopyWithImpl(
-      _$PermissionNotificationGrantedOrDenied _value,
-      $Res Function(_$PermissionNotificationGrantedOrDenied) _then)
+        _$PermissionNotificationGrantedOrDeniedImpl>
+    implements _$$PermissionNotificationGrantedOrDeniedImplCopyWith<$Res> {
+  __$$PermissionNotificationGrantedOrDeniedImplCopyWithImpl(
+      _$PermissionNotificationGrantedOrDeniedImpl _value,
+      $Res Function(_$PermissionNotificationGrantedOrDeniedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PermissionNotificationGrantedOrDenied
+class _$PermissionNotificationGrantedOrDeniedImpl
     implements PermissionNotificationGrantedOrDenied {
-  const _$PermissionNotificationGrantedOrDenied();
+  const _$PermissionNotificationGrantedOrDeniedImpl();
 
   @override
   String toString() {
@@ -1477,7 +1487,7 @@ class _$PermissionNotificationGrantedOrDenied
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PermissionNotificationGrantedOrDenied);
+            other is _$PermissionNotificationGrantedOrDeniedImpl);
   }
 
   @override
@@ -1595,32 +1605,33 @@ class _$PermissionNotificationGrantedOrDenied
 abstract class PermissionNotificationGrantedOrDenied
     implements PermissionActorState {
   const factory PermissionNotificationGrantedOrDenied() =
-      _$PermissionNotificationGrantedOrDenied;
+      _$PermissionNotificationGrantedOrDeniedImpl;
 }
 
 /// @nodoc
-abstract class _$$PermissionAttGrantedOrDeniedCopyWith<$Res> {
-  factory _$$PermissionAttGrantedOrDeniedCopyWith(
-          _$PermissionAttGrantedOrDenied value,
-          $Res Function(_$PermissionAttGrantedOrDenied) then) =
-      __$$PermissionAttGrantedOrDeniedCopyWithImpl<$Res>;
+abstract class _$$PermissionAttGrantedOrDeniedImplCopyWith<$Res> {
+  factory _$$PermissionAttGrantedOrDeniedImplCopyWith(
+          _$PermissionAttGrantedOrDeniedImpl value,
+          $Res Function(_$PermissionAttGrantedOrDeniedImpl) then) =
+      __$$PermissionAttGrantedOrDeniedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PermissionAttGrantedOrDeniedCopyWithImpl<$Res>
+class __$$PermissionAttGrantedOrDeniedImplCopyWithImpl<$Res>
     extends _$PermissionActorStateCopyWithImpl<$Res,
-        _$PermissionAttGrantedOrDenied>
-    implements _$$PermissionAttGrantedOrDeniedCopyWith<$Res> {
-  __$$PermissionAttGrantedOrDeniedCopyWithImpl(
-      _$PermissionAttGrantedOrDenied _value,
-      $Res Function(_$PermissionAttGrantedOrDenied) _then)
+        _$PermissionAttGrantedOrDeniedImpl>
+    implements _$$PermissionAttGrantedOrDeniedImplCopyWith<$Res> {
+  __$$PermissionAttGrantedOrDeniedImplCopyWithImpl(
+      _$PermissionAttGrantedOrDeniedImpl _value,
+      $Res Function(_$PermissionAttGrantedOrDeniedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PermissionAttGrantedOrDenied implements PermissionAttGrantedOrDenied {
-  const _$PermissionAttGrantedOrDenied();
+class _$PermissionAttGrantedOrDeniedImpl
+    implements PermissionAttGrantedOrDenied {
+  const _$PermissionAttGrantedOrDeniedImpl();
 
   @override
   String toString() {
@@ -1631,7 +1642,7 @@ class _$PermissionAttGrantedOrDenied implements PermissionAttGrantedOrDenied {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PermissionAttGrantedOrDenied);
+            other is _$PermissionAttGrantedOrDeniedImpl);
   }
 
   @override
@@ -1747,5 +1758,6 @@ class _$PermissionAttGrantedOrDenied implements PermissionAttGrantedOrDenied {
 }
 
 abstract class PermissionAttGrantedOrDenied implements PermissionActorState {
-  const factory PermissionAttGrantedOrDenied() = _$PermissionAttGrantedOrDenied;
+  const factory PermissionAttGrantedOrDenied() =
+      _$PermissionAttGrantedOrDeniedImpl;
 }

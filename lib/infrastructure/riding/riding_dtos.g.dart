@@ -6,8 +6,8 @@ part of 'riding_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RidingRoomDto _$$_RidingRoomDtoFromJson(Map<String, dynamic> json) =>
-    _$_RidingRoomDto(
+_$RidingRoomDtoImpl _$$RidingRoomDtoImplFromJson(Map<String, dynamic> json) =>
+    _$RidingRoomDtoImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       isPrivate: json['is_private'] as bool,
@@ -20,7 +20,7 @@ _$_RidingRoomDto _$$_RidingRoomDtoFromJson(Map<String, dynamic> json) =>
       totalPlayers: json['total_players'] as int,
     );
 
-Map<String, dynamic> _$$_RidingRoomDtoToJson(_$_RidingRoomDto instance) =>
+Map<String, dynamic> _$$RidingRoomDtoImplToJson(_$RidingRoomDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -30,8 +30,9 @@ Map<String, dynamic> _$$_RidingRoomDtoToJson(_$_RidingRoomDto instance) =>
       'total_players': instance.totalPlayers,
     };
 
-_$_RidingPlayerDto _$$_RidingPlayerDtoFromJson(Map<String, dynamic> json) =>
-    _$_RidingPlayerDto(
+_$RidingPlayerDtoImpl _$$RidingPlayerDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RidingPlayerDtoImpl(
       id: json['id'] as int,
       user: json['user'] as int,
       nickname: json['nickname'] as String,
@@ -44,7 +45,8 @@ _$_RidingPlayerDto _$$_RidingPlayerDtoFromJson(Map<String, dynamic> json) =>
       isOwner: json['is_owner'] as bool,
     );
 
-Map<String, dynamic> _$$_RidingPlayerDtoToJson(_$_RidingPlayerDto instance) =>
+Map<String, dynamic> _$$RidingPlayerDtoImplToJson(
+        _$RidingPlayerDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'user': instance.user,
@@ -56,14 +58,14 @@ Map<String, dynamic> _$$_RidingPlayerDtoToJson(_$_RidingPlayerDto instance) =>
       'is_owner': instance.isOwner,
     };
 
-_$_UpdateRidingRoomNameRequestDto _$$_UpdateRidingRoomNameRequestDtoFromJson(
-        Map<String, dynamic> json) =>
-    _$_UpdateRidingRoomNameRequestDto(
-      name: json['name'] as String,
-    );
+_$UpdateRidingRoomNameRequestDtoImpl
+    _$$UpdateRidingRoomNameRequestDtoImplFromJson(Map<String, dynamic> json) =>
+        _$UpdateRidingRoomNameRequestDtoImpl(
+          name: json['name'] as String,
+        );
 
-Map<String, dynamic> _$$_UpdateRidingRoomNameRequestDtoToJson(
-        _$_UpdateRidingRoomNameRequestDto instance) =>
+Map<String, dynamic> _$$UpdateRidingRoomNameRequestDtoImplToJson(
+        _$UpdateRidingRoomNameRequestDtoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
     };

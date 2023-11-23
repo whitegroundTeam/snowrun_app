@@ -62,21 +62,22 @@ class _$PlaceDtoCopyWithImpl<$Res, $Val extends PlaceDto>
 }
 
 /// @nodoc
-abstract class _$$_PlaceDtoCopyWith<$Res> implements $PlaceDtoCopyWith<$Res> {
-  factory _$$_PlaceDtoCopyWith(
-          _$_PlaceDto value, $Res Function(_$_PlaceDto) then) =
-      __$$_PlaceDtoCopyWithImpl<$Res>;
+abstract class _$$PlaceDtoImplCopyWith<$Res>
+    implements $PlaceDtoCopyWith<$Res> {
+  factory _$$PlaceDtoImplCopyWith(
+          _$PlaceDtoImpl value, $Res Function(_$PlaceDtoImpl) then) =
+      __$$PlaceDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$$_PlaceDtoCopyWithImpl<$Res>
-    extends _$PlaceDtoCopyWithImpl<$Res, _$_PlaceDto>
-    implements _$$_PlaceDtoCopyWith<$Res> {
-  __$$_PlaceDtoCopyWithImpl(
-      _$_PlaceDto _value, $Res Function(_$_PlaceDto) _then)
+class __$$PlaceDtoImplCopyWithImpl<$Res>
+    extends _$PlaceDtoCopyWithImpl<$Res, _$PlaceDtoImpl>
+    implements _$$PlaceDtoImplCopyWith<$Res> {
+  __$$PlaceDtoImplCopyWithImpl(
+      _$PlaceDtoImpl _value, $Res Function(_$PlaceDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -84,7 +85,7 @@ class __$$_PlaceDtoCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_PlaceDto(
+    return _then(_$PlaceDtoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -95,11 +96,11 @@ class __$$_PlaceDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PlaceDto extends _PlaceDto {
-  const _$_PlaceDto({@JsonKey(name: 'name') required this.name}) : super._();
+class _$PlaceDtoImpl extends _PlaceDto {
+  const _$PlaceDtoImpl({@JsonKey(name: 'name') required this.name}) : super._();
 
-  factory _$_PlaceDto.fromJson(Map<String, dynamic> json) =>
-      _$$_PlaceDtoFromJson(json);
+  factory _$PlaceDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PlaceDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -114,7 +115,7 @@ class _$_PlaceDto extends _PlaceDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlaceDto &&
+            other is _$PlaceDtoImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -125,12 +126,12 @@ class _$_PlaceDto extends _PlaceDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlaceDtoCopyWith<_$_PlaceDto> get copyWith =>
-      __$$_PlaceDtoCopyWithImpl<_$_PlaceDto>(this, _$identity);
+  _$$PlaceDtoImplCopyWith<_$PlaceDtoImpl> get copyWith =>
+      __$$PlaceDtoImplCopyWithImpl<_$PlaceDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PlaceDtoToJson(
+    return _$$PlaceDtoImplToJson(
       this,
     );
   }
@@ -138,17 +139,18 @@ class _$_PlaceDto extends _PlaceDto {
 
 abstract class _PlaceDto extends PlaceDto {
   const factory _PlaceDto({@JsonKey(name: 'name') required final String name}) =
-      _$_PlaceDto;
+      _$PlaceDtoImpl;
   const _PlaceDto._() : super._();
 
-  factory _PlaceDto.fromJson(Map<String, dynamic> json) = _$_PlaceDto.fromJson;
+  factory _PlaceDto.fromJson(Map<String, dynamic> json) =
+      _$PlaceDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_PlaceDtoCopyWith<_$_PlaceDto> get copyWith =>
+  _$$PlaceDtoImplCopyWith<_$PlaceDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -201,22 +203,22 @@ class _$BoundaryDtoCopyWithImpl<$Res, $Val extends BoundaryDto>
 }
 
 /// @nodoc
-abstract class _$$_BoundaryDtoCopyWith<$Res>
+abstract class _$$BoundaryDtoImplCopyWith<$Res>
     implements $BoundaryDtoCopyWith<$Res> {
-  factory _$$_BoundaryDtoCopyWith(
-          _$_BoundaryDto value, $Res Function(_$_BoundaryDto) then) =
-      __$$_BoundaryDtoCopyWithImpl<$Res>;
+  factory _$$BoundaryDtoImplCopyWith(
+          _$BoundaryDtoImpl value, $Res Function(_$BoundaryDtoImpl) then) =
+      __$$BoundaryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$$_BoundaryDtoCopyWithImpl<$Res>
-    extends _$BoundaryDtoCopyWithImpl<$Res, _$_BoundaryDto>
-    implements _$$_BoundaryDtoCopyWith<$Res> {
-  __$$_BoundaryDtoCopyWithImpl(
-      _$_BoundaryDto _value, $Res Function(_$_BoundaryDto) _then)
+class __$$BoundaryDtoImplCopyWithImpl<$Res>
+    extends _$BoundaryDtoCopyWithImpl<$Res, _$BoundaryDtoImpl>
+    implements _$$BoundaryDtoImplCopyWith<$Res> {
+  __$$BoundaryDtoImplCopyWithImpl(
+      _$BoundaryDtoImpl _value, $Res Function(_$BoundaryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -224,7 +226,7 @@ class __$$_BoundaryDtoCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_BoundaryDto(
+    return _then(_$BoundaryDtoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -235,11 +237,12 @@ class __$$_BoundaryDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BoundaryDto extends _BoundaryDto {
-  const _$_BoundaryDto({@JsonKey(name: 'name') required this.name}) : super._();
+class _$BoundaryDtoImpl extends _BoundaryDto {
+  const _$BoundaryDtoImpl({@JsonKey(name: 'name') required this.name})
+      : super._();
 
-  factory _$_BoundaryDto.fromJson(Map<String, dynamic> json) =>
-      _$$_BoundaryDtoFromJson(json);
+  factory _$BoundaryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BoundaryDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -254,7 +257,7 @@ class _$_BoundaryDto extends _BoundaryDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BoundaryDto &&
+            other is _$BoundaryDtoImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -265,12 +268,12 @@ class _$_BoundaryDto extends _BoundaryDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BoundaryDtoCopyWith<_$_BoundaryDto> get copyWith =>
-      __$$_BoundaryDtoCopyWithImpl<_$_BoundaryDto>(this, _$identity);
+  _$$BoundaryDtoImplCopyWith<_$BoundaryDtoImpl> get copyWith =>
+      __$$BoundaryDtoImplCopyWithImpl<_$BoundaryDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BoundaryDtoToJson(
+    return _$$BoundaryDtoImplToJson(
       this,
     );
   }
@@ -278,18 +281,18 @@ class _$_BoundaryDto extends _BoundaryDto {
 
 abstract class _BoundaryDto extends BoundaryDto {
   const factory _BoundaryDto(
-      {@JsonKey(name: 'name') required final String name}) = _$_BoundaryDto;
+      {@JsonKey(name: 'name') required final String name}) = _$BoundaryDtoImpl;
   const _BoundaryDto._() : super._();
 
   factory _BoundaryDto.fromJson(Map<String, dynamic> json) =
-      _$_BoundaryDto.fromJson;
+      _$BoundaryDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_BoundaryDtoCopyWith<_$_BoundaryDto> get copyWith =>
+  _$$BoundaryDtoImplCopyWith<_$BoundaryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -352,11 +355,11 @@ class _$VerticesDtoCopyWithImpl<$Res, $Val extends VerticesDto>
 }
 
 /// @nodoc
-abstract class _$$_VerticesDtoCopyWith<$Res>
+abstract class _$$VerticesDtoImplCopyWith<$Res>
     implements $VerticesDtoCopyWith<$Res> {
-  factory _$$_VerticesDtoCopyWith(
-          _$_VerticesDto value, $Res Function(_$_VerticesDto) then) =
-      __$$_VerticesDtoCopyWithImpl<$Res>;
+  factory _$$VerticesDtoImplCopyWith(
+          _$VerticesDtoImpl value, $Res Function(_$VerticesDtoImpl) then) =
+      __$$VerticesDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -365,11 +368,11 @@ abstract class _$$_VerticesDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_VerticesDtoCopyWithImpl<$Res>
-    extends _$VerticesDtoCopyWithImpl<$Res, _$_VerticesDto>
-    implements _$$_VerticesDtoCopyWith<$Res> {
-  __$$_VerticesDtoCopyWithImpl(
-      _$_VerticesDto _value, $Res Function(_$_VerticesDto) _then)
+class __$$VerticesDtoImplCopyWithImpl<$Res>
+    extends _$VerticesDtoCopyWithImpl<$Res, _$VerticesDtoImpl>
+    implements _$$VerticesDtoImplCopyWith<$Res> {
+  __$$VerticesDtoImplCopyWithImpl(
+      _$VerticesDtoImpl _value, $Res Function(_$VerticesDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -378,7 +381,7 @@ class __$$_VerticesDtoCopyWithImpl<$Res>
     Object? type = null,
     Object? coordinates = null,
   }) {
-    return _then(_$_VerticesDto(
+    return _then(_$VerticesDtoImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -393,16 +396,16 @@ class __$$_VerticesDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_VerticesDto extends _VerticesDto {
-  const _$_VerticesDto(
+class _$VerticesDtoImpl extends _VerticesDto {
+  const _$VerticesDtoImpl(
       {@JsonKey(name: 'type') required this.type,
       @JsonKey(name: 'coordinates')
       required final List<List<List<double>>> coordinates})
       : _coordinates = coordinates,
         super._();
 
-  factory _$_VerticesDto.fromJson(Map<String, dynamic> json) =>
-      _$$_VerticesDtoFromJson(json);
+  factory _$VerticesDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VerticesDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'type')
@@ -425,7 +428,7 @@ class _$_VerticesDto extends _VerticesDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VerticesDto &&
+            other is _$VerticesDtoImpl &&
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality()
                 .equals(other._coordinates, _coordinates));
@@ -439,12 +442,12 @@ class _$_VerticesDto extends _VerticesDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VerticesDtoCopyWith<_$_VerticesDto> get copyWith =>
-      __$$_VerticesDtoCopyWithImpl<_$_VerticesDto>(this, _$identity);
+  _$$VerticesDtoImplCopyWith<_$VerticesDtoImpl> get copyWith =>
+      __$$VerticesDtoImplCopyWithImpl<_$VerticesDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VerticesDtoToJson(
+    return _$$VerticesDtoImplToJson(
       this,
     );
   }
@@ -454,11 +457,11 @@ abstract class _VerticesDto extends VerticesDto {
   const factory _VerticesDto(
       {@JsonKey(name: 'type') required final String type,
       @JsonKey(name: 'coordinates')
-      required final List<List<List<double>>> coordinates}) = _$_VerticesDto;
+      required final List<List<List<double>>> coordinates}) = _$VerticesDtoImpl;
   const _VerticesDto._() : super._();
 
   factory _VerticesDto.fromJson(Map<String, dynamic> json) =
-      _$_VerticesDto.fromJson;
+      _$VerticesDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'type')
@@ -468,7 +471,7 @@ abstract class _VerticesDto extends VerticesDto {
   List<List<List<double>>> get coordinates;
   @override
   @JsonKey(ignore: true)
-  _$$_VerticesDtoCopyWith<_$_VerticesDto> get copyWith =>
+  _$$VerticesDtoImplCopyWith<_$VerticesDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -564,11 +567,11 @@ class _$CreateBoundaryDtoCopyWithImpl<$Res, $Val extends CreateBoundaryDto>
 }
 
 /// @nodoc
-abstract class _$$_CreateBoundaryDtoCopyWith<$Res>
+abstract class _$$CreateBoundaryDtoImplCopyWith<$Res>
     implements $CreateBoundaryDtoCopyWith<$Res> {
-  factory _$$_CreateBoundaryDtoCopyWith(_$_CreateBoundaryDto value,
-          $Res Function(_$_CreateBoundaryDto) then) =
-      __$$_CreateBoundaryDtoCopyWithImpl<$Res>;
+  factory _$$CreateBoundaryDtoImplCopyWith(_$CreateBoundaryDtoImpl value,
+          $Res Function(_$CreateBoundaryDtoImpl) then) =
+      __$$CreateBoundaryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -583,11 +586,11 @@ abstract class _$$_CreateBoundaryDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CreateBoundaryDtoCopyWithImpl<$Res>
-    extends _$CreateBoundaryDtoCopyWithImpl<$Res, _$_CreateBoundaryDto>
-    implements _$$_CreateBoundaryDtoCopyWith<$Res> {
-  __$$_CreateBoundaryDtoCopyWithImpl(
-      _$_CreateBoundaryDto _value, $Res Function(_$_CreateBoundaryDto) _then)
+class __$$CreateBoundaryDtoImplCopyWithImpl<$Res>
+    extends _$CreateBoundaryDtoCopyWithImpl<$Res, _$CreateBoundaryDtoImpl>
+    implements _$$CreateBoundaryDtoImplCopyWith<$Res> {
+  __$$CreateBoundaryDtoImplCopyWithImpl(_$CreateBoundaryDtoImpl _value,
+      $Res Function(_$CreateBoundaryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -599,7 +602,7 @@ class __$$_CreateBoundaryDtoCopyWithImpl<$Res>
     Object? status = null,
     Object? vertices = null,
   }) {
-    return _then(_$_CreateBoundaryDto(
+    return _then(_$CreateBoundaryDtoImpl(
       placeId: null == placeId
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
@@ -626,8 +629,8 @@ class __$$_CreateBoundaryDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CreateBoundaryDto extends _CreateBoundaryDto {
-  const _$_CreateBoundaryDto(
+class _$CreateBoundaryDtoImpl extends _CreateBoundaryDto {
+  const _$CreateBoundaryDtoImpl(
       {@JsonKey(name: 'place') required this.placeId,
       @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'type') required this.type,
@@ -635,8 +638,8 @@ class _$_CreateBoundaryDto extends _CreateBoundaryDto {
       @JsonKey(name: 'vertices') required this.vertices})
       : super._();
 
-  factory _$_CreateBoundaryDto.fromJson(Map<String, dynamic> json) =>
-      _$$_CreateBoundaryDtoFromJson(json);
+  factory _$CreateBoundaryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CreateBoundaryDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'place')
@@ -663,7 +666,7 @@ class _$_CreateBoundaryDto extends _CreateBoundaryDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateBoundaryDto &&
+            other is _$CreateBoundaryDtoImpl &&
             (identical(other.placeId, placeId) || other.placeId == placeId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
@@ -680,13 +683,13 @@ class _$_CreateBoundaryDto extends _CreateBoundaryDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateBoundaryDtoCopyWith<_$_CreateBoundaryDto> get copyWith =>
-      __$$_CreateBoundaryDtoCopyWithImpl<_$_CreateBoundaryDto>(
+  _$$CreateBoundaryDtoImplCopyWith<_$CreateBoundaryDtoImpl> get copyWith =>
+      __$$CreateBoundaryDtoImplCopyWithImpl<_$CreateBoundaryDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateBoundaryDtoToJson(
+    return _$$CreateBoundaryDtoImplToJson(
       this,
     );
   }
@@ -699,11 +702,11 @@ abstract class _CreateBoundaryDto extends CreateBoundaryDto {
           @JsonKey(name: 'type') required final int type,
           @JsonKey(name: 'status') required final int status,
           @JsonKey(name: 'vertices') required final VerticesDto vertices}) =
-      _$_CreateBoundaryDto;
+      _$CreateBoundaryDtoImpl;
   const _CreateBoundaryDto._() : super._();
 
   factory _CreateBoundaryDto.fromJson(Map<String, dynamic> json) =
-      _$_CreateBoundaryDto.fromJson;
+      _$CreateBoundaryDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'place')
@@ -722,6 +725,6 @@ abstract class _CreateBoundaryDto extends CreateBoundaryDto {
   VerticesDto get vertices;
   @override
   @JsonKey(ignore: true)
-  _$$_CreateBoundaryDtoCopyWith<_$_CreateBoundaryDto> get copyWith =>
+  _$$CreateBoundaryDtoImplCopyWith<_$CreateBoundaryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

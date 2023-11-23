@@ -77,25 +77,25 @@ class _$LocationFailureCopyWithImpl<$Res, $Val extends LocationFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$LocationFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$LocationFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -105,7 +105,7 @@ class _$_Unexpected implements _Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -177,15 +177,15 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements LocationFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedWithErrorErrorCopyWith<$Res> {
-  factory _$$_UnexpectedWithErrorErrorCopyWith(
-          _$_UnexpectedWithErrorError value,
-          $Res Function(_$_UnexpectedWithErrorError) then) =
-      __$$_UnexpectedWithErrorErrorCopyWithImpl<$Res>;
+abstract class _$$UnexpectedWithErrorErrorImplCopyWith<$Res> {
+  factory _$$UnexpectedWithErrorErrorImplCopyWith(
+          _$UnexpectedWithErrorErrorImpl value,
+          $Res Function(_$UnexpectedWithErrorErrorImpl) then) =
+      __$$UnexpectedWithErrorErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AppError appError});
 
@@ -193,11 +193,12 @@ abstract class _$$_UnexpectedWithErrorErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UnexpectedWithErrorErrorCopyWithImpl<$Res>
-    extends _$LocationFailureCopyWithImpl<$Res, _$_UnexpectedWithErrorError>
-    implements _$$_UnexpectedWithErrorErrorCopyWith<$Res> {
-  __$$_UnexpectedWithErrorErrorCopyWithImpl(_$_UnexpectedWithErrorError _value,
-      $Res Function(_$_UnexpectedWithErrorError) _then)
+class __$$UnexpectedWithErrorErrorImplCopyWithImpl<$Res>
+    extends _$LocationFailureCopyWithImpl<$Res, _$UnexpectedWithErrorErrorImpl>
+    implements _$$UnexpectedWithErrorErrorImplCopyWith<$Res> {
+  __$$UnexpectedWithErrorErrorImplCopyWithImpl(
+      _$UnexpectedWithErrorErrorImpl _value,
+      $Res Function(_$UnexpectedWithErrorErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -205,7 +206,7 @@ class __$$_UnexpectedWithErrorErrorCopyWithImpl<$Res>
   $Res call({
     Object? appError = null,
   }) {
-    return _then(_$_UnexpectedWithErrorError(
+    return _then(_$UnexpectedWithErrorErrorImpl(
       null == appError
           ? _value.appError
           : appError // ignore: cast_nullable_to_non_nullable
@@ -224,8 +225,8 @@ class __$$_UnexpectedWithErrorErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UnexpectedWithErrorError implements _UnexpectedWithErrorError {
-  const _$_UnexpectedWithErrorError(this.appError);
+class _$UnexpectedWithErrorErrorImpl implements _UnexpectedWithErrorError {
+  const _$UnexpectedWithErrorErrorImpl(this.appError);
 
   @override
   final AppError appError;
@@ -239,7 +240,7 @@ class _$_UnexpectedWithErrorError implements _UnexpectedWithErrorError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UnexpectedWithErrorError &&
+            other is _$UnexpectedWithErrorErrorImpl &&
             (identical(other.appError, appError) ||
                 other.appError == appError));
   }
@@ -250,9 +251,9 @@ class _$_UnexpectedWithErrorError implements _UnexpectedWithErrorError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnexpectedWithErrorErrorCopyWith<_$_UnexpectedWithErrorError>
-      get copyWith => __$$_UnexpectedWithErrorErrorCopyWithImpl<
-          _$_UnexpectedWithErrorError>(this, _$identity);
+  _$$UnexpectedWithErrorErrorImplCopyWith<_$UnexpectedWithErrorErrorImpl>
+      get copyWith => __$$UnexpectedWithErrorErrorImplCopyWithImpl<
+          _$UnexpectedWithErrorErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -321,10 +322,10 @@ class _$_UnexpectedWithErrorError implements _UnexpectedWithErrorError {
 
 abstract class _UnexpectedWithErrorError implements LocationFailure {
   const factory _UnexpectedWithErrorError(final AppError appError) =
-      _$_UnexpectedWithErrorError;
+      _$UnexpectedWithErrorErrorImpl;
 
   AppError get appError;
   @JsonKey(ignore: true)
-  _$$_UnexpectedWithErrorErrorCopyWith<_$_UnexpectedWithErrorError>
+  _$$UnexpectedWithErrorErrorImplCopyWith<_$UnexpectedWithErrorErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

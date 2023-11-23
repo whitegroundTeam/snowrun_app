@@ -69,24 +69,25 @@ class _$HomeRefreshEventCopyWithImpl<$Res, $Val extends HomeRefreshEvent>
 }
 
 /// @nodoc
-abstract class _$$_RefreshCopyWith<$Res> {
-  factory _$$_RefreshCopyWith(
-          _$_Refresh value, $Res Function(_$_Refresh) then) =
-      __$$_RefreshCopyWithImpl<$Res>;
+abstract class _$$RefreshImplCopyWith<$Res> {
+  factory _$$RefreshImplCopyWith(
+          _$RefreshImpl value, $Res Function(_$RefreshImpl) then) =
+      __$$RefreshImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RefreshCopyWithImpl<$Res>
-    extends _$HomeRefreshEventCopyWithImpl<$Res, _$_Refresh>
-    implements _$$_RefreshCopyWith<$Res> {
-  __$$_RefreshCopyWithImpl(_$_Refresh _value, $Res Function(_$_Refresh) _then)
+class __$$RefreshImplCopyWithImpl<$Res>
+    extends _$HomeRefreshEventCopyWithImpl<$Res, _$RefreshImpl>
+    implements _$$RefreshImplCopyWith<$Res> {
+  __$$RefreshImplCopyWithImpl(
+      _$RefreshImpl _value, $Res Function(_$RefreshImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Refresh implements _Refresh {
-  const _$_Refresh();
+class _$RefreshImpl implements _Refresh {
+  const _$RefreshImpl();
 
   @override
   String toString() {
@@ -96,7 +97,7 @@ class _$_Refresh implements _Refresh {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Refresh);
+        (other.runtimeType == runtimeType && other is _$RefreshImpl);
   }
 
   @override
@@ -160,7 +161,7 @@ class _$_Refresh implements _Refresh {
 }
 
 abstract class _Refresh implements HomeRefreshEvent {
-  const factory _Refresh() = _$_Refresh;
+  const factory _Refresh() = _$RefreshImpl;
 }
 
 /// @nodoc
@@ -206,22 +207,22 @@ class _$HomeRefreshStateCopyWithImpl<$Res, $Val extends HomeRefreshState>
 }
 
 /// @nodoc
-abstract class _$$_HomeRefreshStateCopyWith<$Res>
+abstract class _$$HomeRefreshStateImplCopyWith<$Res>
     implements $HomeRefreshStateCopyWith<$Res> {
-  factory _$$_HomeRefreshStateCopyWith(
-          _$_HomeRefreshState value, $Res Function(_$_HomeRefreshState) then) =
-      __$$_HomeRefreshStateCopyWithImpl<$Res>;
+  factory _$$HomeRefreshStateImplCopyWith(_$HomeRefreshStateImpl value,
+          $Res Function(_$HomeRefreshStateImpl) then) =
+      __$$HomeRefreshStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DateTime refreshedAt});
 }
 
 /// @nodoc
-class __$$_HomeRefreshStateCopyWithImpl<$Res>
-    extends _$HomeRefreshStateCopyWithImpl<$Res, _$_HomeRefreshState>
-    implements _$$_HomeRefreshStateCopyWith<$Res> {
-  __$$_HomeRefreshStateCopyWithImpl(
-      _$_HomeRefreshState _value, $Res Function(_$_HomeRefreshState) _then)
+class __$$HomeRefreshStateImplCopyWithImpl<$Res>
+    extends _$HomeRefreshStateCopyWithImpl<$Res, _$HomeRefreshStateImpl>
+    implements _$$HomeRefreshStateImplCopyWith<$Res> {
+  __$$HomeRefreshStateImplCopyWithImpl(_$HomeRefreshStateImpl _value,
+      $Res Function(_$HomeRefreshStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -229,7 +230,7 @@ class __$$_HomeRefreshStateCopyWithImpl<$Res>
   $Res call({
     Object? refreshedAt = null,
   }) {
-    return _then(_$_HomeRefreshState(
+    return _then(_$HomeRefreshStateImpl(
       refreshedAt: null == refreshedAt
           ? _value.refreshedAt
           : refreshedAt // ignore: cast_nullable_to_non_nullable
@@ -240,8 +241,8 @@ class __$$_HomeRefreshStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HomeRefreshState implements _HomeRefreshState {
-  const _$_HomeRefreshState({required this.refreshedAt});
+class _$HomeRefreshStateImpl implements _HomeRefreshState {
+  const _$HomeRefreshStateImpl({required this.refreshedAt});
 
   @override
   final DateTime refreshedAt;
@@ -255,7 +256,7 @@ class _$_HomeRefreshState implements _HomeRefreshState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeRefreshState &&
+            other is _$HomeRefreshStateImpl &&
             (identical(other.refreshedAt, refreshedAt) ||
                 other.refreshedAt == refreshedAt));
   }
@@ -266,18 +267,19 @@ class _$_HomeRefreshState implements _HomeRefreshState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeRefreshStateCopyWith<_$_HomeRefreshState> get copyWith =>
-      __$$_HomeRefreshStateCopyWithImpl<_$_HomeRefreshState>(this, _$identity);
+  _$$HomeRefreshStateImplCopyWith<_$HomeRefreshStateImpl> get copyWith =>
+      __$$HomeRefreshStateImplCopyWithImpl<_$HomeRefreshStateImpl>(
+          this, _$identity);
 }
 
 abstract class _HomeRefreshState implements HomeRefreshState {
   const factory _HomeRefreshState({required final DateTime refreshedAt}) =
-      _$_HomeRefreshState;
+      _$HomeRefreshStateImpl;
 
   @override
   DateTime get refreshedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeRefreshStateCopyWith<_$_HomeRefreshState> get copyWith =>
+  _$$HomeRefreshStateImplCopyWith<_$HomeRefreshStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

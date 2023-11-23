@@ -91,25 +91,25 @@ class _$PlaceEventCopyWithImpl<$Res, $Val extends PlaceEvent>
 }
 
 /// @nodoc
-abstract class _$$_GetPlacesCopyWith<$Res> {
-  factory _$$_GetPlacesCopyWith(
-          _$_GetPlaces value, $Res Function(_$_GetPlaces) then) =
-      __$$_GetPlacesCopyWithImpl<$Res>;
+abstract class _$$GetPlacesImplCopyWith<$Res> {
+  factory _$$GetPlacesImplCopyWith(
+          _$GetPlacesImpl value, $Res Function(_$GetPlacesImpl) then) =
+      __$$GetPlacesImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GetPlacesCopyWithImpl<$Res>
-    extends _$PlaceEventCopyWithImpl<$Res, _$_GetPlaces>
-    implements _$$_GetPlacesCopyWith<$Res> {
-  __$$_GetPlacesCopyWithImpl(
-      _$_GetPlaces _value, $Res Function(_$_GetPlaces) _then)
+class __$$GetPlacesImplCopyWithImpl<$Res>
+    extends _$PlaceEventCopyWithImpl<$Res, _$GetPlacesImpl>
+    implements _$$GetPlacesImplCopyWith<$Res> {
+  __$$GetPlacesImplCopyWithImpl(
+      _$GetPlacesImpl _value, $Res Function(_$GetPlacesImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GetPlaces implements _GetPlaces {
-  const _$_GetPlaces();
+class _$GetPlacesImpl implements _GetPlaces {
+  const _$GetPlacesImpl();
 
   @override
   String toString() {
@@ -119,7 +119,7 @@ class _$_GetPlaces implements _GetPlaces {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetPlaces);
+        (other.runtimeType == runtimeType && other is _$GetPlacesImpl);
   }
 
   @override
@@ -205,29 +205,29 @@ class _$_GetPlaces implements _GetPlaces {
 }
 
 abstract class _GetPlaces implements PlaceEvent {
-  const factory _GetPlaces() = _$_GetPlaces;
+  const factory _GetPlaces() = _$GetPlacesImpl;
 }
 
 /// @nodoc
-abstract class _$$_GetPlaceCopyWith<$Res> {
-  factory _$$_GetPlaceCopyWith(
-          _$_GetPlace value, $Res Function(_$_GetPlace) then) =
-      __$$_GetPlaceCopyWithImpl<$Res>;
+abstract class _$$GetPlaceImplCopyWith<$Res> {
+  factory _$$GetPlaceImplCopyWith(
+          _$GetPlaceImpl value, $Res Function(_$GetPlaceImpl) then) =
+      __$$GetPlaceImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GetPlaceCopyWithImpl<$Res>
-    extends _$PlaceEventCopyWithImpl<$Res, _$_GetPlace>
-    implements _$$_GetPlaceCopyWith<$Res> {
-  __$$_GetPlaceCopyWithImpl(
-      _$_GetPlace _value, $Res Function(_$_GetPlace) _then)
+class __$$GetPlaceImplCopyWithImpl<$Res>
+    extends _$PlaceEventCopyWithImpl<$Res, _$GetPlaceImpl>
+    implements _$$GetPlaceImplCopyWith<$Res> {
+  __$$GetPlaceImplCopyWithImpl(
+      _$GetPlaceImpl _value, $Res Function(_$GetPlaceImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GetPlace implements _GetPlace {
-  const _$_GetPlace();
+class _$GetPlaceImpl implements _GetPlace {
+  const _$GetPlaceImpl();
 
   @override
   String toString() {
@@ -237,7 +237,7 @@ class _$_GetPlace implements _GetPlace {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetPlace);
+        (other.runtimeType == runtimeType && other is _$GetPlaceImpl);
   }
 
   @override
@@ -323,14 +323,14 @@ class _$_GetPlace implements _GetPlace {
 }
 
 abstract class _GetPlace implements PlaceEvent {
-  const factory _GetPlace() = _$_GetPlace;
+  const factory _GetPlace() = _$GetPlaceImpl;
 }
 
 /// @nodoc
-abstract class _$$_CreateBoundaryCopyWith<$Res> {
-  factory _$$_CreateBoundaryCopyWith(
-          _$_CreateBoundary value, $Res Function(_$_CreateBoundary) then) =
-      __$$_CreateBoundaryCopyWithImpl<$Res>;
+abstract class _$$CreateBoundaryImplCopyWith<$Res> {
+  factory _$$CreateBoundaryImplCopyWith(_$CreateBoundaryImpl value,
+          $Res Function(_$CreateBoundaryImpl) then) =
+      __$$CreateBoundaryImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {int placeId,
@@ -341,11 +341,11 @@ abstract class _$$_CreateBoundaryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CreateBoundaryCopyWithImpl<$Res>
-    extends _$PlaceEventCopyWithImpl<$Res, _$_CreateBoundary>
-    implements _$$_CreateBoundaryCopyWith<$Res> {
-  __$$_CreateBoundaryCopyWithImpl(
-      _$_CreateBoundary _value, $Res Function(_$_CreateBoundary) _then)
+class __$$CreateBoundaryImplCopyWithImpl<$Res>
+    extends _$PlaceEventCopyWithImpl<$Res, _$CreateBoundaryImpl>
+    implements _$$CreateBoundaryImplCopyWith<$Res> {
+  __$$CreateBoundaryImplCopyWithImpl(
+      _$CreateBoundaryImpl _value, $Res Function(_$CreateBoundaryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -357,7 +357,7 @@ class __$$_CreateBoundaryCopyWithImpl<$Res>
     Object? boundaryStatus = null,
     Object? polygon = null,
   }) {
-    return _then(_$_CreateBoundary(
+    return _then(_$CreateBoundaryImpl(
       null == placeId
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
@@ -384,8 +384,8 @@ class __$$_CreateBoundaryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CreateBoundary implements _CreateBoundary {
-  const _$_CreateBoundary(this.placeId, this.name, this.boundaryType,
+class _$CreateBoundaryImpl implements _CreateBoundary {
+  const _$CreateBoundaryImpl(this.placeId, this.name, this.boundaryType,
       this.boundaryStatus, final List<List<double>> polygon)
       : _polygon = polygon;
 
@@ -414,7 +414,7 @@ class _$_CreateBoundary implements _CreateBoundary {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateBoundary &&
+            other is _$CreateBoundaryImpl &&
             (identical(other.placeId, placeId) || other.placeId == placeId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.boundaryType, boundaryType) ||
@@ -431,8 +431,9 @@ class _$_CreateBoundary implements _CreateBoundary {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateBoundaryCopyWith<_$_CreateBoundary> get copyWith =>
-      __$$_CreateBoundaryCopyWithImpl<_$_CreateBoundary>(this, _$identity);
+  _$$CreateBoundaryImplCopyWith<_$CreateBoundaryImpl> get copyWith =>
+      __$$CreateBoundaryImplCopyWithImpl<_$CreateBoundaryImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -521,7 +522,7 @@ abstract class _CreateBoundary implements PlaceEvent {
       final String name,
       final BoundaryType boundaryType,
       final BoundaryStatus boundaryStatus,
-      final List<List<double>> polygon) = _$_CreateBoundary;
+      final List<List<double>> polygon) = _$CreateBoundaryImpl;
 
   int get placeId;
   String get name;
@@ -529,7 +530,7 @@ abstract class _CreateBoundary implements PlaceEvent {
   BoundaryStatus get boundaryStatus;
   List<List<double>> get polygon;
   @JsonKey(ignore: true)
-  _$$_CreateBoundaryCopyWith<_$_CreateBoundary> get copyWith =>
+  _$$CreateBoundaryImplCopyWith<_$CreateBoundaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -582,22 +583,22 @@ class _$PlaceStateCopyWithImpl<$Res, $Val extends PlaceState>
 }
 
 /// @nodoc
-abstract class _$$_PlaceStateCopyWith<$Res>
+abstract class _$$PlaceStateImplCopyWith<$Res>
     implements $PlaceStateCopyWith<$Res> {
-  factory _$$_PlaceStateCopyWith(
-          _$_PlaceState value, $Res Function(_$_PlaceState) then) =
-      __$$_PlaceStateCopyWithImpl<$Res>;
+  factory _$$PlaceStateImplCopyWith(
+          _$PlaceStateImpl value, $Res Function(_$PlaceStateImpl) then) =
+      __$$PlaceStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({PlaceStatus status, List<Place> places});
 }
 
 /// @nodoc
-class __$$_PlaceStateCopyWithImpl<$Res>
-    extends _$PlaceStateCopyWithImpl<$Res, _$_PlaceState>
-    implements _$$_PlaceStateCopyWith<$Res> {
-  __$$_PlaceStateCopyWithImpl(
-      _$_PlaceState _value, $Res Function(_$_PlaceState) _then)
+class __$$PlaceStateImplCopyWithImpl<$Res>
+    extends _$PlaceStateCopyWithImpl<$Res, _$PlaceStateImpl>
+    implements _$$PlaceStateImplCopyWith<$Res> {
+  __$$PlaceStateImplCopyWithImpl(
+      _$PlaceStateImpl _value, $Res Function(_$PlaceStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -606,7 +607,7 @@ class __$$_PlaceStateCopyWithImpl<$Res>
     Object? status = null,
     Object? places = null,
   }) {
-    return _then(_$_PlaceState(
+    return _then(_$PlaceStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -621,8 +622,9 @@ class __$$_PlaceStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlaceState implements _PlaceState {
-  const _$_PlaceState({required this.status, required final List<Place> places})
+class _$PlaceStateImpl implements _PlaceState {
+  const _$PlaceStateImpl(
+      {required this.status, required final List<Place> places})
       : _places = places;
 
   @override
@@ -644,7 +646,7 @@ class _$_PlaceState implements _PlaceState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlaceState &&
+            other is _$PlaceStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._places, _places));
   }
@@ -656,14 +658,14 @@ class _$_PlaceState implements _PlaceState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlaceStateCopyWith<_$_PlaceState> get copyWith =>
-      __$$_PlaceStateCopyWithImpl<_$_PlaceState>(this, _$identity);
+  _$$PlaceStateImplCopyWith<_$PlaceStateImpl> get copyWith =>
+      __$$PlaceStateImplCopyWithImpl<_$PlaceStateImpl>(this, _$identity);
 }
 
 abstract class _PlaceState implements PlaceState {
   const factory _PlaceState(
       {required final PlaceStatus status,
-      required final List<Place> places}) = _$_PlaceState;
+      required final List<Place> places}) = _$PlaceStateImpl;
 
   @override
   PlaceStatus get status;
@@ -671,6 +673,6 @@ abstract class _PlaceState implements PlaceState {
   List<Place> get places;
   @override
   @JsonKey(ignore: true)
-  _$$_PlaceStateCopyWith<_$_PlaceState> get copyWith =>
+  _$$PlaceStateImplCopyWith<_$PlaceStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

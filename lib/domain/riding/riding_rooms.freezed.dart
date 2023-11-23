@@ -63,22 +63,22 @@ class _$RidingRoomsCopyWithImpl<$Res, $Val extends RidingRooms>
 }
 
 /// @nodoc
-abstract class _$$_RidingRoomsCopyWith<$Res>
+abstract class _$$RidingRoomsImplCopyWith<$Res>
     implements $RidingRoomsCopyWith<$Res> {
-  factory _$$_RidingRoomsCopyWith(
-          _$_RidingRooms value, $Res Function(_$_RidingRooms) then) =
-      __$$_RidingRoomsCopyWithImpl<$Res>;
+  factory _$$RidingRoomsImplCopyWith(
+          _$RidingRoomsImpl value, $Res Function(_$RidingRoomsImpl) then) =
+      __$$RidingRoomsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ListVO<RidingRoom> ridingRooms, IntVO count});
 }
 
 /// @nodoc
-class __$$_RidingRoomsCopyWithImpl<$Res>
-    extends _$RidingRoomsCopyWithImpl<$Res, _$_RidingRooms>
-    implements _$$_RidingRoomsCopyWith<$Res> {
-  __$$_RidingRoomsCopyWithImpl(
-      _$_RidingRooms _value, $Res Function(_$_RidingRooms) _then)
+class __$$RidingRoomsImplCopyWithImpl<$Res>
+    extends _$RidingRoomsCopyWithImpl<$Res, _$RidingRoomsImpl>
+    implements _$$RidingRoomsImplCopyWith<$Res> {
+  __$$RidingRoomsImplCopyWithImpl(
+      _$RidingRoomsImpl _value, $Res Function(_$RidingRoomsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_RidingRoomsCopyWithImpl<$Res>
     Object? ridingRooms = null,
     Object? count = null,
   }) {
-    return _then(_$_RidingRooms(
+    return _then(_$RidingRoomsImpl(
       ridingRooms: null == ridingRooms
           ? _value.ridingRooms
           : ridingRooms // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_RidingRoomsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RidingRooms extends _RidingRooms {
-  const _$_RidingRooms({required this.ridingRooms, required this.count})
+class _$RidingRoomsImpl extends _RidingRooms {
+  const _$RidingRoomsImpl({required this.ridingRooms, required this.count})
       : super._();
 
   @override
@@ -120,7 +120,7 @@ class _$_RidingRooms extends _RidingRooms {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RidingRooms &&
+            other is _$RidingRoomsImpl &&
             (identical(other.ridingRooms, ridingRooms) ||
                 other.ridingRooms == ridingRooms) &&
             (identical(other.count, count) || other.count == count));
@@ -132,14 +132,14 @@ class _$_RidingRooms extends _RidingRooms {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RidingRoomsCopyWith<_$_RidingRooms> get copyWith =>
-      __$$_RidingRoomsCopyWithImpl<_$_RidingRooms>(this, _$identity);
+  _$$RidingRoomsImplCopyWith<_$RidingRoomsImpl> get copyWith =>
+      __$$RidingRoomsImplCopyWithImpl<_$RidingRoomsImpl>(this, _$identity);
 }
 
 abstract class _RidingRooms extends RidingRooms {
   const factory _RidingRooms(
       {required final ListVO<RidingRoom> ridingRooms,
-      required final IntVO count}) = _$_RidingRooms;
+      required final IntVO count}) = _$RidingRoomsImpl;
   const _RidingRooms._() : super._();
 
   @override
@@ -148,6 +148,6 @@ abstract class _RidingRooms extends RidingRooms {
   IntVO get count;
   @override
   @JsonKey(ignore: true)
-  _$$_RidingRoomsCopyWith<_$_RidingRooms> get copyWith =>
+  _$$RidingRoomsImplCopyWith<_$RidingRoomsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
