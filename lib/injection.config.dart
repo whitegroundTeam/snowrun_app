@@ -14,24 +14,24 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i5;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/auth/auth_bloc.dart' as _i34;
-import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i31;
-import 'application/auth/sign_up_form/sign_up_form_bloc.dart' as _i32;
+import 'application/auth/auth_bloc.dart' as _i35;
+import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i32;
+import 'application/auth/sign_up_form/sign_up_form_bloc.dart' as _i33;
 import 'application/home/refresh/home_refresh_bloc.dart' as _i7;
 import 'application/location/location_bloc.dart' as _i24;
 import 'application/permission/check_permission/check_permission_bloc.dart'
     as _i12;
 import 'application/permission/permission_actor/permission_actor_bloc.dart'
     as _i8;
-import 'application/place/place_bloc.dart' as _i25;
-import 'application/profile/profile_bloc.dart' as _i26;
-import 'application/riding/riding_actor/riding_actor_bloc.dart' as _i27;
+import 'application/place/place_bloc.dart' as _i26;
+import 'application/profile/profile_bloc.dart' as _i27;
+import 'application/riding/riding_actor/riding_actor_bloc.dart' as _i28;
 import 'application/riding/riding_controller/riding_controller_bloc.dart'
     as _i9;
-import 'application/riding/riding_detail/riding_detail_bloc.dart' as _i28;
-import 'application/riding/riding_form/riding_form_bloc.dart' as _i29;
-import 'application/riding/riding_list/riding_list_bloc.dart' as _i30;
-import 'application/user/user_bloc.dart' as _i33;
+import 'application/riding/riding_detail/riding_detail_bloc.dart' as _i29;
+import 'application/riding/riding_form/riding_form_bloc.dart' as _i30;
+import 'application/riding/riding_list/riding_list_bloc.dart' as _i31;
+import 'application/user/user_bloc.dart' as _i34;
 import 'domain/auth/i_auth_repository.dart' as _i14;
 import 'domain/location/i_location_repository.dart' as _i16;
 import 'domain/place/i_place_repository.dart' as _i18;
@@ -46,7 +46,8 @@ import 'infrastructure/place/place_repository.dart' as _i19;
 import 'infrastructure/riding/riding_repository.dart' as _i21;
 import 'infrastructure/user/user_repository.dart' as _i23;
 import 'presentation/core/toast/toast_bloc.dart' as _i10;
-import 'utils/injectable_module.dart' as _i35;
+import 'presentation/riding/map_marker_click_listener.dart' as _i25;
+import 'utils/injectable_module.dart' as _i36;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt $initGetIt(
@@ -91,24 +92,26 @@ _i1.GetIt $initGetIt(
       () => _i23.UserRepository(gh<_i13.CoreApi>()));
   gh.factory<_i24.LocationBloc>(
       () => _i24.LocationBloc(gh<_i16.ILocationRepository>()));
-  gh.factory<_i25.PlaceBloc>(() => _i25.PlaceBloc(gh<_i18.IPlaceRepository>()));
-  gh.factory<_i26.ProfileBloc>(
-      () => _i26.ProfileBloc(gh<_i22.IUserRepository>()));
-  gh.factory<_i27.RidingActorBloc>(
-      () => _i27.RidingActorBloc(gh<_i20.IRidingRepository>()));
-  gh.factory<_i28.RidingDetailBloc>(
-      () => _i28.RidingDetailBloc(gh<_i20.IRidingRepository>()));
-  gh.factory<_i29.RidingFormBloc>(
-      () => _i29.RidingFormBloc(gh<_i20.IRidingRepository>()));
-  gh.factory<_i30.RidingListBloc>(
-      () => _i30.RidingListBloc(gh<_i20.IRidingRepository>()));
-  gh.factory<_i31.SignInFormBloc>(
-      () => _i31.SignInFormBloc(gh<_i14.IAuthRepository>()));
-  gh.factory<_i32.SignUpFormBloc>(
-      () => _i32.SignUpFormBloc(gh<_i14.IAuthRepository>()));
-  gh.factory<_i33.UserBloc>(() => _i33.UserBloc(gh<_i22.IUserRepository>()));
-  gh.factory<_i34.AuthBloc>(() => _i34.AuthBloc(gh<_i14.IAuthRepository>()));
+  gh.factory<_i25.MapMarkerClickListener>(
+      () => _i25.MapMarkerClickListener(gh<_i9.RidingControllerBloc>()));
+  gh.factory<_i26.PlaceBloc>(() => _i26.PlaceBloc(gh<_i18.IPlaceRepository>()));
+  gh.factory<_i27.ProfileBloc>(
+      () => _i27.ProfileBloc(gh<_i22.IUserRepository>()));
+  gh.factory<_i28.RidingActorBloc>(
+      () => _i28.RidingActorBloc(gh<_i20.IRidingRepository>()));
+  gh.factory<_i29.RidingDetailBloc>(
+      () => _i29.RidingDetailBloc(gh<_i20.IRidingRepository>()));
+  gh.factory<_i30.RidingFormBloc>(
+      () => _i30.RidingFormBloc(gh<_i20.IRidingRepository>()));
+  gh.factory<_i31.RidingListBloc>(
+      () => _i31.RidingListBloc(gh<_i20.IRidingRepository>()));
+  gh.factory<_i32.SignInFormBloc>(
+      () => _i32.SignInFormBloc(gh<_i14.IAuthRepository>()));
+  gh.factory<_i33.SignUpFormBloc>(
+      () => _i33.SignUpFormBloc(gh<_i14.IAuthRepository>()));
+  gh.factory<_i34.UserBloc>(() => _i34.UserBloc(gh<_i22.IUserRepository>()));
+  gh.factory<_i35.AuthBloc>(() => _i35.AuthBloc(gh<_i14.IAuthRepository>()));
   return getIt;
 }
 
-class _$InjectableModule extends _i35.InjectableModule {}
+class _$InjectableModule extends _i36.InjectableModule {}

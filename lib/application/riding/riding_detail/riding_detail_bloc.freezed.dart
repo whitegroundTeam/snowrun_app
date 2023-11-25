@@ -224,6 +224,7 @@ abstract class _GetRidingRoom implements RidingDetailEvent {
 mixin _$RidingDetailState {
   DefaultStatus get status => throw _privateConstructorUsedError;
   RidingRoom? get ridingRoom => throw _privateConstructorUsedError;
+  RidingPlayer? get selectedRidingPlayer => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RidingDetailStateCopyWith<RidingDetailState> get copyWith =>
@@ -236,9 +237,13 @@ abstract class $RidingDetailStateCopyWith<$Res> {
           RidingDetailState value, $Res Function(RidingDetailState) then) =
       _$RidingDetailStateCopyWithImpl<$Res, RidingDetailState>;
   @useResult
-  $Res call({DefaultStatus status, RidingRoom? ridingRoom});
+  $Res call(
+      {DefaultStatus status,
+      RidingRoom? ridingRoom,
+      RidingPlayer? selectedRidingPlayer});
 
   $RidingRoomCopyWith<$Res>? get ridingRoom;
+  $RidingPlayerCopyWith<$Res>? get selectedRidingPlayer;
 }
 
 /// @nodoc
@@ -256,6 +261,7 @@ class _$RidingDetailStateCopyWithImpl<$Res, $Val extends RidingDetailState>
   $Res call({
     Object? status = null,
     Object? ridingRoom = freezed,
+    Object? selectedRidingPlayer = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -266,6 +272,10 @@ class _$RidingDetailStateCopyWithImpl<$Res, $Val extends RidingDetailState>
           ? _value.ridingRoom
           : ridingRoom // ignore: cast_nullable_to_non_nullable
               as RidingRoom?,
+      selectedRidingPlayer: freezed == selectedRidingPlayer
+          ? _value.selectedRidingPlayer
+          : selectedRidingPlayer // ignore: cast_nullable_to_non_nullable
+              as RidingPlayer?,
     ) as $Val);
   }
 
@@ -280,6 +290,18 @@ class _$RidingDetailStateCopyWithImpl<$Res, $Val extends RidingDetailState>
       return _then(_value.copyWith(ridingRoom: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RidingPlayerCopyWith<$Res>? get selectedRidingPlayer {
+    if (_value.selectedRidingPlayer == null) {
+      return null;
+    }
+
+    return $RidingPlayerCopyWith<$Res>(_value.selectedRidingPlayer!, (value) {
+      return _then(_value.copyWith(selectedRidingPlayer: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -290,10 +312,15 @@ abstract class _$$RidingDetailStateImplCopyWith<$Res>
       __$$RidingDetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DefaultStatus status, RidingRoom? ridingRoom});
+  $Res call(
+      {DefaultStatus status,
+      RidingRoom? ridingRoom,
+      RidingPlayer? selectedRidingPlayer});
 
   @override
   $RidingRoomCopyWith<$Res>? get ridingRoom;
+  @override
+  $RidingPlayerCopyWith<$Res>? get selectedRidingPlayer;
 }
 
 /// @nodoc
@@ -309,6 +336,7 @@ class __$$RidingDetailStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? ridingRoom = freezed,
+    Object? selectedRidingPlayer = freezed,
   }) {
     return _then(_$RidingDetailStateImpl(
       status: null == status
@@ -319,6 +347,10 @@ class __$$RidingDetailStateImplCopyWithImpl<$Res>
           ? _value.ridingRoom
           : ridingRoom // ignore: cast_nullable_to_non_nullable
               as RidingRoom?,
+      selectedRidingPlayer: freezed == selectedRidingPlayer
+          ? _value.selectedRidingPlayer
+          : selectedRidingPlayer // ignore: cast_nullable_to_non_nullable
+              as RidingPlayer?,
     ));
   }
 }
@@ -326,16 +358,19 @@ class __$$RidingDetailStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RidingDetailStateImpl implements _RidingDetailState {
-  const _$RidingDetailStateImpl({required this.status, this.ridingRoom});
+  const _$RidingDetailStateImpl(
+      {required this.status, this.ridingRoom, this.selectedRidingPlayer});
 
   @override
   final DefaultStatus status;
   @override
   final RidingRoom? ridingRoom;
+  @override
+  final RidingPlayer? selectedRidingPlayer;
 
   @override
   String toString() {
-    return 'RidingDetailState(status: $status, ridingRoom: $ridingRoom)';
+    return 'RidingDetailState(status: $status, ridingRoom: $ridingRoom, selectedRidingPlayer: $selectedRidingPlayer)';
   }
 
   @override
@@ -345,11 +380,14 @@ class _$RidingDetailStateImpl implements _RidingDetailState {
             other is _$RidingDetailStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.ridingRoom, ridingRoom) ||
-                other.ridingRoom == ridingRoom));
+                other.ridingRoom == ridingRoom) &&
+            (identical(other.selectedRidingPlayer, selectedRidingPlayer) ||
+                other.selectedRidingPlayer == selectedRidingPlayer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, ridingRoom);
+  int get hashCode =>
+      Object.hash(runtimeType, status, ridingRoom, selectedRidingPlayer);
 
   @JsonKey(ignore: true)
   @override
@@ -362,12 +400,15 @@ class _$RidingDetailStateImpl implements _RidingDetailState {
 abstract class _RidingDetailState implements RidingDetailState {
   const factory _RidingDetailState(
       {required final DefaultStatus status,
-      final RidingRoom? ridingRoom}) = _$RidingDetailStateImpl;
+      final RidingRoom? ridingRoom,
+      final RidingPlayer? selectedRidingPlayer}) = _$RidingDetailStateImpl;
 
   @override
   DefaultStatus get status;
   @override
   RidingRoom? get ridingRoom;
+  @override
+  RidingPlayer? get selectedRidingPlayer;
   @override
   @JsonKey(ignore: true)
   _$$RidingDetailStateImplCopyWith<_$RidingDetailStateImpl> get copyWith =>

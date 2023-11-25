@@ -84,15 +84,15 @@ class HomePageState extends State<HomePage> {
           },
         ),
       ],
-      child: WillPopScope(
-        onWillPop: () {
-          // return showWarningDialog(
-          //     description: '', context: context, title: '앱을 종료하시겠어요?')
-          //     .then((value) {
-          //   return Future.value(value);
-          // });
-          return Future.value(true);
-        },
+      child: PopScope(
+        // onWillPop: () {
+        //   // return showWarningDialog(
+        //   //     description: '', context: context, title: '앱을 종료하시겠어요?')
+        //   //     .then((value) {
+        //   //   return Future.value(value);
+        //   // });
+        //   return Future.value(true);
+        // },
         child: BlocBuilder<AuthBloc, AuthState>(
           bloc: context.read<AuthBloc>(),
           builder: (context, authState) {

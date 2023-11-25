@@ -384,7 +384,6 @@ void showCommonBottomSheet(
 
     // /// 바텀시트 드래그 가능 여부
     enableDrag: canCloseBottomSheet,
-    //
     // /// 바텀시트가 아닌 부분을 클릭했을 때
     // /// 바텀시트를 닫을지 말지 설정
     isDismissible: canCloseBottomSheet,

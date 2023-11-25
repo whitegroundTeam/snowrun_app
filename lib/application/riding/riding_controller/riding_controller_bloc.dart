@@ -11,8 +11,8 @@ part 'riding_controller_bloc.freezed.dart';
 @injectable
 class RidingControllerBloc extends Bloc<RidingControllerEvent, RidingControllerState> {
   RidingControllerBloc() : super(RidingControllerState.initial()) {
-
+    on<_SelectMarker>((event, emit) async {
+            emit(state.copyWith(selectedMarkerSymbolId: event.selectedMarkerSymbolId));
+          });
   }
-
-  //TODO : state에 riding 상태랑, 전체 대비 scroll 비율, selected된 player 넣자
 }
