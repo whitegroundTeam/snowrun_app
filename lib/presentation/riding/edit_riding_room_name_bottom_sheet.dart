@@ -1,7 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
+import 'package:snowrun_app/application/riding/riding_form/riding_form_bloc.dart';
 import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/formatters.dart';
@@ -9,8 +12,10 @@ import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/utils.dart';
 
 class EditRidingRoomNameBottomSheet extends StatefulWidget {
+  final Function(String)? onClickPositiveButton;
   const EditRidingRoomNameBottomSheet({
     super.key,
+    this.onClickPositiveButton,
   });
 
   @override
@@ -180,8 +185,7 @@ class EditRidingRoomNameBottomSheetState
                       Expanded(
                         child: CommonDetector(
                           onTap: () {
-                            //TODO : 수정하기 요청 후 성공/실패 여부 체크
-                            // context.pop();
+                            widget.onClickPositiveButton?.call(linkTextController.text);
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -249,11 +253,12 @@ class EditRidingRoomNameBottomSheetState
 
 void showEditRidingRoomNameBottomSheet(
   BuildContext context,
+    Function(String)? onClickPositiveButton,
 ) {
   showModalBottomSheet(
     context: context,
     builder: (context) {
-      return const EditRidingRoomNameBottomSheet();
+      return EditRidingRoomNameBottomSheet(onClickPositiveButton: onClickPositiveButton,);
     },
     elevation: 50,
 

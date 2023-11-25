@@ -7,26 +7,33 @@ import 'package:snowrun_app/domain/riding/riding_player.dart';
 import 'package:snowrun_app/domain/riding/riding_room.dart';
 
 part 'riding_detail_event.dart';
+
 part 'riding_detail_state.dart';
+
 part 'riding_detail_bloc.freezed.dart';
 
 @injectable
 class RidingDetailBloc extends Bloc<RidingDetailEvent, RidingDetailState> {
   final IRidingRepository _ridingRepository;
 
-  RidingDetailBloc(this._ridingRepository) : super(RidingDetailState.initial()) {
+  RidingDetailBloc(this._ridingRepository)
+      : super(RidingDetailState.initial()) {
     on<_GetRidingRoom>((event, emit) async {
-            emit(state.copyWith(status: DefaultStatus.progress));
-            final failureOrResponse = await _ridingRepository.getRidingRoom(event.ridingRoomId);
-            emit(
-              failureOrResponse.fold(
-                (f) => state.copyWith(status: DefaultStatus.failure),
-                (ridingRoom) => state.copyWith(
-                  status: DefaultStatus.success,
-                  ridingRoom: ridingRoom,
-                ),
-              ),
-            );
-          });
+      emit(state.copyWith(status: DefaultStatus.progress));
+      final failureOrResponse =
+          await _ridingRepository.getRidingRoom(event.ridingRoomId);
+      emit(
+        failureOrResponse.fold(
+          (f) => state.copyWith(status: DefaultStatus.failure),
+          (ridingRoom) => state.copyWith(
+            status: DefaultStatus.success,
+            ridingRoom: ridingRoom,
+          ),
+        ),
+      );
+    });
+    on<_UpdateRidingRoom>((event, emit) {
+      emit(state.copyWith(ridingRoom: event.ridingRoom));
+    });
   }
 }

@@ -47,8 +47,6 @@ class RidingRepository implements IRidingRepository {
     if (response.statusCode < 200 || response.statusCode >= 300) {
       return left(const RidingFailure.unexpected());
     }
-    final infoJson =
-        json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
     return right(unit);
   }
 
@@ -60,8 +58,6 @@ class RidingRepository implements IRidingRepository {
     if (response.statusCode < 200 || response.statusCode >= 300) {
       return left(const RidingFailure.unexpected());
     }
-    final infoJson =
-        json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
     return right(unit);
   }
 

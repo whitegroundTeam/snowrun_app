@@ -14,20 +14,18 @@ class RidingFormBloc extends Bloc<RidingFormEvent, RidingFormState> {
   final IRidingRepository _ridingRepository;
 
   RidingFormBloc(this._ridingRepository) : super(RidingFormState.initial()) {
-    on<RidingFormEvent>((event, emit) {
-      on<_UpdateRidingRoomName>((event, emit) async {
-              emit(state.copyWith(status: DefaultStatus.progress));
-              final failureOrResponse = await _ridingRepository.updateRidingRoomName(event.ridingRoomId, event.name);
-              emit(
-                failureOrResponse.fold(
-                  (f) => state.copyWith(status: DefaultStatus.failure),
-                  (updatedRidingRoom) => state.copyWith(
-                    status: DefaultStatus.success,
-                    updatedRidingRoom: updatedRidingRoom,
-                  ),
-                ),
-              );
-            });
+    on<_UpdateRidingRoomName>((event, emit) async {
+      emit(state.copyWith(status: DefaultStatus.progress));
+      final failureOrResponse = await _ridingRepository.updateRidingRoomName(event.ridingRoomId, event.name);
+      emit(
+        failureOrResponse.fold(
+              (f) => state.copyWith(status: DefaultStatus.failure),
+              (updatedRidingRoom) => state.copyWith(
+            status: DefaultStatus.success,
+            updatedRidingRoom: updatedRidingRoom,
+          ),
+        ),
+      );
     });
   }
 }

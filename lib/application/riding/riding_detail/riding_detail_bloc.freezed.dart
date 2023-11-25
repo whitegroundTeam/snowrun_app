@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RidingDetailEvent {
-  int get ridingRoomId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int ridingRoomId) getRidingRoom,
+    required TResult Function(RidingRoom ridingRoom) updateRidingRoom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int ridingRoomId)? getRidingRoom,
+    TResult? Function(RidingRoom ridingRoom)? updateRidingRoom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int ridingRoomId)? getRidingRoom,
+    TResult Function(RidingRoom ridingRoom)? updateRidingRoom,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetRidingRoom value) getRidingRoom,
+    required TResult Function(_UpdateRidingRoom value) updateRidingRoom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetRidingRoom value)? getRidingRoom,
+    TResult? Function(_UpdateRidingRoom value)? updateRidingRoom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetRidingRoom value)? getRidingRoom,
+    TResult Function(_UpdateRidingRoom value)? updateRidingRoom,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $RidingDetailEventCopyWith<RidingDetailEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $RidingDetailEventCopyWith<$Res> {
   factory $RidingDetailEventCopyWith(
           RidingDetailEvent value, $Res Function(RidingDetailEvent) then) =
       _$RidingDetailEventCopyWithImpl<$Res, RidingDetailEvent>;
-  @useResult
-  $Res call({int ridingRoomId});
 }
 
 /// @nodoc
@@ -73,28 +72,13 @@ class _$RidingDetailEventCopyWithImpl<$Res, $Val extends RidingDetailEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ridingRoomId = null,
-  }) {
-    return _then(_value.copyWith(
-      ridingRoomId: null == ridingRoomId
-          ? _value.ridingRoomId
-          : ridingRoomId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetRidingRoomImplCopyWith<$Res>
-    implements $RidingDetailEventCopyWith<$Res> {
+abstract class _$$GetRidingRoomImplCopyWith<$Res> {
   factory _$$GetRidingRoomImplCopyWith(
           _$GetRidingRoomImpl value, $Res Function(_$GetRidingRoomImpl) then) =
       __$$GetRidingRoomImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int ridingRoomId});
 }
@@ -156,6 +140,7 @@ class _$GetRidingRoomImpl implements _GetRidingRoom {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int ridingRoomId) getRidingRoom,
+    required TResult Function(RidingRoom ridingRoom) updateRidingRoom,
   }) {
     return getRidingRoom(ridingRoomId);
   }
@@ -164,6 +149,7 @@ class _$GetRidingRoomImpl implements _GetRidingRoom {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int ridingRoomId)? getRidingRoom,
+    TResult? Function(RidingRoom ridingRoom)? updateRidingRoom,
   }) {
     return getRidingRoom?.call(ridingRoomId);
   }
@@ -172,6 +158,7 @@ class _$GetRidingRoomImpl implements _GetRidingRoom {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int ridingRoomId)? getRidingRoom,
+    TResult Function(RidingRoom ridingRoom)? updateRidingRoom,
     required TResult orElse(),
   }) {
     if (getRidingRoom != null) {
@@ -184,6 +171,7 @@ class _$GetRidingRoomImpl implements _GetRidingRoom {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetRidingRoom value) getRidingRoom,
+    required TResult Function(_UpdateRidingRoom value) updateRidingRoom,
   }) {
     return getRidingRoom(this);
   }
@@ -192,6 +180,7 @@ class _$GetRidingRoomImpl implements _GetRidingRoom {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetRidingRoom value)? getRidingRoom,
+    TResult? Function(_UpdateRidingRoom value)? updateRidingRoom,
   }) {
     return getRidingRoom?.call(this);
   }
@@ -200,6 +189,7 @@ class _$GetRidingRoomImpl implements _GetRidingRoom {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetRidingRoom value)? getRidingRoom,
+    TResult Function(_UpdateRidingRoom value)? updateRidingRoom,
     required TResult orElse(),
   }) {
     if (getRidingRoom != null) {
@@ -212,11 +202,155 @@ class _$GetRidingRoomImpl implements _GetRidingRoom {
 abstract class _GetRidingRoom implements RidingDetailEvent {
   const factory _GetRidingRoom(final int ridingRoomId) = _$GetRidingRoomImpl;
 
-  @override
   int get ridingRoomId;
-  @override
   @JsonKey(ignore: true)
   _$$GetRidingRoomImplCopyWith<_$GetRidingRoomImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateRidingRoomImplCopyWith<$Res> {
+  factory _$$UpdateRidingRoomImplCopyWith(_$UpdateRidingRoomImpl value,
+          $Res Function(_$UpdateRidingRoomImpl) then) =
+      __$$UpdateRidingRoomImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RidingRoom ridingRoom});
+
+  $RidingRoomCopyWith<$Res> get ridingRoom;
+}
+
+/// @nodoc
+class __$$UpdateRidingRoomImplCopyWithImpl<$Res>
+    extends _$RidingDetailEventCopyWithImpl<$Res, _$UpdateRidingRoomImpl>
+    implements _$$UpdateRidingRoomImplCopyWith<$Res> {
+  __$$UpdateRidingRoomImplCopyWithImpl(_$UpdateRidingRoomImpl _value,
+      $Res Function(_$UpdateRidingRoomImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ridingRoom = null,
+  }) {
+    return _then(_$UpdateRidingRoomImpl(
+      null == ridingRoom
+          ? _value.ridingRoom
+          : ridingRoom // ignore: cast_nullable_to_non_nullable
+              as RidingRoom,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RidingRoomCopyWith<$Res> get ridingRoom {
+    return $RidingRoomCopyWith<$Res>(_value.ridingRoom, (value) {
+      return _then(_value.copyWith(ridingRoom: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateRidingRoomImpl implements _UpdateRidingRoom {
+  const _$UpdateRidingRoomImpl(this.ridingRoom);
+
+  @override
+  final RidingRoom ridingRoom;
+
+  @override
+  String toString() {
+    return 'RidingDetailEvent.updateRidingRoom(ridingRoom: $ridingRoom)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateRidingRoomImpl &&
+            (identical(other.ridingRoom, ridingRoom) ||
+                other.ridingRoom == ridingRoom));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ridingRoom);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateRidingRoomImplCopyWith<_$UpdateRidingRoomImpl> get copyWith =>
+      __$$UpdateRidingRoomImplCopyWithImpl<_$UpdateRidingRoomImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int ridingRoomId) getRidingRoom,
+    required TResult Function(RidingRoom ridingRoom) updateRidingRoom,
+  }) {
+    return updateRidingRoom(ridingRoom);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int ridingRoomId)? getRidingRoom,
+    TResult? Function(RidingRoom ridingRoom)? updateRidingRoom,
+  }) {
+    return updateRidingRoom?.call(ridingRoom);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int ridingRoomId)? getRidingRoom,
+    TResult Function(RidingRoom ridingRoom)? updateRidingRoom,
+    required TResult orElse(),
+  }) {
+    if (updateRidingRoom != null) {
+      return updateRidingRoom(ridingRoom);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetRidingRoom value) getRidingRoom,
+    required TResult Function(_UpdateRidingRoom value) updateRidingRoom,
+  }) {
+    return updateRidingRoom(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetRidingRoom value)? getRidingRoom,
+    TResult? Function(_UpdateRidingRoom value)? updateRidingRoom,
+  }) {
+    return updateRidingRoom?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetRidingRoom value)? getRidingRoom,
+    TResult Function(_UpdateRidingRoom value)? updateRidingRoom,
+    required TResult orElse(),
+  }) {
+    if (updateRidingRoom != null) {
+      return updateRidingRoom(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateRidingRoom implements RidingDetailEvent {
+  const factory _UpdateRidingRoom(final RidingRoom ridingRoom) =
+      _$UpdateRidingRoomImpl;
+
+  RidingRoom get ridingRoom;
+  @JsonKey(ignore: true)
+  _$$UpdateRidingRoomImplCopyWith<_$UpdateRidingRoomImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

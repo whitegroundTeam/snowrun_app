@@ -205,7 +205,7 @@ class CoreApi {
   Future<Response> updateRidingRoomName(int ridingRoomId,
           UpdateRidingRoomNameRequestDto updateRidingRoomNameRequestDto) =>
       _requestWrapper(
-        method: HttpMethod.post,
+        method: HttpMethod.put,
         path: "/riding-room/{room_id}/update-name/",
         pathParams: {'room_id': "$ridingRoomId"},
         bodyParam: updateRidingRoomNameRequestDto.toJson(),

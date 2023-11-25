@@ -90,7 +90,7 @@ class RidingPlayerDto with _$RidingPlayerDto {
       location: location?.toDomain() ?? UserLocation.empty(),
       locationUpdatedAt: DateTimeVO(locationUpdatedAt),
       profileImage: StringVO(profileImage),
-      isOwner: BooleanVO(false),
+      isOwner: BooleanVO(isOwner),
     );
   }
 
