@@ -47,10 +47,9 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/ridingDashboard',
       builder: (BuildContext context, GoRouterState state) {
-        // final Map<String, String> extra = state.extra as Map<String, String>;
-        // final String url = extra['url']!;
-        // final String? title = extra['title'];
-        return const RidingDashboardPage();
+        final Map<String, int> extra = state.extra as Map<String, int>;
+        final int ridingRoomId = extra['ridingRoomId'] ?? -1;
+        return RidingDashboardPage(ridingRoomId: ridingRoomId,);
       },
     ),
     GoRoute(

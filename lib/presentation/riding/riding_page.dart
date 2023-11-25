@@ -83,12 +83,10 @@ class RidingPageState extends State<RidingPage> {
       isIos = true;
     }
 
-    // _timer =
-    //     Timer.periodic(const Duration(seconds: 10), (Timer t) => _getUsers());
-
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      _addTestMarker();
-    });
+    // _timer = Timer.periodic(
+    //     const Duration(minutes: 1),
+    //     (Timer t) => _ridingDetailBloc
+    //         .add(RidingDetailEvent.getRidingRoom(widget.ridingRoomId)));
   }
 
   @override
@@ -156,12 +154,11 @@ class RidingPageState extends State<RidingPage> {
           },
         ),
       ],
-      child: BlocBuilder<RidingDetailBloc, RidingDetailState>(
-        builder: (context, state) {
-          String ridingRoomName = ridingRoom?.name.getOrCrash() ?? "";
-
-          return Scaffold(
-            body: Stack(
+      child: Scaffold(
+        body: BlocBuilder<RidingDetailBloc, RidingDetailState>(
+          builder: (context, state) {
+            String ridingRoomName = ridingRoom?.name.getOrCrash() ?? "";
+            return Stack(
               children: [
                 Positioned(
                   top: 0,
@@ -182,11 +179,9 @@ class RidingPageState extends State<RidingPage> {
                       zoom: 14,
                       center: mapbox.Point(
                         coordinates: mapbox.Position(
-                          selectedRidingPlayer?.location?.lng
-                                  .getOrCrash() ??
+                          selectedRidingPlayer?.location?.lng.getOrCrash() ??
                               128.6803521,
-                          selectedRidingPlayer?.location?.lat
-                                  .getOrCrash() ??
+                          selectedRidingPlayer?.location?.lat.getOrCrash() ??
                               37.6390034,
                         ),
                       ).toJson(),
@@ -205,8 +200,7 @@ class RidingPageState extends State<RidingPage> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: AppStyle.secondaryBackground
-                              .withOpacity(0.95),
+                          color: AppStyle.secondaryBackground.withOpacity(0.95),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         padding: const EdgeInsets.all(12),
@@ -247,8 +241,8 @@ class RidingPageState extends State<RidingPage> {
                                 ),
                                 CommonDetector(
                                   onTap: () {
-                                    RidingDashboardPage
-                                        .pushRidingDashboardPage(context);
+                                    RidingDashboardPage.pushRidingDashboardPage(
+                                        context, widget.ridingRoomId);
                                   },
                                   child: Center(
                                     child: Hero(
@@ -268,8 +262,8 @@ class RidingPageState extends State<RidingPage> {
                                 ),
                                 CommonDetector(
                                   onTap: () {
-                                    RidingDashboardPage
-                                        .pushRidingDashboardPage(context);
+                                    RidingDashboardPage.pushRidingDashboardPage(
+                                        context, widget.ridingRoomId);
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -287,13 +281,12 @@ class RidingPageState extends State<RidingPage> {
                                 const Spacer(),
                                 CommonDetector(
                                   onTap: () {
-                                    RidingDashboardPage
-                                        .pushRidingDashboardPage(context);
+                                    RidingDashboardPage.pushRidingDashboardPage(
+                                        context, widget.ridingRoomId);
                                   },
                                   child: PlayersCountsWidget(
                                     players:
-                                        ridingRoom?.players.getOrCrash() ??
-                                            [],
+                                        ridingRoom?.players.getOrCrash() ?? [],
                                     maxPlayersCount: ridingRoom?.players
                                             .getOrCrash()
                                             .length ??
@@ -313,8 +306,7 @@ class RidingPageState extends State<RidingPage> {
                             child: SizedBox(
                               height: bottomOfBottomAreaHeight,
                               child: Row(
-                                crossAxisAlignment:
-                                    CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   const SizedBox(
                                     width: 8,
@@ -339,16 +331,14 @@ class RidingPageState extends State<RidingPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         TitleText(
-                                          title: selectedRidingPlayer
-                                                  ?.nickname
+                                          title: selectedRidingPlayer?.nickname
                                                   .getOrCrash() ??
                                               "",
                                           fontSize: 20,
                                           color: AppStyle.white,
                                           fontWeight: FontWeight.w700,
                                           maxLine: 1,
-                                          textOverFlow:
-                                              TextOverflow.ellipsis,
+                                          textOverFlow: TextOverflow.ellipsis,
                                         ),
                                         const SizedBox(
                                           height: 2,
@@ -359,12 +349,10 @@ class RidingPageState extends State<RidingPage> {
                                                   ?.locationUpdatedAt
                                                   .getOrCrash()),
                                           fontSize: 16,
-                                          color:
-                                              AppStyle.secondaryTextColor,
+                                          color: AppStyle.secondaryTextColor,
                                           fontWeight: FontWeight.w500,
                                           maxLine: 1,
-                                          textOverFlow:
-                                              TextOverflow.ellipsis,
+                                          textOverFlow: TextOverflow.ellipsis,
                                         ),
                                       ],
                                     ),
@@ -389,8 +377,7 @@ class RidingPageState extends State<RidingPage> {
                                           Radius.circular(8)),
                                       boxShadow: [
                                         BoxShadow(
-                                          color:
-                                              Colors.black.withOpacity(0.2),
+                                          color: Colors.black.withOpacity(0.2),
                                           blurRadius: 15,
                                           offset: const Offset(0, 7),
                                         ),
@@ -464,9 +451,9 @@ class RidingPageState extends State<RidingPage> {
                   ),
                 ),
               ],
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
@@ -516,7 +503,8 @@ class RidingPageState extends State<RidingPage> {
       if (lat != null && lng != null) {
         pointAnnotationManager
             ?.create(mapbox.PointAnnotationOptions(
-                geometry: mapbox.Point(coordinates: mapbox.Position(lng, lat)).toJson(),
+                geometry: mapbox.Point(coordinates: mapbox.Position(lng, lat))
+                    .toJson(),
                 textField: ridingPlayer.nickname.getOrCrash(),
                 textSize: 14,
                 textColor: 0xff000000,
@@ -682,7 +670,7 @@ class RidingPageState extends State<RidingPage> {
   _setSelectedRidingPlayer(int? playerId, {int? isInit}) {
     setState(() {
       selectedRidingPlayer = ridingRoom?.players.getOrCrash().firstWhere(
-              (player) => player.id.getOrCrash().toInt() == playerId?.toInt());
+          (player) => player.id.getOrCrash().toInt() == playerId?.toInt());
     });
     mapboxMap?.setCamera(mapbox.CameraOptions(
       anchor: mapbox.ScreenCoordinate(x: 0, y: 0),
