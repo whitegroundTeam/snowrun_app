@@ -242,7 +242,12 @@ class RidingPageState extends State<RidingPage> {
                                 CommonDetector(
                                   onTap: () {
                                     RidingDashboardPage.pushRidingDashboardPage(
-                                        context, widget.ridingRoomId);
+                                        context, widget.ridingRoomId,
+                                        onResult: () {
+                                      _ridingDetailBloc.add(
+                                          RidingDetailEvent.getRidingRoom(
+                                              widget.ridingRoomId));
+                                    });
                                   },
                                   child: Center(
                                     child: Hero(
@@ -263,7 +268,12 @@ class RidingPageState extends State<RidingPage> {
                                 CommonDetector(
                                   onTap: () {
                                     RidingDashboardPage.pushRidingDashboardPage(
-                                        context, widget.ridingRoomId);
+                                        context, widget.ridingRoomId,
+                                        onResult: () {
+                                      _ridingDetailBloc.add(
+                                          RidingDetailEvent.getRidingRoom(
+                                              widget.ridingRoomId));
+                                    });
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -282,7 +292,12 @@ class RidingPageState extends State<RidingPage> {
                                 CommonDetector(
                                   onTap: () {
                                     RidingDashboardPage.pushRidingDashboardPage(
-                                        context, widget.ridingRoomId);
+                                        context, widget.ridingRoomId,
+                                        onResult: () {
+                                      _ridingDetailBloc.add(
+                                          RidingDetailEvent.getRidingRoom(
+                                              widget.ridingRoomId, ));
+                                    });
                                   },
                                   child: PlayersCountsWidget(
                                     players:
@@ -348,7 +363,7 @@ class RidingPageState extends State<RidingPage> {
                                               selectedRidingPlayer
                                                   ?.locationUpdatedAt
                                                   .getOrCrash()),
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           color: AppStyle.secondaryTextColor,
                                           fontWeight: FontWeight.w500,
                                           maxLine: 1,
@@ -513,8 +528,7 @@ class RidingPageState extends State<RidingPage> {
                 iconSize: isIos ? 0.05 : 0.1,
                 iconOffset: [0.0, -5.0],
                 symbolSortKey: ridingPlayer.id.getOrCrash().toDouble(),
-                image: avatarData))
-            .then((value) => pointAnnotation = value);
+                image: avatarData));
       }
     }
   }
@@ -577,7 +591,6 @@ class RidingPageState extends State<RidingPage> {
     // ByteData byteData = await image.toByteData(format: ui.ImageByteFormat.png);
     // Uint8List pngBytes = byteData.buffer.asUint8List();
     //
-    // debugPrint("WTWTWT :: $bytes");
     // pointAnnotationManager
     //     ?.create(PointAnnotationOptions(
     //     geometry: Point(coordinates: Position(lng, lat)).toJson(),

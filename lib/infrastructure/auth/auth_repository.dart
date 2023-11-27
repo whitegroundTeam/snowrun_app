@@ -47,11 +47,11 @@ class AuthRepository implements IAuthRepository {
       optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
-  Future<Option<auth_user.User>> me() async {
+  Future<Either<AuthFailure, auth_user.User>> me() async {
     final response = await _api.me();
 
     if (response.statusCode == 401) {
-      return none();
+      return left(const AuthFailure.serverError());
     }
 
     final jsonData =
@@ -67,7 +67,7 @@ class AuthRepository implements IAuthRepository {
       // FIXME : 로그 못보낸 문제 상황 처리해줄 것
     }
 
-    return some(user);
+    return right(user);
   }
 
   @override

@@ -9,6 +9,7 @@ import 'package:snowrun_app/application/permission/permission_actor/permission_a
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/common_button.dart';
 import 'package:snowrun_app/presentation/core/constants.dart';
+import 'package:snowrun_app/presentation/home/home_page.dart';
 
 class RequestLocationPermissionPage extends StatelessWidget {
   const RequestLocationPermissionPage({
@@ -127,9 +128,10 @@ class RequestLocationPermissionPage extends StatelessWidget {
       // context.push('/attPermission');
       context.pushReplacement('/attPermission');
     } else {
-      BlocProvider.of<CheckPermissionBloc>(context)
-          .add(const CheckPermissionEvent.checkInitialPermissions());
-      context.pop();
+      // BlocProvider.of<CheckPermissionBloc>(context)
+      //     .add(const CheckPermissionEvent.checkInitialPermissions());
+      // context.pop();
+      HomePage.goHomePage(context, needRefresh: true);
     }
   }
 }

@@ -6,6 +6,7 @@ import 'package:snowrun_app/application/permission/check_permission/check_permis
 import 'package:snowrun_app/application/permission/permission_actor/permission_actor_bloc.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/constants.dart';
+import 'package:snowrun_app/presentation/home/home_page.dart';
 
 class RequestAttPermissionPage extends StatelessWidget {
   const RequestAttPermissionPage({
@@ -29,9 +30,11 @@ class RequestAttPermissionPage extends StatelessWidget {
                 context
                     .read<PermissionActorBloc>()
                     .add(const PermissionActorEvent.permissionHandled());
-                BlocProvider.of<CheckPermissionBloc>(context)
-                    .add(const CheckPermissionEvent.checkInitialPermissions());
-                context.pop();
+                // BlocProvider.of<CheckPermissionBloc>(context)
+                //     .add(const CheckPermissionEvent.checkInitialPermissions());
+
+                // context.pop();
+                HomePage.goHomePage(context, needRefresh: true);
               },
               orElse: () {},
             );

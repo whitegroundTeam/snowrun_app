@@ -27,16 +27,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<_CheckAuth>((event, emit) async {
-      final meOption = await _authRepository.me();
-      meOption.fold(
-        () {
-          return emit(
-              state.copyWith(user: null, status: AuthStatus.unauthenticated));
-        },
-        (user) {
-          return emit(
-              state.copyWith(user: user, status: AuthStatus.authenticated));
-        },
+      emit(state.copyWith(status: AuthStatus.progress));
+      final failureOrResponse = await _authRepository.me();
+
+      emit(
+        failureOrResponse.fold(
+          (f) => state.copyWith(status: AuthStatus.unauthenticated),
+          (response) => state.copyWith(
+            status: AuthStatus.authenticated,
+            user: response,
+          ),
+        ),
       );
     });
   }

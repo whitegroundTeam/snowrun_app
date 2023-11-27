@@ -64,19 +64,15 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
     final isEmailValid = state.emailAddress.isValid();
     final isPasswordValid = state.password.isValid();
-    debugPrint("WTWTWT :: HOHOHO 333");
     if (isEmailValid && isPasswordValid) {
-      debugPrint("WTWTWT :: HOHOHO 444-0");
       emit(state.copyWith(
         isSubmitting: true,
         authFailureOrSuccessOption: none(),
       ));
-      debugPrint("WTWTWT :: HOHOHO 444-1");
       failureOrSuccess = await forwardedCall(
         emailAddress: state.emailAddress,
         password: state.password,
       );
-      debugPrint("WTWTWT :: HOHOHO 444-2");
       // FIXME : GA failureOrSuccess.fold((f) => null, (_) => Global.analytics.logLogin());
       emit(state.copyWith(
         isSubmitting: false,
@@ -84,7 +80,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       ));
     }
 
-    debugPrint("WTWTWT :: HOHOHO 555");
     emit(state.copyWith(
       isSubmitting: false,
       showErrorMessages: true,

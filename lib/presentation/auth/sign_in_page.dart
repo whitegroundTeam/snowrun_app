@@ -20,12 +20,21 @@ import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
+import 'package:snowrun_app/presentation/home/home_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
   @override
   State createState() => SignInPageState();
+
+  static pushSignInPage(BuildContext context, {Function? onResult}) {
+    context
+        .push(
+          '/signIn',
+        )
+        .then((value) => onResult?.call());
+  }
 }
 
 class SignInPageState extends State<SignInPage> {
@@ -117,7 +126,7 @@ class SignInPageState extends State<SignInPage> {
           listener: (context, state) {
             //TODO : 바로 홈으로 보내는게 아니라, 화면 걍 callback 날려주기
             _hideLoading();
-            context.go('/');
+            HomePage.goHomePage(context, needRefresh: true);
           },
         ),
       ],

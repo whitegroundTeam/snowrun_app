@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/default_status.dart';
+import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_detail/riding_detail_bloc.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
@@ -41,7 +42,11 @@ class HomeRidingItemWidgetState extends State<HomeRidingItemWidget> {
           listener: (context, state) {
             final ridingRoomId = state.ridingRoom?.id.getOrCrash();
             if (state.status == DefaultStatus.success && ridingRoomId != null) {
-              RidingPage.pushRidingPage(context, ridingRoomId);
+              RidingPage.pushRidingPage(context, ridingRoomId, onResult: () {
+                context
+                    .read<HomeRefreshBloc>()
+                    .add(const HomeRefreshEvent.refresh());
+              });
             } else {}
             loader.hide();
           },

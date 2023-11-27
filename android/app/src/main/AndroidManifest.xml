@@ -9,6 +9,7 @@
         android:icon="@mipmap/launcher_icon"
         android:allowBackup="false"
         android:usesCleartextTraffic="true"
+        android:enableOnBackInvokedCallback="true"
         android:label="SnowRun">
 
         <meta-data

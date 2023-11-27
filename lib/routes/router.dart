@@ -21,7 +21,11 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const HomePage();
+        final Map<String, bool?>? extra = state.extra as Map<String, bool?>?;
+        final bool needRefresh = extra?['needRefresh'] ?? false;
+        return HomePage(
+          needRefresh: needRefresh,
+        );
       },
     ),
     GoRoute(
@@ -49,7 +53,9 @@ final GoRouter router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         final Map<String, int> extra = state.extra as Map<String, int>;
         final int ridingRoomId = extra['ridingRoomId'] ?? -1;
-        return RidingDashboardPage(ridingRoomId: ridingRoomId,);
+        return RidingDashboardPage(
+          ridingRoomId: ridingRoomId,
+        );
       },
     ),
     GoRoute(

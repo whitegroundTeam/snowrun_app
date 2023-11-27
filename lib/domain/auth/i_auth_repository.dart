@@ -11,7 +11,7 @@ import 'package:snowrun_app/domain/user/model/user.dart';
 abstract class IAuthRepository {
   Future<Option<AppUser>> getSignedInUser();
 
-  Future<Option<User>> me();
+  Future<Either<AuthFailure, User>> me();
 
   Future<Either<AuthFailure, AuthSignResult>> registerWithEmailAndPassword({
     required EmailAddress emailAddress,
