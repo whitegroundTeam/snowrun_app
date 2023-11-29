@@ -24,10 +24,11 @@ import 'package:snowrun_app/domain/riding/riding_room.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
+import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
-import 'package:snowrun_app/presentation/riding/map_marker_click_listener.dart';
+import 'package:snowrun_app/presentation/riding/listener/map_marker_click_listener.dart';
 import 'package:snowrun_app/presentation/riding/players_counts_widget.dart';
 import 'package:snowrun_app/presentation/riding/riding_dashboard_page.dart';
 import 'package:snowrun_app/presentation/share/share_button.dart';
@@ -60,6 +61,7 @@ class AnnotationClickListener extends mapbox.OnPointAnnotationClickListener {
 }
 
 class RidingPageState extends State<RidingPage> {
+  static const double defaultZoom = 14;
   final _locationBloc = getIt<LocationBloc>();
   final _ridingDetailBloc = getIt<RidingDetailBloc>();
   final _ridingControllerBloc = getIt<RidingControllerBloc>();
@@ -75,6 +77,7 @@ class RidingPageState extends State<RidingPage> {
   bool isIos = false;
 
   RidingRoom? ridingRoom;
+  bool isShowLoading = false;
 
   @override
   void initState() {
@@ -110,12 +113,13 @@ class RidingPageState extends State<RidingPage> {
           create: (context) => _ridingControllerBloc,
         ),
         BlocProvider<RidingDetailBloc>(
-          create: (context) => _ridingDetailBloc
+          create: (context) =>
+          _ridingDetailBloc
             ..add(RidingDetailEvent.getRidingRoom(widget.ridingRoomId)),
         ),
         BlocProvider<LocationBloc>(create: (context) => _locationBloc
-            //   ..add(const LocationEvent.getCurrentLocation()),
-            ),
+          //   ..add(const LocationEvent.getCurrentLocation()),
+        ),
         BlocListener<LocationBloc, LocationState>(
           listener: (context, state) async {
             if (state.status == LocationStatus.successGetCurrentLocation) {
@@ -144,8 +148,8 @@ class RidingPageState extends State<RidingPage> {
           bloc: context.read<UserBloc>(),
           listener: (context, state) async {
             // await updateMarkers(state.users);
-            if (state.status == UserStatus.successGetUsers) {
-            } else if (state.status ==
+            if (state.status == UserStatus.successGetUsers) {} else
+            if (state.status ==
                 UserStatus.successUpdateCurrentLocation) {
               // _userBloc.add(const UserEvent.getUsers());
               _ridingDetailBloc
@@ -165,7 +169,9 @@ class RidingPageState extends State<RidingPage> {
                   left: 0,
                   right: 0,
                   // bottom: bottomAreaHeight + mapViewBottomPadding,
-                  bottom: MediaQuery.sizeOf(context).height * 0.1 +
+                  bottom: MediaQuery
+                      .sizeOf(context)
+                      .height * 0.1 +
                       mapViewBottomPadding,
                   child: mapbox.MapWidget(
                     key: const ValueKey('mapWidget'),
@@ -174,9 +180,12 @@ class RidingPageState extends State<RidingPage> {
                     ),
                     onMapCreated: _onMapCreated,
                     styleUri: "mapbox://styles/mapbox/outdoors-v12",
+                    onCameraChangeListener: _onCameraChangeListener,
+                    onMapIdleListener: _onMapIdleListener,
+                    onMapLoadedListener: _onMapLoadedListener,
                     cameraOptions: mapbox.CameraOptions(
                       anchor: mapbox.ScreenCoordinate(x: 0, y: 0),
-                      zoom: 14,
+                      zoom: defaultZoom,
                       center: mapbox.Point(
                         coordinates: mapbox.Position(
                           selectedRidingPlayer?.location?.lng.getOrCrash() ??
@@ -194,30 +203,82 @@ class RidingPageState extends State<RidingPage> {
                   child: AnimatedOpacity(
                     opacity: 1.0,
                     duration: const Duration(milliseconds: 1000),
-                    child: CommonDetector(
-                      onTap: () {
-                        _updateUserLocation();
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppStyle.secondaryBackground.withOpacity(0.95),
-                          borderRadius: BorderRadius.circular(8),
+                    child: Column(
+                      children: [
+                        CommonDetector(
+                          onTap: () async {
+                            mapboxMap?.setCamera(mapbox.CameraOptions(
+                              zoom: await getCurrentZoom() + 1,
+                            ));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppStyle.secondaryBackground
+                                  .withOpacity(0.95),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: const EdgeInsets.all(12),
+                            child: Image.asset(
+                              'assets/webp/plus.webp',
+                              color: AppStyle.white,
+                              width: 16,
+                              height: 16,
+                            ),
+                          ),
                         ),
-                        padding: const EdgeInsets.all(12),
-                        child: Image.asset(
-                          'assets/webp/refresh.webp',
-                          color: AppStyle.white,
-                          width: 24,
-                          height: 24,
+                        const SizedBox(height: 4,),
+                        CommonDetector(
+                          onTap: () async {
+                            mapboxMap?.setCamera(mapbox.CameraOptions(
+                              zoom: await getCurrentZoom() - 1,
+                            ));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppStyle.secondaryBackground
+                                  .withOpacity(0.95),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: const EdgeInsets.all(12),
+                            child: Image.asset(
+                              'assets/webp/minus.webp',
+                              color: AppStyle.white,
+                              width: 16,
+                              height: 16,
+                            ),
+                          ),
                         ),
-                      ),
+                        const SizedBox(height: 24,),
+                        CommonDetector(
+                          onTap: () {
+                            _updateUserLocation();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppStyle.secondaryBackground
+                                  .withOpacity(0.95),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: const EdgeInsets.all(12),
+                            child: Image.asset(
+                              'assets/webp/refresh.webp',
+                              color: AppStyle.white,
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 Positioned(
                   bottom: 0,
                   child: Container(
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
                     decoration: const BoxDecoration(
                       color: AppStyle.secondaryBackground,
                       borderRadius: BorderRadius.only(
@@ -244,17 +305,18 @@ class RidingPageState extends State<RidingPage> {
                                     RidingDashboardPage.pushRidingDashboardPage(
                                         context, widget.ridingRoomId,
                                         onResult: () {
-                                      _ridingDetailBloc.add(
-                                          RidingDetailEvent.getRidingRoom(
-                                              widget.ridingRoomId));
-                                    });
+                                          _ridingDetailBloc.add(
+                                              RidingDetailEvent.getRidingRoom(
+                                                  widget.ridingRoomId));
+                                        });
                                   },
                                   child: Center(
                                     child: Hero(
                                       tag: "ridingRoomName",
                                       child: TitleText(
                                         title: ridingRoomName.length > 15
-                                            ? "${ridingRoomName.substring(0, 15)}..."
+                                            ? "${ridingRoomName.substring(
+                                            0, 15)}..."
                                             : ridingRoomName,
                                         fontSize: 16,
                                         color: AppStyle.white,
@@ -270,10 +332,10 @@ class RidingPageState extends State<RidingPage> {
                                     RidingDashboardPage.pushRidingDashboardPage(
                                         context, widget.ridingRoomId,
                                         onResult: () {
-                                      _ridingDetailBloc.add(
-                                          RidingDetailEvent.getRidingRoom(
-                                              widget.ridingRoomId));
-                                    });
+                                          _ridingDetailBloc.add(
+                                              RidingDetailEvent.getRidingRoom(
+                                                  widget.ridingRoomId));
+                                        });
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -294,17 +356,19 @@ class RidingPageState extends State<RidingPage> {
                                     RidingDashboardPage.pushRidingDashboardPage(
                                         context, widget.ridingRoomId,
                                         onResult: () {
-                                      _ridingDetailBloc.add(
-                                          RidingDetailEvent.getRidingRoom(
-                                              widget.ridingRoomId, ));
-                                    });
+                                          _ridingDetailBloc
+                                              .add(
+                                              RidingDetailEvent.getRidingRoom(
+                                                widget.ridingRoomId,
+                                              ));
+                                        });
                                   },
                                   child: PlayersCountsWidget(
                                     players:
-                                        ridingRoom?.players.getOrCrash() ?? [],
+                                    ridingRoom?.players.getOrCrash() ?? [],
                                     maxPlayersCount: ridingRoom?.players
-                                            .getOrCrash()
-                                            .length ??
+                                        .getOrCrash()
+                                        .length ??
                                         0,
                                   ),
                                 ),
@@ -330,10 +394,10 @@ class RidingPageState extends State<RidingPage> {
                                       height: 56,
                                       width: 56,
                                       imageBackgroundColor:
-                                          AppStyle.transparent,
+                                      AppStyle.transparent,
                                       imageUrl: selectedRidingPlayer
-                                              ?.profileImage
-                                              .getOrCrash() ??
+                                          ?.profileImage
+                                          .getOrCrash() ??
                                           ""),
                                   const SizedBox(
                                     width: 16,
@@ -341,13 +405,13 @@ class RidingPageState extends State<RidingPage> {
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         TitleText(
                                           title: selectedRidingPlayer?.nickname
-                                                  .getOrCrash() ??
+                                              .getOrCrash() ??
                                               "",
                                           fontSize: 20,
                                           color: AppStyle.white,
@@ -432,7 +496,10 @@ class RidingPageState extends State<RidingPage> {
                   ),
                 ),
                 Positioned(
-                  top: MediaQuery.of(context).padding.top + 12,
+                  top: MediaQuery
+                      .of(context)
+                      .padding
+                      .top + 12,
                   left: 0,
                   right: 0,
                   child: Row(
@@ -465,6 +532,16 @@ class RidingPageState extends State<RidingPage> {
                     ],
                   ),
                 ),
+                Positioned(
+                  top: 56,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Visibility(
+                    visible: isShowLoading,
+                    child: const CommonLoading(),
+                  ),
+                ),
               ],
             );
           },
@@ -477,36 +554,69 @@ class RidingPageState extends State<RidingPage> {
     _checkLocationPermission();
   }
 
-  _onMapCreated(mapbox.MapboxMap mapboxMap) {
-    this.mapboxMap = mapboxMap;
-    mapboxMap.scaleBar.updateSettings(mapbox.ScaleBarSettings(enabled: false));
-    mapboxMap.logo.updateSettings(
+  _onMapCreated(mapbox.MapboxMap newMapBox) {
+    mapboxMap = newMapBox;
+
+    // MapLoadedEventData mapLoadedEventData
+    // if (mapboxMap.onMapLoadedListener != null) {
+    //   mapboxMap.onMapLoadedListener!((a) {
+    //     // 함수 실행
+    //   });
+    // }
+
+    // if(mapboxMap != null) {
+    //   // mapboxMap!.onMapLoadedListener!((a) {
+    //   //   debugPrint("WTWTWTWT :: WTWTTW ${a}");
+    //   // } as mapbox.MapLoadedEventData);
+    // }
+
+
+    mapboxMap?.setOnMapMoveListener((coordinate) {
+
+    });
+
+
+    mapboxMap?.scaleBar.updateSettings(mapbox.ScaleBarSettings(enabled: false));
+    mapboxMap?.logo.updateSettings(
       mapbox.LogoSettings(
         marginBottom: 48,
       ),
     );
-    mapboxMap.attribution.updateSettings(
+    mapboxMap?.attribution.updateSettings(
       mapbox.AttributionSettings(
         marginBottom: 48,
       ),
     );
-
-    mapboxMap.annotations.createPointAnnotationManager().then((value) async {
+    mapboxMap?.annotations.createPointAnnotationManager().then((value) async {
       pointAnnotationManager = value;
       pointAnnotationManager?.addOnPointAnnotationClickListener(
           MapMarkerClickListener(_ridingControllerBloc));
     });
-    mapboxMap.compass.updateSettings(mapbox.CompassSettings(
+    mapboxMap?.compass.updateSettings(mapbox.CompassSettings(
         position: mapbox.OrnamentPosition.BOTTOM_LEFT, marginBottom: 96));
     setState(() {
       isCreatedMap = true;
     });
   }
 
+  _onMapLoadedListener(mapbox.MapLoadedEventData data) {
+    print("MAPMAP :: MapLoadedEventData: begin: ${data.begin}, end: ${data.end}");
+  }
+
+  _onCameraChangeListener(mapbox.CameraChangedEventData data) {
+    _hideLoading();
+    print("MAPMAP :: CameraChangedEventData: begin: ${data.begin}, end: ${data.end}");
+  }
+
+  _onMapIdleListener(mapbox.MapIdleEventData data) {
+    print("MAPMAP :: MapIdleEventData: begin: ${data.begin}, end: ${data.end}");
+  }
+
   updateMarkers(List<RidingPlayer> ridingPlayers) async {
     if (!isCreatedMap) {
       return;
     }
+
     double adjustedIconSize = adjustIconSizeForDevice(context, 0.1);
     pointAnnotationManager?.deleteAll();
     for (var ridingPlayer in ridingPlayers) {
@@ -516,19 +626,18 @@ class RidingPageState extends State<RidingPage> {
       double? lng = ridingPlayer.location?.lng.getOrCrash();
 
       if (lat != null && lng != null) {
-        pointAnnotationManager
-            ?.create(mapbox.PointAnnotationOptions(
-                geometry: mapbox.Point(coordinates: mapbox.Position(lng, lat))
-                    .toJson(),
-                textField: ridingPlayer.nickname.getOrCrash(),
-                textSize: 14,
-                textColor: 0xff000000,
-                textHaloWidth: 30,
-                textOffset: [0.0, -1.5],
-                iconSize: isIos ? 0.05 : 0.1,
-                iconOffset: [0.0, -5.0],
-                symbolSortKey: ridingPlayer.id.getOrCrash().toDouble(),
-                image: avatarData));
+        pointAnnotationManager?.create(mapbox.PointAnnotationOptions(
+            geometry:
+            mapbox.Point(coordinates: mapbox.Position(lng, lat)).toJson(),
+            textField: ridingPlayer.nickname.getOrCrash(),
+            textSize: 14,
+            textColor: 0xff000000,
+            textHaloWidth: 30,
+            textOffset: [0.0, -1.5],
+            iconSize: isIos ? 0.05 : 0.1,
+            iconOffset: [0.0, -5.0],
+            symbolSortKey: ridingPlayer.id.getOrCrash().toDouble(),
+            image: avatarData));
       }
     }
   }
@@ -543,8 +652,13 @@ class RidingPageState extends State<RidingPage> {
   }
 
   double adjustIconSizeForDevice(BuildContext context, double baseSize) {
-    debugPrint("WTWWTWT :: ${MediaQuery.of(context).size.width}");
-    double devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    debugPrint("WTWWTWT :: ${MediaQuery
+        .of(context)
+        .size
+        .width}");
+    double devicePixelRatio = MediaQuery
+        .of(context)
+        .devicePixelRatio;
     return baseSize / devicePixelRatio;
   }
 
@@ -683,7 +797,7 @@ class RidingPageState extends State<RidingPage> {
   _setSelectedRidingPlayer(int? playerId, {int? isInit}) {
     setState(() {
       selectedRidingPlayer = ridingRoom?.players.getOrCrash().firstWhere(
-          (player) => player.id.getOrCrash().toInt() == playerId?.toInt());
+              (player) => player.id.getOrCrash().toInt() == playerId?.toInt());
     });
     mapboxMap?.setCamera(mapbox.CameraOptions(
       anchor: mapbox.ScreenCoordinate(x: 0, y: 0),
@@ -717,18 +831,20 @@ class RidingPageState extends State<RidingPage> {
     await showCommonDialog(context,
         buttonText: "설정으로 이동",
         title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
-        negativeButtonText: "취소", onPressedButton: () async {
-      AppSettings.openAppSettings(type: AppSettingsType.location);
-      showToast(
-        context,
-        "위치 권한 허용 후 다시 시도해주세요.",
-      );
+        negativeButtonText: "취소",
+        onPressedButton: () async {
+          AppSettings.openAppSettings(type: AppSettingsType.location);
+          showToast(
+            context,
+            "위치 권한 허용 후 다시 시도해주세요.",
+          );
 
-      if (!mounted) return;
-      context.pop();
-    }, onPressedNegativeButton: () {
-      context.pop();
-    });
+          if (!mounted) return;
+          context.pop();
+        },
+        onPressedNegativeButton: () {
+          context.pop();
+        });
   }
 
   String getTimeDifferenceMessage(DateTime? updateDateTime) {
@@ -752,5 +868,31 @@ class RidingPageState extends State<RidingPage> {
       // 1분 미만 차이가 날 때
       return "방금 전 업데이트";
     }
+  }
+
+  Future<double> getCurrentZoom() async {
+    _showLoading();
+    final cameraState = await mapboxMap?.getCameraState();
+    return cameraState?.zoom ?? 12;
+  }
+
+  _showLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!isShowLoading) {
+        setState(() {
+          isShowLoading = true;
+        });
+      }
+    });
+  }
+
+  _hideLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (isShowLoading) {
+        setState(() {
+          isShowLoading = false;
+        });
+      }
+    });
   }
 }

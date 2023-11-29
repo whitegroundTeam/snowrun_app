@@ -46,7 +46,7 @@ import 'infrastructure/place/place_repository.dart' as _i19;
 import 'infrastructure/riding/riding_repository.dart' as _i21;
 import 'infrastructure/user/user_repository.dart' as _i23;
 import 'presentation/core/toast/toast_bloc.dart' as _i10;
-import 'presentation/riding/map_marker_click_listener.dart' as _i25;
+import 'presentation/riding/listener/map_marker_click_listener.dart' as _i25;
 import 'utils/injectable_module.dart' as _i36;
 
 // initializes the registration of main-scope dependencies inside of GetIt
