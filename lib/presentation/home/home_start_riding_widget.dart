@@ -31,15 +31,31 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
           BlocListener<RidingActorBloc, RidingActorState>(
             bloc: ridingActorBloc,
             listener: (context, state) {
-              final ridingRoomId = state.ridingRoom?.id.getOrCrash();
-              if (state.status == DefaultStatus.success &&
-                  ridingRoomId != null) {
-                RidingPage.pushRidingPage(context, ridingRoomId, onResult: () {
+              //Create
+              final createdRidingRoomId =
+                  state.createdRidingRoom?.id.getOrCrash();
+              if (state.status == RidingActorStatus.successCreateRidingRoom &&
+                  createdRidingRoomId != null) {
+                RidingPage.pushRidingPage(context, createdRidingRoomId,
+                    onResult: () {
                   context
                       .read<HomeRefreshBloc>()
                       .add(const HomeRefreshEvent.refresh());
                 });
-              } else {}
+              }
+
+              //Join
+              final joinedRidingRoomId =
+                  state.joinedRidingRoom?.id.getOrCrash();
+              if (state.status == RidingActorStatus.successJoinRidingRoom &&
+                  joinedRidingRoomId != null) {
+                RidingPage.pushRidingPage(context, joinedRidingRoomId,
+                    onResult: () {
+                  context
+                      .read<HomeRefreshBloc>()
+                      .add(const HomeRefreshEvent.refresh());
+                });
+              }
               loader.hide();
             },
           ),
@@ -119,7 +135,11 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                 CommonDetector(
                   needAuth: true,
                   onTap: () {
-                    showInputInviteRidingRoomLinkBottomSheet(context);
+                    showInputInviteRidingRoomLinkBottomSheet(context,
+                        (inputText) {
+                      ridingActorBloc
+                          .add(const RidingActorEvent.joinRidingRoom(141));
+                    });
                   },
                   child: Container(
                     width: MediaQuery.sizeOf(context).width,

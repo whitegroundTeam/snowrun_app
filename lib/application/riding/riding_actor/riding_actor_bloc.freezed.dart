@@ -644,8 +644,9 @@ abstract class _JoinRidingRoom implements RidingActorEvent {
 
 /// @nodoc
 mixin _$RidingActorState {
-  DefaultStatus get status => throw _privateConstructorUsedError;
-  RidingRoom? get ridingRoom => throw _privateConstructorUsedError;
+  RidingActorStatus get status => throw _privateConstructorUsedError;
+  RidingRoom? get createdRidingRoom => throw _privateConstructorUsedError;
+  RidingRoom? get joinedRidingRoom => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RidingActorStateCopyWith<RidingActorState> get copyWith =>
@@ -658,9 +659,13 @@ abstract class $RidingActorStateCopyWith<$Res> {
           RidingActorState value, $Res Function(RidingActorState) then) =
       _$RidingActorStateCopyWithImpl<$Res, RidingActorState>;
   @useResult
-  $Res call({DefaultStatus status, RidingRoom? ridingRoom});
+  $Res call(
+      {RidingActorStatus status,
+      RidingRoom? createdRidingRoom,
+      RidingRoom? joinedRidingRoom});
 
-  $RidingRoomCopyWith<$Res>? get ridingRoom;
+  $RidingRoomCopyWith<$Res>? get createdRidingRoom;
+  $RidingRoomCopyWith<$Res>? get joinedRidingRoom;
 }
 
 /// @nodoc
@@ -677,29 +682,46 @@ class _$RidingActorStateCopyWithImpl<$Res, $Val extends RidingActorState>
   @override
   $Res call({
     Object? status = null,
-    Object? ridingRoom = freezed,
+    Object? createdRidingRoom = freezed,
+    Object? joinedRidingRoom = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as DefaultStatus,
-      ridingRoom: freezed == ridingRoom
-          ? _value.ridingRoom
-          : ridingRoom // ignore: cast_nullable_to_non_nullable
+              as RidingActorStatus,
+      createdRidingRoom: freezed == createdRidingRoom
+          ? _value.createdRidingRoom
+          : createdRidingRoom // ignore: cast_nullable_to_non_nullable
+              as RidingRoom?,
+      joinedRidingRoom: freezed == joinedRidingRoom
+          ? _value.joinedRidingRoom
+          : joinedRidingRoom // ignore: cast_nullable_to_non_nullable
               as RidingRoom?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $RidingRoomCopyWith<$Res>? get ridingRoom {
-    if (_value.ridingRoom == null) {
+  $RidingRoomCopyWith<$Res>? get createdRidingRoom {
+    if (_value.createdRidingRoom == null) {
       return null;
     }
 
-    return $RidingRoomCopyWith<$Res>(_value.ridingRoom!, (value) {
-      return _then(_value.copyWith(ridingRoom: value) as $Val);
+    return $RidingRoomCopyWith<$Res>(_value.createdRidingRoom!, (value) {
+      return _then(_value.copyWith(createdRidingRoom: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RidingRoomCopyWith<$Res>? get joinedRidingRoom {
+    if (_value.joinedRidingRoom == null) {
+      return null;
+    }
+
+    return $RidingRoomCopyWith<$Res>(_value.joinedRidingRoom!, (value) {
+      return _then(_value.copyWith(joinedRidingRoom: value) as $Val);
     });
   }
 }
@@ -712,10 +734,15 @@ abstract class _$$RidingActorStateImplCopyWith<$Res>
       __$$RidingActorStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DefaultStatus status, RidingRoom? ridingRoom});
+  $Res call(
+      {RidingActorStatus status,
+      RidingRoom? createdRidingRoom,
+      RidingRoom? joinedRidingRoom});
 
   @override
-  $RidingRoomCopyWith<$Res>? get ridingRoom;
+  $RidingRoomCopyWith<$Res>? get createdRidingRoom;
+  @override
+  $RidingRoomCopyWith<$Res>? get joinedRidingRoom;
 }
 
 /// @nodoc
@@ -730,16 +757,21 @@ class __$$RidingActorStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? ridingRoom = freezed,
+    Object? createdRidingRoom = freezed,
+    Object? joinedRidingRoom = freezed,
   }) {
     return _then(_$RidingActorStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as DefaultStatus,
-      ridingRoom: freezed == ridingRoom
-          ? _value.ridingRoom
-          : ridingRoom // ignore: cast_nullable_to_non_nullable
+              as RidingActorStatus,
+      createdRidingRoom: freezed == createdRidingRoom
+          ? _value.createdRidingRoom
+          : createdRidingRoom // ignore: cast_nullable_to_non_nullable
+              as RidingRoom?,
+      joinedRidingRoom: freezed == joinedRidingRoom
+          ? _value.joinedRidingRoom
+          : joinedRidingRoom // ignore: cast_nullable_to_non_nullable
               as RidingRoom?,
     ));
   }
@@ -748,16 +780,19 @@ class __$$RidingActorStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RidingActorStateImpl implements _RidingActorState {
-  const _$RidingActorStateImpl({required this.status, this.ridingRoom});
+  const _$RidingActorStateImpl(
+      {required this.status, this.createdRidingRoom, this.joinedRidingRoom});
 
   @override
-  final DefaultStatus status;
+  final RidingActorStatus status;
   @override
-  final RidingRoom? ridingRoom;
+  final RidingRoom? createdRidingRoom;
+  @override
+  final RidingRoom? joinedRidingRoom;
 
   @override
   String toString() {
-    return 'RidingActorState(status: $status, ridingRoom: $ridingRoom)';
+    return 'RidingActorState(status: $status, createdRidingRoom: $createdRidingRoom, joinedRidingRoom: $joinedRidingRoom)';
   }
 
   @override
@@ -766,12 +801,15 @@ class _$RidingActorStateImpl implements _RidingActorState {
         (other.runtimeType == runtimeType &&
             other is _$RidingActorStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.ridingRoom, ridingRoom) ||
-                other.ridingRoom == ridingRoom));
+            (identical(other.createdRidingRoom, createdRidingRoom) ||
+                other.createdRidingRoom == createdRidingRoom) &&
+            (identical(other.joinedRidingRoom, joinedRidingRoom) ||
+                other.joinedRidingRoom == joinedRidingRoom));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, ridingRoom);
+  int get hashCode =>
+      Object.hash(runtimeType, status, createdRidingRoom, joinedRidingRoom);
 
   @JsonKey(ignore: true)
   @override
@@ -783,13 +821,16 @@ class _$RidingActorStateImpl implements _RidingActorState {
 
 abstract class _RidingActorState implements RidingActorState {
   const factory _RidingActorState(
-      {required final DefaultStatus status,
-      final RidingRoom? ridingRoom}) = _$RidingActorStateImpl;
+      {required final RidingActorStatus status,
+      final RidingRoom? createdRidingRoom,
+      final RidingRoom? joinedRidingRoom}) = _$RidingActorStateImpl;
 
   @override
-  DefaultStatus get status;
+  RidingActorStatus get status;
   @override
-  RidingRoom? get ridingRoom;
+  RidingRoom? get createdRidingRoom;
+  @override
+  RidingRoom? get joinedRidingRoom;
   @override
   @JsonKey(ignore: true)
   _$$RidingActorStateImplCopyWith<_$RidingActorStateImpl> get copyWith =>

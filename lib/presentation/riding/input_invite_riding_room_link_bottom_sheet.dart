@@ -8,8 +8,10 @@ import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/utils.dart';
 
 class InputInviteRidingRoomLinkBottomSheet extends StatefulWidget {
+  final Function(String)? onClick;
   const InputInviteRidingRoomLinkBottomSheet({
     super.key,
+    this.onClick,
   });
 
   @override
@@ -200,38 +202,43 @@ class InputInviteRidingRoomLinkBottomSheetState
                     children: [
                       const Expanded(child: SizedBox()),
                       Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              colors: [
-                                Color(0xFFFFB74D), // 밝은 색상
-                                Color(0xFFF57C00), // 중간 색상
-                                Color(0xFFEF6C00), // 더 진한 색상
+                        child: CommonDetector(
+                          onTap: () {
+                            widget.onClick?.call(linkTextController.text);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  Color(0xFFFFB74D), // 밝은 색상
+                                  Color(0xFFF57C00), // 중간 색상
+                                  Color(0xFFEF6C00), // 더 진한 색상
+                                ],
+                              ),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 15,
+                                  offset: const Offset(0, 7),
+                                ),
                               ],
                             ),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
-                                blurRadius: 15,
-                                offset: const Offset(0, 7),
+                            margin: const EdgeInsets.only(
+                              left: 12,
+                              right: 24,
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            child: const Center(
+                              child: TitleText(
+                                title: "시작하기",
+                                fontSize: 18,
+                                color: AppStyle.white,
+                                fontWeight: FontWeight.bold,
                               ),
-                            ],
-                          ),
-                          margin: const EdgeInsets.only(
-                            left: 12,
-                            right: 24,
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: const Center(
-                            child: TitleText(
-                              title: "시작하기",
-                              fontSize: 18,
-                              color: AppStyle.white,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -265,11 +272,12 @@ class InputInviteRidingRoomLinkBottomSheetState
 
 void showInputInviteRidingRoomLinkBottomSheet(
   BuildContext context,
+    Function(String)? onClickActionButton,
 ) {
   showModalBottomSheet(
     context: context,
     builder: (context) {
-      return const InputInviteRidingRoomLinkBottomSheet();
+      return InputInviteRidingRoomLinkBottomSheet(onClick: onClickActionButton,);
     },
     elevation: 50,
 
