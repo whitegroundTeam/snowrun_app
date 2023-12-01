@@ -1,11 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/loading_dialog.dart';
+import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/riding/riding_page.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
@@ -55,6 +57,9 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                       .read<HomeRefreshBloc>()
                       .add(const HomeRefreshEvent.refresh());
                 });
+              } else if (state.status ==
+                  RidingActorStatus.failureJoinRidingRoom) {
+                showToast(context, "라이딩방을 찾을 수 없어요😆\n초대 링크를 다시 한번 확인해주세요!");
               }
               loader.hide();
             },
@@ -137,8 +142,18 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                   onTap: () {
                     showInputInviteRidingRoomLinkBottomSheet(context,
                         (inputText) {
-                      ridingActorBloc
-                          .add(const RidingActorEvent.joinRidingRoom(141));
+                      final roomNumber = extractRoomNumber(inputText);
+                      if (roomNumber?.isNotEmpty == true) {
+                        try {
+                          loader.show();
+                          ridingActorBloc.add(RidingActorEvent.joinRidingRoom(
+                              int.parse(roomNumber ?? "")));
+                        } catch (e) {
+                          showToast(context, "알 수 없는 오류가 발생했어요");
+                        }
+                      } else {
+                        showToast(context, "초대 링크를 채워주세요😆");
+                      }
                     });
                   },
                   child: Container(
@@ -172,5 +187,20 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
         ),
       ),
     );
+  }
+
+  String? extractRoomNumber(String url) {
+    if (!url.contains(dotenv.env['APP_URL'] ?? "")) {
+      return null;
+    }
+
+    final RegExp regExp = RegExp(r'roomNumber=(\d+)');
+    final match = regExp.firstMatch(url);
+
+    if (match != null && match.groupCount >= 1) {
+      return match.group(1);
+    }
+
+    return null;
   }
 }

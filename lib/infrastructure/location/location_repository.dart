@@ -44,7 +44,7 @@ class LocationRepository implements ILocationRepository {
   @override
   Future<Either<LocationFailure, Position>> getCurrentLocation() async {
     Position currentLocationResponse = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
+      desiredAccuracy: LocationAccuracy.bestForNavigation,
     );
     return Future.value(right(currentLocationResponse));
   }

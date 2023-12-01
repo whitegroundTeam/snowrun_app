@@ -61,7 +61,8 @@ class HomePageState extends State<HomePage> {
   final FirebaseRemoteConfig remoteConfig =
       GetIt.instance<FirebaseRemoteConfig>();
   int imageNumber = 0;
-
+  late AppLinks _appLinks;
+  StreamSubscription<Uri>? _linkSubscription;
   // bool isShowEquipmentStorageBottomSheet = false;
 
   void handleRemoteConfig() {
@@ -69,6 +70,18 @@ class HomePageState extends State<HomePage> {
       // _handleNewFeatureDialog();
       // _handleAppNotice();
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initDeepLinks();
+  }
+
+  @override
+  void dispose() {
+    _linkSubscription?.cancel();
+    super.dispose();
   }
 
   @override
@@ -260,5 +273,27 @@ class HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+
+  Future<void> initDeepLinks() async {
+    _appLinks = AppLinks();
+
+    // Check initial link if app was in cold state (terminated)
+    final appLink = await _appLinks.getInitialAppLink();
+    if (appLink != null) {
+      debugPrint('getInitialAppLink: $appLink');
+      openAppLink(appLink);
+    }
+
+    // Handle link when app is in warm state (front or background)
+    _linkSubscription = _appLinks.uriLinkStream.listen((uri) {
+      debugPrint('onAppLink: $uri');
+      openAppLink(uri);
+    });
+  }
+
+  void openAppLink(Uri uri) {
+    context.pushNamed(uri.fragment);
   }
 }
