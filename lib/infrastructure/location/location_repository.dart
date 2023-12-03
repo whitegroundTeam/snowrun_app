@@ -17,17 +17,6 @@ class LocationRepository implements ILocationRepository {
 
   @override
   Future<Either<LocationFailure, List<BoundaryLocation>>> getLocations() {
-    // final response = await _api.getCarts();
-    // final infoJson =
-    // json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-    // if (response.statusCode != 200) {
-    //   final infoJson =
-    //   json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-    //   final appError = AppErrorDto.fromJson(infoJson);
-    //   return left(CartFailure.unexpected(appError.toDomain()));
-    // }
-    // final carts = CartDto.fromJson(infoJson).toDomain();
-
     List<LocationDto> testLocationDtos = [
       const LocationDto(coordinates: [
         [
