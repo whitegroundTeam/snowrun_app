@@ -11,4 +11,7 @@ const recentlySignInMethodBoxKey = 'recentlySignInMethodBoxKey';
 /// 앱 설치 후 첫 진입시 퍼미션 노출 여부
 const isSeenInitPermissionKey = 'is_seen_init_permission_key';
 
+/// 앱 안내 정보 노출
+const isAppNoticeNotViewedTodayKey = 'isAppNoticeNotViewedTodayKey';
+
 const hiveTestModelKey = 'hiveTestModel';

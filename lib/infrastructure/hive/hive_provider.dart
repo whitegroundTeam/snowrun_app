@@ -49,6 +49,9 @@ class HiveProvider {
 
   Box get deviceBox => Hive.box(deviceKey);
 
+  Box<String> get appNoticeNotViewedTodayBox =>
+      Hive.box<String>(isAppNoticeNotViewedTodayKey);
+
 
   /// AUTH
   Future<String> getAuthToken() async {
@@ -98,5 +101,19 @@ class HiveProvider {
   Future<void> markInitPermissionsAsSeen() async {
     debugPrint('Local Store mark init_permissions as seen');
     await deviceBox.put(isSeenInitPermissionKey, true);
+  }
+
+  /// APP NOTICE
+  String getAppNoticeNotViewedToday() {
+    debugPrint("FLUTTER_CORE :: HIVE :: appNoticeNotViewedTodayBox");
+    return appNoticeNotViewedTodayBox.get(isAppNoticeNotViewedTodayKey,
+        defaultValue: "") as String;
+  }
+
+  Future<void> setAppNoticeNotViewedToday(String clickedAt) async {
+    debugPrint(
+        "FLUTTER_CORE :: HIVE :: appNoticeNotViewedTodayBox -> $clickedAt");
+    await appNoticeNotViewedTodayBox.put(
+        isAppNoticeNotViewedTodayKey, clickedAt);
   }
 }

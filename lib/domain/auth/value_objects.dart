@@ -1,5 +1,6 @@
 // Package imports:
 import 'package:dartz/dartz.dart';
+import 'package:snowrun_app/domain/app-info/model/app_notice_button_info.dart';
 
 // Project imports:
 import 'package:snowrun_app/domain/core/failures.dart';

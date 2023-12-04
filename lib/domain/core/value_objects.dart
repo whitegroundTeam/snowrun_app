@@ -21,8 +21,8 @@ abstract class ValueObject<T> {
 
   Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
     return value.fold(
-          (f) => left(f),
-          (r) => right(unit),
+      (f) => left(f),
+      (r) => right(unit),
     );
   }
 
@@ -31,7 +31,7 @@ abstract class ValueObject<T> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          (other is ValueObject<T> && value == other.value);
+      (other is ValueObject<T> && value == other.value);
 
   @override
   int get hashCode => value.hashCode;
@@ -227,12 +227,16 @@ class ListVO<T> extends ValueObject<List<T>> {
   const ListVO._(this.value);
 }
 
-class ColorVO extends ValueObject<Color> {
+class ColorVO extends ValueObject<Color?> {
   @override
-  final Either<ValueFailure<Color>, Color> value;
+  final Either<ValueFailure<Color?>, Color?> value;
 
-  factory ColorVO(Color input) {
-    return ColorVO._(right(input));
+  factory ColorVO(String? input) {
+    if (input?.isNotEmpty == true) {
+      return ColorVO._(right(Color(int.parse("0x${input ?? ""}"))));
+    } else {
+      return ColorVO._(right(null));
+    }
   }
 
   const ColorVO._(this.value);

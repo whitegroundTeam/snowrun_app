@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
@@ -15,11 +17,15 @@ import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
+import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
+import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
+import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
 import 'package:snowrun_app/presentation/home/home_bottom_band.dart';
 import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
 import 'package:snowrun_app/presentation/home/home_ridings_widget.dart';
 import 'package:snowrun_app/presentation/home/home_start_riding_widget.dart';
+import 'package:snowrun_app/utils/launch_url.dart';
 
 class HomePage extends StatefulWidget {
   final bool? needRefresh;
@@ -66,6 +72,9 @@ class HomePageState extends State<HomePage> {
   int imageNumber = 0;
   late AppLinks _appLinks;
   StreamSubscription<Uri>? _linkSubscription;
+
+  bool isShowAppNoticeBottomSheet = false;
+
   // bool isShowEquipmentStorageBottomSheet = false;
 
   void handleRemoteConfig() {
@@ -89,7 +98,7 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if(widget.needRefresh == true) {
+    if (widget.needRefresh == true) {
       homeRefreshBloc.add(const HomeRefreshEvent.refresh());
     }
     return MultiBlocProvider(
@@ -160,6 +169,53 @@ class HomePageState extends State<HomePage> {
               },
               initial: (e) {},
             );
+          },
+        ),
+        BlocListener<AppInfoBloc, AppInfoState>(
+          bloc: context.read<AppInfoBloc>(),
+          listenWhen: (p, c) {
+            return c.status == DefaultStatus.success ||
+                c.status == DefaultStatus.failure;
+          },
+          listener: (context, state) {
+            if (state.isAvailableVersion != null) {
+              if (state.isAvailableVersion == false) {
+                showCommonBottomSheet(context,
+                    title: "업데이트가 필요해요!",
+                    accentDescription: "불편을 드려 죄송해요. \n하지만 더욱 즐겁게 겨울을 나실 수 있게 새로운 기능이 추가되었어요😆",
+                    actionButtonDescriptionText: "최신 버전으로",
+                    actionButtonText: "업데이트하러 가기",
+                    canClose: false,
+                    onClickActionButton: () async {
+                      launchExternalUrl(state.appVersion.url.getOrCrash());
+                    });
+              } else {
+                // final clickedAt = getIt<HiveProvider>().getAppNoticeNotViewedToday();
+                // if (!isShowAppNoticeBottomSheet &&
+                //     (clickedAt.isEmpty ||
+                //         DateTime.parse(clickedAt).day !=
+                //             DateTime.now().day)) {
+                //   // bannerBloc
+                //   //     .add(const BannerEvent.getBanners(BannerType.popup));
+                // }
+
+
+
+                // if (isShowAppNoticeBottomSheet) {
+                //   return;
+                // }
+                //
+                // final clickedAt =
+                // getIt<HiveProvider>().getAppNoticeNotViewedToday();
+                // if (state.banners.isNotEmpty &&
+                //     (clickedAt.isEmpty ||
+                //         DateTime.parse(clickedAt).day != DateTime.now().day)) {
+                //   getIt<HiveProvider>().setAppNoticeNotViewedToday("");
+                //   showAppNoticeBottomSheet(context, state.banners);
+                //   isShowAppNoticeBottomSheet = true;
+                // }
+              }
+            }
           },
         ),
       ],
@@ -277,7 +333,6 @@ class HomePageState extends State<HomePage> {
       ),
     );
   }
-
 
   Future<void> initDeepLinks() async {
     _appLinks = AppLinks();

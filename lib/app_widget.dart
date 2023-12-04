@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/injection.dart';
@@ -22,6 +23,7 @@ class MainAppState extends State<MainApp> {
   CommonToast? commonToast;
   final toastBloc = getIt<ToastBloc>();
   final authBloc = getIt<AuthBloc>();
+  final appInfoBloc = getIt<AppInfoBloc>();
 
   @override
   void initState() {
@@ -57,6 +59,7 @@ class MainAppState extends State<MainApp> {
           return MultiBlocProvider(
             providers: [
               BlocProvider<UserBloc>(create: (context) => getIt<UserBloc>()),
+              BlocProvider<AppInfoBloc>(create: (context) => appInfoBloc..add(const AppInfoEvent.getAppInfo())),
               BlocProvider<ToastBloc>(
                 create: (context) => toastBloc,
                 lazy: false,

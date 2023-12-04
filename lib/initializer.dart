@@ -9,6 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:snowrun_app/firebase_options.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
+import 'package:snowrun_app/utils/remote_configs.dart';
 
 Future<void> initServices({
   bool isAnalyticsCollectEnabled = false,
@@ -17,6 +18,7 @@ Future<void> initServices({
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   await dotenv.load(fileName: "assets/env/.env.prod");
 
   // Firebase
@@ -25,11 +27,12 @@ Future<void> initServices({
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
   // await setUpPushNotification();
-  // await setupRemoteConfig();
   await FirebaseRemoteConfig.instance.fetchAndActivate();
 
   FirebaseAnalytics.instance
       .setAnalyticsCollectionEnabled(isAnalyticsCollectEnabled);
+
+  await setupRemoteConfig();
 
   configureDependencies();
 

@@ -5,6 +5,8 @@ import 'package:snowrun_app/presentation/core/text/title_text.dart';
 
 class SettingActionWidget extends StatefulWidget {
   final String title;
+  final Color? titleColor;
+  final Color? arrowColor;
   final String? value;
   final bool? needAuth;
   final bool? isVisibleArrow;
@@ -14,6 +16,8 @@ class SettingActionWidget extends StatefulWidget {
   const SettingActionWidget(
       {super.key,
       required this.title,
+      this.titleColor,
+      this.arrowColor,
       this.value,
       this.needAuth,
       this.isVisibleArrow,
@@ -54,7 +58,7 @@ class SettingActionWidgetState extends State<SettingActionWidget> {
                   child: TitleText(
                     title: widget.title ?? "",
                     fontSize: 18,
-                    color: AppStyle.white,
+                    color: widget.titleColor ?? AppStyle.white,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -81,7 +85,7 @@ class SettingActionWidgetState extends State<SettingActionWidget> {
                       'assets/webp/arrow_right.webp',
                       width: 24,
                       height: 24,
-                      color: AppStyle.secondaryTextColor,
+                      color: widget.arrowColor ?? AppStyle.secondaryTextColor,
                     ),
                   ),
                 ),
