@@ -39,6 +39,7 @@ dependencies:
   app_tracking_transparency: ^2.0.4
 
   sentry_flutter: ^7.11.0
+  share_plus: ^7.2.1
 
   google_sign_in: ^6.1.5
   sign_in_with_apple: ^5.0.0

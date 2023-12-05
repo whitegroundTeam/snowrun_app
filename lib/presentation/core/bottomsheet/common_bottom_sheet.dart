@@ -135,11 +135,11 @@ class CommonBottomSheetState extends State<CommonBottomSheet>
                       padding: const EdgeInsets.only(
                         left: 20,
                         right: 20,
-                        top: 8,
+                        top: 4,
                       ),
                       child: TitleText(
                         title: widget.accentDescription ?? "",
-                        fontSize: 14,
+                        fontSize: 16,
                         color: AppStyle.accentColor,
                         fontWeight: FontWeight.w400,
                       ),
