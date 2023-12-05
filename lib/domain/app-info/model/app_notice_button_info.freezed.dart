@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppNoticeButtonInfo {
   StringVO get title => throw _privateConstructorUsedError;
-  StringVO get deeplink => throw _privateConstructorUsedError;
+  StringVO get link => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppNoticeButtonInfoCopyWith<AppNoticeButtonInfo> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $AppNoticeButtonInfoCopyWith<$Res> {
           AppNoticeButtonInfo value, $Res Function(AppNoticeButtonInfo) then) =
       _$AppNoticeButtonInfoCopyWithImpl<$Res, AppNoticeButtonInfo>;
   @useResult
-  $Res call({StringVO title, StringVO deeplink});
+  $Res call({StringVO title, StringVO link});
 }
 
 /// @nodoc
@@ -47,16 +47,16 @@ class _$AppNoticeButtonInfoCopyWithImpl<$Res, $Val extends AppNoticeButtonInfo>
   @override
   $Res call({
     Object? title = null,
-    Object? deeplink = null,
+    Object? link = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as StringVO,
-      deeplink: null == deeplink
-          ? _value.deeplink
-          : deeplink // ignore: cast_nullable_to_non_nullable
+      link: null == link
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
               as StringVO,
     ) as $Val);
   }
@@ -70,7 +70,7 @@ abstract class _$$AppNoticeButtonInfoImplCopyWith<$Res>
       __$$AppNoticeButtonInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StringVO title, StringVO deeplink});
+  $Res call({StringVO title, StringVO link});
 }
 
 /// @nodoc
@@ -85,16 +85,16 @@ class __$$AppNoticeButtonInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? deeplink = null,
+    Object? link = null,
   }) {
     return _then(_$AppNoticeButtonInfoImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as StringVO,
-      deeplink: null == deeplink
-          ? _value.deeplink
-          : deeplink // ignore: cast_nullable_to_non_nullable
+      link: null == link
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
               as StringVO,
     ));
   }
@@ -103,17 +103,17 @@ class __$$AppNoticeButtonInfoImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppNoticeButtonInfoImpl extends _AppNoticeButtonInfo {
-  const _$AppNoticeButtonInfoImpl({required this.title, required this.deeplink})
+  const _$AppNoticeButtonInfoImpl({required this.title, required this.link})
       : super._();
 
   @override
   final StringVO title;
   @override
-  final StringVO deeplink;
+  final StringVO link;
 
   @override
   String toString() {
-    return 'AppNoticeButtonInfo(title: $title, deeplink: $deeplink)';
+    return 'AppNoticeButtonInfo(title: $title, link: $link)';
   }
 
   @override
@@ -122,12 +122,11 @@ class _$AppNoticeButtonInfoImpl extends _AppNoticeButtonInfo {
         (other.runtimeType == runtimeType &&
             other is _$AppNoticeButtonInfoImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.deeplink, deeplink) ||
-                other.deeplink == deeplink));
+            (identical(other.link, link) || other.link == link));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title, deeplink);
+  int get hashCode => Object.hash(runtimeType, title, link);
 
   @JsonKey(ignore: true)
   @override
@@ -140,13 +139,13 @@ class _$AppNoticeButtonInfoImpl extends _AppNoticeButtonInfo {
 abstract class _AppNoticeButtonInfo extends AppNoticeButtonInfo {
   const factory _AppNoticeButtonInfo(
       {required final StringVO title,
-      required final StringVO deeplink}) = _$AppNoticeButtonInfoImpl;
+      required final StringVO link}) = _$AppNoticeButtonInfoImpl;
   const _AppNoticeButtonInfo._() : super._();
 
   @override
   StringVO get title;
   @override
-  StringVO get deeplink;
+  StringVO get link;
   @override
   @JsonKey(ignore: true)
   _$$AppNoticeButtonInfoImplCopyWith<_$AppNoticeButtonInfoImpl> get copyWith =>

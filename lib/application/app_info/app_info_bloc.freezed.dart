@@ -285,7 +285,7 @@ mixin _$AppInfoState {
   bool? get isLatestVersion => throw _privateConstructorUsedError;
   bool? get isAvailableVersion => throw _privateConstructorUsedError;
   bool? get canUpdateVersion => throw _privateConstructorUsedError;
-  AppNotice get appNotice => throw _privateConstructorUsedError;
+  AppNotice? get appNotice => throw _privateConstructorUsedError;
   bool? get isShowAppNotice => throw _privateConstructorUsedError;
   List<AppOperationInfo> get appOperationInfos =>
       throw _privateConstructorUsedError;
@@ -308,13 +308,13 @@ abstract class $AppInfoStateCopyWith<$Res> {
       bool? isLatestVersion,
       bool? isAvailableVersion,
       bool? canUpdateVersion,
-      AppNotice appNotice,
+      AppNotice? appNotice,
       bool? isShowAppNotice,
       List<AppOperationInfo> appOperationInfos,
       bool isLoading});
 
   $AppVersionCopyWith<$Res> get appVersion;
-  $AppNoticeCopyWith<$Res> get appNotice;
+  $AppNoticeCopyWith<$Res>? get appNotice;
 }
 
 /// @nodoc
@@ -335,7 +335,7 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
     Object? isLatestVersion = freezed,
     Object? isAvailableVersion = freezed,
     Object? canUpdateVersion = freezed,
-    Object? appNotice = null,
+    Object? appNotice = freezed,
     Object? isShowAppNotice = freezed,
     Object? appOperationInfos = null,
     Object? isLoading = null,
@@ -361,10 +361,10 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
           ? _value.canUpdateVersion
           : canUpdateVersion // ignore: cast_nullable_to_non_nullable
               as bool?,
-      appNotice: null == appNotice
+      appNotice: freezed == appNotice
           ? _value.appNotice
           : appNotice // ignore: cast_nullable_to_non_nullable
-              as AppNotice,
+              as AppNotice?,
       isShowAppNotice: freezed == isShowAppNotice
           ? _value.isShowAppNotice
           : isShowAppNotice // ignore: cast_nullable_to_non_nullable
@@ -390,8 +390,12 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
 
   @override
   @pragma('vm:prefer-inline')
-  $AppNoticeCopyWith<$Res> get appNotice {
-    return $AppNoticeCopyWith<$Res>(_value.appNotice, (value) {
+  $AppNoticeCopyWith<$Res>? get appNotice {
+    if (_value.appNotice == null) {
+      return null;
+    }
+
+    return $AppNoticeCopyWith<$Res>(_value.appNotice!, (value) {
       return _then(_value.copyWith(appNotice: value) as $Val);
     });
   }
@@ -411,7 +415,7 @@ abstract class _$$AppInfoStateImplCopyWith<$Res>
       bool? isLatestVersion,
       bool? isAvailableVersion,
       bool? canUpdateVersion,
-      AppNotice appNotice,
+      AppNotice? appNotice,
       bool? isShowAppNotice,
       List<AppOperationInfo> appOperationInfos,
       bool isLoading});
@@ -419,7 +423,7 @@ abstract class _$$AppInfoStateImplCopyWith<$Res>
   @override
   $AppVersionCopyWith<$Res> get appVersion;
   @override
-  $AppNoticeCopyWith<$Res> get appNotice;
+  $AppNoticeCopyWith<$Res>? get appNotice;
 }
 
 /// @nodoc
@@ -438,7 +442,7 @@ class __$$AppInfoStateImplCopyWithImpl<$Res>
     Object? isLatestVersion = freezed,
     Object? isAvailableVersion = freezed,
     Object? canUpdateVersion = freezed,
-    Object? appNotice = null,
+    Object? appNotice = freezed,
     Object? isShowAppNotice = freezed,
     Object? appOperationInfos = null,
     Object? isLoading = null,
@@ -464,10 +468,10 @@ class __$$AppInfoStateImplCopyWithImpl<$Res>
           ? _value.canUpdateVersion
           : canUpdateVersion // ignore: cast_nullable_to_non_nullable
               as bool?,
-      appNotice: null == appNotice
+      appNotice: freezed == appNotice
           ? _value.appNotice
           : appNotice // ignore: cast_nullable_to_non_nullable
-              as AppNotice,
+              as AppNotice?,
       isShowAppNotice: freezed == isShowAppNotice
           ? _value.isShowAppNotice
           : isShowAppNotice // ignore: cast_nullable_to_non_nullable
@@ -510,7 +514,7 @@ class _$AppInfoStateImpl implements _AppInfoState {
   @override
   final bool? canUpdateVersion;
   @override
-  final AppNotice appNotice;
+  final AppNotice? appNotice;
   @override
   final bool? isShowAppNotice;
   final List<AppOperationInfo> _appOperationInfos;
@@ -581,7 +585,7 @@ abstract class _AppInfoState implements AppInfoState {
       required final bool? isLatestVersion,
       required final bool? isAvailableVersion,
       required final bool? canUpdateVersion,
-      required final AppNotice appNotice,
+      required final AppNotice? appNotice,
       required final bool? isShowAppNotice,
       required final List<AppOperationInfo> appOperationInfos,
       required final bool isLoading}) = _$AppInfoStateImpl;
@@ -597,7 +601,7 @@ abstract class _AppInfoState implements AppInfoState {
   @override
   bool? get canUpdateVersion;
   @override
-  AppNotice get appNotice;
+  AppNotice? get appNotice;
   @override
   bool? get isShowAppNotice;
   @override

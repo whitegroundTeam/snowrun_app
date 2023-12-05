@@ -37,6 +37,7 @@ class AppStyle {
     return ThemeData(
       fontFamily: kFontFamily,
     ).copyWith(
+      useMaterial3: false,
       scaffoldBackgroundColor: AppStyle.background,
       textTheme: defaultTheme.textTheme.apply(
         fontFamily: kFontFamily,

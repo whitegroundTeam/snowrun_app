@@ -9,15 +9,15 @@ class AppNoticeButtonInfo with _$AppNoticeButtonInfo {
   const AppNoticeButtonInfo._();
   const factory AppNoticeButtonInfo({
     required StringVO title,
-    required StringVO deeplink,
+    required StringVO link,
   }) = _AppNoticeButtonInfo;
   factory AppNoticeButtonInfo.empty() => AppNoticeButtonInfo(
     title: StringVO(""),
-    deeplink: StringVO(""),
+    link: StringVO(""),
   );
   Option<ValueFailure<dynamic>> get failureOption {
     return title.failureOrUnit
-        .andThen(deeplink.failureOrUnit)
+        .andThen(link.failureOrUnit)
         .fold((f) => some(f), (_) => none());
   }
 }

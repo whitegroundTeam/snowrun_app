@@ -641,10 +641,10 @@ class _$AppNoticeDtoImpl extends _AppNoticeDto {
   const _$AppNoticeDtoImpl(
       {@JsonKey(name: 'imageUrl') required this.imageUrl,
       @JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'negativeButton') required this.negativeButton,
-      @JsonKey(name: 'positiveButton') required this.positiveButton,
-      @JsonKey(name: 'isForcedFinish') required this.isForcedFinish})
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'negativeButton') this.negativeButton,
+      @JsonKey(name: 'positiveButton') this.positiveButton,
+      @JsonKey(name: 'isForcedFinish') this.isForcedFinish})
       : super._();
 
   factory _$AppNoticeDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -713,15 +713,15 @@ class _$AppNoticeDtoImpl extends _AppNoticeDto {
 
 abstract class _AppNoticeDto extends AppNoticeDto {
   const factory _AppNoticeDto(
-      {@JsonKey(name: 'imageUrl') required final String? imageUrl,
-      @JsonKey(name: 'title') required final String? title,
-      @JsonKey(name: 'description') required final String? description,
-      @JsonKey(name: 'negativeButton')
-      required final AppNoticeButtonInfoDto? negativeButton,
-      @JsonKey(name: 'positiveButton')
-      required final AppNoticeButtonInfoDto? positiveButton,
-      @JsonKey(name: 'isForcedFinish')
-      required final bool? isForcedFinish}) = _$AppNoticeDtoImpl;
+          {@JsonKey(name: 'imageUrl') required final String? imageUrl,
+          @JsonKey(name: 'title') required final String? title,
+          @JsonKey(name: 'description') final String? description,
+          @JsonKey(name: 'negativeButton')
+          final AppNoticeButtonInfoDto? negativeButton,
+          @JsonKey(name: 'positiveButton')
+          final AppNoticeButtonInfoDto? positiveButton,
+          @JsonKey(name: 'isForcedFinish') final bool? isForcedFinish}) =
+      _$AppNoticeDtoImpl;
   const _AppNoticeDto._() : super._();
 
   factory _AppNoticeDto.fromJson(Map<String, dynamic> json) =
@@ -760,8 +760,8 @@ AppNoticeButtonInfoDto _$AppNoticeButtonInfoDtoFromJson(
 mixin _$AppNoticeButtonInfoDto {
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
-  @JsonKey(name: 'deeplink')
-  String get deeplink => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link')
+  String get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -777,7 +777,7 @@ abstract class $AppNoticeButtonInfoDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'deeplink') String deeplink});
+      @JsonKey(name: 'link') String link});
 }
 
 /// @nodoc
@@ -795,16 +795,16 @@ class _$AppNoticeButtonInfoDtoCopyWithImpl<$Res,
   @override
   $Res call({
     Object? title = null,
-    Object? deeplink = null,
+    Object? link = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      deeplink: null == deeplink
-          ? _value.deeplink
-          : deeplink // ignore: cast_nullable_to_non_nullable
+      link: null == link
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -821,7 +821,7 @@ abstract class _$$AppNoticeButtonInfoDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'deeplink') String deeplink});
+      @JsonKey(name: 'link') String link});
 }
 
 /// @nodoc
@@ -838,16 +838,16 @@ class __$$AppNoticeButtonInfoDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? deeplink = null,
+    Object? link = null,
   }) {
     return _then(_$AppNoticeButtonInfoDtoImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      deeplink: null == deeplink
-          ? _value.deeplink
-          : deeplink // ignore: cast_nullable_to_non_nullable
+      link: null == link
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -858,7 +858,7 @@ class __$$AppNoticeButtonInfoDtoImplCopyWithImpl<$Res>
 class _$AppNoticeButtonInfoDtoImpl extends _AppNoticeButtonInfoDto {
   const _$AppNoticeButtonInfoDtoImpl(
       {@JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'deeplink') required this.deeplink})
+      @JsonKey(name: 'link') required this.link})
       : super._();
 
   factory _$AppNoticeButtonInfoDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -868,12 +868,12 @@ class _$AppNoticeButtonInfoDtoImpl extends _AppNoticeButtonInfoDto {
   @JsonKey(name: 'title')
   final String title;
   @override
-  @JsonKey(name: 'deeplink')
-  final String deeplink;
+  @JsonKey(name: 'link')
+  final String link;
 
   @override
   String toString() {
-    return 'AppNoticeButtonInfoDto(title: $title, deeplink: $deeplink)';
+    return 'AppNoticeButtonInfoDto(title: $title, link: $link)';
   }
 
   @override
@@ -882,13 +882,12 @@ class _$AppNoticeButtonInfoDtoImpl extends _AppNoticeButtonInfoDto {
         (other.runtimeType == runtimeType &&
             other is _$AppNoticeButtonInfoDtoImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.deeplink, deeplink) ||
-                other.deeplink == deeplink));
+            (identical(other.link, link) || other.link == link));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, deeplink);
+  int get hashCode => Object.hash(runtimeType, title, link);
 
   @JsonKey(ignore: true)
   @override
@@ -908,7 +907,7 @@ class _$AppNoticeButtonInfoDtoImpl extends _AppNoticeButtonInfoDto {
 abstract class _AppNoticeButtonInfoDto extends AppNoticeButtonInfoDto {
   const factory _AppNoticeButtonInfoDto(
           {@JsonKey(name: 'title') required final String title,
-          @JsonKey(name: 'deeplink') required final String deeplink}) =
+          @JsonKey(name: 'link') required final String link}) =
       _$AppNoticeButtonInfoDtoImpl;
   const _AppNoticeButtonInfoDto._() : super._();
 
@@ -919,8 +918,8 @@ abstract class _AppNoticeButtonInfoDto extends AppNoticeButtonInfoDto {
   @JsonKey(name: 'title')
   String get title;
   @override
-  @JsonKey(name: 'deeplink')
-  String get deeplink;
+  @JsonKey(name: 'link')
+  String get link;
   @override
   @JsonKey(ignore: true)
   _$$AppNoticeButtonInfoDtoImplCopyWith<_$AppNoticeButtonInfoDtoImpl>

@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
@@ -13,14 +14,16 @@ import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
+import 'package:snowrun_app/domain/app-info/model/app_info.dart';
+import 'package:snowrun_app/domain/app-info/model/app_notice.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
+import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
-import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
 import 'package:snowrun_app/presentation/home/home_bottom_band.dart';
 import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
 import 'package:snowrun_app/presentation/home/home_ridings_widget.dart';
@@ -75,6 +78,8 @@ class HomePageState extends State<HomePage> {
 
   bool isShowAppNoticeBottomSheet = false;
 
+  bool isShowLoading = true;
+
   // bool isShowEquipmentStorageBottomSheet = false;
 
   void handleRemoteConfig() {
@@ -123,14 +128,6 @@ class HomePageState extends State<HomePage> {
                   // context.read<AuthBloc>().add(const AuthEvent.checkAuth());
                 });
               }
-              // if (authToken.isNotEmpty) {
-              //   // pushNewHomePage(stateContext);
-              //   context.read<AuthBloc>().add(const AuthEvent.checkAuth());
-              // } else {
-              //   SignInPage.pushSignInPage(context, onResult: () {
-              //     context.read<AuthBloc>().add(const AuthEvent.checkAuth());
-              //   });
-              // }
             } else if (state.status == AuthStatus.authenticated) {
               final user = state.user;
               if (user != null) {
@@ -178,42 +175,62 @@ class HomePageState extends State<HomePage> {
                 c.status == DefaultStatus.failure;
           },
           listener: (context, state) {
+            _hideLoading();
             if (state.isAvailableVersion != null) {
               if (state.isAvailableVersion == false) {
                 showCommonBottomSheet(context,
                     title: "업데이트가 필요해요!",
-                    accentDescription: "불편을 드려 죄송해요. \n하지만 더욱 즐겁게 겨울을 나실 수 있게 새로운 기능이 추가되었어요😆",
+                    accentDescription:
+                        "불편을 드려 죄송해요. \n더욱 즐겁게 겨울을 나실 수 있게 새로운 기능이 추가되었어요😆",
                     actionButtonDescriptionText: "최신 버전으로",
                     actionButtonText: "업데이트하러 가기",
-                    canClose: false,
-                    onClickActionButton: () async {
-                      launchExternalUrl(state.appVersion.url.getOrCrash());
-                    });
+                    canClose: false, onClickActionButton: () async {
+                  launchExternalUrl(state.appVersion.url.getOrCrash());
+                });
               } else {
-                // final clickedAt = getIt<HiveProvider>().getAppNoticeNotViewedToday();
-                // if (!isShowAppNoticeBottomSheet &&
-                //     (clickedAt.isEmpty ||
-                //         DateTime.parse(clickedAt).day !=
-                //             DateTime.now().day)) {
-                //   // bannerBloc
-                //   //     .add(const BannerEvent.getBanners(BannerType.popup));
-                // }
+                if (isShowAppNoticeBottomSheet) {
+                  return;
+                }
 
-
-
-                // if (isShowAppNoticeBottomSheet) {
-                //   return;
-                // }
-                //
-                // final clickedAt =
-                // getIt<HiveProvider>().getAppNoticeNotViewedToday();
-                // if (state.banners.isNotEmpty &&
-                //     (clickedAt.isEmpty ||
-                //         DateTime.parse(clickedAt).day != DateTime.now().day)) {
-                //   getIt<HiveProvider>().setAppNoticeNotViewedToday("");
-                //   showAppNoticeBottomSheet(context, state.banners);
-                //   isShowAppNoticeBottomSheet = true;
-                // }
+                final clickedAt =
+                    getIt<HiveProvider>().getAppNoticeNotViewedToday();
+                if (state.appNotice != null &&
+                    (clickedAt.isEmpty ||
+                        DateTime.parse(clickedAt).day != DateTime.now().day)) {
+                  getIt<HiveProvider>().setAppNoticeNotViewedToday("");
+                  showCommonBottomSheet(context,
+                      canClose:
+                          state.appNotice?.isForcedFinish.getOrCrash() == false,
+                      title: state.appNotice?.title.getOrCrash() ?? "",
+                      description: state.appNotice?.description.getOrCrash(),
+                      imageUrl: state.appNotice?.imageUrl.getOrCrash(),
+                      negativeButtonText:
+                          state.appNotice?.negativeButton?.title.getOrCrash() ??
+                              "",
+                      positiveButtonText:
+                          state.appNotice?.positiveButton?.title.getOrCrash() ??
+                              "", onClickNegativeButton: () {
+                    getIt<HiveProvider>()
+                        .setAppNoticeNotViewedToday(DateTime.now().toString());
+                    launchExternalUrl(
+                        state.appNotice?.negativeButton?.link.getOrCrash() ??
+                            dotenv.env['APP_URL'] ??
+                            "");
+                    context.pop();
+                  }, onClickPositiveButton: () {
+                    getIt<HiveProvider>()
+                        .setAppNoticeNotViewedToday(DateTime.now().toString());
+                    launchExternalUrl(
+                        state.appNotice?.positiveButton?.link.getOrCrash() ??
+                            dotenv.env['APP_URL'] ??
+                            "");
+                    context.pop();
+                  }, onClickCloseButton: () {
+                    getIt<HiveProvider>()
+                        .setAppNoticeNotViewedToday(DateTime.now().toString());
+                  });
+                  isShowAppNoticeBottomSheet = true;
+                }
               }
             }
           },
@@ -235,103 +252,64 @@ class HomePageState extends State<HomePage> {
               return const SizedBox();
             }
 
-            return const Scaffold(
-              body: Column(
+            return Scaffold(
+              body: Stack(
                 children: [
-                  Expanded(
-                    child: CustomScrollView(
-                      physics: bouncingScrollPhysics,
-                      slivers: [
-                        CommonAppBar(
-                          appBarType: AppBarType.home,
+                  const Column(
+                    children: [
+                      Expanded(
+                        child: CustomScrollView(
+                          physics: bouncingScrollPhysics,
+                          slivers: [
+                            CommonAppBar(
+                              appBarType: AppBarType.home,
+                            ),
+                            HomeProfileWidget(),
+                            HomeStartRidingWidget(),
+                            HomeRidingsWidget(),
+                          ],
                         ),
-                        HomeProfileWidget(),
-                        HomeStartRidingWidget(),
-                        HomeRidingsWidget(),
-                      ],
+                      ),
+                      HomeBottomBand(),
+                    ],
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Visibility(
+                      visible: isShowLoading,
+                      child: const CommonLoading(),
                     ),
                   ),
-                  HomeBottomBand(),
                 ],
               ),
             );
-
-            // return BlocBuilder<CheckPermissionBloc, CheckPermissionState>(
-            //   bloc: checkPermissionBloc,
-            //     // ..add(const CheckPermissionEvent.checkInitialPermissions()),
-            //   buildWhen: (p, c) {
-            //     debugPrint(
-            //         '[CheckPermissionBloc Builder] State Changed $p to $c');
-            //     return p != c;
-            //   },
-            //   builder: (context, state) {
-            //     return state.map<Widget>(
-            //       initPermissionsNeeded: (e) => const Scaffold(
-            //         backgroundColor: AppStyle.background,
-            //         body: SizedBox(),
-            //       ),
-            //       initPermissionsUnNeeded: (e) {
-            //         // if (!isShowEquipmentStorageBottomSheet) {
-            //         //   Future.delayed(const Duration(seconds: 1), () {
-            //         //     showCommonBottomSheet(context,
-            //         //         title: "장비 보관하기 번거로우시죠?",
-            //         //         accentDescription: "스노우런이 도와드릴게요!",
-            //         //         actionButtonDescriptionText: "데크, 바인딩, 부츠 등 어느 장비든",
-            //         //         actionButtonText: "보관하러 가기",
-            //         //         onClickActionButton: () {
-            //         //       CommonWebViewPage.pushCommonWebView(context,
-            //         //           "https://smore.im/form/VhD3HQMVVy", "장비 보관 신청서");
-            //         //     });
-            //         //
-            //         //     // showCommonBottomSheet(
-            //         //     //   context,
-            //         //     //   title: "업데이트가 꼭 필요해요",
-            //         //     //   accentDescription:
-            //         //     //       "더욱 즐겁게 겨울을 나실 수 있게 새로운 기능이 추가되었어요.\n업데이트 해주실거죠?😆",
-            //         //     //   actionButtonDescriptionText: "최신버전으로",
-            //         //     //   actionButtonText: "업데이트하러 가기",
-            //         //     //   canClose: false,
-            //         //     // );
-            //         //   });
-            //         //   isShowEquipmentStorageBottomSheet = true;
-            //         // }
-            //
-            //         if(authState.status != AuthStatus.authenticated) {
-            //           return const SizedBox();
-            //         }
-            //
-            //         return const Scaffold(
-            //           body: Column(
-            //             children: [
-            //               Expanded(
-            //                 child: CustomScrollView(
-            //                   physics: bouncingScrollPhysics,
-            //                   slivers: [
-            //                     CommonAppBar(
-            //                       appBarType: AppBarType.home,
-            //                     ),
-            //                     HomeProfileWidget(),
-            //                     HomeStartRidingWidget(),
-            //                     HomeRidingsWidget(),
-            //                   ],
-            //                 ),
-            //               ),
-            //               HomeBottomBand(),
-            //             ],
-            //           ),
-            //         );
-            //       },
-            //       initial: (e) => const Scaffold(
-            //         backgroundColor: Colors.white,
-            //         body: SizedBox(),
-            //       ),
-            //     );
-            //   },
-            // );
           },
         ),
       ),
     );
+  }
+
+  _showLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!isShowLoading) {
+        setState(() {
+          isShowLoading = true;
+        });
+      }
+    });
+  }
+
+  _hideLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (isShowLoading) {
+        setState(() {
+          isShowLoading = false;
+        });
+      }
+    });
   }
 
   Future<void> initDeepLinks() async {
@@ -353,5 +331,9 @@ class HomePageState extends State<HomePage> {
 
   void openAppLink(Uri uri) {
     context.pushNamed(uri.fragment);
+  }
+
+  _refresh() {
+    _showLoading();
   }
 }

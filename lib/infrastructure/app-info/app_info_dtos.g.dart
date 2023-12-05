@@ -70,14 +70,14 @@ _$AppNoticeButtonInfoDtoImpl _$$AppNoticeButtonInfoDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$AppNoticeButtonInfoDtoImpl(
       title: json['title'] as String,
-      deeplink: json['deeplink'] as String,
+      link: json['link'] as String,
     );
 
 Map<String, dynamic> _$$AppNoticeButtonInfoDtoImplToJson(
         _$AppNoticeButtonInfoDtoImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'deeplink': instance.deeplink,
+      'link': instance.link,
     };
 
 _$AppOperationInfoDtoImpl _$$AppOperationInfoDtoImplFromJson(

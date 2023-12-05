@@ -1,9 +1,12 @@
+import 'dart:ffi';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
+import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/formatters.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/utils.dart';
@@ -12,10 +15,12 @@ class CommonBottomSheet extends StatefulWidget {
   final String title;
   final String? accentDescription;
   final String? description;
+  final String? imageUrl;
   final String? negativeButtonText;
   final String? positiveButtonText;
   final Function? onClickNegativeButton;
   final Function? onClickPositiveButton;
+  final Function? onClickCloseButton;
   final String? actionButtonDescriptionText;
   final String? actionButtonText;
   final Function? onClickActionButton;
@@ -26,10 +31,12 @@ class CommonBottomSheet extends StatefulWidget {
       required this.title,
       this.accentDescription,
       this.description,
+      this.imageUrl,
       this.negativeButtonText,
       this.positiveButtonText,
       this.onClickNegativeButton,
       this.onClickPositiveButton,
+      this.onClickCloseButton,
       this.actionButtonDescriptionText,
       this.actionButtonText,
       this.onClickActionButton,
@@ -107,6 +114,7 @@ class CommonBottomSheetState extends State<CommonBottomSheet>
                         visible: widget.canClose == true,
                         child: CommonDetector(
                           onTap: () {
+                            widget.onClickCloseButton?.call();
                             context.pop();
                           },
                           child: Padding(
@@ -154,6 +162,24 @@ class CommonBottomSheetState extends State<CommonBottomSheet>
                         fontSize: 14,
                         color: AppStyle.secondaryTextColor,
                         fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: widget.imageUrl?.isNotEmpty == true,
+                    child: Container(
+                      margin: const EdgeInsets.only(
+                        left: 24,
+                        right: 24,
+                        top: 16,
+                      ),
+                      width: MediaQuery.sizeOf(context).width,
+                      height: MediaQuery.sizeOf(context).width,
+                      child: Center(
+                        child: CommonNetworkImage(
+                          imageUrl: widget.imageUrl ?? "",
+                          boxFit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -352,10 +378,12 @@ void showCommonBottomSheet(
   required String title,
   String? accentDescription,
   String? description,
+  String? imageUrl,
   String? negativeButtonText,
   String? positiveButtonText,
   Function? onClickNegativeButton,
   Function? onClickPositiveButton,
+  Function? onClickCloseButton,
   String? actionButtonDescriptionText,
   String? actionButtonText,
   Function? onClickActionButton,
@@ -370,10 +398,12 @@ void showCommonBottomSheet(
         title: title,
         accentDescription: accentDescription,
         description: description,
+        imageUrl: imageUrl,
         negativeButtonText: negativeButtonText,
         positiveButtonText: positiveButtonText,
         onClickNegativeButton: onClickNegativeButton,
         onClickPositiveButton: onClickPositiveButton,
+        onClickCloseButton: onClickCloseButton,
         actionButtonDescriptionText: actionButtonDescriptionText,
         actionButtonText: actionButtonText,
         onClickActionButton: onClickActionButton,

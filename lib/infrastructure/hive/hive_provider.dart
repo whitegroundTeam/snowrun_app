@@ -15,6 +15,7 @@ class HiveProvider {
     debugPrint('HIVE :: Initializer Local Store Open Device Box');
     await Hive.openBox(deviceKey);
     await Hive.openBox<String>(recentlySignInMethodBoxKey);
+    await Hive.openBox<String>(isAppNoticeNotViewedTodayKey);
     // await Hive.openBox<String>(selectedOrderTypeKey);
     // await Hive.openBox<List<String>>(franchiseOrderTypesKey);
     // await Hive.openBox(ttlBoxKey);

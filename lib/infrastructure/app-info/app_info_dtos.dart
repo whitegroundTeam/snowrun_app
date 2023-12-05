@@ -63,12 +63,12 @@ class AppNoticeDto with _$AppNoticeDto {
   const factory AppNoticeDto({
     @JsonKey(name: 'imageUrl') required String? imageUrl,
     @JsonKey(name: 'title') required String? title,
-    @JsonKey(name: 'description') required String? description,
+    @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'negativeButton')
-    required AppNoticeButtonInfoDto? negativeButton,
+    AppNoticeButtonInfoDto? negativeButton,
     @JsonKey(name: 'positiveButton')
-    required AppNoticeButtonInfoDto? positiveButton,
-    @JsonKey(name: 'isForcedFinish') required bool? isForcedFinish,
+    AppNoticeButtonInfoDto? positiveButton,
+    @JsonKey(name: 'isForcedFinish') bool? isForcedFinish,
   }) = _AppNoticeDto;
 
   AppNotice toDomain() {
@@ -91,13 +91,13 @@ class AppNoticeButtonInfoDto with _$AppNoticeButtonInfoDto {
 
   const factory AppNoticeButtonInfoDto({
     @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'deeplink') required String deeplink,
+    @JsonKey(name: 'link') required String link,
   }) = _AppNoticeButtonInfoDto;
 
   AppNoticeButtonInfo toDomain() {
     return AppNoticeButtonInfo(
       title: StringVO(title),
-      deeplink: StringVO(deeplink),
+      link: StringVO(link),
     );
   }
 
