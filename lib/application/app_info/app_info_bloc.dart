@@ -7,6 +7,7 @@ import 'package:snowrun_app/domain/app-info/i_app_info_repository.dart';
 import 'package:snowrun_app/domain/app-info/model/app_notice.dart';
 import 'package:snowrun_app/domain/app-info/model/app_operation_info.dart';
 import 'package:snowrun_app/domain/app-info/model/app_version.dart';
+import 'package:snowrun_app/domain/app-info/model/invite_codes.dart';
 
 part 'app_info_event.dart';
 
@@ -34,12 +35,13 @@ class AppInfoBloc extends Bloc<AppInfoEvent, AppInfoState> {
           (appInfo) => state.copyWith(
             status: DefaultStatus.success,
             appVersion: appInfo.appVersion,
+            appInviteCodes: appInfo.inviteCodes,
             isLatestVersion: isLatestVersion(appInfo.appVersion),
             isAvailableVersion: isAvailableVersion(appInfo.appVersion),
             canUpdateVersion: !isLatestVersion(appInfo.appVersion),
             appNotice: appInfo.appNotice,
             isShowAppNotice: isShowAppNotice(appInfo.appNotice),
-            appOperationInfos: appInfo.appOperationInfos.getOrCrash(),
+            appOperationInfos: appInfo.appOperationInfos?.getOrCrash() ?? [],
             isLoading: false,
           ),
         ),
@@ -47,10 +49,10 @@ class AppInfoBloc extends Bloc<AppInfoEvent, AppInfoState> {
     });
   }
 
-  isShowAppNotice(AppNotice appNotice) =>
-      appNotice.imageUrl.getOrCrash().isNotEmpty ||
-      appNotice.title.getOrCrash().isNotEmpty ||
-      appNotice.description.getOrCrash().isNotEmpty;
+  isShowAppNotice(AppNotice? appNotice) =>
+      appNotice?.imageUrl.getOrCrash().isNotEmpty == true ||
+      appNotice?.title.getOrCrash().isNotEmpty == true ||
+      appNotice?.description.getOrCrash().isNotEmpty == true ;
 
   isAvailableVersion(AppVersion appVersion) {
     final min = appVersion.min.getOrCrash();

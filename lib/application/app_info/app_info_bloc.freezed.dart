@@ -282,6 +282,7 @@ abstract class _GetAppInfo implements AppInfoEvent {
 mixin _$AppInfoState {
   DefaultStatus get status => throw _privateConstructorUsedError;
   AppVersion get appVersion => throw _privateConstructorUsedError;
+  InviteCodes? get appInviteCodes => throw _privateConstructorUsedError;
   bool? get isLatestVersion => throw _privateConstructorUsedError;
   bool? get isAvailableVersion => throw _privateConstructorUsedError;
   bool? get canUpdateVersion => throw _privateConstructorUsedError;
@@ -305,6 +306,7 @@ abstract class $AppInfoStateCopyWith<$Res> {
   $Res call(
       {DefaultStatus status,
       AppVersion appVersion,
+      InviteCodes? appInviteCodes,
       bool? isLatestVersion,
       bool? isAvailableVersion,
       bool? canUpdateVersion,
@@ -314,6 +316,7 @@ abstract class $AppInfoStateCopyWith<$Res> {
       bool isLoading});
 
   $AppVersionCopyWith<$Res> get appVersion;
+  $InviteCodesCopyWith<$Res>? get appInviteCodes;
   $AppNoticeCopyWith<$Res>? get appNotice;
 }
 
@@ -332,6 +335,7 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
   $Res call({
     Object? status = null,
     Object? appVersion = null,
+    Object? appInviteCodes = freezed,
     Object? isLatestVersion = freezed,
     Object? isAvailableVersion = freezed,
     Object? canUpdateVersion = freezed,
@@ -349,6 +353,10 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as AppVersion,
+      appInviteCodes: freezed == appInviteCodes
+          ? _value.appInviteCodes
+          : appInviteCodes // ignore: cast_nullable_to_non_nullable
+              as InviteCodes?,
       isLatestVersion: freezed == isLatestVersion
           ? _value.isLatestVersion
           : isLatestVersion // ignore: cast_nullable_to_non_nullable
@@ -390,6 +398,18 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
 
   @override
   @pragma('vm:prefer-inline')
+  $InviteCodesCopyWith<$Res>? get appInviteCodes {
+    if (_value.appInviteCodes == null) {
+      return null;
+    }
+
+    return $InviteCodesCopyWith<$Res>(_value.appInviteCodes!, (value) {
+      return _then(_value.copyWith(appInviteCodes: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $AppNoticeCopyWith<$Res>? get appNotice {
     if (_value.appNotice == null) {
       return null;
@@ -412,6 +432,7 @@ abstract class _$$AppInfoStateImplCopyWith<$Res>
   $Res call(
       {DefaultStatus status,
       AppVersion appVersion,
+      InviteCodes? appInviteCodes,
       bool? isLatestVersion,
       bool? isAvailableVersion,
       bool? canUpdateVersion,
@@ -422,6 +443,8 @@ abstract class _$$AppInfoStateImplCopyWith<$Res>
 
   @override
   $AppVersionCopyWith<$Res> get appVersion;
+  @override
+  $InviteCodesCopyWith<$Res>? get appInviteCodes;
   @override
   $AppNoticeCopyWith<$Res>? get appNotice;
 }
@@ -439,6 +462,7 @@ class __$$AppInfoStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? appVersion = null,
+    Object? appInviteCodes = freezed,
     Object? isLatestVersion = freezed,
     Object? isAvailableVersion = freezed,
     Object? canUpdateVersion = freezed,
@@ -456,6 +480,10 @@ class __$$AppInfoStateImplCopyWithImpl<$Res>
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as AppVersion,
+      appInviteCodes: freezed == appInviteCodes
+          ? _value.appInviteCodes
+          : appInviteCodes // ignore: cast_nullable_to_non_nullable
+              as InviteCodes?,
       isLatestVersion: freezed == isLatestVersion
           ? _value.isLatestVersion
           : isLatestVersion // ignore: cast_nullable_to_non_nullable
@@ -494,6 +522,7 @@ class _$AppInfoStateImpl implements _AppInfoState {
   const _$AppInfoStateImpl(
       {required this.status,
       required this.appVersion,
+      required this.appInviteCodes,
       required this.isLatestVersion,
       required this.isAvailableVersion,
       required this.canUpdateVersion,
@@ -507,6 +536,8 @@ class _$AppInfoStateImpl implements _AppInfoState {
   final DefaultStatus status;
   @override
   final AppVersion appVersion;
+  @override
+  final InviteCodes? appInviteCodes;
   @override
   final bool? isLatestVersion;
   @override
@@ -531,7 +562,7 @@ class _$AppInfoStateImpl implements _AppInfoState {
 
   @override
   String toString() {
-    return 'AppInfoState(status: $status, appVersion: $appVersion, isLatestVersion: $isLatestVersion, isAvailableVersion: $isAvailableVersion, canUpdateVersion: $canUpdateVersion, appNotice: $appNotice, isShowAppNotice: $isShowAppNotice, appOperationInfos: $appOperationInfos, isLoading: $isLoading)';
+    return 'AppInfoState(status: $status, appVersion: $appVersion, appInviteCodes: $appInviteCodes, isLatestVersion: $isLatestVersion, isAvailableVersion: $isAvailableVersion, canUpdateVersion: $canUpdateVersion, appNotice: $appNotice, isShowAppNotice: $isShowAppNotice, appOperationInfos: $appOperationInfos, isLoading: $isLoading)';
   }
 
   @override
@@ -542,6 +573,8 @@ class _$AppInfoStateImpl implements _AppInfoState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.appVersion, appVersion) ||
                 other.appVersion == appVersion) &&
+            (identical(other.appInviteCodes, appInviteCodes) ||
+                other.appInviteCodes == appInviteCodes) &&
             (identical(other.isLatestVersion, isLatestVersion) ||
                 other.isLatestVersion == isLatestVersion) &&
             (identical(other.isAvailableVersion, isAvailableVersion) ||
@@ -563,6 +596,7 @@ class _$AppInfoStateImpl implements _AppInfoState {
       runtimeType,
       status,
       appVersion,
+      appInviteCodes,
       isLatestVersion,
       isAvailableVersion,
       canUpdateVersion,
@@ -582,6 +616,7 @@ abstract class _AppInfoState implements AppInfoState {
   const factory _AppInfoState(
       {required final DefaultStatus status,
       required final AppVersion appVersion,
+      required final InviteCodes? appInviteCodes,
       required final bool? isLatestVersion,
       required final bool? isAvailableVersion,
       required final bool? canUpdateVersion,
@@ -594,6 +629,8 @@ abstract class _AppInfoState implements AppInfoState {
   DefaultStatus get status;
   @override
   AppVersion get appVersion;
+  @override
+  InviteCodes? get appInviteCodes;
   @override
   bool? get isLatestVersion;
   @override

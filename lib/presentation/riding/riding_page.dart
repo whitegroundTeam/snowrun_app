@@ -528,7 +528,7 @@ class RidingPageState extends State<RidingPage> {
                         ),
                       ),
                       const Spacer(),
-                      const ShareButton(),
+                      ShareButton(ridingRoom: state.ridingRoom,),
                     ],
                   ),
                 ),

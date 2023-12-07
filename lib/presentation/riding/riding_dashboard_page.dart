@@ -145,7 +145,7 @@ class RidingDashboardPageState extends State<RidingDashboardPage> {
                             ),
                           ),
                           const Spacer(),
-                          const ShareButton(),
+                          ShareButton(ridingRoom: state.ridingRoom,),
                         ],
                       ),
                       const SizedBox(

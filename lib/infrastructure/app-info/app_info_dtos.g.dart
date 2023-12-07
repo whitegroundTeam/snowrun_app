@@ -17,6 +17,10 @@ _$AppInfoDtoImpl _$$AppInfoDtoImplFromJson(Map<String, dynamic> json) =>
       appOperationInfos: (json['appOperationInfos'] as List<dynamic>?)
           ?.map((e) => AppOperationInfoDto.fromJson(e as Map<String, dynamic>))
           .toList(),
+      appInviteCodes: json['appInviteCodes'] == null
+          ? null
+          : InviteCodesDto.fromJson(
+              json['appInviteCodes'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$AppInfoDtoImplToJson(_$AppInfoDtoImpl instance) =>
@@ -24,6 +28,7 @@ Map<String, dynamic> _$$AppInfoDtoImplToJson(_$AppInfoDtoImpl instance) =>
       'appVersion': instance.appVersion,
       'appNotice': instance.appNotice,
       'appOperationInfos': instance.appOperationInfos,
+      'appInviteCodes': instance.appInviteCodes,
     };
 
 _$AppVersionDtoImpl _$$AppVersionDtoImplFromJson(Map<String, dynamic> json) =>
@@ -98,4 +103,17 @@ Map<String, dynamic> _$$AppOperationInfoDtoImplToJson(
       'arrowColor': instance.arrowColor,
       'applyAnimation': instance.applyAnimation,
       'link': instance.link,
+    };
+
+_$InviteCodesDtoImpl _$$InviteCodesDtoImplFromJson(Map<String, dynamic> json) =>
+    _$InviteCodesDtoImpl(
+      inviteCodes: (json['inviteCodes'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+    );
+
+Map<String, dynamic> _$$InviteCodesDtoImplToJson(
+        _$InviteCodesDtoImpl instance) =>
+    <String, dynamic>{
+      'inviteCodes': instance.inviteCodes,
     };

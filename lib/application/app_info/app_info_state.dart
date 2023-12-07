@@ -5,6 +5,7 @@ class AppInfoState with _$AppInfoState {
   const factory AppInfoState({
     required DefaultStatus status,
     required AppVersion appVersion,
+    required InviteCodes? appInviteCodes,
     required bool? isLatestVersion,
     required bool? isAvailableVersion,
     required bool? canUpdateVersion,
@@ -17,6 +18,7 @@ class AppInfoState with _$AppInfoState {
   factory AppInfoState.initial() => AppInfoState(
         status: DefaultStatus.initial,
         appVersion: AppVersion.empty(),
+        appInviteCodes: null,
         isLatestVersion: null,
         isAvailableVersion: null,
         canUpdateVersion: null,

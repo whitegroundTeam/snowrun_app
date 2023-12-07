@@ -1,11 +1,20 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/user/user_bloc.dart';
+import 'package:snowrun_app/domain/riding/riding_room.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
+import 'package:snowrun_app/utils/links.dart';
 
 class ShareButton extends StatefulWidget {
-  const ShareButton({super.key});
+  final RidingRoom? ridingRoom;
+
+  const ShareButton({super.key, this.ridingRoom});
 
   @override
   State createState() => ShareButtonState();
@@ -23,8 +32,29 @@ class ShareButtonState extends State<ShareButton> {
         ),
       ),
       child: CommonDetector(
-        onTap: () {
-          showToast(context, "공유 링크가 복사되었습니다 😆");
+        onTap: () async {
+          final userName =
+              context.read<AuthBloc>().state.user?.nickname.getOrCrash();
+          final ridingRoomName =
+              widget.ridingRoom?.name.getOrCrash().isNotEmpty == true
+                  ? "[${widget.ridingRoom?.name.getOrCrash()}]"
+                  : "";
+
+
+          int? ridingRoomId = widget.ridingRoom?.id.getOrCrash();
+          if(widget.ridingRoom != null && ridingRoomId != null) {
+            String shareLink = getShareRidingRoomLink(ridingRoomId);
+
+            final shareMessage =
+                "$userName님이 $ridingRoomName라이딩 방에 초대하셨습니다.\n\n\n아래 링크를 클릭하여 스노우런의 라이딩 방에 참여하고 함께 타보세요!\n\n<초대 링크>\n$shareLink";
+            final result = await Share.shareWithResult(shareMessage);
+
+            if (result.status == ShareResultStatus.success) {
+              showToast(context, "공유 링크가 복사되었습니다 😆");
+            }
+          } else {
+            showToast(context, "라이딩 방 공유 링크 생성에 오류가 발생하였습니다.");
+          }
         },
         child: const Padding(
           padding: EdgeInsets.only(

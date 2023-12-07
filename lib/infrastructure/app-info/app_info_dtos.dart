@@ -4,6 +4,7 @@ import 'package:snowrun_app/domain/app-info/model/app_notice.dart';
 import 'package:snowrun_app/domain/app-info/model/app_notice_button_info.dart';
 import 'package:snowrun_app/domain/app-info/model/app_operation_info.dart';
 import 'package:snowrun_app/domain/app-info/model/app_version.dart';
+import 'package:snowrun_app/domain/app-info/model/invite_codes.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
 
 part 'app_info_dtos.freezed.dart';
@@ -19,14 +20,16 @@ class AppInfoDto with _$AppInfoDto {
     @JsonKey(name: 'appNotice') AppNoticeDto? appNotice,
     @JsonKey(name: 'appOperationInfos')
     List<AppOperationInfoDto>? appOperationInfos,
+    @JsonKey(name: 'appInviteCodes') InviteCodesDto? appInviteCodes,
   }) = _AppInfoDto;
 
   AppInfo toDomain() {
     return AppInfo(
       appVersion: appVersion?.toDomain() ?? AppVersion.empty(),
-      appNotice: appNotice?.toDomain() ?? AppNotice.empty(),
+      appNotice: appNotice?.toDomain(),
       appOperationInfos:
           ListVO(appOperationInfos?.map((e) => e.toDomain()).toList() ?? []),
+        inviteCodes: appInviteCodes?.toDomain(),
     );
   }
 
@@ -129,4 +132,28 @@ class AppOperationInfoDto with _$AppOperationInfoDto {
 
   factory AppOperationInfoDto.fromJson(Map<String, dynamic> json) =>
       _$AppOperationInfoDtoFromJson(json);
+}
+
+@freezed
+class InviteCodesDto with _$InviteCodesDto {
+    const InviteCodesDto._();
+
+    const factory InviteCodesDto({
+      @JsonKey(name: 'inviteCodes') required List<String> inviteCodes,
+    }) = _InviteCodesDto;
+
+    factory InviteCodesDto.fromDomain(InviteCodes inviteCodes) {
+        return InviteCodesDto(
+          inviteCodes: inviteCodes.inviteCodes.getOrCrash().map((e) => e.toString()).toList(),
+        );
+    }
+
+    InviteCodes toDomain() {
+        return InviteCodes(
+            inviteCodes: ListVO(inviteCodes.toList()),
+        );
+    }
+
+    factory InviteCodesDto.fromJson(Map<String, dynamic> json) =>
+        _$InviteCodesDtoFromJson(json);
 }

@@ -190,7 +190,7 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
   }
 
   String? extractRoomNumber(String url) {
-    if (!url.contains(dotenv.env['APP_URL'] ?? "")) {
+    if (!url.contains(dotenv.env['APP_URL_HOST'] ?? "")) {
       return null;
     }
 

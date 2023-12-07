@@ -17,9 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppInfo {
   AppVersion get appVersion => throw _privateConstructorUsedError;
-  AppNotice get appNotice => throw _privateConstructorUsedError;
-  ListVO<AppOperationInfo> get appOperationInfos =>
+  AppNotice? get appNotice => throw _privateConstructorUsedError;
+  ListVO<AppOperationInfo>? get appOperationInfos =>
       throw _privateConstructorUsedError;
+  InviteCodes? get inviteCodes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppInfoCopyWith<AppInfo> get copyWith => throw _privateConstructorUsedError;
@@ -32,11 +33,13 @@ abstract class $AppInfoCopyWith<$Res> {
   @useResult
   $Res call(
       {AppVersion appVersion,
-      AppNotice appNotice,
-      ListVO<AppOperationInfo> appOperationInfos});
+      AppNotice? appNotice,
+      ListVO<AppOperationInfo>? appOperationInfos,
+      InviteCodes? inviteCodes});
 
   $AppVersionCopyWith<$Res> get appVersion;
-  $AppNoticeCopyWith<$Res> get appNotice;
+  $AppNoticeCopyWith<$Res>? get appNotice;
+  $InviteCodesCopyWith<$Res>? get inviteCodes;
 }
 
 /// @nodoc
@@ -53,22 +56,27 @@ class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
   @override
   $Res call({
     Object? appVersion = null,
-    Object? appNotice = null,
-    Object? appOperationInfos = null,
+    Object? appNotice = freezed,
+    Object? appOperationInfos = freezed,
+    Object? inviteCodes = freezed,
   }) {
     return _then(_value.copyWith(
       appVersion: null == appVersion
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as AppVersion,
-      appNotice: null == appNotice
+      appNotice: freezed == appNotice
           ? _value.appNotice
           : appNotice // ignore: cast_nullable_to_non_nullable
-              as AppNotice,
-      appOperationInfos: null == appOperationInfos
+              as AppNotice?,
+      appOperationInfos: freezed == appOperationInfos
           ? _value.appOperationInfos
           : appOperationInfos // ignore: cast_nullable_to_non_nullable
-              as ListVO<AppOperationInfo>,
+              as ListVO<AppOperationInfo>?,
+      inviteCodes: freezed == inviteCodes
+          ? _value.inviteCodes
+          : inviteCodes // ignore: cast_nullable_to_non_nullable
+              as InviteCodes?,
     ) as $Val);
   }
 
@@ -82,9 +90,25 @@ class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
 
   @override
   @pragma('vm:prefer-inline')
-  $AppNoticeCopyWith<$Res> get appNotice {
-    return $AppNoticeCopyWith<$Res>(_value.appNotice, (value) {
+  $AppNoticeCopyWith<$Res>? get appNotice {
+    if (_value.appNotice == null) {
+      return null;
+    }
+
+    return $AppNoticeCopyWith<$Res>(_value.appNotice!, (value) {
       return _then(_value.copyWith(appNotice: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InviteCodesCopyWith<$Res>? get inviteCodes {
+    if (_value.inviteCodes == null) {
+      return null;
+    }
+
+    return $InviteCodesCopyWith<$Res>(_value.inviteCodes!, (value) {
+      return _then(_value.copyWith(inviteCodes: value) as $Val);
     });
   }
 }
@@ -98,13 +122,16 @@ abstract class _$$AppInfoImplCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
   @useResult
   $Res call(
       {AppVersion appVersion,
-      AppNotice appNotice,
-      ListVO<AppOperationInfo> appOperationInfos});
+      AppNotice? appNotice,
+      ListVO<AppOperationInfo>? appOperationInfos,
+      InviteCodes? inviteCodes});
 
   @override
   $AppVersionCopyWith<$Res> get appVersion;
   @override
-  $AppNoticeCopyWith<$Res> get appNotice;
+  $AppNoticeCopyWith<$Res>? get appNotice;
+  @override
+  $InviteCodesCopyWith<$Res>? get inviteCodes;
 }
 
 /// @nodoc
@@ -119,22 +146,27 @@ class __$$AppInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? appVersion = null,
-    Object? appNotice = null,
-    Object? appOperationInfos = null,
+    Object? appNotice = freezed,
+    Object? appOperationInfos = freezed,
+    Object? inviteCodes = freezed,
   }) {
     return _then(_$AppInfoImpl(
       appVersion: null == appVersion
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as AppVersion,
-      appNotice: null == appNotice
+      appNotice: freezed == appNotice
           ? _value.appNotice
           : appNotice // ignore: cast_nullable_to_non_nullable
-              as AppNotice,
-      appOperationInfos: null == appOperationInfos
+              as AppNotice?,
+      appOperationInfos: freezed == appOperationInfos
           ? _value.appOperationInfos
           : appOperationInfos // ignore: cast_nullable_to_non_nullable
-              as ListVO<AppOperationInfo>,
+              as ListVO<AppOperationInfo>?,
+      inviteCodes: freezed == inviteCodes
+          ? _value.inviteCodes
+          : inviteCodes // ignore: cast_nullable_to_non_nullable
+              as InviteCodes?,
     ));
   }
 }
@@ -144,20 +176,23 @@ class __$$AppInfoImplCopyWithImpl<$Res>
 class _$AppInfoImpl extends _AppInfo {
   const _$AppInfoImpl(
       {required this.appVersion,
-      required this.appNotice,
-      required this.appOperationInfos})
+      this.appNotice,
+      this.appOperationInfos,
+      this.inviteCodes})
       : super._();
 
   @override
   final AppVersion appVersion;
   @override
-  final AppNotice appNotice;
+  final AppNotice? appNotice;
   @override
-  final ListVO<AppOperationInfo> appOperationInfos;
+  final ListVO<AppOperationInfo>? appOperationInfos;
+  @override
+  final InviteCodes? inviteCodes;
 
   @override
   String toString() {
-    return 'AppInfo(appVersion: $appVersion, appNotice: $appNotice, appOperationInfos: $appOperationInfos)';
+    return 'AppInfo(appVersion: $appVersion, appNotice: $appNotice, appOperationInfos: $appOperationInfos, inviteCodes: $inviteCodes)';
   }
 
   @override
@@ -170,12 +205,14 @@ class _$AppInfoImpl extends _AppInfo {
             (identical(other.appNotice, appNotice) ||
                 other.appNotice == appNotice) &&
             (identical(other.appOperationInfos, appOperationInfos) ||
-                other.appOperationInfos == appOperationInfos));
+                other.appOperationInfos == appOperationInfos) &&
+            (identical(other.inviteCodes, inviteCodes) ||
+                other.inviteCodes == inviteCodes));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, appVersion, appNotice, appOperationInfos);
+  int get hashCode => Object.hash(
+      runtimeType, appVersion, appNotice, appOperationInfos, inviteCodes);
 
   @JsonKey(ignore: true)
   @override
@@ -186,18 +223,20 @@ class _$AppInfoImpl extends _AppInfo {
 
 abstract class _AppInfo extends AppInfo {
   const factory _AppInfo(
-          {required final AppVersion appVersion,
-          required final AppNotice appNotice,
-          required final ListVO<AppOperationInfo> appOperationInfos}) =
-      _$AppInfoImpl;
+      {required final AppVersion appVersion,
+      final AppNotice? appNotice,
+      final ListVO<AppOperationInfo>? appOperationInfos,
+      final InviteCodes? inviteCodes}) = _$AppInfoImpl;
   const _AppInfo._() : super._();
 
   @override
   AppVersion get appVersion;
   @override
-  AppNotice get appNotice;
+  AppNotice? get appNotice;
   @override
-  ListVO<AppOperationInfo> get appOperationInfos;
+  ListVO<AppOperationInfo>? get appOperationInfos;
+  @override
+  InviteCodes? get inviteCodes;
   @override
   @JsonKey(ignore: true)
   _$$AppInfoImplCopyWith<_$AppInfoImpl> get copyWith =>

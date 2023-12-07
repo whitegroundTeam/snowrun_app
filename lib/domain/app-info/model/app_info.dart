@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:snowrun_app/domain/app-info/model/app_notice.dart';
 import 'package:snowrun_app/domain/app-info/model/app_operation_info.dart';
 import 'package:snowrun_app/domain/app-info/model/app_version.dart';
+import 'package:snowrun_app/domain/app-info/model/invite_codes.dart';
 import 'package:snowrun_app/domain/core/failures.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
 
@@ -14,19 +15,21 @@ class AppInfo with _$AppInfo {
 
   const factory AppInfo({
     required AppVersion appVersion,
-    required AppNotice appNotice,
-    required ListVO<AppOperationInfo> appOperationInfos,
+    AppNotice? appNotice,
+    ListVO<AppOperationInfo>? appOperationInfos,
+    InviteCodes? inviteCodes,
   }) = _AppInfo;
 
   factory AppInfo.empty() => AppInfo(
         appVersion: AppVersion.empty(),
-        appNotice: AppNotice.empty(),
-        appOperationInfos: ListVO([]),
+        appNotice: null,
+        appOperationInfos: null,
+        inviteCodes: null,
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
-    return appVersion.failureOption.fold(() => right(unit), (f) => left(f))
-        .andThen(appNotice.failureOption.fold(() => right(unit), (a) => left(a)))
-        .andThen(appOperationInfos.failureOrUnit).fold((f) => some(f), (_) => none());
+    return appVersion.failureOption
+        .fold(() => right(unit), (f) => left(f))
+        .fold((f) => some(f), (_) => none());
   }
 }

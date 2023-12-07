@@ -14,4 +14,7 @@ const isSeenInitPermissionKey = 'is_seen_init_permission_key';
 /// 앱 안내 정보 노출
 const isAppNoticeNotViewedTodayKey = 'isAppNoticeNotViewedTodayKey';
 
+/// 앱 초대 코드
+const appInviteCodeKey = 'appInviteCodeKey';
+
 const hiveTestModelKey = 'hiveTestModel';

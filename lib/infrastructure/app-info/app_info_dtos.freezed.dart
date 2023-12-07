@@ -27,6 +27,8 @@ mixin _$AppInfoDto {
   @JsonKey(name: 'appOperationInfos')
   List<AppOperationInfoDto>? get appOperationInfos =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'appInviteCodes')
+  InviteCodesDto? get appInviteCodes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,10 +46,12 @@ abstract class $AppInfoDtoCopyWith<$Res> {
       {@JsonKey(name: 'appVersion') AppVersionDto? appVersion,
       @JsonKey(name: 'appNotice') AppNoticeDto? appNotice,
       @JsonKey(name: 'appOperationInfos')
-      List<AppOperationInfoDto>? appOperationInfos});
+      List<AppOperationInfoDto>? appOperationInfos,
+      @JsonKey(name: 'appInviteCodes') InviteCodesDto? appInviteCodes});
 
   $AppVersionDtoCopyWith<$Res>? get appVersion;
   $AppNoticeDtoCopyWith<$Res>? get appNotice;
+  $InviteCodesDtoCopyWith<$Res>? get appInviteCodes;
 }
 
 /// @nodoc
@@ -66,6 +70,7 @@ class _$AppInfoDtoCopyWithImpl<$Res, $Val extends AppInfoDto>
     Object? appVersion = freezed,
     Object? appNotice = freezed,
     Object? appOperationInfos = freezed,
+    Object? appInviteCodes = freezed,
   }) {
     return _then(_value.copyWith(
       appVersion: freezed == appVersion
@@ -80,6 +85,10 @@ class _$AppInfoDtoCopyWithImpl<$Res, $Val extends AppInfoDto>
           ? _value.appOperationInfos
           : appOperationInfos // ignore: cast_nullable_to_non_nullable
               as List<AppOperationInfoDto>?,
+      appInviteCodes: freezed == appInviteCodes
+          ? _value.appInviteCodes
+          : appInviteCodes // ignore: cast_nullable_to_non_nullable
+              as InviteCodesDto?,
     ) as $Val);
   }
 
@@ -106,6 +115,18 @@ class _$AppInfoDtoCopyWithImpl<$Res, $Val extends AppInfoDto>
       return _then(_value.copyWith(appNotice: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InviteCodesDtoCopyWith<$Res>? get appInviteCodes {
+    if (_value.appInviteCodes == null) {
+      return null;
+    }
+
+    return $InviteCodesDtoCopyWith<$Res>(_value.appInviteCodes!, (value) {
+      return _then(_value.copyWith(appInviteCodes: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -120,12 +141,15 @@ abstract class _$$AppInfoDtoImplCopyWith<$Res>
       {@JsonKey(name: 'appVersion') AppVersionDto? appVersion,
       @JsonKey(name: 'appNotice') AppNoticeDto? appNotice,
       @JsonKey(name: 'appOperationInfos')
-      List<AppOperationInfoDto>? appOperationInfos});
+      List<AppOperationInfoDto>? appOperationInfos,
+      @JsonKey(name: 'appInviteCodes') InviteCodesDto? appInviteCodes});
 
   @override
   $AppVersionDtoCopyWith<$Res>? get appVersion;
   @override
   $AppNoticeDtoCopyWith<$Res>? get appNotice;
+  @override
+  $InviteCodesDtoCopyWith<$Res>? get appInviteCodes;
 }
 
 /// @nodoc
@@ -142,6 +166,7 @@ class __$$AppInfoDtoImplCopyWithImpl<$Res>
     Object? appVersion = freezed,
     Object? appNotice = freezed,
     Object? appOperationInfos = freezed,
+    Object? appInviteCodes = freezed,
   }) {
     return _then(_$AppInfoDtoImpl(
       appVersion: freezed == appVersion
@@ -156,6 +181,10 @@ class __$$AppInfoDtoImplCopyWithImpl<$Res>
           ? _value._appOperationInfos
           : appOperationInfos // ignore: cast_nullable_to_non_nullable
               as List<AppOperationInfoDto>?,
+      appInviteCodes: freezed == appInviteCodes
+          ? _value.appInviteCodes
+          : appInviteCodes // ignore: cast_nullable_to_non_nullable
+              as InviteCodesDto?,
     ));
   }
 }
@@ -167,7 +196,8 @@ class _$AppInfoDtoImpl extends _AppInfoDto {
       {@JsonKey(name: 'appVersion') this.appVersion,
       @JsonKey(name: 'appNotice') this.appNotice,
       @JsonKey(name: 'appOperationInfos')
-      final List<AppOperationInfoDto>? appOperationInfos})
+      final List<AppOperationInfoDto>? appOperationInfos,
+      @JsonKey(name: 'appInviteCodes') this.appInviteCodes})
       : _appOperationInfos = appOperationInfos,
         super._();
 
@@ -193,8 +223,12 @@ class _$AppInfoDtoImpl extends _AppInfoDto {
   }
 
   @override
+  @JsonKey(name: 'appInviteCodes')
+  final InviteCodesDto? appInviteCodes;
+
+  @override
   String toString() {
-    return 'AppInfoDto(appVersion: $appVersion, appNotice: $appNotice, appOperationInfos: $appOperationInfos)';
+    return 'AppInfoDto(appVersion: $appVersion, appNotice: $appNotice, appOperationInfos: $appOperationInfos, appInviteCodes: $appInviteCodes)';
   }
 
   @override
@@ -207,13 +241,15 @@ class _$AppInfoDtoImpl extends _AppInfoDto {
             (identical(other.appNotice, appNotice) ||
                 other.appNotice == appNotice) &&
             const DeepCollectionEquality()
-                .equals(other._appOperationInfos, _appOperationInfos));
+                .equals(other._appOperationInfos, _appOperationInfos) &&
+            (identical(other.appInviteCodes, appInviteCodes) ||
+                other.appInviteCodes == appInviteCodes));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, appVersion, appNotice,
-      const DeepCollectionEquality().hash(_appOperationInfos));
+      const DeepCollectionEquality().hash(_appOperationInfos), appInviteCodes);
 
   @JsonKey(ignore: true)
   @override
@@ -234,7 +270,9 @@ abstract class _AppInfoDto extends AppInfoDto {
       {@JsonKey(name: 'appVersion') final AppVersionDto? appVersion,
       @JsonKey(name: 'appNotice') final AppNoticeDto? appNotice,
       @JsonKey(name: 'appOperationInfos')
-      final List<AppOperationInfoDto>? appOperationInfos}) = _$AppInfoDtoImpl;
+      final List<AppOperationInfoDto>? appOperationInfos,
+      @JsonKey(name: 'appInviteCodes')
+      final InviteCodesDto? appInviteCodes}) = _$AppInfoDtoImpl;
   const _AppInfoDto._() : super._();
 
   factory _AppInfoDto.fromJson(Map<String, dynamic> json) =
@@ -249,6 +287,9 @@ abstract class _AppInfoDto extends AppInfoDto {
   @override
   @JsonKey(name: 'appOperationInfos')
   List<AppOperationInfoDto>? get appOperationInfos;
+  @override
+  @JsonKey(name: 'appInviteCodes')
+  InviteCodesDto? get appInviteCodes;
   @override
   @JsonKey(ignore: true)
   _$$AppInfoDtoImplCopyWith<_$AppInfoDtoImpl> get copyWith =>
@@ -1166,5 +1207,158 @@ abstract class _AppOperationInfoDto extends AppOperationInfoDto {
   @override
   @JsonKey(ignore: true)
   _$$AppOperationInfoDtoImplCopyWith<_$AppOperationInfoDtoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+InviteCodesDto _$InviteCodesDtoFromJson(Map<String, dynamic> json) {
+  return _InviteCodesDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InviteCodesDto {
+  @JsonKey(name: 'inviteCodes')
+  List<String> get inviteCodes => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $InviteCodesDtoCopyWith<InviteCodesDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InviteCodesDtoCopyWith<$Res> {
+  factory $InviteCodesDtoCopyWith(
+          InviteCodesDto value, $Res Function(InviteCodesDto) then) =
+      _$InviteCodesDtoCopyWithImpl<$Res, InviteCodesDto>;
+  @useResult
+  $Res call({@JsonKey(name: 'inviteCodes') List<String> inviteCodes});
+}
+
+/// @nodoc
+class _$InviteCodesDtoCopyWithImpl<$Res, $Val extends InviteCodesDto>
+    implements $InviteCodesDtoCopyWith<$Res> {
+  _$InviteCodesDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? inviteCodes = null,
+  }) {
+    return _then(_value.copyWith(
+      inviteCodes: null == inviteCodes
+          ? _value.inviteCodes
+          : inviteCodes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$InviteCodesDtoImplCopyWith<$Res>
+    implements $InviteCodesDtoCopyWith<$Res> {
+  factory _$$InviteCodesDtoImplCopyWith(_$InviteCodesDtoImpl value,
+          $Res Function(_$InviteCodesDtoImpl) then) =
+      __$$InviteCodesDtoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'inviteCodes') List<String> inviteCodes});
+}
+
+/// @nodoc
+class __$$InviteCodesDtoImplCopyWithImpl<$Res>
+    extends _$InviteCodesDtoCopyWithImpl<$Res, _$InviteCodesDtoImpl>
+    implements _$$InviteCodesDtoImplCopyWith<$Res> {
+  __$$InviteCodesDtoImplCopyWithImpl(
+      _$InviteCodesDtoImpl _value, $Res Function(_$InviteCodesDtoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? inviteCodes = null,
+  }) {
+    return _then(_$InviteCodesDtoImpl(
+      inviteCodes: null == inviteCodes
+          ? _value._inviteCodes
+          : inviteCodes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$InviteCodesDtoImpl extends _InviteCodesDto {
+  const _$InviteCodesDtoImpl(
+      {@JsonKey(name: 'inviteCodes') required final List<String> inviteCodes})
+      : _inviteCodes = inviteCodes,
+        super._();
+
+  factory _$InviteCodesDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InviteCodesDtoImplFromJson(json);
+
+  final List<String> _inviteCodes;
+  @override
+  @JsonKey(name: 'inviteCodes')
+  List<String> get inviteCodes {
+    if (_inviteCodes is EqualUnmodifiableListView) return _inviteCodes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inviteCodes);
+  }
+
+  @override
+  String toString() {
+    return 'InviteCodesDto(inviteCodes: $inviteCodes)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InviteCodesDtoImpl &&
+            const DeepCollectionEquality()
+                .equals(other._inviteCodes, _inviteCodes));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_inviteCodes));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InviteCodesDtoImplCopyWith<_$InviteCodesDtoImpl> get copyWith =>
+      __$$InviteCodesDtoImplCopyWithImpl<_$InviteCodesDtoImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$InviteCodesDtoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InviteCodesDto extends InviteCodesDto {
+  const factory _InviteCodesDto(
+      {@JsonKey(name: 'inviteCodes')
+      required final List<String> inviteCodes}) = _$InviteCodesDtoImpl;
+  const _InviteCodesDto._() : super._();
+
+  factory _InviteCodesDto.fromJson(Map<String, dynamic> json) =
+      _$InviteCodesDtoImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'inviteCodes')
+  List<String> get inviteCodes;
+  @override
+  @JsonKey(ignore: true)
+  _$$InviteCodesDtoImplCopyWith<_$InviteCodesDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

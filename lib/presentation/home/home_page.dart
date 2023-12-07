@@ -174,7 +174,17 @@ class HomePageState extends State<HomePage> {
             return c.status == DefaultStatus.success ||
                 c.status == DefaultStatus.failure;
           },
-          listener: (context, state) {
+          listener: (context, state) async {
+
+            //TODO : 초대코드 화면 띄우기 -> hive에서 가져와서 비어있는데 코드가 있으면 화면 띄워주고, 가져왔는데 코드가 비어있ㅈ
+            final inviteCodes = state.appInviteCodes?.inviteCodes.getOrCrash();
+            final savedInviteCode = await getIt<HiveProvider>().getInviteCode();
+            debugPrint("와와오와오아 $inviteCodes  //  $savedInviteCode");
+            if(inviteCodes?.isNotEmpty == true && inviteCodes?.contains(savedInviteCode) == false) {
+              //TODO : 초대코드 화면 보여주기 // getIt<HiveProvider>().setInviteCode("mock");
+              debugPrint("와와오와오아 화면 띄워야돼!!");
+            }
+
             _hideLoading();
             if (state.isAvailableVersion != null) {
               if (state.isAvailableVersion == false) {
@@ -214,7 +224,7 @@ class HomePageState extends State<HomePage> {
                         .setAppNoticeNotViewedToday(DateTime.now().toString());
                     launchExternalUrl(
                         state.appNotice?.negativeButton?.link.getOrCrash() ??
-                            dotenv.env['APP_URL'] ??
+                            dotenv.env['APP_URL_HOST'] ??
                             "");
                     context.pop();
                   }, onClickPositiveButton: () {
@@ -222,7 +232,7 @@ class HomePageState extends State<HomePage> {
                         .setAppNoticeNotViewedToday(DateTime.now().toString());
                     launchExternalUrl(
                         state.appNotice?.positiveButton?.link.getOrCrash() ??
-                            dotenv.env['APP_URL'] ??
+                            dotenv.env['APP_URL_HOST'] ??
                             "");
                     context.pop();
                   }, onClickCloseButton: () {
