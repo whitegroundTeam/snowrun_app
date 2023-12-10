@@ -185,16 +185,16 @@ class RecordingPageState extends State<RecordingPage> {
     debugPrint("UPDATEMARKERS :: ${users.length}");
     pointAnnotationManager?.deleteAll();
     for (var user in users) {
-      String avatarPath = "assets/webp/snowrun_icon.png";
-      if (user.nickname.getOrCrash() == "줄리") {
-        avatarPath = "assets/webp/julie_avatar.png";
-      } else if (user.nickname.getOrCrash() == "댄") {
-        avatarPath = "assets/webp/dan_avatar.png";
-      } else if (user.nickname.getOrCrash() == "케틀린") {
-        avatarPath = "assets/webp/kathlyn_avatar.png";
-      } else if (user.nickname.getOrCrash() == "루만") {
-        avatarPath = "assets/webp/luman_avatar.png";
-      }
+      String avatarPath = "assets/webp/snowrun_icon.webp";
+      // if (user.nickname.getOrCrash() == "줄리") {
+      //   avatarPath = "assets/webp/julie_avatar.png";
+      // } else if (user.nickname.getOrCrash() == "댄") {
+      //   avatarPath = "assets/webp/dan_avatar.png";
+      // } else if (user.nickname.getOrCrash() == "케틀린") {
+      //   avatarPath = "assets/webp/kathlyn_avatar.png";
+      // } else if (user.nickname.getOrCrash() == "루만") {
+      //   avatarPath = "assets/webp/luman_avatar.png";
+      // }
 
       final ByteData bytes = await rootBundle.load(avatarPath);
       final Uint8List avatarData = bytes.buffer.asUint8List();

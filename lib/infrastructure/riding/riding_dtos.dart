@@ -63,7 +63,7 @@ class RidingPlayerDto with _$RidingPlayerDto {
     @JsonKey(name: 'room') required int room,
     @JsonKey(name: 'location') UserLocationDto? location,
     @JsonKey(name: 'location_updated_at') required DateTime locationUpdatedAt,
-    @JsonKey(name: 'profile_image') required String profileImage,
+    @JsonKey(name: 'profile_image') String? profileImage,
     @JsonKey(name: 'is_owner') required bool isOwner,
   }) = _RidingPlayerDto;
 
@@ -89,7 +89,7 @@ class RidingPlayerDto with _$RidingPlayerDto {
       roomId: IntVO(room),
       location: location?.toDomain() ?? UserLocation.empty(),
       locationUpdatedAt: DateTimeVO(locationUpdatedAt),
-      profileImage: StringVO(profileImage),
+      profileImage: StringVO(profileImage ?? ""),
       isOwner: BooleanVO(isOwner),
     );
   }

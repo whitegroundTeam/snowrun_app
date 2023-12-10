@@ -197,6 +197,7 @@ class RidingPageState extends State<RidingPage> {
                     ),
                   ),
                 ),
+
                 Positioned(
                   right: 8,
                   bottom: bottomAreaHeight + 16,
@@ -205,50 +206,51 @@ class RidingPageState extends State<RidingPage> {
                     duration: const Duration(milliseconds: 1000),
                     child: Column(
                       children: [
-                        CommonDetector(
-                          onTap: () async {
-                            mapboxMap?.setCamera(mapbox.CameraOptions(
-                              zoom: await getCurrentZoom() + 1,
-                            ));
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: AppStyle.secondaryBackground
-                                  .withOpacity(0.95),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            padding: const EdgeInsets.all(12),
-                            child: Image.asset(
-                              'assets/webp/plus.webp',
-                              color: AppStyle.white,
-                              width: 16,
-                              height: 16,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 4,),
-                        CommonDetector(
-                          onTap: () async {
-                            mapboxMap?.setCamera(mapbox.CameraOptions(
-                              zoom: await getCurrentZoom() - 1,
-                            ));
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: AppStyle.secondaryBackground
-                                  .withOpacity(0.95),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            padding: const EdgeInsets.all(12),
-                            child: Image.asset(
-                              'assets/webp/minus.webp',
-                              color: AppStyle.white,
-                              width: 16,
-                              height: 16,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 24,),
+                        //FIXME : 제스쳐 후 +,- 입력 시 제스쳐로 인해 변경된 최근 카메라 위치가 반영이 안되어있는 문제
+                        // CommonDetector(
+                        //   onTap: () async {
+                        //     mapboxMap?.setCamera(mapbox.CameraOptions(
+                        //       zoom: await getCurrentZoom() + 1,
+                        //     ));
+                        //   },
+                        //   child: Container(
+                        //     decoration: BoxDecoration(
+                        //       color: AppStyle.secondaryBackground
+                        //           .withOpacity(0.95),
+                        //       borderRadius: BorderRadius.circular(8),
+                        //     ),
+                        //     padding: const EdgeInsets.all(12),
+                        //     child: Image.asset(
+                        //       'assets/webp/plus.webp',
+                        //       color: AppStyle.white,
+                        //       width: 16,
+                        //       height: 16,
+                        //     ),
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 4,),
+                        // CommonDetector(
+                        //   onTap: () async {
+                        //     mapboxMap?.setCamera(mapbox.CameraOptions(
+                        //       zoom: await getCurrentZoom() - 1,
+                        //     ));
+                        //   },
+                        //   child: Container(
+                        //     decoration: BoxDecoration(
+                        //       color: AppStyle.secondaryBackground
+                        //           .withOpacity(0.95),
+                        //       borderRadius: BorderRadius.circular(8),
+                        //     ),
+                        //     padding: const EdgeInsets.all(12),
+                        //     child: Image.asset(
+                        //       'assets/webp/minus.webp',
+                        //       color: AppStyle.white,
+                        //       width: 16,
+                        //       height: 16,
+                        //     ),
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 24,),
                         CommonDetector(
                           onTap: () {
                             _updateUserLocation();

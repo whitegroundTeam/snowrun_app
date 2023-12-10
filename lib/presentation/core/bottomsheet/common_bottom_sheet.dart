@@ -174,7 +174,7 @@ class CommonBottomSheetState extends State<CommonBottomSheet>
                         top: 16,
                       ),
                       width: MediaQuery.sizeOf(context).width,
-                      height: MediaQuery.sizeOf(context).width,
+                      height: MediaQuery.sizeOf(context).width * 9 / 16,
                       child: Center(
                         child: CommonNetworkImage(
                           imageUrl: widget.imageUrl ?? "",

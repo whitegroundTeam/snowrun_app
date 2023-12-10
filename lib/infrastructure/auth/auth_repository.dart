@@ -90,9 +90,11 @@ class AuthRepository implements IAuthRepository {
 
       final response = await _api.signWithIdToken(
           IdTokenRequestDto.fromDomain(await user.getIdToken() ?? ""));
-      if (response.statusCode == 200) {
+      if (response.statusCode < 200 || response.statusCode >= 300) {
+        return left(const AuthFailure.emailAlreadyInUse());
+      } else {
         final infoJson = json.decode(utf8.decode(response.bodyBytes))
-            as Map<String, dynamic>;
+        as Map<String, dynamic>;
         final signResponseDto = SignResponseDto.fromJson(infoJson);
 
         // FIXME: AuthMethod 전달 필요.
@@ -105,8 +107,6 @@ class AuthRepository implements IAuthRepository {
             provider: AuthMethod.email,
           ),
         );
-      } else {
-        return left(const AuthFailure.emailAlreadyInUse());
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
@@ -140,9 +140,11 @@ class AuthRepository implements IAuthRepository {
 
       final response = await _api.signWithIdToken(
           IdTokenRequestDto.fromDomain(await user.getIdToken() ?? ""));
-      if (response.statusCode == 200) {
+      if (response.statusCode < 200 || response.statusCode >= 300) {
+        return left(const AuthFailure.serverError());
+      } else {
         final infoJson = json.decode(utf8.decode(response.bodyBytes))
-            as Map<String, dynamic>;
+        as Map<String, dynamic>;
         final signResponseDto = SignResponseDto.fromJson(infoJson);
 
         updateLocalStore(
@@ -154,8 +156,6 @@ class AuthRepository implements IAuthRepository {
             provider: AuthMethod.email,
           ),
         );
-      } else {
-        return left(const AuthFailure.serverError());
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password' || e.code == 'user-not-found') {
@@ -193,9 +193,11 @@ class AuthRepository implements IAuthRepository {
 
       final response = await _api.signWithIdToken(
           IdTokenRequestDto.fromDomain(await user.getIdToken() ?? ""));
-      if (response.statusCode == 200) {
+      if (response.statusCode < 200 || response.statusCode >= 300) {
+        return left(const AuthFailure.serverError());
+      } else {
         final infoJson = json.decode(utf8.decode(response.bodyBytes))
-            as Map<String, dynamic>;
+        as Map<String, dynamic>;
         final signResponseDto = SignResponseDto.fromJson(infoJson);
 
         updateLocalStore(
@@ -208,8 +210,6 @@ class AuthRepository implements IAuthRepository {
             provider: AuthMethod.google,
           ),
         );
-      } else {
-        return left(const AuthFailure.serverError());
       }
       // ignore: unused_catch_clause
     } on FirebaseAuthException catch (e) {
@@ -248,9 +248,11 @@ class AuthRepository implements IAuthRepository {
 
       final response = await _api.signWithIdToken(
           IdTokenRequestDto.fromDomain(await user.getIdToken() ?? ""));
-      if (response.statusCode == 200) {
+      if (response.statusCode < 200 || response.statusCode >= 300) {
+        return left(const AuthFailure.serverError());
+      } else {
         final infoJson = json.decode(utf8.decode(response.bodyBytes))
-            as Map<String, dynamic>;
+        as Map<String, dynamic>;
         final signResponseDto = SignResponseDto.fromJson(infoJson);
 
         updateLocalStore(
@@ -263,8 +265,6 @@ class AuthRepository implements IAuthRepository {
             provider: AuthMethod.apple,
           ),
         );
-      } else {
-        return left(const AuthFailure.serverError());
       }
     } on FirebaseAuthException {
       return left(const AuthFailure.serverError());

@@ -321,7 +321,7 @@ mixin _$RidingPlayerDto {
   @JsonKey(name: 'location_updated_at')
   DateTime get locationUpdatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image')
-  String get profileImage => throw _privateConstructorUsedError;
+  String? get profileImage => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_owner')
   bool get isOwner => throw _privateConstructorUsedError;
 
@@ -344,7 +344,7 @@ abstract class $RidingPlayerDtoCopyWith<$Res> {
       @JsonKey(name: 'room') int room,
       @JsonKey(name: 'location') UserLocationDto? location,
       @JsonKey(name: 'location_updated_at') DateTime locationUpdatedAt,
-      @JsonKey(name: 'profile_image') String profileImage,
+      @JsonKey(name: 'profile_image') String? profileImage,
       @JsonKey(name: 'is_owner') bool isOwner});
 
   $UserLocationDtoCopyWith<$Res>? get location;
@@ -369,7 +369,7 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
     Object? room = null,
     Object? location = freezed,
     Object? locationUpdatedAt = null,
-    Object? profileImage = null,
+    Object? profileImage = freezed,
     Object? isOwner = null,
   }) {
     return _then(_value.copyWith(
@@ -397,10 +397,10 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
           ? _value.locationUpdatedAt
           : locationUpdatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      profileImage: null == profileImage
+      profileImage: freezed == profileImage
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       isOwner: null == isOwner
           ? _value.isOwner
           : isOwner // ignore: cast_nullable_to_non_nullable
@@ -436,7 +436,7 @@ abstract class _$$RidingPlayerDtoImplCopyWith<$Res>
       @JsonKey(name: 'room') int room,
       @JsonKey(name: 'location') UserLocationDto? location,
       @JsonKey(name: 'location_updated_at') DateTime locationUpdatedAt,
-      @JsonKey(name: 'profile_image') String profileImage,
+      @JsonKey(name: 'profile_image') String? profileImage,
       @JsonKey(name: 'is_owner') bool isOwner});
 
   @override
@@ -460,7 +460,7 @@ class __$$RidingPlayerDtoImplCopyWithImpl<$Res>
     Object? room = null,
     Object? location = freezed,
     Object? locationUpdatedAt = null,
-    Object? profileImage = null,
+    Object? profileImage = freezed,
     Object? isOwner = null,
   }) {
     return _then(_$RidingPlayerDtoImpl(
@@ -488,10 +488,10 @@ class __$$RidingPlayerDtoImplCopyWithImpl<$Res>
           ? _value.locationUpdatedAt
           : locationUpdatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      profileImage: null == profileImage
+      profileImage: freezed == profileImage
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       isOwner: null == isOwner
           ? _value.isOwner
           : isOwner // ignore: cast_nullable_to_non_nullable
@@ -510,7 +510,7 @@ class _$RidingPlayerDtoImpl extends _RidingPlayerDto {
       @JsonKey(name: 'room') required this.room,
       @JsonKey(name: 'location') this.location,
       @JsonKey(name: 'location_updated_at') required this.locationUpdatedAt,
-      @JsonKey(name: 'profile_image') required this.profileImage,
+      @JsonKey(name: 'profile_image') this.profileImage,
       @JsonKey(name: 'is_owner') required this.isOwner})
       : super._();
 
@@ -537,7 +537,7 @@ class _$RidingPlayerDtoImpl extends _RidingPlayerDto {
   final DateTime locationUpdatedAt;
   @override
   @JsonKey(name: 'profile_image')
-  final String profileImage;
+  final String? profileImage;
   @override
   @JsonKey(name: 'is_owner')
   final bool isOwner;
@@ -595,7 +595,7 @@ abstract class _RidingPlayerDto extends RidingPlayerDto {
           @JsonKey(name: 'location') final UserLocationDto? location,
           @JsonKey(name: 'location_updated_at')
           required final DateTime locationUpdatedAt,
-          @JsonKey(name: 'profile_image') required final String profileImage,
+          @JsonKey(name: 'profile_image') final String? profileImage,
           @JsonKey(name: 'is_owner') required final bool isOwner}) =
       _$RidingPlayerDtoImpl;
   const _RidingPlayerDto._() : super._();
@@ -623,7 +623,7 @@ abstract class _RidingPlayerDto extends RidingPlayerDto {
   DateTime get locationUpdatedAt;
   @override
   @JsonKey(name: 'profile_image')
-  String get profileImage;
+  String? get profileImage;
   @override
   @JsonKey(name: 'is_owner')
   bool get isOwner;

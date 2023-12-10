@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:snowrun_app/presentation/invite_code/input_invite_code_page.dart';
+import 'package:snowrun_app/presentation/landing/landing_page.dart';
 import 'package:snowrun_app/presentation/riding/riding_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_in_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_up_page.dart';
@@ -16,7 +18,7 @@ import 'package:snowrun_app/presentation/riding/riding_dashboard_page.dart';
 import 'package:snowrun_app/presentation/setting/setting_page.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/landing',
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -32,6 +34,12 @@ final GoRouter router = GoRouter(
       path: '/editProfileImage',
       builder: (BuildContext context, GoRouterState state) {
         return const EditProfileImagePage();
+      },
+    ),
+    GoRoute(
+      path: '/landing',
+      builder: (BuildContext context, GoRouterState state) {
+        return const LandingPage();
       },
     ),
     GoRoute(
@@ -104,6 +112,12 @@ final GoRouter router = GoRouter(
       path: '/notificationPermission',
       builder: (BuildContext context, GoRouterState state) {
         return const RequestNotificationPermissionPage();
+      },
+    ),
+    GoRoute(
+      path: '/inputInviteCodes',
+      builder: (BuildContext context, GoRouterState state) {
+        return const InputInviteCodePage();
       },
     ),
     GoRoute(

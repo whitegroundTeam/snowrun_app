@@ -1,9 +1,12 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/auth/sign_up_form/sign_up_form_bloc.dart';
+import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
+import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/common_button.dart';
@@ -11,6 +14,8 @@ import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
+import 'package:snowrun_app/presentation/home/home_page.dart';
+import 'package:snowrun_app/presentation/permission/request_notification_permission_page.dart';
 
 class EmailSignUpPage extends StatefulWidget {
   const EmailSignUpPage({super.key});
@@ -24,6 +29,7 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
   Color selectedColor = Colors.white;
   bool isShowLoading = false;
   final signUpFormBloc = getIt<SignUpFormBloc>();
+  final checkPermissionBloc = getIt<CheckPermissionBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +40,35 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
           create: (context) => signUpFormBloc,
           lazy: false,
         ),
-        BlocListener<AuthBloc, AuthState>(
+        BlocProvider<CheckPermissionBloc>(
+            create: (context) => checkPermissionBloc),
+        BlocListener<CheckPermissionBloc, CheckPermissionState>(
+          bloc: checkPermissionBloc,
+          listenWhen: (p, c) {
+            debugPrint('[CheckPermissionBloc Listener] State Changed $p to $c');
+            return p != c;
+          },
           listener: (context, state) {
-            _hideLoading();
-            context.go('/');
+            state.map(
+              initPermissionsNeeded: (e) {
+                RequestNotificationPermissionPage
+                    .goRequestNotificationPermissionPage(context);
+              },
+              initPermissionsUnNeeded: (e) {
+                // setupInteractedMessageTerminated();
+                // setupInteractedDynamicLinkTerminated();
+
+                FirebaseMessaging.instance.getToken().then((token) {
+                  if (token?.isNotEmpty == true) {
+                    context
+                        .read<UserBloc>()
+                        .add(UserEvent.savePushToken(token ?? ""));
+                  }
+                });
+                HomePage.goHomePage(context, needRefresh: true);
+              },
+              initial: (e) {},
+            );
           },
         ),
       ],
@@ -62,7 +93,9 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                   );
                 },
                 (_) {
-                  context.read<AuthBloc>().add(const AuthEvent.checkAuth());
+                  context
+                      .read<CheckPermissionBloc>()
+                      .add(const CheckPermissionEvent.checkInitialPermissions());
                 },
               ),
             );

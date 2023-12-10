@@ -12,6 +12,21 @@ class RequestNotificationPermissionPage extends StatelessWidget {
     super.key,
   });
 
+  static pushRequestNotificationPermissionPage(BuildContext context, {Function? onResult}) {
+    context
+        .push(
+      '/notificationPermission',
+    )
+        .then((value) => onResult?.call());
+  }
+
+  static goRequestNotificationPermissionPage(BuildContext context) {
+    context
+        .go(
+      '/notificationPermission',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final imageHeight = MediaQuery.of(context).size.height / 3;

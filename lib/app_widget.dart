@@ -1,14 +1,22 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
+import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
+import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/core/toast/toast_bloc.dart';
+import 'package:snowrun_app/presentation/home/home_page.dart';
+import 'package:snowrun_app/presentation/invite_code/input_invite_code_page.dart';
+import 'package:snowrun_app/presentation/permission/request_notification_permission_page.dart';
 import 'package:snowrun_app/routes/router.dart';
 
 class MainApp extends StatefulWidget {
@@ -24,6 +32,7 @@ class MainAppState extends State<MainApp> {
   final toastBloc = getIt<ToastBloc>();
   final authBloc = getIt<AuthBloc>();
   final appInfoBloc = getIt<AppInfoBloc>();
+  final checkPermissionBloc = getIt<CheckPermissionBloc>();
 
   @override
   void initState() {
@@ -59,7 +68,7 @@ class MainAppState extends State<MainApp> {
           return MultiBlocProvider(
             providers: [
               BlocProvider<UserBloc>(create: (context) => getIt<UserBloc>()),
-              BlocProvider<AppInfoBloc>(create: (context) => appInfoBloc..add(const AppInfoEvent.getAppInfo())),
+              BlocProvider<AppInfoBloc>(create: (context) => appInfoBloc),
               BlocProvider<ToastBloc>(
                 create: (context) => toastBloc,
                 lazy: false,
@@ -71,7 +80,7 @@ class MainAppState extends State<MainApp> {
                 },
               ),
               BlocProvider<AuthBloc>(
-                create: (context) => authBloc..add(const AuthEvent.checkAuth()),
+                create: (context) => authBloc,
                 lazy: false,
               ),
             ],

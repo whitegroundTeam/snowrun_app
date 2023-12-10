@@ -85,7 +85,7 @@ class HomeRidingsWidgetState extends State<HomeRidingsWidget> {
                         ),
                         child: TitleText(
                           title: "최근 라이딩",
-                          fontSize: 24,
+                          fontSize: 20,
                           color: AppStyle.white,
                           fontWeight: FontWeight.bold,
                         ),

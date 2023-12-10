@@ -41,7 +41,7 @@ _$RidingPlayerDtoImpl _$$RidingPlayerDtoImplFromJson(
           ? null
           : UserLocationDto.fromJson(json['location'] as Map<String, dynamic>),
       locationUpdatedAt: DateTime.parse(json['location_updated_at'] as String),
-      profileImage: json['profile_image'] as String,
+      profileImage: json['profile_image'] as String?,
       isOwner: json['is_owner'] as bool,
     );
 

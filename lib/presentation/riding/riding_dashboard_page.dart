@@ -72,9 +72,9 @@ class RidingDashboardPageState extends State<RidingDashboardPage> {
           bloc: _ridingActorBloc,
           listener: (context, state) async {
             loader.hide();
-            if (state.status == DefaultStatus.success) {
+            if (state.status == RidingActorStatus.successDeleteRidingRoom || state.status == RidingActorStatus.successExitRidingRoom) {
               HomePage.goHomePage(context, needRefresh: true);
-            } else if (state.status == DefaultStatus.failure) {
+            } else if (state.status == RidingActorStatus.failureDeleteRidingRoom || state.status == RidingActorStatus.failureExitRidingRoom) {
               showToast(context, "요청에 실패했어요. 잠시 후 다시 시도해주세요😆");
             }
           },

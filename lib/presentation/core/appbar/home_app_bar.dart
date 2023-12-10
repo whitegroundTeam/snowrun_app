@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
+import 'package:snowrun_app/presentation/setting/setting_page.dart';
 
 class HomeAppBar extends StatefulWidget {
   const HomeAppBar({super.key});

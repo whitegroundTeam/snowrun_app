@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:app_settings/app_settings.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
@@ -8,6 +9,8 @@ import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
+import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/domain/auth/auth_method.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
@@ -21,12 +24,19 @@ import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/home/home_page.dart';
+import 'package:snowrun_app/presentation/permission/request_notification_permission_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
   @override
   State createState() => SignInPageState();
+
+  static goSignInPage(BuildContext context) {
+    context.go(
+      '/signIn',
+    );
+  }
 
   static pushSignInPage(BuildContext context, {Function? onResult}) {
     context
@@ -42,6 +52,7 @@ class SignInPageState extends State<SignInPage> {
   Color selectedColor = Colors.white;
   bool isShowLoading = false;
   final signInFormBloc = getIt<SignInFormBloc>();
+  final checkPermissionBloc = getIt<CheckPermissionBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -122,11 +133,36 @@ class SignInPageState extends State<SignInPage> {
           create: (context) => signInFormBloc,
           lazy: false,
         ),
-        BlocListener<AuthBloc, AuthState>(
+        BlocProvider<CheckPermissionBloc>(
+            create: (context) => checkPermissionBloc),
+        BlocListener<CheckPermissionBloc, CheckPermissionState>(
+          bloc: checkPermissionBloc,
+          listenWhen: (p, c) {
+            debugPrint('[CheckPermissionBloc Listener] State Changed $p to $c');
+            return p != c;
+          },
           listener: (context, state) {
-            //TODO : 바로 홈으로 보내는게 아니라, 화면 걍 callback 날려주기
-            _hideLoading();
-            HomePage.goHomePage(context, needRefresh: true);
+            state.map(
+              initPermissionsNeeded: (e) {
+                RequestNotificationPermissionPage
+                    .goRequestNotificationPermissionPage(context);
+              },
+              initPermissionsUnNeeded: (e) {
+                // setupInteractedMessageTerminated();
+                // setupInteractedDynamicLinkTerminated();
+
+                FirebaseMessaging.instance.getToken().then((token) {
+                  if (token?.isNotEmpty == true) {
+                    context
+                        .read<UserBloc>()
+                        .add(UserEvent.savePushToken(token ?? ""));
+                  }
+                });
+
+                HomePage.goHomePage(context, needRefresh: true);
+              },
+              initial: (e) {},
+            );
           },
         ),
       ],
@@ -151,7 +187,9 @@ class SignInPageState extends State<SignInPage> {
                   );
                 },
                 (_) {
-                  context.read<AuthBloc>().add(const AuthEvent.checkAuth());
+                  context
+                      .read<CheckPermissionBloc>()
+                      .add(const CheckPermissionEvent.checkInitialPermissions());
                 },
               ),
             );
@@ -162,15 +200,10 @@ class SignInPageState extends State<SignInPage> {
                 CustomScrollView(
                   physics: bouncingScrollPhysics,
                   slivers: [
-                    const CommonAppBar(
-                      isSliver: true,
-                      appBarType: AppBarType.back,
-                    ),
                     SliverToBoxAdapter(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 24,
-                        ),
+                        padding:
+                            const EdgeInsets.only(left: 24, right: 24, top: 50),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -254,64 +287,6 @@ class SignInPageState extends State<SignInPage> {
     );
   }
 
-  _buildMember(
-      String avatarPath, String name, Color borderColor, String authToken) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      child: CommonDetector(
-        onTap: () async {
-          setState(() {
-            selectedColor = borderColor;
-          });
-          hiveProvider.setAuthToken(authToken);
-          if (!await Geolocator.isLocationServiceEnabled()) {
-            _showOpenSettingDialog();
-          }
-
-          final checkedPermission = await Geolocator.requestPermission();
-          if (checkedPermission == LocationPermission.always ||
-              checkedPermission == LocationPermission.whileInUse) {
-            if (!mounted) return;
-            context.push("/");
-          } else {
-            _showOpenSettingDialog();
-          }
-        },
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          width: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.symmetric(horizontal: 24),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: borderColor, width: 8.0),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(
-                avatarPath,
-                width: 72,
-                height: 72,
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              Expanded(
-                child: Center(
-                  child: Text(
-                    name,
-                    style: const TextStyle(
-                        fontSize: 36, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   _showLoading() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!isShowLoading) {
@@ -329,25 +304,6 @@ class SignInPageState extends State<SignInPage> {
           isShowLoading = false;
         });
       }
-    });
-  }
-
-  _showOpenSettingDialog() async {
-    if (!mounted) return;
-    await showCommonDialog(context,
-        buttonText: "설정으로 이동",
-        title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
-        negativeButtonText: "취소", onPressedButton: () async {
-      AppSettings.openAppSettings(type: AppSettingsType.location);
-      showToast(
-        context,
-        "위치 권한 허용 후 다시 시도해주세요.",
-      );
-
-      if (!mounted) return;
-      context.pop();
-    }, onPressedNegativeButton: () {
-      context.pop();
     });
   }
 }
