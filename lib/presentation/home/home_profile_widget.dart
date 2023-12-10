@@ -56,7 +56,8 @@ class HomeProfileWidgetState extends State<HomeProfileWidget> {
                     : CommonDetector(
                         needAuth: true,
                         onTap: () {
-                          context.push('/editProfileImage');
+                          EditProfileImagePage.pushEditProfileImagePage(context);
+                          // context.push('/editProfileImage');
                         },
                         child: Hero(
                           tag: "profileImage",

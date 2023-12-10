@@ -65,28 +65,31 @@ class LandingPageState extends State<LandingPage> {
                 _showNeedUpdateBottomSheet(context,
                     context.read<AppInfoBloc>().state.appVersion.url.getOrCrash());
               } else {
-                if (state.appInviteCodes != null) {
-                  if (isShowInputInviteCodePage) {
-                    return;
-                  }
-                  final inviteCodes =
-                      state.appInviteCodes?.inviteCodes.getOrCrash();
-                  final savedInviteCode =
-                      await getIt<HiveProvider>().getInviteCode();
-                  if (inviteCodes?.isNotEmpty == true &&
-                      inviteCodes?.contains(savedInviteCode) == false) {
-                    if (!mounted) return;
-                    InputInviteCodePage.pushInviteCodesPage(
-                      context,
-                    );
-                  } else {
-                    if (!mounted) return;
-                    _checkAuthAndMoveNextPage(context);
-                  }
-                  isShowInputInviteCodePage = true;
-                } else {
-                  _checkAuthAndMoveNextPage(context);
-                }
+                // if (state.appInviteCodes != null) {
+                //   if (isShowInputInviteCodePage) {
+                //     return;
+                //   }
+                //   final inviteCodes =
+                //       state.appInviteCodes?.inviteCodes.getOrCrash();
+                //   final savedInviteCode =
+                //       await getIt<HiveProvider>().getInviteCode();
+                //   if (inviteCodes?.isNotEmpty == true &&
+                //       inviteCodes?.contains(savedInviteCode) == false) {
+                //     if (!mounted) return;
+                //     InputInviteCodePage.pushInviteCodesPage(
+                //       context,
+                //     );
+                //   } else {
+                //     if (!mounted) return;
+                //     _checkAuthAndMoveNextPage(context);
+                //   }
+                //   isShowInputInviteCodePage = true;
+                // } else {
+                //   _checkAuthAndMoveNextPage(context);
+                // }
+                Future.delayed(const Duration(milliseconds: 2000), () {
+                  context.read<AuthBloc>().add(const AuthEvent.checkAuth());
+                });
               }
             }
           },
