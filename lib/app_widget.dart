@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:app_links/app_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,6 +36,8 @@ class MainAppState extends State<MainApp> {
   final authBloc = getIt<AuthBloc>();
   final appInfoBloc = getIt<AppInfoBloc>();
   final checkPermissionBloc = getIt<CheckPermissionBloc>();
+  late AppLinks _appLinks;
+  StreamSubscription<Uri>? _linkSubscription;
 
   @override
   void initState() {
@@ -52,6 +57,7 @@ class MainAppState extends State<MainApp> {
         key: commonToastKey,
       );
     });
+    initDeepLinks();
   }
 
   @override
@@ -104,5 +110,26 @@ class MainAppState extends State<MainApp> {
         },
       ),
     );
+  }
+
+  Future<void> initDeepLinks() async {
+    _appLinks = AppLinks();
+
+    // Check initial link if app was in cold state (terminated)
+    final appLink = await _appLinks.getInitialAppLink();
+    if (appLink != null) {
+      debugPrint('getInitialAppLink: $appLink');
+      openAppLink(appLink);
+    }
+
+    // Handle link when app is in warm state (front or background)
+    _linkSubscription = _appLinks.uriLinkStream.listen((uri) {
+      debugPrint('onAppLink: $uri');
+      openAppLink(uri);
+    });
+  }
+
+  void openAppLink(Uri uri) {
+    context.pushNamed(uri.fragment);
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,15 +8,12 @@ import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
-import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/domain/app-info/model/app_info.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
 import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/home/home_page.dart';
 import 'package:snowrun_app/presentation/invite_code/input_invite_code_page.dart';
 import 'package:snowrun_app/utils/launch_url.dart';
@@ -35,6 +34,19 @@ class LandingPageState extends State<LandingPage> {
   final homeRefreshBloc = getIt<HomeRefreshBloc>();
   bool isShowInputInviteCodePage = false;
   bool isShowLoading = true;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _cancelTimer();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,31 +77,28 @@ class LandingPageState extends State<LandingPage> {
                 _showNeedUpdateBottomSheet(context,
                     context.read<AppInfoBloc>().state.appVersion.url.getOrCrash());
               } else {
-                // if (state.appInviteCodes != null) {
-                //   if (isShowInputInviteCodePage) {
-                //     return;
-                //   }
-                //   final inviteCodes =
-                //       state.appInviteCodes?.inviteCodes.getOrCrash();
-                //   final savedInviteCode =
-                //       await getIt<HiveProvider>().getInviteCode();
-                //   if (inviteCodes?.isNotEmpty == true &&
-                //       inviteCodes?.contains(savedInviteCode) == false) {
-                //     if (!mounted) return;
-                //     InputInviteCodePage.pushInviteCodesPage(
-                //       context,
-                //     );
-                //   } else {
-                //     if (!mounted) return;
-                //     _checkAuthAndMoveNextPage(context);
-                //   }
-                //   isShowInputInviteCodePage = true;
-                // } else {
-                //   _checkAuthAndMoveNextPage(context);
-                // }
-                Future.delayed(const Duration(milliseconds: 2000), () {
-                  context.read<AuthBloc>().add(const AuthEvent.checkAuth());
-                });
+                if (state.appInviteCodes != null) {
+                  if (isShowInputInviteCodePage) {
+                    return;
+                  }
+                  final inviteCodes =
+                      state.appInviteCodes?.inviteCodes.getOrCrash();
+                  final savedInviteCode =
+                      await getIt<HiveProvider>().getInviteCode();
+                  if (inviteCodes?.isNotEmpty == true &&
+                      inviteCodes?.contains(savedInviteCode) == false) {
+                    if (!mounted) return;
+                    InputInviteCodePage.pushInviteCodesPage(
+                      context,
+                    );
+                  } else {
+                    if (!mounted) return;
+                    _checkAuthAndMoveNextPage(context);
+                  }
+                  isShowInputInviteCodePage = true;
+                } else {
+                  _checkAuthAndMoveNextPage(context);
+                }
               }
             }
           },
@@ -150,5 +159,10 @@ class LandingPageState extends State<LandingPage> {
         canClose: false, onClickActionButton: () async {
       launchExternalUrl(appVersionUrl);
     });
+  }
+
+  void _cancelTimer() {
+    _timer?.cancel();
+    _timer = null;
   }
 }
