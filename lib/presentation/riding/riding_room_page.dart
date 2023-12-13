@@ -33,21 +33,21 @@ import 'package:snowrun_app/presentation/riding/players_counts_widget.dart';
 import 'package:snowrun_app/presentation/riding/riding_dashboard_page.dart';
 import 'package:snowrun_app/presentation/share/share_button.dart';
 
-class RidingPage extends StatefulWidget {
+class RidingRoomPage extends StatefulWidget {
   final int ridingRoomId;
 
-  const RidingPage({
+  const RidingRoomPage({
     super.key,
     required this.ridingRoomId,
   });
 
   @override
-  State createState() => RidingPageState();
+  State createState() => RidingRoomPageState();
 
   static pushRidingPage(BuildContext context, int ridingRoomId,
       {Function? onResult}) {
     context.push(
-      '/riding',
+      '/ridingRoom',
       extra: {
         'ridingRoomId': ridingRoomId,
       },
@@ -60,7 +60,7 @@ class AnnotationClickListener extends mapbox.OnPointAnnotationClickListener {
   void onPointAnnotationClick(mapbox.PointAnnotation annotation) {}
 }
 
-class RidingPageState extends State<RidingPage> {
+class RidingRoomPageState extends State<RidingRoomPage> {
   static const double defaultZoom = 14;
   final _locationBloc = getIt<LocationBloc>();
   final _ridingDetailBloc = getIt<RidingDetailBloc>();

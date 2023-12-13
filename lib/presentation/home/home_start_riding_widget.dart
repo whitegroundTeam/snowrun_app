@@ -8,7 +8,7 @@ import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.da
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/loading_dialog.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
-import 'package:snowrun_app/presentation/riding/riding_page.dart';
+import 'package:snowrun_app/presentation/riding/riding_room_page.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/riding/input_invite_riding_room_link_bottom_sheet.dart';
@@ -38,7 +38,7 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                   state.createdRidingRoom?.id.getOrCrash();
               if (state.status == RidingActorStatus.successCreateRidingRoom &&
                   createdRidingRoomId != null) {
-                RidingPage.pushRidingPage(context, createdRidingRoomId,
+                RidingRoomPage.pushRidingPage(context, createdRidingRoomId,
                     onResult: () {
                   context
                       .read<HomeRefreshBloc>()
@@ -51,7 +51,7 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                   state.joinedRidingRoom?.id.getOrCrash();
               if (state.status == RidingActorStatus.successJoinRidingRoom &&
                   joinedRidingRoomId != null) {
-                RidingPage.pushRidingPage(context, joinedRidingRoomId,
+                RidingRoomPage.pushRidingPage(context, joinedRidingRoomId,
                     onResult: () {
                   context
                       .read<HomeRefreshBloc>()

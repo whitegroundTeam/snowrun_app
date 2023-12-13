@@ -13,7 +13,7 @@ import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/loading_dialog.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/riding/players_counts_widget.dart';
-import 'package:snowrun_app/presentation/riding/riding_page.dart';
+import 'package:snowrun_app/presentation/riding/riding_room_page.dart';
 
 class HomeRidingItemWidget extends StatefulWidget {
   //TODO : 라이딩 받아와야함
@@ -45,7 +45,7 @@ class HomeRidingItemWidgetState extends State<HomeRidingItemWidget> {
             state.createdRidingRoom?.id.getOrCrash();
             if (state.status == RidingActorStatus.successCreateRidingRoom &&
                 createdRidingRoomId != null) {
-              RidingPage.pushRidingPage(context, createdRidingRoomId,
+              RidingRoomPage.pushRidingPage(context, createdRidingRoomId,
                   onResult: () {
                     context
                         .read<HomeRefreshBloc>()
@@ -58,7 +58,7 @@ class HomeRidingItemWidgetState extends State<HomeRidingItemWidget> {
             state.joinedRidingRoom?.id.getOrCrash();
             if (state.status == RidingActorStatus.successJoinRidingRoom &&
                 joinedRidingRoomId != null) {
-              RidingPage.pushRidingPage(context, joinedRidingRoomId,
+              RidingRoomPage.pushRidingPage(context, joinedRidingRoomId,
                   onResult: () {
                     context
                         .read<HomeRefreshBloc>()

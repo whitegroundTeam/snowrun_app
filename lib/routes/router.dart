@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/presentation/invite_code/input_invite_code_page.dart';
 import 'package:snowrun_app/presentation/landing/landing_page.dart';
-import 'package:snowrun_app/presentation/riding/riding_page.dart';
+import 'package:snowrun_app/presentation/riding/riding_room_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_in_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_up_page.dart';
 import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
@@ -49,11 +49,11 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: '/riding',
+      path: '/ridingRoom',
       builder: (BuildContext context, GoRouterState state) {
         final Map<String, int> extra = state.extra as Map<String, int>;
         final int ridingRoomId = extra['ridingRoomId'] ?? -1;
-        return RidingPage(ridingRoomId: ridingRoomId);
+        return RidingRoomPage(ridingRoomId: ridingRoomId);
       },
     ),
     GoRoute(

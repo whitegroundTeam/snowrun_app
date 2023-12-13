@@ -1,9 +1,9 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 String getShareRidingRoomLink(int ridingRoomId) {
-  const shareLinkHost = "snowrun.app";
+  String shareLinkHost = dotenv.env['APP_URL_HOST'] ?? "";
   if(shareLinkHost.isNotEmpty) {
-    return "https://$shareLinkHost/#/riding/$ridingRoomId";
+    return "https://$shareLinkHost/#/ridingRoom?roomNumber=$ridingRoomId";
   } else{
     return "";
   }
