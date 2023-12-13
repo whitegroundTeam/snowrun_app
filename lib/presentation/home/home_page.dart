@@ -29,6 +29,7 @@ import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
 import 'package:snowrun_app/presentation/home/home_ridings_widget.dart';
 import 'package:snowrun_app/presentation/home/home_start_riding_widget.dart';
 import 'package:snowrun_app/presentation/invite_code/input_invite_code_page.dart';
+import 'package:snowrun_app/utils/forced_exit_app.dart';
 import 'package:snowrun_app/utils/launch_url.dart';
 
 class HomePage extends StatefulWidget {
@@ -144,7 +145,11 @@ class HomePageState extends State<HomePage> {
                     state.appNotice?.negativeButton?.link.getOrCrash() ??
                         dotenv.env['APP_URL_HOST'] ??
                         "");
-                context.pop();
+                if(state.appNotice?.isForcedFinish.getOrCrash() == true) {
+                  exitAppForced();
+                } else {
+                  context.pop();
+                }
               }, onClickPositiveButton: () {
                 getIt<HiveProvider>()
                     .setAppNoticeNotViewedToday(DateTime.now().toString());
@@ -152,7 +157,11 @@ class HomePageState extends State<HomePage> {
                     state.appNotice?.positiveButton?.link.getOrCrash() ??
                         dotenv.env['APP_URL_HOST'] ??
                         "");
-                context.pop();
+                if(state.appNotice?.isForcedFinish.getOrCrash() == true) {
+                  exitAppForced();
+                } else {
+                  context.pop();
+                }
               }, onClickCloseButton: () {
                 getIt<HiveProvider>()
                     .setAppNoticeNotViewedToday(DateTime.now().toString());

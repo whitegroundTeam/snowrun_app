@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
@@ -16,6 +18,7 @@ import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.da
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/home/home_page.dart';
 import 'package:snowrun_app/presentation/invite_code/input_invite_code_page.dart';
+import 'package:snowrun_app/utils/forced_exit_app.dart';
 import 'package:snowrun_app/utils/launch_url.dart';
 
 class LandingPage extends StatefulWidget {
@@ -65,7 +68,8 @@ class LandingPageState extends State<LandingPage> {
           },
         ),
         BlocListener<AppInfoBloc, AppInfoState>(
-          bloc: context.read<AppInfoBloc>()..add(const AppInfoEvent.getAppInfo()),
+          bloc: context.read<AppInfoBloc>()
+            ..add(const AppInfoEvent.getAppInfo()),
           listenWhen: (p, c) {
             return p != c &&
                 (c.status == DefaultStatus.success ||
@@ -74,8 +78,14 @@ class LandingPageState extends State<LandingPage> {
           listener: (context, state) async {
             if (state.isAvailableVersion != null) {
               if (state.isAvailableVersion == false) {
-                _showNeedUpdateBottomSheet(context,
-                    context.read<AppInfoBloc>().state.appVersion.url.getOrCrash());
+                _showNeedUpdateBottomSheet(
+                    context,
+                    context
+                        .read<AppInfoBloc>()
+                        .state
+                        .appVersion
+                        .url
+                        .getOrCrash());
               } else {
                 if (state.appInviteCodes != null) {
                   if (isShowInputInviteCodePage) {
@@ -158,6 +168,7 @@ class LandingPageState extends State<LandingPage> {
         actionButtonText: "업데이트하러 가기",
         canClose: false, onClickActionButton: () async {
       launchExternalUrl(appVersionUrl);
+      exitAppForced();
     });
   }
 
