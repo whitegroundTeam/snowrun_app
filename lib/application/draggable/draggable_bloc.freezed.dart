@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DraggableEvent {
-  Offset get offset => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Offset offset) updatePosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Offset offset)? updatePosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Offset offset)? updatePosition,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_UpdatePosition value) updatePosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_UpdatePosition value)? updatePosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_UpdatePosition value)? updatePosition,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $DraggableEventCopyWith<DraggableEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $DraggableEventCopyWith<$Res> {
   factory $DraggableEventCopyWith(
           DraggableEvent value, $Res Function(DraggableEvent) then) =
       _$DraggableEventCopyWithImpl<$Res, DraggableEvent>;
-  @useResult
-  $Res call({Offset offset});
 }
 
 /// @nodoc
@@ -73,28 +72,114 @@ class _$DraggableEventCopyWithImpl<$Res, $Val extends DraggableEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? offset = null,
-  }) {
-    return _then(_value.copyWith(
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as Offset,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$UpdatePositionImplCopyWith<$Res>
-    implements $DraggableEventCopyWith<$Res> {
+abstract class _$$InitImplCopyWith<$Res> {
+  factory _$$InitImplCopyWith(
+          _$InitImpl value, $Res Function(_$InitImpl) then) =
+      __$$InitImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitImplCopyWithImpl<$Res>
+    extends _$DraggableEventCopyWithImpl<$Res, _$InitImpl>
+    implements _$$InitImplCopyWith<$Res> {
+  __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitImpl implements _Init {
+  const _$InitImpl();
+
+  @override
+  String toString() {
+    return 'DraggableEvent.init()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(Offset offset) updatePosition,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(Offset offset)? updatePosition,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(Offset offset)? updatePosition,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_UpdatePosition value) updatePosition,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_UpdatePosition value)? updatePosition,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_UpdatePosition value)? updatePosition,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Init implements DraggableEvent {
+  const factory _Init() = _$InitImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdatePositionImplCopyWith<$Res> {
   factory _$$UpdatePositionImplCopyWith(_$UpdatePositionImpl value,
           $Res Function(_$UpdatePositionImpl) then) =
       __$$UpdatePositionImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({Offset offset});
 }
@@ -155,6 +240,7 @@ class _$UpdatePositionImpl implements _UpdatePosition {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Offset offset) updatePosition,
   }) {
     return updatePosition(offset);
@@ -163,6 +249,7 @@ class _$UpdatePositionImpl implements _UpdatePosition {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Offset offset)? updatePosition,
   }) {
     return updatePosition?.call(offset);
@@ -171,6 +258,7 @@ class _$UpdatePositionImpl implements _UpdatePosition {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Offset offset)? updatePosition,
     required TResult orElse(),
   }) {
@@ -183,6 +271,7 @@ class _$UpdatePositionImpl implements _UpdatePosition {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_UpdatePosition value) updatePosition,
   }) {
     return updatePosition(this);
@@ -191,6 +280,7 @@ class _$UpdatePositionImpl implements _UpdatePosition {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_UpdatePosition value)? updatePosition,
   }) {
     return updatePosition?.call(this);
@@ -199,6 +289,7 @@ class _$UpdatePositionImpl implements _UpdatePosition {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_UpdatePosition value)? updatePosition,
     required TResult orElse(),
   }) {
@@ -212,9 +303,7 @@ class _$UpdatePositionImpl implements _UpdatePosition {
 abstract class _UpdatePosition implements DraggableEvent {
   const factory _UpdatePosition(final Offset offset) = _$UpdatePositionImpl;
 
-  @override
   Offset get offset;
-  @override
   @JsonKey(ignore: true)
   _$$UpdatePositionImplCopyWith<_$UpdatePositionImpl> get copyWith =>
       throw _privateConstructorUsedError;

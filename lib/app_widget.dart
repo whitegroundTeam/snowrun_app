@@ -13,6 +13,7 @@ import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/draggable/draggable_bloc.dart';
+import 'package:snowrun_app/application/location/location_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/foreground_task_handler.dart';
@@ -40,6 +41,7 @@ class MainAppState extends State<MainApp> {
   final toastBloc = getIt<ToastBloc>();
   final authBloc = getIt<AuthBloc>();
   final draggableBloc = getIt<DraggableBloc>();
+  final locationBloc = getIt<LocationBloc>();
   final appInfoBloc = getIt<AppInfoBloc>();
   final checkPermissionBloc = getIt<CheckPermissionBloc>();
   late AppLinks _appLinks;
@@ -71,7 +73,6 @@ class MainAppState extends State<MainApp> {
     initDeepLinks();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -88,6 +89,9 @@ class MainAppState extends State<MainApp> {
               BlocProvider<UserBloc>(create: (context) => getIt<UserBloc>()),
               BlocProvider<DraggableBloc>(
                 create: (context) => draggableBloc,
+              ),
+              BlocProvider<LocationBloc>(
+                create: (context) => locationBloc,
               ),
               BlocProvider<AppInfoBloc>(create: (context) => appInfoBloc),
               BlocProvider<ToastBloc>(
@@ -116,8 +120,6 @@ class MainAppState extends State<MainApp> {
                             top: false,
                             child: child,
                           ),
-                    // Positioned(
-                    //     child: DraggableItem(offset: const Offset(50.0,50.0))),
                     Positioned(
                       bottom: 72,
                       right: 0,

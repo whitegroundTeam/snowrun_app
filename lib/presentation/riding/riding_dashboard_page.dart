@@ -14,6 +14,7 @@ import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.da
 import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/common_network_image.dart';
+import 'package:snowrun_app/presentation/core/common_scaffold.dart';
 import 'package:snowrun_app/presentation/core/loading_dialog.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
@@ -88,7 +89,7 @@ class RidingDashboardPageState extends State<RidingDashboardPage> {
           },
         ),
       ],
-      child: Scaffold(
+      child: CommonScaffold(
         body: BlocBuilder<RidingDetailBloc, RidingDetailState>(
           builder: (context, state) {
             if (state.status == DefaultStatus.success ||

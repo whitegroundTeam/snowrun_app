@@ -26,6 +26,7 @@ import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/common_network_image.dart';
+import 'package:snowrun_app/presentation/core/common_scaffold.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/riding/listener/map_marker_click_listener.dart';
@@ -62,7 +63,6 @@ class AnnotationClickListener extends mapbox.OnPointAnnotationClickListener {
 
 class RidingRoomPageState extends State<RidingRoomPage> {
   static const double defaultZoom = 14;
-  final _locationBloc = getIt<LocationBloc>();
   final _ridingDetailBloc = getIt<RidingDetailBloc>();
   final _ridingControllerBloc = getIt<RidingControllerBloc>();
 
@@ -117,9 +117,6 @@ class RidingRoomPageState extends State<RidingRoomPage> {
           _ridingDetailBloc
             ..add(RidingDetailEvent.getRidingRoom(widget.ridingRoomId)),
         ),
-        BlocProvider<LocationBloc>(create: (context) => _locationBloc
-          //   ..add(const LocationEvent.getCurrentLocation()),
-        ),
         BlocListener<LocationBloc, LocationState>(
           listener: (context, state) async {
             if (state.status == LocationStatus.successGetCurrentLocation) {
@@ -158,7 +155,7 @@ class RidingRoomPageState extends State<RidingRoomPage> {
           },
         ),
       ],
-      child: Scaffold(
+      child: CommonScaffold(
         body: BlocBuilder<RidingDetailBloc, RidingDetailState>(
           builder: (context, state) {
             String ridingRoomName = ridingRoom?.name.getOrCrash() ?? "";
@@ -251,25 +248,24 @@ class RidingRoomPageState extends State<RidingRoomPage> {
                         //   ),
                         // ),
                         // const SizedBox(height: 24,),
-                        CommonDetector(
-                          onTap: () {
-                            _updateUserLocation();
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: AppStyle.secondaryBackground
-                                  .withOpacity(0.95),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            padding: const EdgeInsets.all(12),
-                            child: Image.asset(
-                              'assets/webp/refresh.webp',
-                              color: AppStyle.white,
-                              width: 24,
-                              height: 24,
-                            ),
-                          ),
-                        ),
+                        // CommonDetector(
+                        //   onTap: () {
+                        //   },
+                        //   child: Container(
+                        //     decoration: BoxDecoration(
+                        //       color: AppStyle.secondaryBackground
+                        //           .withOpacity(0.95),
+                        //       borderRadius: BorderRadius.circular(8),
+                        //     ),
+                        //     padding: const EdgeInsets.all(12),
+                        //     child: Image.asset(
+                        //       'assets/webp/refresh.webp',
+                        //       color: AppStyle.white,
+                        //       width: 24,
+                        //       height: 24,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -552,9 +548,9 @@ class RidingRoomPageState extends State<RidingRoomPage> {
     );
   }
 
-  void _updateUserLocation() {
-    _checkLocationPermission();
-  }
+  // void _updateUserLocation() {
+  //   _checkLocationPermission();
+  // }
 
   _onMapCreated(mapbox.MapboxMap newMapBox) {
     mapboxMap = newMapBox;
@@ -680,42 +676,42 @@ class RidingRoomPageState extends State<RidingRoomPage> {
     ));
   }
 
-  _checkLocationPermission() async {
-    if (!await geolocator.Geolocator.isLocationServiceEnabled()) {
-      _showOpenSettingDialog();
-    }
-
-    final checkedPermission = await geolocator.Geolocator.requestPermission();
-
-    if (checkedPermission == geolocator.LocationPermission.always ||
-        checkedPermission == geolocator.LocationPermission.whileInUse) {
-      if (!mounted) return;
-      _locationBloc.add(const LocationEvent.getCurrentLocation());
-    } else {
-      _showOpenSettingDialog();
-    }
-  }
-
-  _showOpenSettingDialog() async {
-    if (!mounted) return;
-    await showCommonDialog(context,
-        buttonText: "설정으로 이동",
-        title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
-        negativeButtonText: "취소",
-        onPressedButton: () async {
-          AppSettings.openAppSettings(type: AppSettingsType.location);
-          showToast(
-            context,
-            "위치 권한 허용 후 다시 시도해주세요.",
-          );
-
-          if (!mounted) return;
-          context.pop();
-        },
-        onPressedNegativeButton: () {
-          context.pop();
-        });
-  }
+  // _checkLocationPermission() async {
+  //   if (!await geolocator.Geolocator.isLocationServiceEnabled()) {
+  //     _showOpenSettingDialog();
+  //   }
+  //
+  //   final checkedPermission = await geolocator.Geolocator.requestPermission();
+  //
+  //   if (checkedPermission == geolocator.LocationPermission.always ||
+  //       checkedPermission == geolocator.LocationPermission.whileInUse) {
+  //     if (!mounted) return;
+  //     _locationBloc.add(const LocationEvent.getCurrentLocation());
+  //   } else {
+  //     _showOpenSettingDialog();
+  //   }
+  // }
+  //
+  // _showOpenSettingDialog() async {
+  //   if (!mounted) return;
+  //   await showCommonDialog(context,
+  //       buttonText: "설정으로 이동",
+  //       title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
+  //       negativeButtonText: "취소",
+  //       onPressedButton: () async {
+  //         AppSettings.openAppSettings(type: AppSettingsType.location);
+  //         showToast(
+  //           context,
+  //           "위치 권한 허용 후 다시 시도해주세요.",
+  //         );
+  //
+  //         if (!mounted) return;
+  //         context.pop();
+  //       },
+  //       onPressedNegativeButton: () {
+  //         context.pop();
+  //       });
+  // }
 
   String getTimeDifferenceMessage(DateTime? updateDateTime) {
     if (updateDateTime == null) return "업데이트 정보 없음";

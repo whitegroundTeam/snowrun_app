@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:app_links/app_links.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,22 +12,17 @@ import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
-import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/domain/app-info/model/app_info.dart';
-import 'package:snowrun_app/domain/app-info/model/app_notice.dart';
 import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
-import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/common_loading.dart';
+import 'package:snowrun_app/presentation/core/common_scaffold.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/home/home_bottom_band.dart';
 import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
 import 'package:snowrun_app/presentation/home/home_ridings_widget.dart';
 import 'package:snowrun_app/presentation/home/home_start_riding_widget.dart';
-import 'package:snowrun_app/presentation/invite_code/input_invite_code_page.dart';
 import 'package:snowrun_app/utils/forced_exit_app.dart';
 import 'package:snowrun_app/utils/launch_url.dart';
 
@@ -180,7 +174,7 @@ class HomePageState extends State<HomePage> {
         //   // });
         //   return Future.value(true);
         // },
-        child: Scaffold(
+        child: CommonScaffold(
           body: Stack(
             children: [
               const Column(

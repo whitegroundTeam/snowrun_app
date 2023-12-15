@@ -1,11 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
-import 'package:snowrun_app/application/riding/riding_detail/riding_detail_bloc.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
 import 'package:snowrun_app/domain/riding/riding_player.dart';
 import 'package:snowrun_app/domain/riding/riding_room.dart';
 import 'package:snowrun_app/injection.dart';
@@ -16,7 +13,6 @@ import 'package:snowrun_app/presentation/riding/players_counts_widget.dart';
 import 'package:snowrun_app/presentation/riding/riding_room_page.dart';
 
 class HomeRidingItemWidget extends StatefulWidget {
-  //TODO : 라이딩 받아와야함
   final RidingRoom ridingRoom;
   final List<RidingPlayer> players;
   final int maxPlayersCount;
@@ -40,7 +36,6 @@ class HomeRidingItemWidgetState extends State<HomeRidingItemWidget> {
         BlocListener<RidingActorBloc, RidingActorState>(
           bloc: ridingActorBloc,
           listener: (context, state) {
-            //Create
             final createdRidingRoomId =
             state.createdRidingRoom?.id.getOrCrash();
             if (state.status == RidingActorStatus.successCreateRidingRoom &&
@@ -80,13 +75,13 @@ class HomeRidingItemWidgetState extends State<HomeRidingItemWidget> {
             },
             child: Container(
               padding: const EdgeInsets.only(
-                  left: 12, right: 4, top: 16, bottom: 16),
+                  left: 16, right: 4, top: 16, bottom: 16),
               child: Row(
                 children: [
                   Expanded(
                     child: TitleText(
                       title: widget.ridingRoom.name.getOrCrash(),
-                      fontSize: 18,
+                      fontSize: 16,
                       color: AppStyle.secondaryTextColor,
                       fontWeight: FontWeight.bold,
                     ),

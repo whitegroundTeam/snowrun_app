@@ -8,6 +8,7 @@ import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
+import 'package:snowrun_app/presentation/core/common_scaffold.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
 import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
@@ -26,7 +27,7 @@ class SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     final previewProfileImageHeight = MediaQuery.of(context).size.height / 6;
 
-    return Scaffold(
+    return CommonScaffold(
       body: MultiBlocProvider(
         providers: [
           BlocListener<AuthBloc, AuthState>(

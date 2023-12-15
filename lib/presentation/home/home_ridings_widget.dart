@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowrun_app/app_style.dart';
@@ -73,27 +74,30 @@ class HomeRidingsWidgetState extends State<HomeRidingsWidget> {
                   ),
                   padding: const EdgeInsets.only(
                     top: 16,
-                    bottom: 24,
+                    bottom: 12,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       const Padding(
                         padding: EdgeInsets.only(
-                          left: 12,
-                          right: 12,
+                          left: 16,
+                          right: 16,
                         ),
                         child: TitleText(
                           title: "최근 라이딩",
-                          fontSize: 20,
+                          fontSize: 16,
                           color: AppStyle.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      const SizedBox(height: 12,),
                       ListView.builder(
                           physics: neverScrollableScrollPhysics,
                           shrinkWrap: true,
                           itemCount: ridingRooms.length,
+                          padding: EdgeInsets.zero,
                           itemBuilder: (context, index) {
                             final ridingRoom = ridingRooms[index];
                             return HomeRidingItemWidget(
