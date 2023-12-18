@@ -25,11 +25,12 @@ class EditProfileImagePage extends StatefulWidget {
   @override
   State createState() => EditProfileImagePageState();
 
-  static pushEditProfileImagePage(BuildContext context,
-      {Function? onResult}) {
-    context.push(
-      '/editProfileImage',
-    ).then((value) => onResult?.call());
+  static pushEditProfileImagePage(BuildContext context, {Function? onResult}) {
+    context
+        .push(
+          '/editProfileImage',
+        )
+        .then((value) => onResult?.call());
   }
 }
 
@@ -43,7 +44,7 @@ class EditProfileImagePageState extends State<EditProfileImagePage> {
   SnowBallProfileImage? selectedSnowBallProfileImage;
   String? selectedProfileImageUrl;
 
-  bool isShowLoading = false;
+  bool isShowLoading = true;
 
   @override
   Widget build(BuildContext context) {
@@ -55,17 +56,15 @@ class EditProfileImagePageState extends State<EditProfileImagePage> {
           listener: (context, state) {
             if (state.status == UserStatus.successUpdateProfileImage ||
                 state.status == UserStatus.failureUpdateProfileImage) {
-              context.read<AuthBloc>().add(const AuthEvent.checkAuth());
+              context
+                  .read<AuthBloc>()
+                  .add(const AuthEvent.checkAuth());
+              _hideLoading();
+              context.pop();
+            } else if(state.status == UserStatus.successGetSnowBallProfileImages ||
+                state.status == UserStatus.failureGetSnowBallProfileImages) {
+              _hideLoading();
             }
-          },
-        ),
-        BlocListener<AuthBloc, AuthState>(
-          bloc: context.read<AuthBloc>(),
-          listener: (context, state) {
-            setState(() {
-              isShowLoading = false;
-            });
-            context.pop();
           },
         ),
         BlocProvider<ProfileBloc>(
@@ -73,6 +72,7 @@ class EditProfileImagePageState extends State<EditProfileImagePage> {
               ..add(const ProfileEvent.getSnowBallProfileImages())),
       ],
       child: Scaffold(
+        backgroundColor: AppStyle.background,
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(56.0),
           child: CommonAppBar(
@@ -310,5 +310,25 @@ class EditProfileImagePageState extends State<EditProfileImagePage> {
         ),
       ),
     );
+  }
+
+  _showLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!isShowLoading) {
+        setState(() {
+          isShowLoading = true;
+        });
+      }
+    });
+  }
+
+  _hideLoading() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (isShowLoading) {
+        setState(() {
+          isShowLoading = false;
+        });
+      }
+    });
   }
 }

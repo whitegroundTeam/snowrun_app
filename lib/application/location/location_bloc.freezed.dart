@@ -19,32 +19,44 @@ mixin _$LocationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getCurrentLocation,
+    required TResult Function() startRefreshLocation,
+    required TResult Function() stopRefreshLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCurrentLocation,
+    TResult? Function()? startRefreshLocation,
+    TResult? Function()? stopRefreshLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCurrentLocation,
+    TResult Function()? startRefreshLocation,
+    TResult Function()? stopRefreshLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCurrentLocation value) getCurrentLocation,
+    required TResult Function(_StartRefreshLocation value) startRefreshLocation,
+    required TResult Function(_StopRefreshLocation value) stopRefreshLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
+    TResult? Function(_StartRefreshLocation value)? startRefreshLocation,
+    TResult? Function(_StopRefreshLocation value)? stopRefreshLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCurrentLocation value)? getCurrentLocation,
+    TResult Function(_StartRefreshLocation value)? startRefreshLocation,
+    TResult Function(_StopRefreshLocation value)? stopRefreshLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +119,8 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getCurrentLocation,
+    required TResult Function() startRefreshLocation,
+    required TResult Function() stopRefreshLocation,
   }) {
     return getCurrentLocation();
   }
@@ -115,6 +129,8 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCurrentLocation,
+    TResult? Function()? startRefreshLocation,
+    TResult? Function()? stopRefreshLocation,
   }) {
     return getCurrentLocation?.call();
   }
@@ -123,6 +139,8 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCurrentLocation,
+    TResult Function()? startRefreshLocation,
+    TResult Function()? stopRefreshLocation,
     required TResult orElse(),
   }) {
     if (getCurrentLocation != null) {
@@ -135,6 +153,8 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCurrentLocation value) getCurrentLocation,
+    required TResult Function(_StartRefreshLocation value) startRefreshLocation,
+    required TResult Function(_StopRefreshLocation value) stopRefreshLocation,
   }) {
     return getCurrentLocation(this);
   }
@@ -143,6 +163,8 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
+    TResult? Function(_StartRefreshLocation value)? startRefreshLocation,
+    TResult? Function(_StopRefreshLocation value)? stopRefreshLocation,
   }) {
     return getCurrentLocation?.call(this);
   }
@@ -151,6 +173,8 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCurrentLocation value)? getCurrentLocation,
+    TResult Function(_StartRefreshLocation value)? startRefreshLocation,
+    TResult Function(_StopRefreshLocation value)? stopRefreshLocation,
     required TResult orElse(),
   }) {
     if (getCurrentLocation != null) {
@@ -165,9 +189,228 @@ abstract class _GetCurrentLocation implements LocationEvent {
 }
 
 /// @nodoc
+abstract class _$$StartRefreshLocationImplCopyWith<$Res> {
+  factory _$$StartRefreshLocationImplCopyWith(_$StartRefreshLocationImpl value,
+          $Res Function(_$StartRefreshLocationImpl) then) =
+      __$$StartRefreshLocationImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StartRefreshLocationImplCopyWithImpl<$Res>
+    extends _$LocationEventCopyWithImpl<$Res, _$StartRefreshLocationImpl>
+    implements _$$StartRefreshLocationImplCopyWith<$Res> {
+  __$$StartRefreshLocationImplCopyWithImpl(_$StartRefreshLocationImpl _value,
+      $Res Function(_$StartRefreshLocationImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$StartRefreshLocationImpl implements _StartRefreshLocation {
+  const _$StartRefreshLocationImpl();
+
+  @override
+  String toString() {
+    return 'LocationEvent.startRefreshLocation()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StartRefreshLocationImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCurrentLocation,
+    required TResult Function() startRefreshLocation,
+    required TResult Function() stopRefreshLocation,
+  }) {
+    return startRefreshLocation();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getCurrentLocation,
+    TResult? Function()? startRefreshLocation,
+    TResult? Function()? stopRefreshLocation,
+  }) {
+    return startRefreshLocation?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCurrentLocation,
+    TResult Function()? startRefreshLocation,
+    TResult Function()? stopRefreshLocation,
+    required TResult orElse(),
+  }) {
+    if (startRefreshLocation != null) {
+      return startRefreshLocation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
+    required TResult Function(_StartRefreshLocation value) startRefreshLocation,
+    required TResult Function(_StopRefreshLocation value) stopRefreshLocation,
+  }) {
+    return startRefreshLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
+    TResult? Function(_StartRefreshLocation value)? startRefreshLocation,
+    TResult? Function(_StopRefreshLocation value)? stopRefreshLocation,
+  }) {
+    return startRefreshLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
+    TResult Function(_StartRefreshLocation value)? startRefreshLocation,
+    TResult Function(_StopRefreshLocation value)? stopRefreshLocation,
+    required TResult orElse(),
+  }) {
+    if (startRefreshLocation != null) {
+      return startRefreshLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StartRefreshLocation implements LocationEvent {
+  const factory _StartRefreshLocation() = _$StartRefreshLocationImpl;
+}
+
+/// @nodoc
+abstract class _$$StopRefreshLocationImplCopyWith<$Res> {
+  factory _$$StopRefreshLocationImplCopyWith(_$StopRefreshLocationImpl value,
+          $Res Function(_$StopRefreshLocationImpl) then) =
+      __$$StopRefreshLocationImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StopRefreshLocationImplCopyWithImpl<$Res>
+    extends _$LocationEventCopyWithImpl<$Res, _$StopRefreshLocationImpl>
+    implements _$$StopRefreshLocationImplCopyWith<$Res> {
+  __$$StopRefreshLocationImplCopyWithImpl(_$StopRefreshLocationImpl _value,
+      $Res Function(_$StopRefreshLocationImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$StopRefreshLocationImpl implements _StopRefreshLocation {
+  const _$StopRefreshLocationImpl();
+
+  @override
+  String toString() {
+    return 'LocationEvent.stopRefreshLocation()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StopRefreshLocationImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCurrentLocation,
+    required TResult Function() startRefreshLocation,
+    required TResult Function() stopRefreshLocation,
+  }) {
+    return stopRefreshLocation();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getCurrentLocation,
+    TResult? Function()? startRefreshLocation,
+    TResult? Function()? stopRefreshLocation,
+  }) {
+    return stopRefreshLocation?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCurrentLocation,
+    TResult Function()? startRefreshLocation,
+    TResult Function()? stopRefreshLocation,
+    required TResult orElse(),
+  }) {
+    if (stopRefreshLocation != null) {
+      return stopRefreshLocation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
+    required TResult Function(_StartRefreshLocation value) startRefreshLocation,
+    required TResult Function(_StopRefreshLocation value) stopRefreshLocation,
+  }) {
+    return stopRefreshLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
+    TResult? Function(_StartRefreshLocation value)? startRefreshLocation,
+    TResult? Function(_StopRefreshLocation value)? stopRefreshLocation,
+  }) {
+    return stopRefreshLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
+    TResult Function(_StartRefreshLocation value)? startRefreshLocation,
+    TResult Function(_StopRefreshLocation value)? stopRefreshLocation,
+    required TResult orElse(),
+  }) {
+    if (stopRefreshLocation != null) {
+      return stopRefreshLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StopRefreshLocation implements LocationEvent {
+  const factory _StopRefreshLocation() = _$StopRefreshLocationImpl;
+}
+
+/// @nodoc
 mixin _$LocationState {
   LocationStatus get status => throw _privateConstructorUsedError;
   UserLocation get userLocation => throw _privateConstructorUsedError;
+  bool get isInit => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LocationStateCopyWith<LocationState> get copyWith =>
@@ -180,7 +423,7 @@ abstract class $LocationStateCopyWith<$Res> {
           LocationState value, $Res Function(LocationState) then) =
       _$LocationStateCopyWithImpl<$Res, LocationState>;
   @useResult
-  $Res call({LocationStatus status, UserLocation userLocation});
+  $Res call({LocationStatus status, UserLocation userLocation, bool isInit});
 
   $UserLocationCopyWith<$Res> get userLocation;
 }
@@ -200,6 +443,7 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
   $Res call({
     Object? status = null,
     Object? userLocation = null,
+    Object? isInit = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -210,6 +454,10 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
               as UserLocation,
+      isInit: null == isInit
+          ? _value.isInit
+          : isInit // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -230,7 +478,7 @@ abstract class _$$LocationStateImplCopyWith<$Res>
       __$$LocationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LocationStatus status, UserLocation userLocation});
+  $Res call({LocationStatus status, UserLocation userLocation, bool isInit});
 
   @override
   $UserLocationCopyWith<$Res> get userLocation;
@@ -249,6 +497,7 @@ class __$$LocationStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? userLocation = null,
+    Object? isInit = null,
   }) {
     return _then(_$LocationStateImpl(
       status: null == status
@@ -259,6 +508,10 @@ class __$$LocationStateImplCopyWithImpl<$Res>
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
               as UserLocation,
+      isInit: null == isInit
+          ? _value.isInit
+          : isInit // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -266,16 +519,19 @@ class __$$LocationStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LocationStateImpl implements _LocationState {
-  const _$LocationStateImpl({required this.status, required this.userLocation});
+  const _$LocationStateImpl(
+      {required this.status, required this.userLocation, required this.isInit});
 
   @override
   final LocationStatus status;
   @override
   final UserLocation userLocation;
+  @override
+  final bool isInit;
 
   @override
   String toString() {
-    return 'LocationState(status: $status, userLocation: $userLocation)';
+    return 'LocationState(status: $status, userLocation: $userLocation, isInit: $isInit)';
   }
 
   @override
@@ -285,11 +541,12 @@ class _$LocationStateImpl implements _LocationState {
             other is _$LocationStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.userLocation, userLocation) ||
-                other.userLocation == userLocation));
+                other.userLocation == userLocation) &&
+            (identical(other.isInit, isInit) || other.isInit == isInit));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, userLocation);
+  int get hashCode => Object.hash(runtimeType, status, userLocation, isInit);
 
   @JsonKey(ignore: true)
   @override
@@ -301,12 +558,15 @@ class _$LocationStateImpl implements _LocationState {
 abstract class _LocationState implements LocationState {
   const factory _LocationState(
       {required final LocationStatus status,
-      required final UserLocation userLocation}) = _$LocationStateImpl;
+      required final UserLocation userLocation,
+      required final bool isInit}) = _$LocationStateImpl;
 
   @override
   LocationStatus get status;
   @override
   UserLocation get userLocation;
+  @override
+  bool get isInit;
   @override
   @JsonKey(ignore: true)
   _$$LocationStateImplCopyWith<_$LocationStateImpl> get copyWith =>

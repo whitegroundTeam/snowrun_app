@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/core/value_objects.dart';
@@ -33,6 +34,14 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           },
         ),
       );
+    });
+
+    on<_StartRefreshLocation>((event, emit) async {
+      emit(state.copyWith(status: LocationStatus.successStartRefreshLocation));
+    });
+
+    on<_StopRefreshLocation>((event, emit) async {
+      emit(state.copyWith(status: LocationStatus.successStopRefreshLocation));
     });
   }
 }

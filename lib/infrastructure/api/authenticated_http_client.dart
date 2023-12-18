@@ -62,6 +62,12 @@ class AuthenticatedHttpClient extends http.BaseClient {
     debugPrint(result);
   }
 
+  _interceptResponse(Response response) async {
+    if(response.statusCode == 401) {
+      await hiveProvider.deleteAuthToken();
+    }
+  }
+
   @override
   Future<String> read(Uri url, {Map<String, String>? headers}) {
     printRequestDebug('READ', url, headers: headers);
@@ -73,6 +79,7 @@ class AuthenticatedHttpClient extends http.BaseClient {
   Future<Response> get(Uri url, {Map<String, String>? headers}) async {
     printRequestDebug('GET', url, headers: headers);
     final response = await super.get(url, headers: headers);
+    _interceptResponse(response);
     printDebugResponse('GET', response);
 
     return response;
@@ -85,6 +92,7 @@ class AuthenticatedHttpClient extends http.BaseClient {
         headers: headers, body: body, encoding: encoding);
     final response =
     await super.post(url, headers: headers, body: body, encoding: encoding);
+    _interceptResponse(response);
     printDebugResponse('POST', response);
     return response;
   }
@@ -96,6 +104,7 @@ class AuthenticatedHttpClient extends http.BaseClient {
         headers: headers, body: body, encoding: encoding);
     final response =
     await super.put(url, headers: headers, body: body, encoding: encoding);
+    _interceptResponse(response);
     printDebugResponse('PUT', response);
     return response;
   }
@@ -107,6 +116,7 @@ class AuthenticatedHttpClient extends http.BaseClient {
         headers: headers, body: body, encoding: encoding);
     final response = await super
         .patch(url, headers: headers, body: body, encoding: encoding);
+    _interceptResponse(response);
     printDebugResponse('PATCH', response);
     return response;
   }
@@ -119,6 +129,7 @@ class AuthenticatedHttpClient extends http.BaseClient {
 
     final response = await super
         .delete(url, headers: headers, body: body, encoding: encoding);
+    _interceptResponse(response);
     printDebugResponse('DELETE', response);
     return response;
   }

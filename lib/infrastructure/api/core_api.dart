@@ -85,6 +85,8 @@ class CoreApi {
     final uri = _getUri(realPath, queryParams);
 
     Response response;
+
+
     switch (method) {
       case HttpMethod.post:
         response = await client.post(

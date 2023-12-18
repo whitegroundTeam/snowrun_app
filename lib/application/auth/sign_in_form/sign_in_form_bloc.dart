@@ -77,6 +77,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       emit(state.copyWith(
         isSubmitting: false,
         authFailureOrSuccessOption: optionOf(failureOrSuccess),
+
+
       ));
     }
 

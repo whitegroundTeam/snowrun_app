@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:isolate';
 
 import 'package:app_links/app_links.dart';
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,15 +19,11 @@ import 'package:snowrun_app/application/permission/check_permission/check_permis
 import 'package:snowrun_app/application/user/user_bloc.dart';
 import 'package:snowrun_app/foreground_task_handler.dart';
 import 'package:snowrun_app/injection.dart';
+import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/core/toast/toast_bloc.dart';
 import 'package:snowrun_app/routes/router.dart';
-
-@pragma('vm:entry-point')
-void startCallback() {
-  // The setTaskHandler function must be called to handle the task in the background.
-  FlutterForegroundTask.setTaskHandler(ForegroundTaskHandler());
-}
+import 'package:geolocator/geolocator.dart' as geolocator;
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -50,14 +47,12 @@ class MainAppState extends State<MainApp> {
   ReceivePort? _receivePort;
 
   @override
-  void initState() {
+  initState() {
     super.initState();
-    // _requestPermissionForAndroid();
-    _initForegroundTask();
     Future.delayed(const Duration(milliseconds: 1000), () {
       FlutterNativeSplash.remove();
     });
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: AppStyle.transparent,
         statusBarIconBrightness: Brightness.light,
@@ -71,6 +66,12 @@ class MainAppState extends State<MainApp> {
       );
     });
     initDeepLinks();
+  }
+
+  @override
+  void dispose() {
+    _closeReceivePort();
+    super.dispose();
   }
 
   @override
@@ -92,6 +93,25 @@ class MainAppState extends State<MainApp> {
               ),
               BlocProvider<LocationBloc>(
                 create: (context) => locationBloc,
+              ),
+              BlocListener<LocationBloc, LocationState>(
+                bloc: locationBloc,
+                listener: (context, state) async {
+                  if(state.status == LocationStatus.successStartRefreshLocation) {
+                    _checkLocationPermissionAndStratGetLocation();
+                  }
+                  // if (state.status ==
+                  //     LocationStatus.successStartRefreshLocation) {
+                  //   if (!state.isInit) {
+                  //     await _requestPermissionForAndroid();
+                  //     await _initForegroundTask();
+                  //   }
+                  //   await startForegroundTask(() {});
+                  // } else if (state.status ==
+                  //     LocationStatus.successStopRefreshLocation) {
+                  //   _stopForegroundTask();
+                  // }
+                },
               ),
               BlocProvider<AppInfoBloc>(create: (context) => appInfoBloc),
               BlocProvider<ToastBloc>(
@@ -162,17 +182,23 @@ class MainAppState extends State<MainApp> {
       return;
     }
 
-    // "android.permission.SYSTEM_ALERT_WINDOW" permission must be granted for
-    // onNotificationPressed function to be called.
-    //
-    // When the notification is pressed while permission is denied,
-    // the onNotificationPressed function is not called and the app opens.
-    //
-    // If you do not use the onNotificationPressed or launchApp function,
-    // you do not need to write this code.
     if (!await FlutterForegroundTask.canDrawOverlays) {
-      // This function requires `android.permission.SYSTEM_ALERT_WINDOW` permission.
+      // if (!mounted) return;
+      // await FlutterForegroundTask.openSystemAlertWindowSettings();
+      if (!mounted) return;
+      showToast(context, "다른 앱 위에 SnowRun앱을 표시해주시면 좀 더 쉽게 위치 공유를 할 수 있어요 😆");
       await FlutterForegroundTask.openSystemAlertWindowSettings();
+
+      // await showCommonDialog(context,
+      //     buttonText: "설정으로 이동",
+      //     title: "다른 앱 위에 SnowRun앱을 표시해주시면 좀 더 쉽게 위치 공유를 할 수 있어요 😆",
+      //     negativeButtonText: "위치 갱신 하지 않기", onPressedButton: () async {
+      //   await FlutterForegroundTask.openSystemAlertWindowSettings();
+      //   if (!mounted) return;
+      //   context.pop();
+      // }, onPressedNegativeButton: () {
+      //   context.pop();
+      // });
     }
 
     // Android 12 or higher, there are restrictions on starting a foreground service.
@@ -191,7 +217,7 @@ class MainAppState extends State<MainApp> {
     }
   }
 
-  Future<bool> _startForegroundTask(Function? startCallback) async {
+  Future<bool> startForegroundTask(Function? startCallback) async {
     // You can save data using the saveData function.
     await FlutterForegroundTask.saveData(key: 'customData', value: 'hello');
 
@@ -207,30 +233,36 @@ class MainAppState extends State<MainApp> {
       return FlutterForegroundTask.restartService();
     } else {
       return FlutterForegroundTask.startService(
-        notificationTitle: 'Foreground Service is running',
-        notificationText: 'Tap to return to the app',
+        notificationTitle: '위치정보를 공유중이에요 😆',
+        notificationText: '즐겁고 안전한 겨울 보내세요!',
         callback: startCallback,
       );
     }
   }
 
-  void _initForegroundTask() {
+  Future<bool> _stopForegroundTask() {
+    return FlutterForegroundTask.stopService();
+  }
+
+  Future<void> _initForegroundTask() async {
     FlutterForegroundTask.init(
       androidNotificationOptions: AndroidNotificationOptions(
-        channelId: 'foreground_service',
-        channelName: 'Foreground Service Notification',
-        channelDescription:
-            'This notification appears when the foreground service is running.',
+        channelId: 'shareLocation',
+        channelName: 'shareLocation',
+        channelDescription: 'shareLocation',
         channelImportance: NotificationChannelImportance.LOW,
         priority: NotificationPriority.LOW,
         iconData: const NotificationIconData(
           resType: ResourceType.mipmap,
           resPrefix: ResourcePrefix.ic,
           name: 'launcher',
+          // resType: ResourceType.mipmap,
+          // resPrefix: ResourcePrefix.ic,
+          // name: 'launcher',
         ),
         buttons: [
-          const NotificationButton(id: 'sendButton', text: 'Send'),
-          const NotificationButton(id: 'testButton', text: 'Test'),
+          // const NotificationButton(id: 'sendButton', text: 'Send'),
+          // const NotificationButton(id: 'd', text: 'Test'),
         ],
       ),
       iosNotificationOptions: const IOSNotificationOptions(
@@ -240,9 +272,9 @@ class MainAppState extends State<MainApp> {
       foregroundTaskOptions: const ForegroundTaskOptions(
         interval: 5000,
         isOnceEvent: false,
-        autoRunOnBoot: true,
-        allowWakeLock: true,
-        allowWifiLock: true,
+        // autoRunOnBoot: true,
+        // allowWakeLock: true,
+        // allowWifiLock: true,
       ),
     );
   }
@@ -273,5 +305,41 @@ class MainAppState extends State<MainApp> {
   void _closeReceivePort() {
     _receivePort?.close();
     _receivePort = null;
+  }
+
+  _checkLocationPermissionAndStratGetLocation() async {
+    if (!await geolocator.Geolocator.isLocationServiceEnabled()) {
+      _showOpenSettingDialog();
+    }
+
+    final checkedPermission = await geolocator.Geolocator.requestPermission();
+
+    if (checkedPermission == geolocator.LocationPermission.always ||
+        checkedPermission == geolocator.LocationPermission.whileInUse) {
+      if (!mounted) return;
+      locationBloc.add(const LocationEvent.getCurrentLocation());
+    } else {
+      _showOpenSettingDialog();
+    }
+  }
+
+  _showOpenSettingDialog() async {
+    if (!mounted) return;
+    await showCommonDialog(context,
+        buttonText: "설정으로 이동",
+        title:
+            "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.\n위치 공유를 그만하고 싶다면 앱에서 종료해주세요.",
+        negativeButtonText: "취소", onPressedButton: () async {
+      AppSettings.openAppSettings(type: AppSettingsType.location);
+      showToast(
+        context,
+        "위치 권한 허용 후 다시 시도해주세요.",
+      );
+
+      if (!mounted) return;
+      context.pop();
+    }, onPressedNegativeButton: () {
+      context.pop();
+    });
   }
 }

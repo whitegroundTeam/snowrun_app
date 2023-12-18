@@ -1,15 +1,10 @@
-import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
-import 'package:geolocator/geolocator.dart' as geolocator;
 import 'package:snowrun_app/application/draggable/draggable_bloc.dart';
 import 'package:snowrun_app/application/location/location_bloc.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 
 class CommonScaffold extends StatefulWidget {
   final Widget body;
@@ -46,7 +41,7 @@ class CommonScaffoldState extends State<CommonScaffold> {
                       width: recordToolWidth,
                       height: recordToolHeight,
                       backgroundColor: AppStyle.background,
-                      feedbackOpacity: 1.0),
+                      feedbackOpacity: 0.6),
                   childWhenDragging: Container(),
                   onDragEnd: (details) {
                     double finalDx = details.offset.dx;
@@ -93,7 +88,7 @@ class CommonScaffoldState extends State<CommonScaffold> {
       required double feedbackOpacity}) {
     return CommonDetector(
       onTap: () {
-        _checkLocationPermissionAndStratGetLocation();
+        context.read<LocationBloc>().add(const LocationEvent.startRefreshLocation());
       },
       child: Container(
         width: width,
@@ -132,42 +127,5 @@ class CommonScaffoldState extends State<CommonScaffold> {
         ),
       ),
     );
-  }
-
-  _checkLocationPermissionAndStratGetLocation() async {
-    if (!await geolocator.Geolocator.isLocationServiceEnabled()) {
-      _showOpenSettingDialog();
-    }
-
-    final checkedPermission = await geolocator.Geolocator.requestPermission();
-
-    if (checkedPermission == geolocator.LocationPermission.always ||
-        checkedPermission == geolocator.LocationPermission.whileInUse) {
-      if (!mounted) return;
-      context.read<LocationBloc>().add(const LocationEvent.getCurrentLocation());
-    } else {
-      _showOpenSettingDialog();
-    }
-  }
-
-  _showOpenSettingDialog() async {
-    if (!mounted) return;
-    await showCommonDialog(context,
-        buttonText: "설정으로 이동",
-        title: "현재 위치에서 주소를 검색하려면 위치 권한을 활성화 해야합니다.",
-        negativeButtonText: "취소",
-        onPressedButton: () async {
-          AppSettings.openAppSettings(type: AppSettingsType.location);
-          showToast(
-            context,
-            "위치 권한 허용 후 다시 시도해주세요.",
-          );
-
-          if (!mounted) return;
-          context.pop();
-        },
-        onPressedNegativeButton: () {
-          context.pop();
-        });
   }
 }

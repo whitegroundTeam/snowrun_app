@@ -75,6 +75,8 @@ class AuthRepository implements IAuthRepository {
     required EmailAddress emailAddress,
     required Password password,
   }) async {
+    //인증 시 기존에 있던 authToken을 무조건 날려줘야한다.
+    await hiveProvider.deleteAuthToken();
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
     try {
@@ -125,6 +127,8 @@ class AuthRepository implements IAuthRepository {
   @override
   Future<Either<AuthFailure, AuthSignResult>> signInWithEmailAndPassword(
       {required EmailAddress emailAddress, required Password password}) async {
+//인증 시 기존에 있던 authToken을 무조건 날려줘야한다.
+await hiveProvider.deleteAuthToken();
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
     try {
@@ -170,6 +174,8 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, AuthSignResult>> signWithGoogle() async {
+    //인증 시 기존에 있던 authToken을 무조건 날려줘야한다.
+    await hiveProvider.deleteAuthToken();
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
@@ -222,6 +228,8 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, AuthSignResult>> signWithApple() async {
+    //인증 시 기존에 있던 authToken을 무조건 날려줘야한다.
+    await hiveProvider.deleteAuthToken();
     try {
       final rawNonce = generateNonce();
       final nonce = sha256ofString(rawNonce);
