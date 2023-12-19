@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:snowrun_app/domain/auth/auth_failure.dart';
@@ -22,7 +21,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignedOut>((event, emit) async {
       await _authRepository.signOut();
       emit(
-        state.copyWith(user: null, status: AuthStatus.unauthenticated),
+        state.copyWith(user: null, status: AuthStatus.unauthenticated, existedProfileImage: false),
       );
     });
 
@@ -36,6 +35,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (response) => state.copyWith(
             status: AuthStatus.authenticated,
             user: response,
+            existedProfileImage: response.image.getOrCrash().isNotEmpty == true
           ),
         ),
       );

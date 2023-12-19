@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: 'none'
 
-version: 0.0.10+000010
+version: 0.0.11+000011
 
 # fvm flutter clean && fvm flutter packages pub get && fvm flutter packages pub run build_runner build --delete-conflicting-outputs
 # fvm flutter packages pub run build_runner watch --delete-conflicting-outputs

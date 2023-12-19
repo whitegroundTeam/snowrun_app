@@ -10,6 +10,7 @@ class AuthState with _$AuthState {
         authFailureOrSuccessOption,
     required AuthStatus status,
     required User? user,
+    required bool existedProfileImage,
   }) = _AuthState;
 
   factory AuthState.initial() => AuthState(
@@ -17,5 +18,6 @@ class AuthState with _$AuthState {
         authFailureOrSuccessOption: none(),
         status: AuthStatus.initial,
         user: null,
+        existedProfileImage: false,
       );
 }

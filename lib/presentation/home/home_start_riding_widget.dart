@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:snowrun_app/app_style.dart';
+import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/default_status.dart';
 import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
@@ -73,8 +74,13 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                   needAuth: true,
                   onTap: () {
                     loader.show();
-                    ridingActorBloc
-                        .add(const RidingActorEvent.createRidingRoom());
+                    if(context.read<AuthBloc>().state.existedProfileImage) {
+                      ridingActorBloc
+                          .add(const RidingActorEvent.createRidingRoom());
+                    } else {
+                      showToast(context, "눈송이를 선택해주세요");
+                      loader.hide();
+                    }
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -140,21 +146,26 @@ class HomeStartRidingWidgetState extends State<HomeStartRidingWidget> {
                 CommonDetector(
                   needAuth: true,
                   onTap: () {
-                    showInputInviteRidingRoomLinkBottomSheet(context,
-                        (inputText) {
-                      final roomNumber = extractRoomNumber(inputText);
-                      if (roomNumber?.isNotEmpty == true) {
-                        try {
-                          loader.show();
-                          ridingActorBloc.add(RidingActorEvent.joinRidingRoom(
-                              int.parse(roomNumber ?? "")));
-                        } catch (e) {
-                          showToast(context, "알 수 없는 오류가 발생했어요");
-                        }
-                      } else {
-                        showToast(context, "초대 링크를 채워주세요😆");
-                      }
-                    });
+                    if(context.read<AuthBloc>().state.existedProfileImage) {
+                      showInputInviteRidingRoomLinkBottomSheet(context,
+                              (inputText) {
+                            final roomNumber = extractRoomNumber(inputText);
+                            if (roomNumber?.isNotEmpty == true) {
+                              try {
+                                loader.show();
+                                ridingActorBloc.add(RidingActorEvent.joinRidingRoom(
+                                    int.parse(roomNumber ?? "")));
+                              } catch (e) {
+                                showToast(context, "알 수 없는 오류가 발생했어요");
+                              }
+                            } else {
+                              showToast(context, "초대 링크를 채워주세요😆");
+                            }
+                          });
+                    } else {
+                      showToast(context, "눈송이를 선택해주세요");
+                      loader.hide();
+                    }
                   },
                   child: Container(
                     width: MediaQuery.sizeOf(context).width,

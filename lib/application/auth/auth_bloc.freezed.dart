@@ -284,6 +284,7 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   AuthStatus get status => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
+  bool get existedProfileImage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -299,7 +300,8 @@ abstract class $AuthStateCopyWith<$Res> {
       {bool isSubmitting,
       Option<Either<AuthFailure, AuthSignResult>> authFailureOrSuccessOption,
       AuthStatus status,
-      User? user});
+      User? user,
+      bool existedProfileImage});
 
   $UserCopyWith<$Res>? get user;
 }
@@ -321,6 +323,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? authFailureOrSuccessOption = null,
     Object? status = null,
     Object? user = freezed,
+    Object? existedProfileImage = null,
   }) {
     return _then(_value.copyWith(
       isSubmitting: null == isSubmitting
@@ -339,6 +342,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      existedProfileImage: null == existedProfileImage
+          ? _value.existedProfileImage
+          : existedProfileImage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -367,7 +374,8 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       {bool isSubmitting,
       Option<Either<AuthFailure, AuthSignResult>> authFailureOrSuccessOption,
       AuthStatus status,
-      User? user});
+      User? user,
+      bool existedProfileImage});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -388,6 +396,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
     Object? authFailureOrSuccessOption = null,
     Object? status = null,
     Object? user = freezed,
+    Object? existedProfileImage = null,
   }) {
     return _then(_$AuthStateImpl(
       isSubmitting: null == isSubmitting
@@ -406,6 +415,10 @@ class __$$AuthStateImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      existedProfileImage: null == existedProfileImage
+          ? _value.existedProfileImage
+          : existedProfileImage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -417,7 +430,8 @@ class _$AuthStateImpl implements _AuthState {
       {required this.isSubmitting,
       required this.authFailureOrSuccessOption,
       required this.status,
-      required this.user});
+      required this.user,
+      required this.existedProfileImage});
 
   @override
   final bool isSubmitting;
@@ -427,10 +441,12 @@ class _$AuthStateImpl implements _AuthState {
   final AuthStatus status;
   @override
   final User? user;
+  @override
+  final bool existedProfileImage;
 
   @override
   String toString() {
-    return 'AuthState(isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption, status: $status, user: $user)';
+    return 'AuthState(isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption, status: $status, user: $user, existedProfileImage: $existedProfileImage)';
   }
 
   @override
@@ -445,12 +461,14 @@ class _$AuthStateImpl implements _AuthState {
                 other.authFailureOrSuccessOption ==
                     authFailureOrSuccessOption) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.existedProfileImage, existedProfileImage) ||
+                other.existedProfileImage == existedProfileImage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isSubmitting, authFailureOrSuccessOption, status, user);
+  int get hashCode => Object.hash(runtimeType, isSubmitting,
+      authFailureOrSuccessOption, status, user, existedProfileImage);
 
   @JsonKey(ignore: true)
   @override
@@ -465,7 +483,8 @@ abstract class _AuthState implements AuthState {
       required final Option<Either<AuthFailure, AuthSignResult>>
           authFailureOrSuccessOption,
       required final AuthStatus status,
-      required final User? user}) = _$AuthStateImpl;
+      required final User? user,
+      required final bool existedProfileImage}) = _$AuthStateImpl;
 
   @override
   bool get isSubmitting;
@@ -475,6 +494,8 @@ abstract class _AuthState implements AuthState {
   AuthStatus get status;
   @override
   User? get user;
+  @override
+  bool get existedProfileImage;
   @override
   @JsonKey(ignore: true)
   _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
