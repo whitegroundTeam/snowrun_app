@@ -12,7 +12,7 @@ part of 'user_dtos.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
   return _UserDto.fromJson(json);
@@ -29,8 +29,12 @@ mixin _$UserDto {
   @JsonKey(name: 'image')
   String? get profileImage => throw _privateConstructorUsedError;
 
+  /// Serializes this UserDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserDtoCopyWith<UserDto> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -58,6 +62,8 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     ) as $Val);
   }
 
+  /// Create a copy of UserDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserLocationDtoCopyWith<$Res>? get location {
@@ -124,6 +132,8 @@ class __$$UserDtoImplCopyWithImpl<$Res>
       _$UserDtoImpl _value, $Res Function(_$UserDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -185,7 +195,7 @@ class _$UserDtoImpl extends _UserDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserDtoImpl &&
@@ -198,12 +208,14 @@ class _$UserDtoImpl extends _UserDto {
                 other.profileImage == profileImage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, nickname, location, profileImage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>
@@ -239,8 +251,11 @@ abstract class _UserDto extends UserDto {
   @override
   @JsonKey(name: 'image')
   String? get profileImage;
+
+  /// Create a copy of UserDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -256,8 +271,12 @@ mixin _$UserLocationDto {
   @JsonKey(name: 'lng')
   double get lng => throw _privateConstructorUsedError;
 
+  /// Serializes this UserLocationDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserLocationDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserLocationDtoCopyWith<UserLocationDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -282,6 +301,8 @@ class _$UserLocationDtoCopyWithImpl<$Res, $Val extends UserLocationDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserLocationDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -321,6 +342,8 @@ class __$$UserLocationDtoImplCopyWithImpl<$Res>
       _$UserLocationDtoImpl _value, $Res Function(_$UserLocationDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserLocationDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -364,7 +387,7 @@ class _$UserLocationDtoImpl extends _UserLocationDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserLocationDtoImpl &&
@@ -372,11 +395,13 @@ class _$UserLocationDtoImpl extends _UserLocationDto {
             (identical(other.lng, lng) || other.lng == lng));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, lat, lng);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserLocationDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserLocationDtoImplCopyWith<_$UserLocationDtoImpl> get copyWith =>
@@ -406,8 +431,11 @@ abstract class _UserLocationDto extends UserLocationDto {
   @override
   @JsonKey(name: 'lng')
   double get lng;
+
+  /// Create a copy of UserLocationDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserLocationDtoImplCopyWith<_$UserLocationDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -424,8 +452,12 @@ mixin _$SnowBallProfileImageDto {
   @JsonKey(name: 'url')
   String get url => throw _privateConstructorUsedError;
 
+  /// Serializes this SnowBallProfileImageDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SnowBallProfileImageDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SnowBallProfileImageDtoCopyWith<SnowBallProfileImageDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -451,6 +483,8 @@ class _$SnowBallProfileImageDtoCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SnowBallProfileImageDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -493,6 +527,8 @@ class __$$SnowBallProfileImageDtoImplCopyWithImpl<$Res>
       $Res Function(_$SnowBallProfileImageDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SnowBallProfileImageDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -536,7 +572,7 @@ class _$SnowBallProfileImageDtoImpl extends _SnowBallProfileImageDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SnowBallProfileImageDtoImpl &&
@@ -544,11 +580,13 @@ class _$SnowBallProfileImageDtoImpl extends _SnowBallProfileImageDto {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, key, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SnowBallProfileImageDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SnowBallProfileImageDtoImplCopyWith<_$SnowBallProfileImageDtoImpl>
@@ -579,8 +617,11 @@ abstract class _SnowBallProfileImageDto extends SnowBallProfileImageDto {
   @override
   @JsonKey(name: 'url')
   String get url;
+
+  /// Create a copy of SnowBallProfileImageDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SnowBallProfileImageDtoImplCopyWith<_$SnowBallProfileImageDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -595,8 +636,12 @@ mixin _$UpdateProfileByTypeRequestDto {
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this UpdateProfileByTypeRequestDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UpdateProfileByTypeRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UpdateProfileByTypeRequestDtoCopyWith<UpdateProfileByTypeRequestDto>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -623,6 +668,8 @@ class _$UpdateProfileByTypeRequestDtoCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UpdateProfileByTypeRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -659,6 +706,8 @@ class __$$UpdateProfileByTypeRequestDtoImplCopyWithImpl<$Res>
       $Res Function(_$UpdateProfileByTypeRequestDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UpdateProfileByTypeRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -695,18 +744,20 @@ class _$UpdateProfileByTypeRequestDtoImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateProfileByTypeRequestDtoImpl &&
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UpdateProfileByTypeRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateProfileByTypeRequestDtoImplCopyWith<
@@ -735,8 +786,11 @@ abstract class _UpdateProfileByTypeRequestDto
   @override
   @JsonKey(name: 'type')
   String get type;
+
+  /// Create a copy of UpdateProfileByTypeRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateProfileByTypeRequestDtoImplCopyWith<
           _$UpdateProfileByTypeRequestDtoImpl>
       get copyWith => throw _privateConstructorUsedError;

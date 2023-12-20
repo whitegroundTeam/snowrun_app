@@ -12,7 +12,7 @@ part of 'user_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserEvent {
@@ -78,6 +78,9 @@ class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$UpdateCurrentLocationImplCopyWithImpl<$Res>
       $Res Function(_$UpdateCurrentLocationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,7 +138,7 @@ class _$UpdateCurrentLocationImpl implements _UpdateCurrentLocation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateCurrentLocationImpl &&
@@ -144,7 +149,9 @@ class _$UpdateCurrentLocationImpl implements _UpdateCurrentLocation {
   @override
   int get hashCode => Object.hash(runtimeType, lat, lng);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateCurrentLocationImplCopyWith<_$UpdateCurrentLocationImpl>
@@ -227,7 +234,10 @@ abstract class _UpdateCurrentLocation implements UserEvent {
 
   double get lat;
   double get lng;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateCurrentLocationImplCopyWith<_$UpdateCurrentLocationImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -249,6 +259,8 @@ class __$$SavePushTokenImplCopyWithImpl<$Res>
       _$SavePushTokenImpl _value, $Res Function(_$SavePushTokenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -277,7 +289,7 @@ class _$SavePushTokenImpl implements _SavePushToken {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SavePushTokenImpl &&
@@ -287,7 +299,9 @@ class _$SavePushTokenImpl implements _SavePushToken {
   @override
   int get hashCode => Object.hash(runtimeType, token);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SavePushTokenImplCopyWith<_$SavePushTokenImpl> get copyWith =>
@@ -367,7 +381,10 @@ abstract class _SavePushToken implements UserEvent {
   const factory _SavePushToken(final String token) = _$SavePushTokenImpl;
 
   String get token;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SavePushTokenImplCopyWith<_$SavePushTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -391,6 +408,8 @@ class __$$SaveUserImplCopyWithImpl<$Res>
       _$SaveUserImpl _value, $Res Function(_$SaveUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -404,6 +423,8 @@ class __$$SaveUserImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get user {
@@ -427,7 +448,7 @@ class _$SaveUserImpl implements _SaveUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SaveUserImpl &&
@@ -437,7 +458,9 @@ class _$SaveUserImpl implements _SaveUser {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SaveUserImplCopyWith<_$SaveUserImpl> get copyWith =>
@@ -517,7 +540,10 @@ abstract class _SaveUser implements UserEvent {
   const factory _SaveUser(final User user) = _$SaveUserImpl;
 
   User get user;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SaveUserImplCopyWith<_$SaveUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -528,7 +554,9 @@ mixin _$UserState {
   List<User> get users => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserStateCopyWith<UserState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -553,6 +581,8 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -576,6 +606,8 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
     ) as $Val);
   }
 
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res>? get user {
@@ -611,6 +643,8 @@ class __$$UserStateImplCopyWithImpl<$Res>
       _$UserStateImpl _value, $Res Function(_$UserStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -663,7 +697,7 @@ class _$UserStateImpl implements _UserState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserStateImpl &&
@@ -676,7 +710,9 @@ class _$UserStateImpl implements _UserState {
   int get hashCode => Object.hash(
       runtimeType, status, const DeepCollectionEquality().hash(_users), user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserStateImplCopyWith<_$UserStateImpl> get copyWith =>
@@ -695,8 +731,11 @@ abstract class _UserState implements UserState {
   List<User> get users;
   @override
   User? get user;
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserStateImplCopyWith<_$UserStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

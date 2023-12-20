@@ -12,7 +12,7 @@ part of 'vertices.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Vertices {
@@ -20,7 +20,9 @@ mixin _$Vertices {
   ListVO<List<List<double>>> get coordinates =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Vertices
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VerticesCopyWith<Vertices> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$VerticesCopyWithImpl<$Res, $Val extends Vertices>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Vertices
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$VerticesImplCopyWithImpl<$Res>
       _$VerticesImpl _value, $Res Function(_$VerticesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Vertices
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -117,7 +123,7 @@ class _$VerticesImpl extends _Vertices {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VerticesImpl &&
@@ -129,7 +135,9 @@ class _$VerticesImpl extends _Vertices {
   @override
   int get hashCode => Object.hash(runtimeType, type, coordinates);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Vertices
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VerticesImplCopyWith<_$VerticesImpl> get copyWith =>
@@ -146,8 +154,11 @@ abstract class _Vertices extends Vertices {
   VerticesType get type;
   @override
   ListVO<List<List<double>>> get coordinates;
+
+  /// Create a copy of Vertices
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VerticesImplCopyWith<_$VerticesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

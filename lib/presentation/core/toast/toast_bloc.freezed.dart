@@ -12,7 +12,7 @@ part of 'toast_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ToastEvent {
@@ -72,6 +72,9 @@ class _$ToastEventCopyWithImpl<$Res, $Val extends ToastEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ToastEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -90,6 +93,8 @@ class __$$ShowImplCopyWithImpl<$Res>
   __$$ShowImplCopyWithImpl(_$ShowImpl _value, $Res Function(_$ShowImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ToastEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,7 +123,7 @@ class _$ShowImpl implements _Show {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShowImpl &&
@@ -128,7 +133,9 @@ class _$ShowImpl implements _Show {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ToastEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShowImplCopyWith<_$ShowImpl> get copyWith =>
@@ -201,7 +208,10 @@ abstract class _Show implements ToastEvent {
   const factory _Show(final String message) = _$ShowImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ToastEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShowImplCopyWith<_$ShowImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -220,6 +230,9 @@ class __$$ResetImplCopyWithImpl<$Res>
   __$$ResetImplCopyWithImpl(
       _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ToastEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -233,7 +246,7 @@ class _$ResetImpl implements _Reset {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ResetImpl);
   }
@@ -314,7 +327,9 @@ mixin _$ToastState {
   String? get message => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ToastState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ToastStateCopyWith<ToastState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -338,6 +353,8 @@ class _$ToastStateCopyWithImpl<$Res, $Val extends ToastState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ToastState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -381,6 +398,8 @@ class __$$ToastStateImplCopyWithImpl<$Res>
       _$ToastStateImpl _value, $Res Function(_$ToastStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ToastState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -424,7 +443,7 @@ class _$ToastStateImpl implements _ToastState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ToastStateImpl &&
@@ -437,7 +456,9 @@ class _$ToastStateImpl implements _ToastState {
   @override
   int get hashCode => Object.hash(runtimeType, status, message, updatedAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ToastState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ToastStateImplCopyWith<_$ToastStateImpl> get copyWith =>
@@ -456,8 +477,11 @@ abstract class _ToastState implements ToastState {
   String? get message;
   @override
   DateTime get updatedAt;
+
+  /// Create a copy of ToastState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ToastStateImplCopyWith<_$ToastStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

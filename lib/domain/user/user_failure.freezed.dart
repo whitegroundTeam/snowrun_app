@@ -12,7 +12,7 @@ part of 'user_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserFailure {
@@ -80,6 +80,9 @@ class _$UserFailureCopyWithImpl<$Res, $Val extends UserFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UserFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,9 @@ class __$$UnexpectedImplCopyWithImpl<$Res>
   __$$UnexpectedImplCopyWithImpl(
       _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -109,7 +115,7 @@ class _$UnexpectedImpl implements Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
@@ -206,6 +212,9 @@ class __$$ServerErrorImplCopyWithImpl<$Res>
   __$$ServerErrorImplCopyWithImpl(
       _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -219,7 +228,7 @@ class _$ServerErrorImpl implements ServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
@@ -318,6 +327,9 @@ class __$$AlreadyExistedNicknameErrorImplCopyWithImpl<$Res>
       _$AlreadyExistedNicknameErrorImpl _value,
       $Res Function(_$AlreadyExistedNicknameErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -331,7 +343,7 @@ class _$AlreadyExistedNicknameErrorImpl implements AlreadyExistedNicknameError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AlreadyExistedNicknameErrorImpl);

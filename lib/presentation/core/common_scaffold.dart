@@ -35,7 +35,8 @@ class CommonScaffoldState extends State<CommonScaffold> {
               return Positioned(
                 left: state.offset?.dx ??
                     MediaQuery.sizeOf(context).width - recordToolWidth - 16,
-                top: state.offset?.dy ?? MediaQuery.sizeOf(context).height - recordToolHeight - 64,
+                top: state.offset?.dy ??
+                    MediaQuery.sizeOf(context).height - recordToolHeight - 64,
                 child: Draggable(
                   feedback: _buildRecordTool(
                       width: recordToolWidth,
@@ -86,46 +87,79 @@ class CommonScaffoldState extends State<CommonScaffold> {
       required double height,
       required Color backgroundColor,
       required double feedbackOpacity}) {
-    return CommonDetector(
-      onTap: () {
-        context.read<LocationBloc>().add(const LocationEvent.startRefreshLocation());
-      },
-      child: Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          color: backgroundColor.withOpacity(feedbackOpacity),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-              color: AppStyle.white.withOpacity(feedbackOpacity), width: 1),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(
-                'assets/webp/play.webp',
-                width: 32,
-                height: 32,
-                color: AppStyle.white.withOpacity(feedbackOpacity),
+    return BlocBuilder<LocationBloc, LocationState>(
+      builder: (context, state) {
+        return CommonDetector(
+          onTap: () {
+            if (context.read<LocationBloc>().state.isCollectingLocationInfo ==
+                true) {
+              context
+                  .read<LocationBloc>()
+                  .add(const LocationEvent.stopRefreshLocation());
+            } else {
+              context
+                  .read<LocationBloc>()
+                  .add(const LocationEvent.startRefreshLocation());
+            }
+          },
+          child: Container(
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              color: backgroundColor.withOpacity(feedbackOpacity),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                  color: AppStyle.white.withOpacity(feedbackOpacity), width: 1),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    context
+                                .read<LocationBloc>()
+                                .state
+                                .isCollectingLocationInfo ==
+                            true
+                        ? 'assets/webp/pause.webp'
+                        : 'assets/webp/play.webp',
+                    width: 32,
+                    height: 32,
+                    color: AppStyle.white.withOpacity(feedbackOpacity),
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  TitleText(
+                    title: context
+                                .read<LocationBloc>()
+                                .state
+                                .isCollectingLocationInfo ==
+                            true
+                        ? "60초 마다"
+                        : "현재 위치",
+                    fontSize: 12,
+                    color: AppStyle.white.withOpacity(feedbackOpacity),
+                    fontWeight: FontWeight.w400,
+                  ),
+                  TitleText(
+                    title: context
+                                .read<LocationBloc>()
+                                .state
+                                .isCollectingLocationInfo ==
+                            true
+                        ? "위치 갱신 중"
+                        : "갱신하기",
+                    fontSize: 12,
+                    color: AppStyle.accentColor.withOpacity(feedbackOpacity),
+                    fontWeight: FontWeight.w400,
+                  ),
+                ],
               ),
-              const SizedBox(height: 6,),
-              TitleText(
-                title: "현재 위치", //60초 마다
-                fontSize: 12,
-                color: AppStyle.white.withOpacity(feedbackOpacity),
-                fontWeight: FontWeight.w400,
-              ),
-              TitleText(
-                title: "갱신하기", // 위치 갱신 중
-                fontSize: 12,
-                color: AppStyle.accentColor.withOpacity(feedbackOpacity),
-                fontWeight: FontWeight.w400,
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

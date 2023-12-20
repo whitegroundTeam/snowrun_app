@@ -12,7 +12,7 @@ part of 'app_error.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppError {
@@ -21,7 +21,9 @@ mixin _$AppError {
   StringVO get detail => throw _privateConstructorUsedError;
   StringVO get type => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppErrorCopyWith<AppError> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$AppErrorCopyWithImpl<$Res, $Val extends AppError>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +96,8 @@ class __$$AppErrorImplCopyWithImpl<$Res>
       _$AppErrorImpl _value, $Res Function(_$AppErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,7 +152,7 @@ class _$AppErrorImpl extends _AppError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppErrorImpl &&
@@ -160,7 +166,9 @@ class _$AppErrorImpl extends _AppError {
   @override
   int get hashCode => Object.hash(runtimeType, statusCode, title, detail, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppErrorImplCopyWith<_$AppErrorImpl> get copyWith =>
@@ -183,8 +191,11 @@ abstract class _AppError extends AppError {
   StringVO get detail;
   @override
   StringVO get type;
+
+  /// Create a copy of AppError
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppErrorImplCopyWith<_$AppErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

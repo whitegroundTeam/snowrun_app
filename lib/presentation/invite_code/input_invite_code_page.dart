@@ -46,13 +46,15 @@ class InputInviteCodePageState extends State<InputInviteCodePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(
-          const Duration(
-              milliseconds: titleText.length * titleTextAnimationSpeed), () {
-        // FocusScope.of(context).requestFocus(focusNode);
-        FocusScope.of(context).unfocus();
-        focusNode.requestFocus();
-      });
+      FocusScope.of(context)
+          .requestFocus(focusNode);
+      // Future.delayed(
+      //     const Duration(
+      //         milliseconds: titleText.length * titleTextAnimationSpeed), () {
+      //   // FocusScope.of(context).requestFocus(focusNode);
+      //   // FocusScope.of(context).unfocus();
+      //   focusNode.requestFocus();
+      // });
     });
   }
 

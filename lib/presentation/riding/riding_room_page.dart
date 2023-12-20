@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:geolocator/geolocator.dart' as geolocator;
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,10 +10,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart' as mapbox;
 import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/auth/auth_bloc.dart';
 import 'package:snowrun_app/application/default_status.dart';
-import 'package:snowrun_app/application/location/location_bloc.dart';
-import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_controller/riding_controller_bloc.dart';
 import 'package:snowrun_app/application/riding/riding_detail/riding_detail_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
@@ -23,12 +18,10 @@ import 'package:snowrun_app/domain/riding/riding_player.dart';
 import 'package:snowrun_app/domain/riding/riding_room.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/common_network_image.dart';
 import 'package:snowrun_app/presentation/core/common_scaffold.dart';
 import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
 import 'package:snowrun_app/presentation/riding/listener/map_marker_click_listener.dart';
 import 'package:snowrun_app/presentation/riding/players_counts_widget.dart';
 import 'package:snowrun_app/presentation/riding/riding_dashboard_page.dart';
@@ -117,15 +110,15 @@ class RidingRoomPageState extends State<RidingRoomPage> {
           _ridingDetailBloc
             ..add(RidingDetailEvent.getRidingRoom(widget.ridingRoomId)),
         ),
-        BlocListener<LocationBloc, LocationState>(
-          listener: (context, state) async {
-            if (state.status == LocationStatus.successGetCurrentLocation) {
-              context.read<UserBloc>().add(UserEvent.updateCurrentLocation(
-                  state.userLocation.lat.getOrCrash(),
-                  state.userLocation.lng.getOrCrash()));
-            }
-          },
-        ),
+        // BlocListener<LocationBloc, LocationState>(
+        //   listener: (context, state) async {
+        //     if (state.status == LocationStatus.successGetCurrentLocation) {
+        //       context.read<UserBloc>().add(UserEvent.updateCurrentLocation(
+        //           state.userLocation.lat.getOrCrash(),
+        //           state.userLocation.lng.getOrCrash()));
+        //     }
+        //   },
+        // ),
         BlocListener<RidingControllerBloc, RidingControllerState>(
           bloc: _ridingControllerBloc,
           listener: (context, state) async {
@@ -144,10 +137,10 @@ class RidingRoomPageState extends State<RidingRoomPage> {
         BlocListener<UserBloc, UserState>(
           bloc: context.read<UserBloc>(),
           listener: (context, state) async {
+            debugPrint("TWTWTWT :: ${state.user?.location}");
             // await updateMarkers(state.users);
             if (state.status == UserStatus.successGetUsers) {} else
-            if (state.status ==
-                UserStatus.successUpdateCurrentLocation) {
+            if (state.status == UserStatus.successUpdateCurrentLocation) {
               // _userBloc.add(const UserEvent.getUsers());
               _ridingDetailBloc
                   .add(RidingDetailEvent.getRidingRoom(widget.ridingRoomId));

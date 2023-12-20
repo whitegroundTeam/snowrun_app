@@ -16,6 +16,7 @@ import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
 import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
+import 'package:snowrun_app/presentation/core/common_detector.dart';
 import 'package:snowrun_app/presentation/core/common_loading.dart';
 import 'package:snowrun_app/presentation/core/common_scaffold.dart';
 import 'package:snowrun_app/presentation/core/scroll_physics.dart';
@@ -23,6 +24,7 @@ import 'package:snowrun_app/presentation/home/home_bottom_band.dart';
 import 'package:snowrun_app/presentation/home/home_profile_widget.dart';
 import 'package:snowrun_app/presentation/home/home_ridings_widget.dart';
 import 'package:snowrun_app/presentation/home/home_start_riding_widget.dart';
+import 'package:snowrun_app/presentation/order/order_page.dart';
 import 'package:snowrun_app/utils/forced_exit_app.dart';
 import 'package:snowrun_app/utils/launch_url.dart';
 
@@ -96,7 +98,8 @@ class HomePageState extends State<HomePage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeRefreshBloc>(
-            create: (context) => widget.needRefresh == true
+            create: (context) =>
+            widget.needRefresh == true
                 ? (homeRefreshBloc..add(const HomeRefreshEvent.refresh()))
                 : homeRefreshBloc),
         // BlocProvider<AppInfoBloc>(
@@ -115,51 +118,57 @@ class HomePageState extends State<HomePage> {
             }
 
             final clickedAt =
-                getIt<HiveProvider>().getAppNoticeNotViewedToday();
+            getIt<HiveProvider>().getAppNoticeNotViewedToday();
             if (state.appNotice != null &&
                 (clickedAt.isEmpty ||
-                    DateTime.parse(clickedAt).day != DateTime.now().day)) {
+                    DateTime
+                        .parse(clickedAt)
+                        .day != DateTime
+                        .now()
+                        .day)) {
               await getIt<HiveProvider>().setAppNoticeNotViewedToday("");
 
               if (!mounted) return;
               showCommonBottomSheet(context,
                   canClose:
-                      state.appNotice?.isForcedFinish.getOrCrash() == false,
+                  state.appNotice?.isForcedFinish.getOrCrash() == false,
                   title: state.appNotice?.title.getOrCrash() ?? "",
                   description: state.appNotice?.description.getOrCrash(),
                   imageUrl: state.appNotice?.imageUrl.getOrCrash(),
                   negativeButtonText:
-                      state.appNotice?.negativeButton?.title.getOrCrash() ?? "",
+                  state.appNotice?.negativeButton?.title.getOrCrash() ?? "",
                   positiveButtonText:
-                      state.appNotice?.positiveButton?.title.getOrCrash() ?? "",
+                  state.appNotice?.positiveButton?.title.getOrCrash() ?? "",
                   onClickNegativeButton: () {
-                getIt<HiveProvider>()
-                    .setAppNoticeNotViewedToday(DateTime.now().toString());
-                launchExternalUrl(
-                    state.appNotice?.negativeButton?.link.getOrCrash() ??
-                        dotenv.env['APP_URL_HOST'] ??
-                        "");
-                if(state.appNotice?.isForcedFinish.getOrCrash() == true) {
-                  exitAppForced();
-                } else {
-                  context.pop();
-                }
-              }, onClickPositiveButton: () {
-                getIt<HiveProvider>()
-                    .setAppNoticeNotViewedToday(DateTime.now().toString());
-                launchExternalUrl(
-                    state.appNotice?.positiveButton?.link.getOrCrash() ??
-                        dotenv.env['APP_URL_HOST'] ??
-                        "");
-                if(state.appNotice?.isForcedFinish.getOrCrash() == true) {
-                  exitAppForced();
-                } else {
-                  context.pop();
-                }
-              }, onClickCloseButton: () {
-                getIt<HiveProvider>()
-                    .setAppNoticeNotViewedToday(DateTime.now().toString());
-              });
+                    getIt<HiveProvider>()
+                        .setAppNoticeNotViewedToday(DateTime.now().toString());
+                    launchExternalUrl(
+                        state.appNotice?.negativeButton?.link.getOrCrash() ??
+                            dotenv.env['APP_URL_HOST'] ??
+                            "");
+                    if (state.appNotice?.isForcedFinish.getOrCrash() == true) {
+                      exitAppForced();
+                    } else {
+                      context.pop();
+                    }
+                  },
+                  onClickPositiveButton: () {
+                    getIt<HiveProvider>()
+                        .setAppNoticeNotViewedToday(DateTime.now().toString());
+                    launchExternalUrl(
+                        state.appNotice?.positiveButton?.link.getOrCrash() ??
+                            dotenv.env['APP_URL_HOST'] ??
+                            "");
+                    if (state.appNotice?.isForcedFinish.getOrCrash() == true) {
+                      exitAppForced();
+                    } else {
+                      context.pop();
+                    }
+                  },
+                  onClickCloseButton: () {
+                    getIt<HiveProvider>()
+                        .setAppNoticeNotViewedToday(DateTime.now().toString());
+                  });
               isShowAppNoticeBottomSheet = true;
             }
           },

@@ -12,13 +12,15 @@ part of 'invite_codes.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$InviteCodes {
   ListVO<dynamic> get inviteCodes => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InviteCodes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InviteCodesCopyWith<InviteCodes> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$InviteCodesCopyWithImpl<$Res, $Val extends InviteCodes>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InviteCodes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$InviteCodesImplCopyWithImpl<$Res>
       _$InviteCodesImpl _value, $Res Function(_$InviteCodesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InviteCodes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -103,7 +109,7 @@ class _$InviteCodesImpl extends _InviteCodes {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InviteCodesImpl &&
@@ -114,7 +120,9 @@ class _$InviteCodesImpl extends _InviteCodes {
   @override
   int get hashCode => Object.hash(runtimeType, inviteCodes);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InviteCodes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InviteCodesImplCopyWith<_$InviteCodesImpl> get copyWith =>
@@ -128,8 +136,11 @@ abstract class _InviteCodes extends InviteCodes {
 
   @override
   ListVO<dynamic> get inviteCodes;
+
+  /// Create a copy of InviteCodes
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InviteCodesImplCopyWith<_$InviteCodesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,14 +12,16 @@ part of 'app_version_update.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppVersionUpdate {
   StringVO get title => throw _privateConstructorUsedError;
   StringVO get description => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppVersionUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppVersionUpdateCopyWith<AppVersionUpdate> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$AppVersionUpdateCopyWithImpl<$Res, $Val extends AppVersionUpdate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppVersionUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$AppVersionUpdateImplCopyWithImpl<$Res>
       $Res Function(_$AppVersionUpdateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppVersionUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -117,7 +123,7 @@ class _$AppVersionUpdateImpl extends _AppVersionUpdate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppVersionUpdateImpl &&
@@ -129,7 +135,9 @@ class _$AppVersionUpdateImpl extends _AppVersionUpdate {
   @override
   int get hashCode => Object.hash(runtimeType, title, description);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppVersionUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppVersionUpdateImplCopyWith<_$AppVersionUpdateImpl> get copyWith =>
@@ -147,8 +155,11 @@ abstract class _AppVersionUpdate extends AppVersionUpdate {
   StringVO get title;
   @override
   StringVO get description;
+
+  /// Create a copy of AppVersionUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppVersionUpdateImplCopyWith<_$AppVersionUpdateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

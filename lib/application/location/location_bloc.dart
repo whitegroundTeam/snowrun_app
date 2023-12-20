@@ -37,11 +37,17 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     });
 
     on<_StartRefreshLocation>((event, emit) async {
-      emit(state.copyWith(status: LocationStatus.successStartRefreshLocation));
+      emit(state.copyWith(
+        status: LocationStatus.successStartRefreshLocation,
+        isCollectingLocationInfo: true,
+      ));
     });
 
     on<_StopRefreshLocation>((event, emit) async {
-      emit(state.copyWith(status: LocationStatus.successStopRefreshLocation));
+      emit(state.copyWith(
+        status: LocationStatus.successStopRefreshLocation,
+        isCollectingLocationInfo: false,
+      ));
     });
   }
 }

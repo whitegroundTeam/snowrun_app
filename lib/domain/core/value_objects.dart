@@ -227,6 +227,19 @@ class ListVO<T> extends ValueObject<List<T>> {
   const ListVO._(this.value);
 }
 
+class MapVO<K, V> extends ValueObject<Map<K, V>> {
+  @override
+  final Either<ValueFailure<Map<K, V>>, Map<K, V>> value;
+
+  factory MapVO(Map<K, V> input) {
+    return MapVO._(right(input));
+  }
+
+  factory MapVO.empty() => MapVO({});
+
+  const MapVO._(this.value);
+}
+
 class ColorVO extends ValueObject<Color?> {
   @override
   final Either<ValueFailure<Color?>, Color?> value;

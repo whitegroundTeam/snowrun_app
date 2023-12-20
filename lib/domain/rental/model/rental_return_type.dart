@@ -1,0 +1,4 @@
+enum RentalReturnType {
+  rentalShop,
+  activityCenter,
+}

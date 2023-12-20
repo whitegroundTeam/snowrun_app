@@ -19,11 +19,13 @@ class LocationState with _$LocationState {
     required LocationStatus status,
     required UserLocation userLocation,
     required bool isInit,
+    required bool isCollectingLocationInfo,
   }) = _LocationState;
 
   factory LocationState.initial() => LocationState(
         status: LocationStatus.initial,
         userLocation: UserLocation.empty(),
         isInit: false,
+        isCollectingLocationInfo: false,
       );
 }

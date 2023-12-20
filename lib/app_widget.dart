@@ -1,23 +1,22 @@
 import 'dart:async';
-import 'dart:io';
-import 'dart:isolate';
 
 import 'package:app_links/app_links.dart';
 import 'package:app_settings/app_settings.dart';
+import 'package:background_location/background_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snowrun_app/app_style.dart';
 import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
 import 'package:snowrun_app/application/auth/auth_bloc.dart';
+import 'package:snowrun_app/application/cart/cart_bloc.dart';
 import 'package:snowrun_app/application/draggable/draggable_bloc.dart';
 import 'package:snowrun_app/application/location/location_bloc.dart';
 import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
+import 'package:snowrun_app/application/rental_shop/rental_shop_bloc.dart';
 import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/foreground_task_handler.dart';
 import 'package:snowrun_app/injection.dart';
 import 'package:snowrun_app/presentation/core/common_dialog.dart';
 import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
@@ -40,11 +39,16 @@ class MainAppState extends State<MainApp> {
   final draggableBloc = getIt<DraggableBloc>();
   final locationBloc = getIt<LocationBloc>();
   final appInfoBloc = getIt<AppInfoBloc>();
+  final userBloc = getIt<UserBloc>();
   final checkPermissionBloc = getIt<CheckPermissionBloc>();
   late AppLinks _appLinks;
-  StreamSubscription<Uri>? _linkSubscription;
 
-  ReceivePort? _receivePort;
+  //TODO : 임시용
+  final cartBloc = getIt<CartBloc>();
+  final rentalShopBloc = getIt<RentalShopBloc>();
+
+
+  StreamSubscription<Uri>? _linkSubscription;
 
   @override
   initState() {
@@ -70,7 +74,6 @@ class MainAppState extends State<MainApp> {
 
   @override
   void dispose() {
-    _closeReceivePort();
     super.dispose();
   }
 
@@ -87,7 +90,17 @@ class MainAppState extends State<MainApp> {
         builder: (context, child) {
           return MultiBlocProvider(
             providers: [
-              BlocProvider<UserBloc>(create: (context) => getIt<UserBloc>()),
+              //TODO : 임시용
+              BlocProvider<CartBloc>(create: (context) => cartBloc),
+              BlocProvider<RentalShopBloc>(
+                create: (context) => rentalShopBloc
+                  ..add(const RentalShopEvent.getRentalShop(
+                      rentalShopAccessCode: "123123")),
+                lazy: false,
+              ),
+
+
+              BlocProvider<UserBloc>(create: (context) => userBloc),
               BlocProvider<DraggableBloc>(
                 create: (context) => draggableBloc,
               ),
@@ -97,19 +110,12 @@ class MainAppState extends State<MainApp> {
               BlocListener<LocationBloc, LocationState>(
                 bloc: locationBloc,
                 listener: (context, state) async {
-                  // if(state.status == LocationStatus.successStartRefreshLocation) {
-                  //   _checkLocationPermissionAndStratGetLocation();
-                  // }
                   if (state.status ==
                       LocationStatus.successStartRefreshLocation) {
-                    if (!state.isInit) {
-                      await _requestPermissionForAndroid();
-                      await _initForegroundTask();
-                    }
-                    await startForegroundTask(() {});
+                    await _startBackgroundLocation();
                   } else if (state.status ==
                       LocationStatus.successStopRefreshLocation) {
-                    _stopForegroundTask();
+                    BackgroundLocation.stopLocationService();
                   }
                 },
               ),
@@ -131,23 +137,21 @@ class MainAppState extends State<MainApp> {
             ],
             child: Material(
               color: AppStyle.background,
-              child: WithForegroundTask(
-                child: Stack(
-                  children: [
-                    child == null
-                        ? const SizedBox()
-                        : SafeArea(
-                            top: false,
-                            child: child,
-                          ),
-                    Positioned(
-                      bottom: 72,
-                      right: 0,
-                      left: 0,
-                      child: commonToast ?? const SizedBox(),
-                    ),
-                  ],
-                ),
+              child: Stack(
+                children: [
+                  child == null
+                      ? const SizedBox()
+                      : SafeArea(
+                          top: false,
+                          child: child,
+                        ),
+                  Positioned(
+                    bottom: 72,
+                    right: 0,
+                    left: 0,
+                    child: commonToast ?? const SizedBox(),
+                  ),
+                ],
               ),
             ),
           );
@@ -177,134 +181,47 @@ class MainAppState extends State<MainApp> {
     context.pushNamed(uri.fragment);
   }
 
-  Future<void> _requestPermissionForAndroid() async {
-    if (!Platform.isAndroid) {
-      return;
+  _startBackgroundLocation() async {
+    // await BackgroundLocation.setAndroidNotification(
+    //   title: '위치 정보를 수집중이에요',
+    //   message: '',
+    //   icon: '@mipmap/ic_launcher',
+    // );
+
+    if (!await geolocator.Geolocator.isLocationServiceEnabled()) {
+      _showOpenSettingDialog();
     }
 
-    if (!await FlutterForegroundTask.canDrawOverlays) {
-      // if (!mounted) return;
-      // await FlutterForegroundTask.openSystemAlertWindowSettings();
-      if (!mounted) return;
-      showToast(context, "다른 앱 위에 SnowRun앱을 표시해주시면 좀 더 쉽게 위치 공유를 할 수 있어요 😆");
-      await FlutterForegroundTask.openSystemAlertWindowSettings();
+    final checkedPermission = await geolocator.Geolocator.requestPermission();
 
-      // await showCommonDialog(context,
-      //     buttonText: "설정으로 이동",
-      //     title: "다른 앱 위에 SnowRun앱을 표시해주시면 좀 더 쉽게 위치 공유를 할 수 있어요 😆",
-      //     negativeButtonText: "위치 갱신 하지 않기", onPressedButton: () async {
-      //   await FlutterForegroundTask.openSystemAlertWindowSettings();
-      //   if (!mounted) return;
-      //   context.pop();
-      // }, onPressedNegativeButton: () {
-      //   context.pop();
-      // });
-    }
-
-    // Android 12 or higher, there are restrictions on starting a foreground service.
-    //
-    // To restart the service on device reboot or unexpected problem, you need to allow below permission.
-    if (!await FlutterForegroundTask.isIgnoringBatteryOptimizations) {
-      // This function requires `android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` permission.
-      await FlutterForegroundTask.requestIgnoreBatteryOptimization();
-    }
-
-    // Android 13 and higher, you need to allow notification permission to expose foreground service notification.
-    final NotificationPermission notificationPermissionStatus =
-        await FlutterForegroundTask.checkNotificationPermission();
-    if (notificationPermissionStatus != NotificationPermission.granted) {
-      await FlutterForegroundTask.requestNotificationPermission();
-    }
-  }
-
-  Future<bool> startForegroundTask(Function? startCallback) async {
-    // You can save data using the saveData function.
-    await FlutterForegroundTask.saveData(key: 'customData', value: 'hello');
-
-    // Register the receivePort before starting the service.
-    final ReceivePort? receivePort = FlutterForegroundTask.receivePort;
-    final bool isRegistered = _registerReceivePort(receivePort);
-    if (!isRegistered) {
-      debugPrint('Failed to register receivePort!');
-      return false;
-    }
-
-    if (await FlutterForegroundTask.isRunningService) {
-      return FlutterForegroundTask.restartService();
-    } else {
-      return FlutterForegroundTask.startService(
-        notificationTitle: '위치정보를 공유중이에요 😆',
-        notificationText: '즐겁고 안전한 겨울 보내세요!',
-        callback: startCallback,
-      );
-    }
-  }
-
-  Future<bool> _stopForegroundTask() {
-    return FlutterForegroundTask.stopService();
-  }
-
-  Future<void> _initForegroundTask() async {
-    FlutterForegroundTask.init(
-      androidNotificationOptions: AndroidNotificationOptions(
-        channelId: 'shareLocation',
-        channelName: 'shareLocation',
-        channelDescription: 'shareLocation',
-        channelImportance: NotificationChannelImportance.LOW,
-        priority: NotificationPriority.LOW,
-        iconData: const NotificationIconData(
-          resType: ResourceType.mipmap,
-          resPrefix: ResourcePrefix.ic,
-          name: 'launcher',
-          // resType: ResourceType.mipmap,
-          // resPrefix: ResourcePrefix.ic,
-          // name: 'launcher',
-        ),
-        buttons: [
-          // const NotificationButton(id: 'sendButton', text: 'Send'),
-          // const NotificationButton(id: 'd', text: 'Test'),
-        ],
-      ),
-      iosNotificationOptions: const IOSNotificationOptions(
-        showNotification: true,
-        playSound: false,
-      ),
-      foregroundTaskOptions: const ForegroundTaskOptions(
-        interval: 5000,
-        isOnceEvent: false,
-        // autoRunOnBoot: true,
-        // allowWakeLock: true,
-        // allowWifiLock: true,
-      ),
-    );
-  }
-
-  bool _registerReceivePort(ReceivePort? newReceivePort) {
-    if (newReceivePort == null) {
-      return false;
-    }
-
-    _closeReceivePort();
-
-    _receivePort = newReceivePort;
-    _receivePort?.listen((data) {
-      if (data is int) {
-        debugPrint('eventCount: $data');
-      } else if (data is String) {
-        if (data == 'onNotificationPressed') {
-          Navigator.of(context).pushNamed('/resume-route');
+    if (checkedPermission == geolocator.LocationPermission.always ||
+        checkedPermission == geolocator.LocationPermission.whileInUse) {
+      await BackgroundLocation.setAndroidConfiguration(5000);
+      await BackgroundLocation.startLocationService(distanceFilter: 0);
+      debugPrint("WTWTWT :: LOLOLO111");
+      BackgroundLocation.getLocationUpdates((location) {
+        debugPrint("WTWTWT :: LOLOLO222 ${location}");
+        double? lat = location.latitude;
+        double? lng = location.longitude;
+        if(lat != null && lng != null) {
+          userBloc.add(UserEvent.updateCurrentLocation(lat,lng));
         }
-      } else if (data is DateTime) {
-        debugPrint('timestamp: ${data.toString()}');
-      }
-    });
 
-    return _receivePort != null;
-  }
-
-  void _closeReceivePort() {
-    _receivePort?.close();
-    _receivePort = null;
+        // setState(() {
+        //   latitude = location.latitude.toString();
+        //   longitude = location.longitude.toString();
+        //   accuracy = location.accuracy.toString();
+        //   altitude = location.altitude.toString();
+        //   bearing = location.bearing.toString();
+        //   speed = location.speed.toString();
+        //   time = DateTime.fromMillisecondsSinceEpoch(
+        //       location.time!.toInt())
+        //       .toString();
+        // });
+      });
+    } else {
+      _showOpenSettingDialog();
+    }
   }
 
   _checkLocationPermissionAndStratGetLocation() async {

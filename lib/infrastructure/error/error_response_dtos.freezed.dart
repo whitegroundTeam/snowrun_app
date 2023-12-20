@@ -12,7 +12,7 @@ part of 'error_response_dtos.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AppErrorDto _$AppErrorDtoFromJson(Map<String, dynamic> json) {
   return _AppErrorDto.fromJson(json);
@@ -31,8 +31,12 @@ mixin _$AppErrorDto {
   @JsonKey(name: 'status')
   int get status => throw _privateConstructorUsedError;
 
+  /// Serializes this AppErrorDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppErrorDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppErrorDtoCopyWith<AppErrorDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$AppErrorDtoCopyWithImpl<$Res, $Val extends AppErrorDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppErrorDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,6 +125,8 @@ class __$$AppErrorDtoImplCopyWithImpl<$Res>
       _$AppErrorDtoImpl _value, $Res Function(_$AppErrorDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppErrorDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,7 +197,7 @@ class _$AppErrorDtoImpl extends _AppErrorDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppErrorDtoImpl &&
@@ -200,12 +208,14 @@ class _$AppErrorDtoImpl extends _AppErrorDto {
             (identical(other.status, status) || other.status == status));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, code, type, title, detail, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppErrorDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppErrorDtoImplCopyWith<_$AppErrorDtoImpl> get copyWith =>
@@ -246,8 +256,11 @@ abstract class _AppErrorDto extends AppErrorDto {
   @override
   @JsonKey(name: 'status')
   int get status;
+
+  /// Create a copy of AppErrorDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppErrorDtoImplCopyWith<_$AppErrorDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

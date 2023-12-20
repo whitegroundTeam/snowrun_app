@@ -12,7 +12,7 @@ part of 'home_refresh_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomeRefreshEvent {
@@ -66,6 +66,9 @@ class _$HomeRefreshEventCopyWithImpl<$Res, $Val extends HomeRefreshEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of HomeRefreshEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -82,6 +85,9 @@ class __$$RefreshImplCopyWithImpl<$Res>
   __$$RefreshImplCopyWithImpl(
       _$RefreshImpl _value, $Res Function(_$RefreshImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HomeRefreshEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,7 +101,7 @@ class _$RefreshImpl implements _Refresh {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$RefreshImpl);
   }
@@ -168,7 +174,9 @@ abstract class _Refresh implements HomeRefreshEvent {
 mixin _$HomeRefreshState {
   DateTime get refreshedAt => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeRefreshState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HomeRefreshStateCopyWith<HomeRefreshState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -192,6 +200,8 @@ class _$HomeRefreshStateCopyWithImpl<$Res, $Val extends HomeRefreshState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HomeRefreshState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,6 +235,8 @@ class __$$HomeRefreshStateImplCopyWithImpl<$Res>
       $Res Function(_$HomeRefreshStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeRefreshState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -253,7 +265,7 @@ class _$HomeRefreshStateImpl implements _HomeRefreshState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeRefreshStateImpl &&
@@ -264,7 +276,9 @@ class _$HomeRefreshStateImpl implements _HomeRefreshState {
   @override
   int get hashCode => Object.hash(runtimeType, refreshedAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeRefreshState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HomeRefreshStateImplCopyWith<_$HomeRefreshStateImpl> get copyWith =>
@@ -278,8 +292,11 @@ abstract class _HomeRefreshState implements HomeRefreshState {
 
   @override
   DateTime get refreshedAt;
+
+  /// Create a copy of HomeRefreshState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HomeRefreshStateImplCopyWith<_$HomeRefreshStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

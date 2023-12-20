@@ -12,7 +12,7 @@ part of 'riding_dtos.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 RidingRoomDto _$RidingRoomDtoFromJson(Map<String, dynamic> json) {
   return _RidingRoomDto.fromJson(json);
@@ -33,8 +33,12 @@ mixin _$RidingRoomDto {
   @JsonKey(name: 'total_players')
   int get totalPlayers => throw _privateConstructorUsedError;
 
+  /// Serializes this RidingRoomDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RidingRoomDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RidingRoomDtoCopyWith<RidingRoomDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$RidingRoomDtoCopyWithImpl<$Res, $Val extends RidingRoomDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RidingRoomDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,6 +110,8 @@ class _$RidingRoomDtoCopyWithImpl<$Res, $Val extends RidingRoomDto>
     ) as $Val);
   }
 
+  /// Create a copy of RidingRoomDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $RidingPlayerDtoCopyWith<$Res>? get me {
@@ -145,6 +153,8 @@ class __$$RidingRoomDtoImplCopyWithImpl<$Res>
       _$RidingRoomDtoImpl _value, $Res Function(_$RidingRoomDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RidingRoomDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,7 +241,7 @@ class _$RidingRoomDtoImpl extends _RidingRoomDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RidingRoomDtoImpl &&
@@ -245,12 +255,14 @@ class _$RidingRoomDtoImpl extends _RidingRoomDto {
                 other.totalPlayers == totalPlayers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, isPrivate, me,
       const DeepCollectionEquality().hash(_players), totalPlayers);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingRoomDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RidingRoomDtoImplCopyWith<_$RidingRoomDtoImpl> get copyWith =>
@@ -296,8 +308,11 @@ abstract class _RidingRoomDto extends RidingRoomDto {
   @override
   @JsonKey(name: 'total_players')
   int get totalPlayers;
+
+  /// Create a copy of RidingRoomDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RidingRoomDtoImplCopyWith<_$RidingRoomDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -325,8 +340,12 @@ mixin _$RidingPlayerDto {
   @JsonKey(name: 'is_owner')
   bool get isOwner => throw _privateConstructorUsedError;
 
+  /// Serializes this RidingPlayerDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RidingPlayerDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RidingPlayerDtoCopyWith<RidingPlayerDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -360,6 +379,8 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RidingPlayerDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -408,6 +429,8 @@ class _$RidingPlayerDtoCopyWithImpl<$Res, $Val extends RidingPlayerDto>
     ) as $Val);
   }
 
+  /// Create a copy of RidingPlayerDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserLocationDtoCopyWith<$Res>? get location {
@@ -451,6 +474,8 @@ class __$$RidingPlayerDtoImplCopyWithImpl<$Res>
       _$RidingPlayerDtoImpl _value, $Res Function(_$RidingPlayerDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RidingPlayerDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -548,7 +573,7 @@ class _$RidingPlayerDtoImpl extends _RidingPlayerDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RidingPlayerDtoImpl &&
@@ -566,12 +591,14 @@ class _$RidingPlayerDtoImpl extends _RidingPlayerDto {
             (identical(other.isOwner, isOwner) || other.isOwner == isOwner));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, user, nickname, room,
       location, locationUpdatedAt, profileImage, isOwner);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingPlayerDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RidingPlayerDtoImplCopyWith<_$RidingPlayerDtoImpl> get copyWith =>
@@ -627,8 +654,11 @@ abstract class _RidingPlayerDto extends RidingPlayerDto {
   @override
   @JsonKey(name: 'is_owner')
   bool get isOwner;
+
+  /// Create a copy of RidingPlayerDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RidingPlayerDtoImplCopyWith<_$RidingPlayerDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -643,8 +673,12 @@ mixin _$UpdateRidingRoomNameRequestDto {
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
+  /// Serializes this UpdateRidingRoomNameRequestDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UpdateRidingRoomNameRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UpdateRidingRoomNameRequestDtoCopyWith<UpdateRidingRoomNameRequestDto>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -671,6 +705,8 @@ class _$UpdateRidingRoomNameRequestDtoCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UpdateRidingRoomNameRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -707,6 +743,8 @@ class __$$UpdateRidingRoomNameRequestDtoImplCopyWithImpl<$Res>
       $Res Function(_$UpdateRidingRoomNameRequestDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UpdateRidingRoomNameRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -743,18 +781,20 @@ class _$UpdateRidingRoomNameRequestDtoImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateRidingRoomNameRequestDtoImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UpdateRidingRoomNameRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateRidingRoomNameRequestDtoImplCopyWith<
@@ -783,8 +823,11 @@ abstract class _UpdateRidingRoomNameRequestDto
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Create a copy of UpdateRidingRoomNameRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateRidingRoomNameRequestDtoImplCopyWith<
           _$UpdateRidingRoomNameRequestDtoImpl>
       get copyWith => throw _privateConstructorUsedError;

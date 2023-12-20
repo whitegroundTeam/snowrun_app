@@ -8,7 +8,7 @@ part of 'user_dtos.dart';
 
 _$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
     _$UserDtoImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       nickname: json['nickname'] as String,
       location: json['location'] == null
           ? null

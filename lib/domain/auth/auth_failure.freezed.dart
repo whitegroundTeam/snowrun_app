@@ -12,7 +12,7 @@ part of 'auth_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AuthFailure {
@@ -93,6 +93,9 @@ class _$AuthFailureCopyWithImpl<$Res, $Val extends AuthFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -109,6 +112,9 @@ class __$$CancelledByUserImplCopyWithImpl<$Res>
   __$$CancelledByUserImplCopyWithImpl(
       _$CancelledByUserImpl _value, $Res Function(_$CancelledByUserImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -122,7 +128,7 @@ class _$CancelledByUserImpl implements CancelledByUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$CancelledByUserImpl);
   }
@@ -232,6 +238,9 @@ class __$$ServerErrorImplCopyWithImpl<$Res>
   __$$ServerErrorImplCopyWithImpl(
       _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -245,7 +254,7 @@ class _$ServerErrorImpl implements ServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
@@ -355,6 +364,9 @@ class __$$EmailAlreadyInUserImplCopyWithImpl<$Res>
   __$$EmailAlreadyInUserImplCopyWithImpl(_$EmailAlreadyInUserImpl _value,
       $Res Function(_$EmailAlreadyInUserImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -368,7 +380,7 @@ class _$EmailAlreadyInUserImpl implements EmailAlreadyInUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$EmailAlreadyInUserImpl);
   }
@@ -481,6 +493,9 @@ class __$$InvalidEmailAndPasswordCombinationImplCopyWithImpl<$Res>
       _$InvalidEmailAndPasswordCombinationImpl _value,
       $Res Function(_$InvalidEmailAndPasswordCombinationImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -495,7 +510,7 @@ class _$InvalidEmailAndPasswordCombinationImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvalidEmailAndPasswordCombinationImpl);
@@ -607,6 +622,9 @@ class __$$IsNotExistUserImplCopyWithImpl<$Res>
   __$$IsNotExistUserImplCopyWithImpl(
       _$IsNotExistUserImpl _value, $Res Function(_$IsNotExistUserImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -620,7 +638,7 @@ class _$IsNotExistUserImpl implements IsNotExistUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$IsNotExistUserImpl);
   }

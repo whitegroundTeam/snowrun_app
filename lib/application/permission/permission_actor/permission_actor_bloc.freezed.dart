@@ -12,7 +12,7 @@ part of 'permission_actor_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PermissionActorEvent {
@@ -91,6 +91,9 @@ class _$PermissionActorEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PermissionActorEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -107,6 +110,9 @@ class __$$PermissionHandledImplCopyWithImpl<$Res>
   __$$PermissionHandledImplCopyWithImpl(_$PermissionHandledImpl _value,
       $Res Function(_$PermissionHandledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -120,7 +126,7 @@ class _$PermissionHandledImpl implements PermissionHandled {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$PermissionHandledImpl);
   }
@@ -230,6 +236,9 @@ class __$$RequestNotificationPermissionImplCopyWithImpl<$Res>
       _$RequestNotificationPermissionImpl _value,
       $Res Function(_$RequestNotificationPermissionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -244,7 +253,7 @@ class _$RequestNotificationPermissionImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RequestNotificationPermissionImpl);
@@ -353,6 +362,9 @@ class __$$RequestAttPermissionImplCopyWithImpl<$Res>
   __$$RequestAttPermissionImplCopyWithImpl(_$RequestAttPermissionImpl _value,
       $Res Function(_$RequestAttPermissionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -366,7 +378,7 @@ class _$RequestAttPermissionImpl implements RequestAttPermission {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RequestAttPermissionImpl);
@@ -477,6 +489,9 @@ class __$$RequestLocationPermissionImplCopyWithImpl<$Res>
       _$RequestLocationPermissionImpl _value,
       $Res Function(_$RequestLocationPermissionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -490,7 +505,7 @@ class _$RequestLocationPermissionImpl implements RequestLocationPermission {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RequestLocationPermissionImpl);
@@ -689,6 +704,9 @@ class _$PermissionActorStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PermissionActorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -705,6 +723,9 @@ class __$$ReadyImplCopyWithImpl<$Res>
   __$$ReadyImplCopyWithImpl(
       _$ReadyImpl _value, $Res Function(_$ReadyImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -718,7 +739,7 @@ class _$ReadyImpl implements Ready {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ReadyImpl);
   }
@@ -856,6 +877,9 @@ class __$$PermissionLocationRequestedImplCopyWithImpl<$Res>
       _$PermissionLocationRequestedImpl _value,
       $Res Function(_$PermissionLocationRequestedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -869,7 +893,7 @@ class _$PermissionLocationRequestedImpl implements PermissionLocationRequested {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PermissionLocationRequestedImpl);
@@ -1009,6 +1033,9 @@ class __$$PermissionNotificationRequestedImplCopyWithImpl<$Res>
       _$PermissionNotificationRequestedImpl _value,
       $Res Function(_$PermissionNotificationRequestedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1023,7 +1050,7 @@ class _$PermissionNotificationRequestedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PermissionNotificationRequestedImpl);
@@ -1163,6 +1190,9 @@ class __$$PermissionAttRequestedImplCopyWithImpl<$Res>
       _$PermissionAttRequestedImpl _value,
       $Res Function(_$PermissionAttRequestedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1176,7 +1206,7 @@ class _$PermissionAttRequestedImpl implements PermissionAttRequested {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PermissionAttRequestedImpl);
@@ -1315,6 +1345,9 @@ class __$$PermissionLocationGrantedOrDeniedImplCopyWithImpl<$Res>
       _$PermissionLocationGrantedOrDeniedImpl _value,
       $Res Function(_$PermissionLocationGrantedOrDeniedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1329,7 +1362,7 @@ class _$PermissionLocationGrantedOrDeniedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PermissionLocationGrantedOrDeniedImpl);
@@ -1470,6 +1503,9 @@ class __$$PermissionNotificationGrantedOrDeniedImplCopyWithImpl<$Res>
       _$PermissionNotificationGrantedOrDeniedImpl _value,
       $Res Function(_$PermissionNotificationGrantedOrDeniedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1484,7 +1520,7 @@ class _$PermissionNotificationGrantedOrDeniedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PermissionNotificationGrantedOrDeniedImpl);
@@ -1625,6 +1661,9 @@ class __$$PermissionAttGrantedOrDeniedImplCopyWithImpl<$Res>
       _$PermissionAttGrantedOrDeniedImpl _value,
       $Res Function(_$PermissionAttGrantedOrDeniedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PermissionActorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1639,7 +1678,7 @@ class _$PermissionAttGrantedOrDeniedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PermissionAttGrantedOrDeniedImpl);

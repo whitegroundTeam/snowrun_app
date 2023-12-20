@@ -3,13 +3,13 @@ description: A new Flutter project.
 
 publish_to: 'none'
 
-version: 0.0.11+000011
+version: 0.0.14+000014
 
 # fvm flutter clean && fvm flutter packages pub get && fvm flutter packages pub run build_runner build --delete-conflicting-outputs
 # fvm flutter packages pub run build_runner watch --delete-conflicting-outputs
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: '>=3.2.6 <4.0.0'
 
 dependencies:
   flutter:
@@ -33,9 +33,9 @@ dependencies:
   firebase_performance: ^0.9.2+7
   firebase_app_installations: ^0.2.4+2
   firebase_messaging: ^14.7.6
-  flutter_local_notifications: ^16.2.0
+  flutter_local_notifications: ^17.2.3
 
-  flutter_foreground_task: ^6.1.2
+  background_location: ^0.11.8
 
   permission_handler: ^11.0.1
   app_tracking_transparency: ^2.0.4
@@ -49,6 +49,8 @@ dependencies:
   flutter_secure_storage: ^8.0.0
   hive_flutter: ^1.1.0
 
+  country_code_picker: ^3.0.0
+
   injectable: ^2.1.2
   get_it: ^7.6.0
   freezed_annotation: ^2.4.1
@@ -60,7 +62,7 @@ dependencies:
   device_info_plus: ^9.1.0
   package_info_plus: ^4.2.0
 
-  intl: ^0.18.1
+  intl: ^0.19.0
   app_settings: ^5.1.1
 
   dotted_border: ^2.1.0
@@ -78,6 +80,14 @@ dependencies:
 
   app_links: ^3.4.5
   url_launcher: ^6.2.1
+
+  units_converter: ^3.0.0
+  wheel_chooser: ^1.1.2
+  drop_shadow: ^0.1.0
+  omni_datetime_picker: ^2.0.1
+
+  easy_localization: ^3.0.5
+  easy_localization_loader: ^2.0.1
 
 dev_dependencies:
   flutter_test:

@@ -12,7 +12,7 @@ part of 'auth_dtos.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IdTokenRequestDto _$IdTokenRequestDtoFromJson(Map<String, dynamic> json) {
   return _IdTokenRequestDto.fromJson(json);
@@ -23,8 +23,12 @@ mixin _$IdTokenRequestDto {
   @JsonKey(name: 'id_token')
   String get idToken => throw _privateConstructorUsedError;
 
+  /// Serializes this IdTokenRequestDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IdTokenRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IdTokenRequestDtoCopyWith<IdTokenRequestDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$IdTokenRequestDtoCopyWithImpl<$Res, $Val extends IdTokenRequestDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IdTokenRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class __$$IdTokenRequestDtoImplCopyWithImpl<$Res>
       $Res Function(_$IdTokenRequestDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IdTokenRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,18 +123,20 @@ class _$IdTokenRequestDtoImpl extends _IdTokenRequestDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdTokenRequestDtoImpl &&
             (identical(other.idToken, idToken) || other.idToken == idToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, idToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IdTokenRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IdTokenRequestDtoImplCopyWith<_$IdTokenRequestDtoImpl> get copyWith =>
@@ -153,8 +163,11 @@ abstract class _IdTokenRequestDto extends IdTokenRequestDto {
   @override
   @JsonKey(name: 'id_token')
   String get idToken;
+
+  /// Create a copy of IdTokenRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IdTokenRequestDtoImplCopyWith<_$IdTokenRequestDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -170,8 +183,12 @@ mixin _$SignResponseDto {
   @JsonKey(name: 'is_new_user')
   bool get isNewUser => throw _privateConstructorUsedError;
 
+  /// Serializes this SignResponseDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignResponseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignResponseDtoCopyWith<SignResponseDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -199,6 +216,8 @@ class _$SignResponseDtoCopyWithImpl<$Res, $Val extends SignResponseDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -217,6 +236,8 @@ class _$SignResponseDtoCopyWithImpl<$Res, $Val extends SignResponseDto>
     ) as $Val);
   }
 
+  /// Create a copy of SignResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AuthTokenDtoCopyWith<$Res> get token {
@@ -250,6 +271,8 @@ class __$$SignResponseDtoImplCopyWithImpl<$Res>
       _$SignResponseDtoImpl _value, $Res Function(_$SignResponseDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -293,7 +316,7 @@ class _$SignResponseDtoImpl extends _SignResponseDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignResponseDtoImpl &&
@@ -302,11 +325,13 @@ class _$SignResponseDtoImpl extends _SignResponseDto {
                 other.isNewUser == isNewUser));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, token, isNewUser);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignResponseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignResponseDtoImplCopyWith<_$SignResponseDtoImpl> get copyWith =>
@@ -337,8 +362,11 @@ abstract class _SignResponseDto extends SignResponseDto {
   @override
   @JsonKey(name: 'is_new_user')
   bool get isNewUser;
+
+  /// Create a copy of SignResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignResponseDtoImplCopyWith<_$SignResponseDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -352,8 +380,12 @@ mixin _$AuthTokenDto {
   @JsonKey(name: 'auth_token')
   String get authToken => throw _privateConstructorUsedError;
 
+  /// Serializes this AuthTokenDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthTokenDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthTokenDtoCopyWith<AuthTokenDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -377,6 +409,8 @@ class _$AuthTokenDtoCopyWithImpl<$Res, $Val extends AuthTokenDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthTokenDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -410,6 +444,8 @@ class __$$AuthTokenDtoImplCopyWithImpl<$Res>
       _$AuthTokenDtoImpl _value, $Res Function(_$AuthTokenDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthTokenDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -444,7 +480,7 @@ class _$AuthTokenDtoImpl extends _AuthTokenDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthTokenDtoImpl &&
@@ -452,11 +488,13 @@ class _$AuthTokenDtoImpl extends _AuthTokenDto {
                 other.authToken == authToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, authToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthTokenDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthTokenDtoImplCopyWith<_$AuthTokenDtoImpl> get copyWith =>
@@ -482,8 +520,11 @@ abstract class _AuthTokenDto extends AuthTokenDto {
   @override
   @JsonKey(name: 'auth_token')
   String get authToken;
+
+  /// Create a copy of AuthTokenDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthTokenDtoImplCopyWith<_$AuthTokenDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

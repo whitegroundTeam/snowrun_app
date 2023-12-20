@@ -12,7 +12,7 @@ part of 'app_info_dtos.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AppInfoDto _$AppInfoDtoFromJson(Map<String, dynamic> json) {
   return _AppInfoDto.fromJson(json);
@@ -30,8 +30,12 @@ mixin _$AppInfoDto {
   @JsonKey(name: 'appInviteCodes')
   InviteCodesDto? get appInviteCodes => throw _privateConstructorUsedError;
 
+  /// Serializes this AppInfoDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppInfoDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppInfoDtoCopyWith<AppInfoDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$AppInfoDtoCopyWithImpl<$Res, $Val extends AppInfoDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class _$AppInfoDtoCopyWithImpl<$Res, $Val extends AppInfoDto>
     ) as $Val);
   }
 
+  /// Create a copy of AppInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AppVersionDtoCopyWith<$Res>? get appVersion {
@@ -104,6 +112,8 @@ class _$AppInfoDtoCopyWithImpl<$Res, $Val extends AppInfoDto>
     });
   }
 
+  /// Create a copy of AppInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AppNoticeDtoCopyWith<$Res>? get appNotice {
@@ -116,6 +126,8 @@ class _$AppInfoDtoCopyWithImpl<$Res, $Val extends AppInfoDto>
     });
   }
 
+  /// Create a copy of AppInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InviteCodesDtoCopyWith<$Res>? get appInviteCodes {
@@ -160,6 +172,8 @@ class __$$AppInfoDtoImplCopyWithImpl<$Res>
       _$AppInfoDtoImpl _value, $Res Function(_$AppInfoDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -232,7 +246,7 @@ class _$AppInfoDtoImpl extends _AppInfoDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppInfoDtoImpl &&
@@ -246,12 +260,14 @@ class _$AppInfoDtoImpl extends _AppInfoDto {
                 other.appInviteCodes == appInviteCodes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, appVersion, appNotice,
       const DeepCollectionEquality().hash(_appOperationInfos), appInviteCodes);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppInfoDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppInfoDtoImplCopyWith<_$AppInfoDtoImpl> get copyWith =>
@@ -290,8 +306,11 @@ abstract class _AppInfoDto extends AppInfoDto {
   @override
   @JsonKey(name: 'appInviteCodes')
   InviteCodesDto? get appInviteCodes;
+
+  /// Create a copy of AppInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppInfoDtoImplCopyWith<_$AppInfoDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -309,8 +328,12 @@ mixin _$AppVersionDto {
   @JsonKey(name: 'url')
   String get url => throw _privateConstructorUsedError;
 
+  /// Serializes this AppVersionDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppVersionDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppVersionDtoCopyWith<AppVersionDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -337,6 +360,8 @@ class _$AppVersionDtoCopyWithImpl<$Res, $Val extends AppVersionDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppVersionDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -383,6 +408,8 @@ class __$$AppVersionDtoImplCopyWithImpl<$Res>
       _$AppVersionDtoImpl _value, $Res Function(_$AppVersionDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppVersionDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -435,7 +462,7 @@ class _$AppVersionDtoImpl extends _AppVersionDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppVersionDtoImpl &&
@@ -444,11 +471,13 @@ class _$AppVersionDtoImpl extends _AppVersionDto {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, min, latest, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppVersionDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppVersionDtoImplCopyWith<_$AppVersionDtoImpl> get copyWith =>
@@ -481,8 +510,11 @@ abstract class _AppVersionDto extends AppVersionDto {
   @override
   @JsonKey(name: 'url')
   String get url;
+
+  /// Create a copy of AppVersionDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppVersionDtoImplCopyWith<_$AppVersionDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -508,8 +540,12 @@ mixin _$AppNoticeDto {
   @JsonKey(name: 'isForcedFinish')
   bool? get isForcedFinish => throw _privateConstructorUsedError;
 
+  /// Serializes this AppNoticeDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppNoticeDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppNoticeDtoCopyWith<AppNoticeDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -542,6 +578,8 @@ class _$AppNoticeDtoCopyWithImpl<$Res, $Val extends AppNoticeDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppNoticeDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -580,6 +618,8 @@ class _$AppNoticeDtoCopyWithImpl<$Res, $Val extends AppNoticeDto>
     ) as $Val);
   }
 
+  /// Create a copy of AppNoticeDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AppNoticeButtonInfoDtoCopyWith<$Res>? get negativeButton {
@@ -593,6 +633,8 @@ class _$AppNoticeDtoCopyWithImpl<$Res, $Val extends AppNoticeDto>
     });
   }
 
+  /// Create a copy of AppNoticeDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AppNoticeButtonInfoDtoCopyWith<$Res>? get positiveButton {
@@ -637,6 +679,8 @@ class __$$AppNoticeDtoImplCopyWithImpl<$Res>
       _$AppNoticeDtoImpl _value, $Res Function(_$AppNoticeDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppNoticeDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -716,7 +760,7 @@ class _$AppNoticeDtoImpl extends _AppNoticeDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppNoticeDtoImpl &&
@@ -733,12 +777,14 @@ class _$AppNoticeDtoImpl extends _AppNoticeDto {
                 other.isForcedFinish == isForcedFinish));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, imageUrl, title, description,
       negativeButton, positiveButton, isForcedFinish);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppNoticeDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppNoticeDtoImplCopyWith<_$AppNoticeDtoImpl> get copyWith =>
@@ -786,8 +832,11 @@ abstract class _AppNoticeDto extends AppNoticeDto {
   @override
   @JsonKey(name: 'isForcedFinish')
   bool? get isForcedFinish;
+
+  /// Create a copy of AppNoticeDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppNoticeDtoImplCopyWith<_$AppNoticeDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -804,8 +853,12 @@ mixin _$AppNoticeButtonInfoDto {
   @JsonKey(name: 'link')
   String get link => throw _privateConstructorUsedError;
 
+  /// Serializes this AppNoticeButtonInfoDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppNoticeButtonInfoDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppNoticeButtonInfoDtoCopyWith<AppNoticeButtonInfoDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -832,6 +885,8 @@ class _$AppNoticeButtonInfoDtoCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppNoticeButtonInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -875,6 +930,8 @@ class __$$AppNoticeButtonInfoDtoImplCopyWithImpl<$Res>
       $Res Function(_$AppNoticeButtonInfoDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppNoticeButtonInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -918,7 +975,7 @@ class _$AppNoticeButtonInfoDtoImpl extends _AppNoticeButtonInfoDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppNoticeButtonInfoDtoImpl &&
@@ -926,11 +983,13 @@ class _$AppNoticeButtonInfoDtoImpl extends _AppNoticeButtonInfoDto {
             (identical(other.link, link) || other.link == link));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, link);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppNoticeButtonInfoDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppNoticeButtonInfoDtoImplCopyWith<_$AppNoticeButtonInfoDtoImpl>
@@ -961,8 +1020,11 @@ abstract class _AppNoticeButtonInfoDto extends AppNoticeButtonInfoDto {
   @override
   @JsonKey(name: 'link')
   String get link;
+
+  /// Create a copy of AppNoticeButtonInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppNoticeButtonInfoDtoImplCopyWith<_$AppNoticeButtonInfoDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -984,8 +1046,12 @@ mixin _$AppOperationInfoDto {
   @JsonKey(name: 'link')
   String get link => throw _privateConstructorUsedError;
 
+  /// Serializes this AppOperationInfoDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppOperationInfoDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppOperationInfoDtoCopyWith<AppOperationInfoDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1014,6 +1080,8 @@ class _$AppOperationInfoDtoCopyWithImpl<$Res, $Val extends AppOperationInfoDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppOperationInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1072,6 +1140,8 @@ class __$$AppOperationInfoDtoImplCopyWithImpl<$Res>
       $Res Function(_$AppOperationInfoDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppOperationInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1142,7 +1212,7 @@ class _$AppOperationInfoDtoImpl extends _AppOperationInfoDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppOperationInfoDtoImpl &&
@@ -1156,12 +1226,14 @@ class _$AppOperationInfoDtoImpl extends _AppOperationInfoDto {
             (identical(other.link, link) || other.link == link));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, title, titleColor, arrowColor, applyAnimation, link);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppOperationInfoDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppOperationInfoDtoImplCopyWith<_$AppOperationInfoDtoImpl> get copyWith =>
@@ -1204,8 +1276,11 @@ abstract class _AppOperationInfoDto extends AppOperationInfoDto {
   @override
   @JsonKey(name: 'link')
   String get link;
+
+  /// Create a copy of AppOperationInfoDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppOperationInfoDtoImplCopyWith<_$AppOperationInfoDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1219,8 +1294,12 @@ mixin _$InviteCodesDto {
   @JsonKey(name: 'inviteCodes')
   List<String> get inviteCodes => throw _privateConstructorUsedError;
 
+  /// Serializes this InviteCodesDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InviteCodesDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InviteCodesDtoCopyWith<InviteCodesDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1244,6 +1323,8 @@ class _$InviteCodesDtoCopyWithImpl<$Res, $Val extends InviteCodesDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InviteCodesDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1277,6 +1358,8 @@ class __$$InviteCodesDtoImplCopyWithImpl<$Res>
       _$InviteCodesDtoImpl _value, $Res Function(_$InviteCodesDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InviteCodesDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1317,7 +1400,7 @@ class _$InviteCodesDtoImpl extends _InviteCodesDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InviteCodesDtoImpl &&
@@ -1325,12 +1408,14 @@ class _$InviteCodesDtoImpl extends _InviteCodesDto {
                 .equals(other._inviteCodes, _inviteCodes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_inviteCodes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InviteCodesDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InviteCodesDtoImplCopyWith<_$InviteCodesDtoImpl> get copyWith =>
@@ -1357,8 +1442,11 @@ abstract class _InviteCodesDto extends InviteCodesDto {
   @override
   @JsonKey(name: 'inviteCodes')
   List<String> get inviteCodes;
+
+  /// Create a copy of InviteCodesDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InviteCodesDtoImplCopyWith<_$InviteCodesDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

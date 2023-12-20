@@ -12,7 +12,7 @@ part of 'riding_detail_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$RidingDetailEvent {
@@ -72,6 +72,9 @@ class _$RidingDetailEventCopyWithImpl<$Res, $Val extends RidingDetailEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RidingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,8 @@ class __$$GetRidingRoomImplCopyWithImpl<$Res>
       _$GetRidingRoomImpl _value, $Res Function(_$GetRidingRoomImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RidingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,7 +124,7 @@ class _$GetRidingRoomImpl implements _GetRidingRoom {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetRidingRoomImpl &&
@@ -130,7 +135,9 @@ class _$GetRidingRoomImpl implements _GetRidingRoom {
   @override
   int get hashCode => Object.hash(runtimeType, ridingRoomId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetRidingRoomImplCopyWith<_$GetRidingRoomImpl> get copyWith =>
@@ -203,7 +210,10 @@ abstract class _GetRidingRoom implements RidingDetailEvent {
   const factory _GetRidingRoom(final int ridingRoomId) = _$GetRidingRoomImpl;
 
   int get ridingRoomId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RidingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetRidingRoomImplCopyWith<_$GetRidingRoomImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -227,6 +237,8 @@ class __$$UpdateRidingRoomImplCopyWithImpl<$Res>
       $Res Function(_$UpdateRidingRoomImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RidingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -240,6 +252,8 @@ class __$$UpdateRidingRoomImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of RidingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $RidingRoomCopyWith<$Res> get ridingRoom {
@@ -263,7 +277,7 @@ class _$UpdateRidingRoomImpl implements _UpdateRidingRoom {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateRidingRoomImpl &&
@@ -274,7 +288,9 @@ class _$UpdateRidingRoomImpl implements _UpdateRidingRoom {
   @override
   int get hashCode => Object.hash(runtimeType, ridingRoom);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateRidingRoomImplCopyWith<_$UpdateRidingRoomImpl> get copyWith =>
@@ -349,7 +365,10 @@ abstract class _UpdateRidingRoom implements RidingDetailEvent {
       _$UpdateRidingRoomImpl;
 
   RidingRoom get ridingRoom;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RidingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateRidingRoomImplCopyWith<_$UpdateRidingRoomImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -360,7 +379,9 @@ mixin _$RidingDetailState {
   RidingRoom? get ridingRoom => throw _privateConstructorUsedError;
   RidingPlayer? get selectedRidingPlayer => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RidingDetailStateCopyWith<RidingDetailState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -390,6 +411,8 @@ class _$RidingDetailStateCopyWithImpl<$Res, $Val extends RidingDetailState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RidingDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -413,6 +436,8 @@ class _$RidingDetailStateCopyWithImpl<$Res, $Val extends RidingDetailState>
     ) as $Val);
   }
 
+  /// Create a copy of RidingDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $RidingRoomCopyWith<$Res>? get ridingRoom {
@@ -425,6 +450,8 @@ class _$RidingDetailStateCopyWithImpl<$Res, $Val extends RidingDetailState>
     });
   }
 
+  /// Create a copy of RidingDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $RidingPlayerCopyWith<$Res>? get selectedRidingPlayer {
@@ -465,6 +492,8 @@ class __$$RidingDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$RidingDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RidingDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -508,7 +537,7 @@ class _$RidingDetailStateImpl implements _RidingDetailState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RidingDetailStateImpl &&
@@ -523,7 +552,9 @@ class _$RidingDetailStateImpl implements _RidingDetailState {
   int get hashCode =>
       Object.hash(runtimeType, status, ridingRoom, selectedRidingPlayer);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RidingDetailStateImplCopyWith<_$RidingDetailStateImpl> get copyWith =>
@@ -543,8 +574,11 @@ abstract class _RidingDetailState implements RidingDetailState {
   RidingRoom? get ridingRoom;
   @override
   RidingPlayer? get selectedRidingPlayer;
+
+  /// Create a copy of RidingDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RidingDetailStateImplCopyWith<_$RidingDetailStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

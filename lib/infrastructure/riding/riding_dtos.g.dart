@@ -8,7 +8,7 @@ part of 'riding_dtos.dart';
 
 _$RidingRoomDtoImpl _$$RidingRoomDtoImplFromJson(Map<String, dynamic> json) =>
     _$RidingRoomDtoImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       isPrivate: json['is_private'] as bool,
       me: json['me'] == null
@@ -17,7 +17,7 @@ _$RidingRoomDtoImpl _$$RidingRoomDtoImplFromJson(Map<String, dynamic> json) =>
       players: (json['players'] as List<dynamic>)
           .map((e) => RidingPlayerDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-      totalPlayers: json['total_players'] as int,
+      totalPlayers: (json['total_players'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$RidingRoomDtoImplToJson(_$RidingRoomDtoImpl instance) =>
@@ -33,10 +33,10 @@ Map<String, dynamic> _$$RidingRoomDtoImplToJson(_$RidingRoomDtoImpl instance) =>
 _$RidingPlayerDtoImpl _$$RidingPlayerDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$RidingPlayerDtoImpl(
-      id: json['id'] as int,
-      user: json['user'] as int,
+      id: (json['id'] as num).toInt(),
+      user: (json['user'] as num).toInt(),
       nickname: json['nickname'] as String,
-      room: json['room'] as int,
+      room: (json['room'] as num).toInt(),
       location: json['location'] == null
           ? null
           : UserLocationDto.fromJson(json['location'] as Map<String, dynamic>),

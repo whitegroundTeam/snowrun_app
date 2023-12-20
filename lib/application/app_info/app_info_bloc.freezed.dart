@@ -12,7 +12,7 @@ part of 'app_info_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppInfoEvent {
@@ -72,6 +72,9 @@ class _$AppInfoEventCopyWithImpl<$Res, $Val extends AppInfoEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AppInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -88,6 +91,9 @@ class __$$InitializedImplCopyWithImpl<$Res>
   __$$InitializedImplCopyWithImpl(
       _$InitializedImpl _value, $Res Function(_$InitializedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,7 +107,7 @@ class _$InitializedImpl implements _Initialized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitializedImpl);
   }
@@ -190,6 +196,9 @@ class __$$GetAppInfoImplCopyWithImpl<$Res>
   __$$GetAppInfoImplCopyWithImpl(
       _$GetAppInfoImpl _value, $Res Function(_$GetAppInfoImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -203,7 +212,7 @@ class _$GetAppInfoImpl implements _GetAppInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$GetAppInfoImpl);
   }
@@ -292,7 +301,9 @@ mixin _$AppInfoState {
       throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppInfoState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppInfoStateCopyWith<AppInfoState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -330,6 +341,8 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppInfoState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -388,6 +401,8 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
     ) as $Val);
   }
 
+  /// Create a copy of AppInfoState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AppVersionCopyWith<$Res> get appVersion {
@@ -396,6 +411,8 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
     });
   }
 
+  /// Create a copy of AppInfoState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InviteCodesCopyWith<$Res>? get appInviteCodes {
@@ -408,6 +425,8 @@ class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
     });
   }
 
+  /// Create a copy of AppInfoState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AppNoticeCopyWith<$Res>? get appNotice {
@@ -457,6 +476,8 @@ class __$$AppInfoStateImplCopyWithImpl<$Res>
       _$AppInfoStateImpl _value, $Res Function(_$AppInfoStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppInfoState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -566,7 +587,7 @@ class _$AppInfoStateImpl implements _AppInfoState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppInfoStateImpl &&
@@ -605,7 +626,9 @@ class _$AppInfoStateImpl implements _AppInfoState {
       const DeepCollectionEquality().hash(_appOperationInfos),
       isLoading);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppInfoState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppInfoStateImplCopyWith<_$AppInfoStateImpl> get copyWith =>
@@ -645,8 +668,11 @@ abstract class _AppInfoState implements AppInfoState {
   List<AppOperationInfo> get appOperationInfos;
   @override
   bool get isLoading;
+
+  /// Create a copy of AppInfoState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppInfoStateImplCopyWith<_$AppInfoStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

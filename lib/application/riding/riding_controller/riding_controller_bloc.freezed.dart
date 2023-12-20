@@ -12,7 +12,7 @@ part of 'riding_controller_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$RidingControllerEvent {
@@ -50,7 +50,9 @@ mixin _$RidingControllerEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingControllerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RidingControllerEventCopyWith<RidingControllerEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +77,8 @@ class _$RidingControllerEventCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RidingControllerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +112,8 @@ class __$$SelectMarkerImplCopyWithImpl<$Res>
       _$SelectMarkerImpl _value, $Res Function(_$SelectMarkerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RidingControllerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,7 +142,7 @@ class _$SelectMarkerImpl implements _SelectMarker {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectMarkerImpl &&
@@ -147,7 +153,9 @@ class _$SelectMarkerImpl implements _SelectMarker {
   @override
   int get hashCode => Object.hash(runtimeType, selectedMarkerSymbolId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingControllerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectMarkerImplCopyWith<_$SelectMarkerImpl> get copyWith =>
@@ -216,8 +224,11 @@ abstract class _SelectMarker implements RidingControllerEvent {
 
   @override
   int? get selectedMarkerSymbolId;
+
+  /// Create a copy of RidingControllerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectMarkerImplCopyWith<_$SelectMarkerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -227,7 +238,9 @@ mixin _$RidingControllerState {
   double get scrolledRatio => throw _privateConstructorUsedError;
   int? get selectedMarkerSymbolId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RidingControllerStateCopyWith<RidingControllerState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -252,6 +265,8 @@ class _$RidingControllerStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RidingControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -292,6 +307,8 @@ class __$$RidingControllerStateImplCopyWithImpl<$Res>
       $Res Function(_$RidingControllerStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RidingControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -328,7 +345,7 @@ class _$RidingControllerStateImpl implements _RidingControllerState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RidingControllerStateImpl &&
@@ -342,7 +359,9 @@ class _$RidingControllerStateImpl implements _RidingControllerState {
   int get hashCode =>
       Object.hash(runtimeType, scrolledRatio, selectedMarkerSymbolId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RidingControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RidingControllerStateImplCopyWith<_$RidingControllerStateImpl>
@@ -359,8 +378,11 @@ abstract class _RidingControllerState implements RidingControllerState {
   double get scrolledRatio;
   @override
   int? get selectedMarkerSymbolId;
+
+  /// Create a copy of RidingControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RidingControllerStateImplCopyWith<_$RidingControllerStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

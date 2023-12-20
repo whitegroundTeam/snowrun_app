@@ -8,11 +8,9 @@ enum UserStatus {
   progressUpdateCurrentLocation,
   successUpdateCurrentLocation,
   failureUpdateCurrentLocation,
-
   progressGetSnowBallProfileImages,
   successGetSnowBallProfileImages,
   failureGetSnowBallProfileImages,
-
   progressUpdateProfileImage,
   successUpdateProfileImage,
   failureUpdateProfileImage,
@@ -30,5 +28,6 @@ class UserState with _$UserState {
         status: UserStatus.initial,
         users: [],
         user: null,
+
       );
 }

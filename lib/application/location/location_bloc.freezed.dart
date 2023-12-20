@@ -12,7 +12,7 @@ part of 'location_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LocationEvent {
@@ -78,6 +78,9 @@ class _$LocationEventCopyWithImpl<$Res, $Val extends LocationEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LocationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -94,6 +97,9 @@ class __$$GetCurrentLocationImplCopyWithImpl<$Res>
   __$$GetCurrentLocationImplCopyWithImpl(_$GetCurrentLocationImpl _value,
       $Res Function(_$GetCurrentLocationImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LocationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -107,7 +113,7 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$GetCurrentLocationImpl);
   }
@@ -202,6 +208,9 @@ class __$$StartRefreshLocationImplCopyWithImpl<$Res>
   __$$StartRefreshLocationImplCopyWithImpl(_$StartRefreshLocationImpl _value,
       $Res Function(_$StartRefreshLocationImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LocationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -215,7 +224,7 @@ class _$StartRefreshLocationImpl implements _StartRefreshLocation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartRefreshLocationImpl);
@@ -311,6 +320,9 @@ class __$$StopRefreshLocationImplCopyWithImpl<$Res>
   __$$StopRefreshLocationImplCopyWithImpl(_$StopRefreshLocationImpl _value,
       $Res Function(_$StopRefreshLocationImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LocationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -324,7 +336,7 @@ class _$StopRefreshLocationImpl implements _StopRefreshLocation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StopRefreshLocationImpl);
@@ -411,8 +423,11 @@ mixin _$LocationState {
   LocationStatus get status => throw _privateConstructorUsedError;
   UserLocation get userLocation => throw _privateConstructorUsedError;
   bool get isInit => throw _privateConstructorUsedError;
+  bool get isCollectingLocationInfo => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LocationStateCopyWith<LocationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -423,7 +438,11 @@ abstract class $LocationStateCopyWith<$Res> {
           LocationState value, $Res Function(LocationState) then) =
       _$LocationStateCopyWithImpl<$Res, LocationState>;
   @useResult
-  $Res call({LocationStatus status, UserLocation userLocation, bool isInit});
+  $Res call(
+      {LocationStatus status,
+      UserLocation userLocation,
+      bool isInit,
+      bool isCollectingLocationInfo});
 
   $UserLocationCopyWith<$Res> get userLocation;
 }
@@ -438,12 +457,15 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LocationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = null,
     Object? userLocation = null,
     Object? isInit = null,
+    Object? isCollectingLocationInfo = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -458,9 +480,15 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
           ? _value.isInit
           : isInit // ignore: cast_nullable_to_non_nullable
               as bool,
+      isCollectingLocationInfo: null == isCollectingLocationInfo
+          ? _value.isCollectingLocationInfo
+          : isCollectingLocationInfo // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
+  /// Create a copy of LocationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserLocationCopyWith<$Res> get userLocation {
@@ -478,7 +506,11 @@ abstract class _$$LocationStateImplCopyWith<$Res>
       __$$LocationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LocationStatus status, UserLocation userLocation, bool isInit});
+  $Res call(
+      {LocationStatus status,
+      UserLocation userLocation,
+      bool isInit,
+      bool isCollectingLocationInfo});
 
   @override
   $UserLocationCopyWith<$Res> get userLocation;
@@ -492,12 +524,15 @@ class __$$LocationStateImplCopyWithImpl<$Res>
       _$LocationStateImpl _value, $Res Function(_$LocationStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LocationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = null,
     Object? userLocation = null,
     Object? isInit = null,
+    Object? isCollectingLocationInfo = null,
   }) {
     return _then(_$LocationStateImpl(
       status: null == status
@@ -512,6 +547,10 @@ class __$$LocationStateImplCopyWithImpl<$Res>
           ? _value.isInit
           : isInit // ignore: cast_nullable_to_non_nullable
               as bool,
+      isCollectingLocationInfo: null == isCollectingLocationInfo
+          ? _value.isCollectingLocationInfo
+          : isCollectingLocationInfo // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -520,7 +559,10 @@ class __$$LocationStateImplCopyWithImpl<$Res>
 
 class _$LocationStateImpl implements _LocationState {
   const _$LocationStateImpl(
-      {required this.status, required this.userLocation, required this.isInit});
+      {required this.status,
+      required this.userLocation,
+      required this.isInit,
+      required this.isCollectingLocationInfo});
 
   @override
   final LocationStatus status;
@@ -528,27 +570,35 @@ class _$LocationStateImpl implements _LocationState {
   final UserLocation userLocation;
   @override
   final bool isInit;
+  @override
+  final bool isCollectingLocationInfo;
 
   @override
   String toString() {
-    return 'LocationState(status: $status, userLocation: $userLocation, isInit: $isInit)';
+    return 'LocationState(status: $status, userLocation: $userLocation, isInit: $isInit, isCollectingLocationInfo: $isCollectingLocationInfo)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocationStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation) &&
-            (identical(other.isInit, isInit) || other.isInit == isInit));
+            (identical(other.isInit, isInit) || other.isInit == isInit) &&
+            (identical(
+                    other.isCollectingLocationInfo, isCollectingLocationInfo) ||
+                other.isCollectingLocationInfo == isCollectingLocationInfo));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, userLocation, isInit);
+  int get hashCode => Object.hash(
+      runtimeType, status, userLocation, isInit, isCollectingLocationInfo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LocationStateImplCopyWith<_$LocationStateImpl> get copyWith =>
@@ -559,7 +609,8 @@ abstract class _LocationState implements LocationState {
   const factory _LocationState(
       {required final LocationStatus status,
       required final UserLocation userLocation,
-      required final bool isInit}) = _$LocationStateImpl;
+      required final bool isInit,
+      required final bool isCollectingLocationInfo}) = _$LocationStateImpl;
 
   @override
   LocationStatus get status;
@@ -568,7 +619,12 @@ abstract class _LocationState implements LocationState {
   @override
   bool get isInit;
   @override
-  @JsonKey(ignore: true)
+  bool get isCollectingLocationInfo;
+
+  /// Create a copy of LocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LocationStateImplCopyWith<_$LocationStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

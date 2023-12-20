@@ -11,6 +11,8 @@ import 'package:snowrun_app/infrastructure/api/core_api.dart';
 
 import 'package:snowrun_app/infrastructure/user/user_dtos.dart';
 
+import '../../domain/user/model/user.dart';
+
 @LazySingleton(as: IUserRepository)
 class UserRepository implements IUserRepository {
   final CoreApi _api;
@@ -35,12 +37,17 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<Either<UserFailure, Unit>> updateCurrentLocation(
+  Future<Either<UserFailure, User>> updateCurrentLocation(
       UserLocation userLocation) async {
     final response = await _api
         .updateUserCurrentLocation(UserLocationDto.fromDomain(userLocation));
     if (response.statusCode == 200) {
-      return right(unit);
+      final jsonData =
+      json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      final userDto = UserDto.fromJson(jsonData);
+      // ignore: unused_local_variable
+      final user = userDto.toDomain();
+      return right(user);
     } else {
       return left(const UserFailure.serverError());
     }

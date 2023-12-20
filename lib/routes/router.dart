@@ -1,7 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:snowrun_app/domain/rental/model/rental.dart';
+import 'package:snowrun_app/domain/rental_shop_product/rental_shop_product.dart';
 import 'package:snowrun_app/presentation/invite_code/input_invite_code_page.dart';
 import 'package:snowrun_app/presentation/landing/landing_page.dart';
+import 'package:snowrun_app/presentation/order/create_rental/accessory_equipment_rental/accessory_equipment_rental_page.dart';
+import 'package:snowrun_app/presentation/order/create_rental/apparel_equipment_rental/apparel_equipment_rental_page.dart';
+import 'package:snowrun_app/presentation/order/create_rental/create_rental_page.dart';
+import 'package:snowrun_app/presentation/order/create_rental/customer_rental_info_page/customer_rental_info_page.dart';
+import 'package:snowrun_app/presentation/order/create_rental/main_equipment_rental/main_equipment_rental_page.dart';
+import 'package:snowrun_app/presentation/order/create_rental/select_rental_option_page.dart';
+import 'package:snowrun_app/presentation/order/lesson_pass_order/lesson_pass_order_page.dart';
+import 'package:snowrun_app/presentation/order/order_check/order_check_page.dart';
+import 'package:snowrun_app/presentation/order/order_complete/order_complete_page.dart';
+import 'package:snowrun_app/presentation/order/order_history/history_page,dart.dart';
+import 'package:snowrun_app/presentation/order/order_history/order_history_detail_page.dart';
+import 'package:snowrun_app/presentation/order/order_history/order_history_list_page.dart';
+import 'package:snowrun_app/presentation/order/order_page.dart';
+import 'package:snowrun_app/presentation/order/recommanded_products/recommanded_products_page.dart';
+import 'package:snowrun_app/presentation/order/rental/rental_list_page.dart';
+import 'package:snowrun_app/presentation/order/select_activity_center/select_activity_center_page.dart';
+import 'package:snowrun_app/presentation/order/terms_and_notes/terms_and_notes_page.dart';
+import 'package:snowrun_app/presentation/order/ticket_order/select_ticket_page.dart';
 import 'package:snowrun_app/presentation/riding/riding_room_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_in_page.dart';
 import 'package:snowrun_app/presentation/auth/email_sign_up_page.dart';
@@ -127,6 +147,141 @@ final GoRouter router = GoRouter(
         final String url = extra['url'] ?? "";
         final String? title = extra['title'];
         return CommonWebViewPage(url: url, title: title);
+      },
+    ),
+
+    /// RENTAL & ORDER
+    GoRoute(
+      path: '/order',
+      builder: (BuildContext context, GoRouterState state) {
+        return const OrderPage();
+      },
+    ),
+    GoRoute(
+      path: '/rental-list',
+      builder: (BuildContext context, GoRouterState state) {
+        return const RentalListPage();
+      },
+    ),
+    GoRoute(
+      path: '/create-rental',
+      builder: (BuildContext context, GoRouterState state) {
+        final Map<String, dynamic>? extra =
+        state.extra as Map<String, dynamic>?;
+        final Rental? rental = extra?['rental'] as Rental?;
+        return CreateRentalPage(
+          rental: rental,
+        );
+      },
+    ),
+    GoRoute(
+      path: '/accessory-equipment-rental',
+      builder: (BuildContext context, GoRouterState state) {
+        return const AccessoryEquipmentRentalPage();
+      },
+    ),
+    GoRoute(
+      path: '/apparel-equipment-rental',
+      builder: (BuildContext context, GoRouterState state) {
+        return const ApparelEquipmentRentalPage();
+      },
+    ),
+    GoRoute(
+      path: '/lesson-pass-order',
+      builder: (BuildContext context, GoRouterState state) {
+        return const LessonPassOrderPage();
+      },
+    ),
+    GoRoute(
+      path: '/select-rental-option',
+      builder: (BuildContext context, GoRouterState state) {
+        final Map<String, dynamic>? extra =
+        state.extra as Map<String, dynamic>?;
+        final RentalShopProduct? rentalShopProduct =
+        extra?['rentalShopProduct'] as RentalShopProduct?;
+        return SelectRentalOptionPage(rentalShopProduct: rentalShopProduct);
+      },
+    ),
+    GoRoute(
+      path: '/customer-rental-info',
+      builder: (BuildContext context, GoRouterState state) {
+        final Map<String, dynamic>? extra =
+        state.extra as Map<String, dynamic>?;
+        final String? representativePhoneNumber =
+        extra?['representativePhoneNumber'] as String?;
+        final String? representativeEmail =
+        extra?['representativeEmail'] as String?;
+        return CustomerRentalInfoPage(
+          representativePhoneNumber: representativePhoneNumber,
+          representativeEmail: representativeEmail,
+        );
+      },
+    ),
+    GoRoute(
+      path: '/main-equipment-rental',
+      builder: (BuildContext context, GoRouterState state) {
+        return const MainEquipmentRentalPage();
+      },
+    ),
+    GoRoute(
+      path: '/order-check',
+      builder: (BuildContext context, GoRouterState state) {
+        return const OrderCheckPage();
+      },
+    ),
+    GoRoute(
+      path: '/order-complete',
+      builder: (BuildContext context, GoRouterState state) {
+        return const OrderCompletePage();
+      },
+    ),
+    GoRoute(
+      path: '/history',
+      builder: (BuildContext context, GoRouterState state) {
+        return const HistoryPage();
+      },
+    ),
+    GoRoute(
+      path: '/order-history-detail',
+      builder: (BuildContext context, GoRouterState state) {
+        return const OrderHistoryDetailPage();
+      },
+    ),
+
+    GoRoute(
+      path: '/order-history-list',
+      builder: (BuildContext context, GoRouterState state) {
+        return const OrderHistoryListPage();
+      },
+    ),
+
+    GoRoute(
+      path: '/recommanded-products',
+      builder: (BuildContext context, GoRouterState state) {
+        return const RecommandedProductsPage();
+      },
+    ),
+    GoRoute(
+      path: '/select-activity-center',
+      builder: (BuildContext context, GoRouterState state) {
+        return const SelectActivityCenterPage();
+      },
+    ),
+    GoRoute(
+      path: '/terms-and-notes',
+      builder: (BuildContext context, GoRouterState state) {
+        return const TermsAndNotesPage();
+      },
+    ),
+    GoRoute(
+      path: '/select-ticket',
+      builder: (BuildContext context, GoRouterState state) {
+        final Map<String, dynamic>? extra =
+        state.extra as Map<String, dynamic>?;
+        final Rental? rental = extra?['rental'] as Rental?;
+        return SelectTicketPage(
+          rental: rental,
+        );
       },
     ),
   ],

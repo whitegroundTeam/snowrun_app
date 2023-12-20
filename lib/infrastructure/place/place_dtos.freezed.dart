@@ -12,7 +12,7 @@ part of 'place_dtos.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PlaceDto _$PlaceDtoFromJson(Map<String, dynamic> json) {
   return _PlaceDto.fromJson(json);
@@ -23,8 +23,12 @@ mixin _$PlaceDto {
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
+  /// Serializes this PlaceDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlaceDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlaceDtoCopyWith<PlaceDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$PlaceDtoCopyWithImpl<$Res, $Val extends PlaceDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlaceDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$PlaceDtoImplCopyWithImpl<$Res>
       _$PlaceDtoImpl _value, $Res Function(_$PlaceDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlaceDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,18 +120,20 @@ class _$PlaceDtoImpl extends _PlaceDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlaceDtoImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlaceDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlaceDtoImplCopyWith<_$PlaceDtoImpl> get copyWith =>
@@ -148,8 +158,11 @@ abstract class _PlaceDto extends PlaceDto {
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Create a copy of PlaceDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlaceDtoImplCopyWith<_$PlaceDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -163,8 +176,12 @@ mixin _$BoundaryDto {
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
+  /// Serializes this BoundaryDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoundaryDtoCopyWith<BoundaryDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -188,6 +205,8 @@ class _$BoundaryDtoCopyWithImpl<$Res, $Val extends BoundaryDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -221,6 +240,8 @@ class __$$BoundaryDtoImplCopyWithImpl<$Res>
       _$BoundaryDtoImpl _value, $Res Function(_$BoundaryDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -254,18 +275,20 @@ class _$BoundaryDtoImpl extends _BoundaryDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BoundaryDtoImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoundaryDtoImplCopyWith<_$BoundaryDtoImpl> get copyWith =>
@@ -290,8 +313,11 @@ abstract class _BoundaryDto extends BoundaryDto {
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Create a copy of BoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoundaryDtoImplCopyWith<_$BoundaryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -308,8 +334,12 @@ mixin _$VerticesDto {
   List<List<List<double>>> get coordinates =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this VerticesDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VerticesDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VerticesDtoCopyWith<VerticesDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -335,6 +365,8 @@ class _$VerticesDtoCopyWithImpl<$Res, $Val extends VerticesDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VerticesDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -375,6 +407,8 @@ class __$$VerticesDtoImplCopyWithImpl<$Res>
       _$VerticesDtoImpl _value, $Res Function(_$VerticesDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VerticesDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -425,7 +459,7 @@ class _$VerticesDtoImpl extends _VerticesDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VerticesDtoImpl &&
@@ -434,12 +468,14 @@ class _$VerticesDtoImpl extends _VerticesDto {
                 .equals(other._coordinates, _coordinates));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, type, const DeepCollectionEquality().hash(_coordinates));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VerticesDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VerticesDtoImplCopyWith<_$VerticesDtoImpl> get copyWith =>
@@ -469,8 +505,11 @@ abstract class _VerticesDto extends VerticesDto {
   @override
   @JsonKey(name: 'coordinates')
   List<List<List<double>>> get coordinates;
+
+  /// Create a copy of VerticesDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VerticesDtoImplCopyWith<_$VerticesDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -492,8 +531,12 @@ mixin _$CreateBoundaryDto {
   @JsonKey(name: 'vertices')
   VerticesDto get vertices => throw _privateConstructorUsedError;
 
+  /// Serializes this CreateBoundaryDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateBoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreateBoundaryDtoCopyWith<CreateBoundaryDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -524,6 +567,8 @@ class _$CreateBoundaryDtoCopyWithImpl<$Res, $Val extends CreateBoundaryDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreateBoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -557,6 +602,8 @@ class _$CreateBoundaryDtoCopyWithImpl<$Res, $Val extends CreateBoundaryDto>
     ) as $Val);
   }
 
+  /// Create a copy of CreateBoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $VerticesDtoCopyWith<$Res> get vertices {
@@ -593,6 +640,8 @@ class __$$CreateBoundaryDtoImplCopyWithImpl<$Res>
       $Res Function(_$CreateBoundaryDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateBoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -663,7 +712,7 @@ class _$CreateBoundaryDtoImpl extends _CreateBoundaryDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateBoundaryDtoImpl &&
@@ -675,12 +724,14 @@ class _$CreateBoundaryDtoImpl extends _CreateBoundaryDto {
                 other.vertices == vertices));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, placeId, name, type, status, vertices);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateBoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateBoundaryDtoImplCopyWith<_$CreateBoundaryDtoImpl> get copyWith =>
@@ -723,8 +774,11 @@ abstract class _CreateBoundaryDto extends CreateBoundaryDto {
   @override
   @JsonKey(name: 'vertices')
   VerticesDto get vertices;
+
+  /// Create a copy of CreateBoundaryDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateBoundaryDtoImplCopyWith<_$CreateBoundaryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

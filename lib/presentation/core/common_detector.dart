@@ -31,7 +31,7 @@ class CommonDetector extends StatefulWidget {
 
 class CommonDetectorState extends State<CommonDetector>
     with SingleTickerProviderStateMixin {
-  static const defaultDelay = 1000;
+  static const defaultDelay = 200;
   DateTime? lastClickTime;
 
   double? _scale;
@@ -44,13 +44,13 @@ class CommonDetectorState extends State<CommonDetector>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(
-        milliseconds: 200,
+        milliseconds: 100,
       ),
       lowerBound: 0.0,
       upperBound: 0.04,
     )..addListener(() {
-        setState(() {});
-      });
+      setState(() {});
+    });
     super.initState();
   }
 
@@ -77,7 +77,7 @@ class CommonDetectorState extends State<CommonDetector>
           },
           onTapUp: (tapDownDetails) {
             _finishClick();
-            Future.delayed(const Duration(milliseconds: 300)).then((value) {
+            Future.delayed(const Duration(milliseconds: 200)).then((value) {
               final now = DateTime.now();
               if (lastClickTime == null ||
                   now.difference(lastClickTime!) >
@@ -111,7 +111,7 @@ class CommonDetectorState extends State<CommonDetector>
   }
 
   void _finishClick() {
-    Future.delayed(const Duration(milliseconds: 150))
+    Future.delayed(const Duration(milliseconds: 100))
         .then((value) => _controller?.reverse());
   }
 }

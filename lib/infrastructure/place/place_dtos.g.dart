@@ -47,10 +47,10 @@ Map<String, dynamic> _$$VerticesDtoImplToJson(_$VerticesDtoImpl instance) =>
 _$CreateBoundaryDtoImpl _$$CreateBoundaryDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateBoundaryDtoImpl(
-      placeId: json['place'] as int,
+      placeId: (json['place'] as num).toInt(),
       name: json['name'] as String,
-      type: json['type'] as int,
-      status: json['status'] as int,
+      type: (json['type'] as num).toInt(),
+      status: (json['status'] as num).toInt(),
       vertices: VerticesDto.fromJson(json['vertices'] as Map<String, dynamic>),
     );
 

@@ -12,7 +12,7 @@ part of 'place_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PlaceEvent {
@@ -88,6 +88,9 @@ class _$PlaceEventCopyWithImpl<$Res, $Val extends PlaceEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PlaceEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,9 @@ class __$$GetPlacesImplCopyWithImpl<$Res>
   __$$GetPlacesImplCopyWithImpl(
       _$GetPlacesImpl _value, $Res Function(_$GetPlacesImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PlaceEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -117,7 +123,7 @@ class _$GetPlacesImpl implements _GetPlaces {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$GetPlacesImpl);
   }
@@ -222,6 +228,9 @@ class __$$GetPlaceImplCopyWithImpl<$Res>
   __$$GetPlaceImplCopyWithImpl(
       _$GetPlaceImpl _value, $Res Function(_$GetPlaceImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PlaceEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -235,7 +244,7 @@ class _$GetPlaceImpl implements _GetPlace {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$GetPlaceImpl);
   }
@@ -348,6 +357,8 @@ class __$$CreateBoundaryImplCopyWithImpl<$Res>
       _$CreateBoundaryImpl _value, $Res Function(_$CreateBoundaryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlaceEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -411,7 +422,7 @@ class _$CreateBoundaryImpl implements _CreateBoundary {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateBoundaryImpl &&
@@ -428,7 +439,9 @@ class _$CreateBoundaryImpl implements _CreateBoundary {
   int get hashCode => Object.hash(runtimeType, placeId, name, boundaryType,
       boundaryStatus, const DeepCollectionEquality().hash(_polygon));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlaceEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateBoundaryImplCopyWith<_$CreateBoundaryImpl> get copyWith =>
@@ -529,7 +542,10 @@ abstract class _CreateBoundary implements PlaceEvent {
   BoundaryType get boundaryType;
   BoundaryStatus get boundaryStatus;
   List<List<double>> get polygon;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlaceEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateBoundaryImplCopyWith<_$CreateBoundaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -539,7 +555,9 @@ mixin _$PlaceState {
   PlaceStatus get status => throw _privateConstructorUsedError;
   List<Place> get places => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlaceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlaceStateCopyWith<PlaceState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -563,6 +581,8 @@ class _$PlaceStateCopyWithImpl<$Res, $Val extends PlaceState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlaceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -601,6 +621,8 @@ class __$$PlaceStateImplCopyWithImpl<$Res>
       _$PlaceStateImpl _value, $Res Function(_$PlaceStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlaceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -643,7 +665,7 @@ class _$PlaceStateImpl implements _PlaceState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlaceStateImpl &&
@@ -655,7 +677,9 @@ class _$PlaceStateImpl implements _PlaceState {
   int get hashCode => Object.hash(
       runtimeType, status, const DeepCollectionEquality().hash(_places));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlaceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlaceStateImplCopyWith<_$PlaceStateImpl> get copyWith =>
@@ -671,8 +695,11 @@ abstract class _PlaceState implements PlaceState {
   PlaceStatus get status;
   @override
   List<Place> get places;
+
+  /// Create a copy of PlaceState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlaceStateImplCopyWith<_$PlaceStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

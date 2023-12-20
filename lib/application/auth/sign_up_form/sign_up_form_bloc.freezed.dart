@@ -12,7 +12,7 @@ part of 'sign_up_form_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SignUpFormEvent {
@@ -88,6 +88,9 @@ class _$SignUpFormEventCopyWithImpl<$Res, $Val extends SignUpFormEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -107,6 +110,8 @@ class __$$EmailChangedImplCopyWithImpl<$Res>
       _$EmailChangedImpl _value, $Res Function(_$EmailChangedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,7 +140,7 @@ class _$EmailChangedImpl implements EmailChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EmailChangedImpl &&
@@ -146,7 +151,9 @@ class _$EmailChangedImpl implements EmailChanged {
   @override
   int get hashCode => Object.hash(runtimeType, emailStr);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EmailChangedImplCopyWith<_$EmailChangedImpl> get copyWith =>
@@ -235,7 +242,10 @@ abstract class EmailChanged implements SignUpFormEvent {
   const factory EmailChanged(final String emailStr) = _$EmailChangedImpl;
 
   String get emailStr;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EmailChangedImplCopyWith<_$EmailChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -257,6 +267,8 @@ class __$$PasswordChangedImplCopyWithImpl<$Res>
       _$PasswordChangedImpl _value, $Res Function(_$PasswordChangedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -285,7 +297,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PasswordChangedImpl &&
@@ -296,7 +308,9 @@ class _$PasswordChangedImpl implements PasswordChanged {
   @override
   int get hashCode => Object.hash(runtimeType, passwordStr);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PasswordChangedImplCopyWith<_$PasswordChangedImpl> get copyWith =>
@@ -387,7 +401,10 @@ abstract class PasswordChanged implements SignUpFormEvent {
       _$PasswordChangedImpl;
 
   String get passwordStr;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PasswordChangedImplCopyWith<_$PasswordChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -411,6 +428,8 @@ class __$$ConfirmPasswordChangedImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmPasswordChangedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -439,7 +458,7 @@ class _$ConfirmPasswordChangedImpl implements ConfirmPasswordChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfirmPasswordChangedImpl &&
@@ -450,7 +469,9 @@ class _$ConfirmPasswordChangedImpl implements ConfirmPasswordChanged {
   @override
   int get hashCode => Object.hash(runtimeType, confirmPasswordStr);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmPasswordChangedImplCopyWith<_$ConfirmPasswordChangedImpl>
@@ -541,7 +562,10 @@ abstract class ConfirmPasswordChanged implements SignUpFormEvent {
       _$ConfirmPasswordChangedImpl;
 
   String get confirmPasswordStr;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmPasswordChangedImplCopyWith<_$ConfirmPasswordChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -563,6 +587,9 @@ class __$$RegisterWithEmailAndPasswordPressedImplCopyWithImpl<$Res>
       _$RegisterWithEmailAndPasswordPressedImpl _value,
       $Res Function(_$RegisterWithEmailAndPasswordPressedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -577,7 +604,7 @@ class _$RegisterWithEmailAndPasswordPressedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegisterWithEmailAndPasswordPressedImpl);
@@ -680,7 +707,9 @@ mixin _$SignUpFormState {
   Option<Either<AuthFailure, AuthSignResult>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignUpFormState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignUpFormStateCopyWith<SignUpFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -710,6 +739,8 @@ class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignUpFormState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -774,6 +805,8 @@ class __$$SignUpFormStateImplCopyWithImpl<$Res>
       _$SignUpFormStateImpl _value, $Res Function(_$SignUpFormStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignUpFormState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -843,7 +876,7 @@ class _$SignUpFormStateImpl implements _SignUpFormState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignUpFormStateImpl &&
@@ -873,7 +906,9 @@ class _$SignUpFormStateImpl implements _SignUpFormState {
       isSubmitting,
       authFailureOrSuccessOption);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignUpFormState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignUpFormStateImplCopyWith<_$SignUpFormStateImpl> get copyWith =>
@@ -903,8 +938,11 @@ abstract class _SignUpFormState implements SignUpFormState {
   bool get isSubmitting;
   @override
   Option<Either<AuthFailure, AuthSignResult>> get authFailureOrSuccessOption;
+
+  /// Create a copy of SignUpFormState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignUpFormStateImplCopyWith<_$SignUpFormStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

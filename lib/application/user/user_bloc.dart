@@ -25,8 +25,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         failureOrResponse.fold(
           (f) =>
               state.copyWith(status: UserStatus.failureUpdateCurrentLocation),
-          (response) => state.copyWith(
+          (newUser) => state.copyWith(
             status: UserStatus.successUpdateCurrentLocation,
+            user: newUser,
           ),
         ),
       );

@@ -11,9 +11,21 @@ class AppStyle {
   static const Color secondaryBackground = Color(0xff18171E);
   static const Color actionIconColor = Color(0xff62626B);
   static const Color accentColor = Color(0xffFF8C00);
+  static const Color accentGreen = Color(0xff80F921);
+  static const Color accentOrange = Color(0xffFF8C00);
+  static const Color accentRed = Color(0xffFF2D2D);
   static const Color line = Color(0x4DFFFFFF);
 
   static const Color secondaryTextColor = Color(0xffA09FA6);
+
+  /// POS START - 주문쪽 반영 후 제거해야함
+  static const Color inputFieldInactiveBorder = Color(0xff3B3C36);
+  static const Color inputFieldBackground = Color(0xff242424);
+
+  static const Color backgroundBlack = Color(0xff121212);
+  // static const Color thirdBackground = Color(0xff373737);
+  static const Color inactiveBackground = Color(0xff4B4B48);
+  /// POS END
 
   //Toast
   static const Color toastBackground = accentColor;

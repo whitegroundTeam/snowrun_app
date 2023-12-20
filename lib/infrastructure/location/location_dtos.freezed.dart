@@ -12,7 +12,7 @@ part of 'location_dtos.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 LocationDto _$LocationDtoFromJson(Map<String, dynamic> json) {
   return _LocationDto.fromJson(json);
@@ -24,8 +24,12 @@ mixin _$LocationDto {
   List<List<List<double>>> get coordinates =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this LocationDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LocationDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LocationDtoCopyWith<LocationDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$LocationDtoCopyWithImpl<$Res, $Val extends LocationDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LocationDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +90,8 @@ class __$$LocationDtoImplCopyWithImpl<$Res>
       _$LocationDtoImpl _value, $Res Function(_$LocationDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LocationDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,7 +133,7 @@ class _$LocationDtoImpl extends _LocationDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocationDtoImpl &&
@@ -133,12 +141,14 @@ class _$LocationDtoImpl extends _LocationDto {
                 .equals(other._coordinates, _coordinates));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_coordinates));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LocationDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LocationDtoImplCopyWith<_$LocationDtoImpl> get copyWith =>
@@ -164,8 +174,11 @@ abstract class _LocationDto extends LocationDto {
   @override
   @JsonKey(name: 'coordinates')
   List<List<List<double>>> get coordinates;
+
+  /// Create a copy of LocationDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LocationDtoImplCopyWith<_$LocationDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

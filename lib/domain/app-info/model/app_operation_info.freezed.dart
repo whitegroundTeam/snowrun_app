@@ -12,7 +12,7 @@ part of 'app_operation_info.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppOperationInfo {
@@ -22,7 +22,9 @@ mixin _$AppOperationInfo {
   BooleanVO get applyAnimation => throw _privateConstructorUsedError;
   StringVO get link => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppOperationInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppOperationInfoCopyWith<AppOperationInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$AppOperationInfoCopyWithImpl<$Res, $Val extends AppOperationInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppOperationInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$AppOperationInfoImplCopyWithImpl<$Res>
       $Res Function(_$AppOperationInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppOperationInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -171,7 +177,7 @@ class _$AppOperationInfoImpl extends _AppOperationInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppOperationInfoImpl &&
@@ -189,7 +195,9 @@ class _$AppOperationInfoImpl extends _AppOperationInfo {
   int get hashCode => Object.hash(
       runtimeType, title, titleColor, arrowColor, applyAnimation, link);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppOperationInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppOperationInfoImplCopyWith<_$AppOperationInfoImpl> get copyWith =>
@@ -216,8 +224,11 @@ abstract class _AppOperationInfo extends AppOperationInfo {
   BooleanVO get applyAnimation;
   @override
   StringVO get link;
+
+  /// Create a copy of AppOperationInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppOperationInfoImplCopyWith<_$AppOperationInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

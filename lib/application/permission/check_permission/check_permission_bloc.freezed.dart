@@ -12,7 +12,7 @@ part of 'check_permission_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CheckPermissionEvent {
@@ -68,6 +68,9 @@ class _$CheckPermissionEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CheckPermissionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -87,6 +90,9 @@ class __$$CheckInitialPermissionsImplCopyWithImpl<$Res>
       _$CheckInitialPermissionsImpl _value,
       $Res Function(_$CheckInitialPermissionsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CheckPermissionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,7 +106,7 @@ class _$CheckInitialPermissionsImpl implements _CheckInitialPermissions {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckInitialPermissionsImpl);
@@ -238,6 +244,9 @@ class _$CheckPermissionStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CheckPermissionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -254,6 +263,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CheckPermissionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -267,7 +279,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -366,6 +378,9 @@ class __$$InitPermissionsNeededImplCopyWithImpl<$Res>
   __$$InitPermissionsNeededImplCopyWithImpl(_$InitPermissionsNeededImpl _value,
       $Res Function(_$InitPermissionsNeededImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CheckPermissionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -379,7 +394,7 @@ class _$InitPermissionsNeededImpl implements _InitPermissionsNeeded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitPermissionsNeededImpl);
@@ -480,6 +495,9 @@ class __$$InitPermissionsUnNeededImplCopyWithImpl<$Res>
       _$InitPermissionsUnNeededImpl _value,
       $Res Function(_$InitPermissionsUnNeededImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CheckPermissionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -493,7 +511,7 @@ class _$InitPermissionsUnNeededImpl implements _InitPermissionsUnNeeded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitPermissionsUnNeededImpl);

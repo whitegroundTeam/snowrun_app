@@ -12,7 +12,7 @@ part of 'draggable_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DraggableEvent {
@@ -72,6 +72,9 @@ class _$DraggableEventCopyWithImpl<$Res, $Val extends DraggableEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DraggableEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -87,6 +90,9 @@ class __$$InitImplCopyWithImpl<$Res>
     implements _$$InitImplCopyWith<$Res> {
   __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DraggableEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,7 +106,7 @@ class _$InitImpl implements _Init {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitImpl);
   }
@@ -192,6 +198,8 @@ class __$$UpdatePositionImplCopyWithImpl<$Res>
       _$UpdatePositionImpl _value, $Res Function(_$UpdatePositionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DraggableEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -220,7 +228,7 @@ class _$UpdatePositionImpl implements _UpdatePosition {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdatePositionImpl &&
@@ -230,7 +238,9 @@ class _$UpdatePositionImpl implements _UpdatePosition {
   @override
   int get hashCode => Object.hash(runtimeType, offset);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DraggableEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdatePositionImplCopyWith<_$UpdatePositionImpl> get copyWith =>
@@ -304,7 +314,10 @@ abstract class _UpdatePosition implements DraggableEvent {
   const factory _UpdatePosition(final Offset offset) = _$UpdatePositionImpl;
 
   Offset get offset;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DraggableEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdatePositionImplCopyWith<_$UpdatePositionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -313,7 +326,9 @@ abstract class _UpdatePosition implements DraggableEvent {
 mixin _$DraggableState {
   Offset? get offset => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DraggableState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DraggableStateCopyWith<DraggableState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -337,6 +352,8 @@ class _$DraggableStateCopyWithImpl<$Res, $Val extends DraggableState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DraggableState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -370,6 +387,8 @@ class __$$DraggableStateImplCopyWithImpl<$Res>
       _$DraggableStateImpl _value, $Res Function(_$DraggableStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DraggableState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -398,7 +417,7 @@ class _$DraggableStateImpl implements _DraggableState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DraggableStateImpl &&
@@ -408,7 +427,9 @@ class _$DraggableStateImpl implements _DraggableState {
   @override
   int get hashCode => Object.hash(runtimeType, offset);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DraggableState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DraggableStateImplCopyWith<_$DraggableStateImpl> get copyWith =>
@@ -422,8 +443,11 @@ abstract class _DraggableState implements DraggableState {
 
   @override
   Offset? get offset;
+
+  /// Create a copy of DraggableState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DraggableStateImplCopyWith<_$DraggableStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
