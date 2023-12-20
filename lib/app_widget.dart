@@ -97,20 +97,20 @@ class MainAppState extends State<MainApp> {
               BlocListener<LocationBloc, LocationState>(
                 bloc: locationBloc,
                 listener: (context, state) async {
-                  if(state.status == LocationStatus.successStartRefreshLocation) {
-                    _checkLocationPermissionAndStratGetLocation();
-                  }
-                  // if (state.status ==
-                  //     LocationStatus.successStartRefreshLocation) {
-                  //   if (!state.isInit) {
-                  //     await _requestPermissionForAndroid();
-                  //     await _initForegroundTask();
-                  //   }
-                  //   await startForegroundTask(() {});
-                  // } else if (state.status ==
-                  //     LocationStatus.successStopRefreshLocation) {
-                  //   _stopForegroundTask();
+                  // if(state.status == LocationStatus.successStartRefreshLocation) {
+                  //   _checkLocationPermissionAndStratGetLocation();
                   // }
+                  if (state.status ==
+                      LocationStatus.successStartRefreshLocation) {
+                    if (!state.isInit) {
+                      await _requestPermissionForAndroid();
+                      await _initForegroundTask();
+                    }
+                    await startForegroundTask(() {});
+                  } else if (state.status ==
+                      LocationStatus.successStopRefreshLocation) {
+                    _stopForegroundTask();
+                  }
                 },
               ),
               BlocProvider<AppInfoBloc>(create: (context) => appInfoBloc),
