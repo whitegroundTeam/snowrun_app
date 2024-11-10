@@ -1,12 +1,12 @@
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
-import 'package:snowrun_app/presentation/core/common_button.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/common_scaffold.dart';
-import 'package:snowrun_app/presentation/core/common_tag.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
-import 'package:snowrun_app/presentation/core/typography/app_text_style.dart';
-import 'package:snowrun_app/presentation/home/home_page.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/appbar/common_app_bar.dart';
+import 'package:doortoout/presentation/core/common_button.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/common_scaffold.dart';
+import 'package:doortoout/presentation/core/common_tag.dart';
+import 'package:doortoout/presentation/core/toast/common_toast.dart';
+import 'package:doortoout/presentation/core/typography/app_text_style.dart';
+import 'package:doortoout/presentation/home/home_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 

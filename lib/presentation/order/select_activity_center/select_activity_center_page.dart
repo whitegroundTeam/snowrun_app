@@ -1,15 +1,15 @@
 import 'dart:ui';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/cart/cart_bloc.dart';
-import 'package:snowrun_app/application/rental_shop/rental_shop_bloc.dart';
-import 'package:snowrun_app/domain/rental_shop/model/rental_shop.dart';
-import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/common_scaffold.dart';
-import 'package:snowrun_app/presentation/core/typography/app_text_style.dart';
-import 'package:snowrun_app/presentation/order/order_page.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/cart/cart_bloc.dart';
+import 'package:doortoout/application/rental_shop/rental_shop_bloc.dart';
+import 'package:doortoout/domain/rental_shop/model/rental_shop.dart';
+import 'package:doortoout/presentation/core/appbar/common_app_bar.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/common_scaffold.dart';
+import 'package:doortoout/presentation/core/typography/app_text_style.dart';
+import 'package:doortoout/presentation/order/order_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

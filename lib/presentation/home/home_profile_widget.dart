@@ -1,12 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/auth/auth_bloc.dart';
-import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/common_network_image.dart';
-import 'package:snowrun_app/presentation/edit_profile_image_page/edit_profile_image_page.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/auth/auth_bloc.dart';
+import 'package:doortoout/application/home/refresh/home_refresh_bloc.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/common_network_image.dart';
+import 'package:doortoout/presentation/edit_profile_image_page/edit_profile_image_page.dart';
 
 class HomeProfileWidget extends StatefulWidget {
   const HomeProfileWidget({super.key});

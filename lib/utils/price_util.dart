@@ -1,6 +1,6 @@
-import 'package:snowrun_app/domain/rental/model/price.dart';
-import 'package:snowrun_app/presentation/core/constants.dart';
-import 'package:snowrun_app/utils/text_utils.dart';
+import 'package:doortoout/domain/rental/model/price.dart';
+import 'package:doortoout/presentation/core/constants.dart';
+import 'package:doortoout/utils/text_utils.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 String priceText(Price price) {

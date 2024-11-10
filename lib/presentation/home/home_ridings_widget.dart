@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/auth/auth_bloc.dart';
-import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
-import 'package:snowrun_app/application/riding/riding_list/riding_list_bloc.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/core/scroll_physics.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/home/home_riding_item_widget.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/auth/auth_bloc.dart';
+import 'package:doortoout/application/home/refresh/home_refresh_bloc.dart';
+import 'package:doortoout/application/riding/riding_list/riding_list_bloc.dart';
+import 'package:doortoout/injection.dart';
+import 'package:doortoout/presentation/core/scroll_physics.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
+import 'package:doortoout/presentation/home/home_riding_item_widget.dart';
 
 class HomeRidingsWidget extends StatefulWidget {
   const HomeRidingsWidget({super.key});

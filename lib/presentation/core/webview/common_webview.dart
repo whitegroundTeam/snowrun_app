@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:go_router/go_router.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
-import 'package:snowrun_app/presentation/core/scroll_physics.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/appbar/common_app_bar.dart';
+import 'package:doortoout/presentation/core/scroll_physics.dart';
 
 // Project imports:
 

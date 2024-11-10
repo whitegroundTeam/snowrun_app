@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/domain/auth/auth_failure.dart';
-import 'package:snowrun_app/domain/auth/i_auth_repository.dart';
-import 'package:snowrun_app/domain/auth/auth_sign_result.dart';
-import 'package:snowrun_app/domain/user/model/user.dart';
+import 'package:doortoout/domain/auth/auth_failure.dart';
+import 'package:doortoout/domain/auth/i_auth_repository.dart';
+import 'package:doortoout/domain/auth/auth_sign_result.dart';
+import 'package:doortoout/domain/user/model/user.dart';
 
 part 'auth_event.dart';
 

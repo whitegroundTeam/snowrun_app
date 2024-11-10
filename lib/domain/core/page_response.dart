@@ -1,4 +1,4 @@
-import 'package:snowrun_app/domain/core/value_objects.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
 
 class PageResponse<T> {
   ListVO<T> contents;

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/address/model/address.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
+import 'package:doortoout/domain/address/model/address.dart';
+import 'package:doortoout/domain/core/failures.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'contact.freezed.dart';

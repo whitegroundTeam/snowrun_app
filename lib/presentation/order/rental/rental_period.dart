@@ -1,9 +1,9 @@
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/rental/actor/rental_actor_bloc.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/common_dialog.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
-import 'package:snowrun_app/presentation/core/typography/app_text_style.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/rental/actor/rental_actor_bloc.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/common_dialog.dart';
+import 'package:doortoout/presentation/core/toast/common_toast.dart';
+import 'package:doortoout/presentation/core/typography/app_text_style.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

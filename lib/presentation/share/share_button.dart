@@ -2,14 +2,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/auth/auth_bloc.dart';
-import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/domain/riding/riding_room.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
-import 'package:snowrun_app/utils/links.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/auth/auth_bloc.dart';
+import 'package:doortoout/application/user/user_bloc.dart';
+import 'package:doortoout/domain/riding/riding_room.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
+import 'package:doortoout/presentation/core/toast/common_toast.dart';
+import 'package:doortoout/utils/links.dart';
 
 class ShareButton extends StatefulWidget {
   final RidingRoom? ridingRoom;
@@ -46,7 +46,7 @@ class ShareButtonState extends State<ShareButton> {
             String shareLink = getShareRidingRoomLink(ridingRoomId);
 
             final shareMessage =
-                "$userName님이 $ridingRoomName라이딩 방에 초대하셨습니다.\n\n\n아래 링크를 클릭하여 스노우런의 라이딩 방에 참여하고 함께 타보세요!\n\n<초대 링크>\n$shareLink";
+                "$userName님이 $ridingRoomName라이딩 방에 초대하셨습니다.\n\n\n아래 링크를 클릭하여 도어투아웃의 라이딩 방에 참여하고 함께 타보세요!\n\n<초대 링크>\n$shareLink";
             final result = await Share.shareWithResult(shareMessage);
 
             if (result.status == ShareResultStatus.success) {

@@ -1,7 +1,7 @@
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/common_tag.dart';
-import 'package:snowrun_app/presentation/core/typography/app_text_style.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/common_tag.dart';
+import 'package:doortoout/presentation/core/typography/app_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

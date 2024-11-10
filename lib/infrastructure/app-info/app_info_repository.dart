@@ -5,11 +5,11 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:snowrun_app/domain/app-info/app_info_failure.dart';
-import 'package:snowrun_app/domain/app-info/i_app_info_repository.dart';
-import 'package:snowrun_app/domain/app-info/model/app_info.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/infrastructure/app-info/app_info_dtos.dart';
+import 'package:doortoout/domain/app-info/app_info_failure.dart';
+import 'package:doortoout/domain/app-info/i_app_info_repository.dart';
+import 'package:doortoout/domain/app-info/model/app_info.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/infrastructure/app-info/app_info_dtos.dart';
 
 import '../../domain/app-info/model/remote_config_key.dart';
 

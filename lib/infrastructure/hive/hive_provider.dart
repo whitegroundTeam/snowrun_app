@@ -5,8 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/infrastructure/hive/hive_box_key.dart';
-import 'package:snowrun_app/infrastructure/hive/hive_test_model.dart';
+import 'package:doortoout/infrastructure/hive/hive_box_key.dart';
+import 'package:doortoout/infrastructure/hive/hive_test_model.dart';
 
 @Singleton()
 class HiveProvider {

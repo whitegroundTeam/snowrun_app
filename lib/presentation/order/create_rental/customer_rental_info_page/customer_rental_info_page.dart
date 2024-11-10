@@ -1,9 +1,9 @@
-import 'package:snowrun_app/application/core/select_button/select_button_bloc.dart';
-import 'package:snowrun_app/application/rental/actor/rental_actor_bloc.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/order/rental/rental_contact.dart';
-import 'package:snowrun_app/presentation/order/rental/rental_period.dart';
-import 'package:snowrun_app/presentation/order/rental/rental_info.dart';
+import 'package:doortoout/application/core/select_button/select_button_bloc.dart';
+import 'package:doortoout/application/rental/actor/rental_actor_bloc.dart';
+import 'package:doortoout/injection.dart';
+import 'package:doortoout/presentation/order/rental/rental_contact.dart';
+import 'package:doortoout/presentation/order/rental/rental_period.dart';
+import 'package:doortoout/presentation/order/rental/rental_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

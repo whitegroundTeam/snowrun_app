@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/place/types.dart';
+import 'package:doortoout/domain/core/failures.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/place/types.dart';
 
 
 part 'boundary_location.freezed.dart';

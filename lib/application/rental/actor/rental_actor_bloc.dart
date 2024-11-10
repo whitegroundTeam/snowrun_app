@@ -1,14 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:snowrun_app/application/default_status.dart';
-import 'package:snowrun_app/domain/body_spec/model/age.dart';
-import 'package:snowrun_app/domain/body_spec/model/body_spec.dart';
-import 'package:snowrun_app/domain/contact/model/contact.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/rental/model/rental.dart';
-import 'package:snowrun_app/domain/rental/model/rental_return_type.dart';
-import 'package:snowrun_app/domain/rental_shop_product/rental_shop_product.dart';
-import 'package:snowrun_app/domain/user/model/gender.dart';
+import 'package:doortoout/application/default_status.dart';
+import 'package:doortoout/domain/body_spec/model/age.dart';
+import 'package:doortoout/domain/body_spec/model/body_spec.dart';
+import 'package:doortoout/domain/contact/model/contact.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/rental/model/rental.dart';
+import 'package:doortoout/domain/rental/model/rental_return_type.dart';
+import 'package:doortoout/domain/rental_shop_product/rental_shop_product.dart';
+import 'package:doortoout/domain/user/model/gender.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

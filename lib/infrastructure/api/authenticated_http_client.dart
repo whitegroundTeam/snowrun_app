@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
+import 'package:doortoout/infrastructure/hive/hive_provider.dart';
 
 @LazySingleton()
 class AuthenticatedHttpClient extends http.BaseClient {

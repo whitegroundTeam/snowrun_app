@@ -2,8 +2,8 @@ import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:intl/intl.dart';
-import 'package:snowrun_app/domain/core/errors.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
+import 'package:doortoout/domain/core/errors.dart';
+import 'package:doortoout/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:uuid/uuid.dart';
 import 'package:version/version.dart';

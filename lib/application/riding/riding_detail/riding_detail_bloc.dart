@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/application/default_status.dart';
-import 'package:snowrun_app/domain/riding/i_riding_repository.dart';
-import 'package:snowrun_app/domain/riding/riding_player.dart';
-import 'package:snowrun_app/domain/riding/riding_room.dart';
+import 'package:doortoout/application/default_status.dart';
+import 'package:doortoout/domain/riding/i_riding_repository.dart';
+import 'package:doortoout/domain/riding/riding_player.dart';
+import 'package:doortoout/domain/riding/riding_room.dart';
 
 part 'riding_detail_event.dart';
 

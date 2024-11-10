@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:snowrun_app/injection.config.dart';
+import 'package:doortoout/injection.config.dart';
 
 final getIt = GetIt.instance;
 

@@ -1,11 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/core/utils.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/appbar/underline_text.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
+import 'package:doortoout/presentation/core/utils.dart';
 
 class InputInviteRidingRoomLinkBottomSheet extends StatefulWidget {
   final Function(String)? onClick;

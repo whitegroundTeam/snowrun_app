@@ -1,6 +1,6 @@
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/common_button.dart';
-import 'package:snowrun_app/presentation/core/common_buttons/button_info.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/common_button.dart';
+import 'package:doortoout/presentation/core/common_buttons/button_info.dart';
 import 'package:flutter/widgets.dart';
 
 class CommonButtons extends StatefulWidget {

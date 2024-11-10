@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:snowrun_app/domain/app-info/model/app_notice.dart';
-import 'package:snowrun_app/domain/app-info/model/app_operation_info.dart';
-import 'package:snowrun_app/domain/app-info/model/app_version.dart';
-import 'package:snowrun_app/domain/app-info/model/invite_codes.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
+import 'package:doortoout/domain/app-info/model/app_notice.dart';
+import 'package:doortoout/domain/app-info/model/app_operation_info.dart';
+import 'package:doortoout/domain/app-info/model/app_version.dart';
+import 'package:doortoout/domain/app-info/model/invite_codes.dart';
+import 'package:doortoout/domain/core/failures.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
 
 part 'app_info.freezed.dart';
 

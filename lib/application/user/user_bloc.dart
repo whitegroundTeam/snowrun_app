@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/user/i_user_repository.dart';
-import 'package:snowrun_app/domain/user/model/user.dart';
-import 'package:snowrun_app/domain/user/model/user_location.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/user/i_user_repository.dart';
+import 'package:doortoout/domain/user/model/user.dart';
+import 'package:doortoout/domain/user/model/user_location.dart';
 
 part 'user_event.dart';
 

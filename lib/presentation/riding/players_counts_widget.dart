@@ -2,10 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/domain/riding/riding_player.dart';
-import 'package:snowrun_app/presentation/core/common_network_image.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/domain/riding/riding_player.dart';
+import 'package:doortoout/presentation/core/common_network_image.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
 
 class PlayersCountsWidget extends StatefulWidget {
   final List<RidingPlayer> players;

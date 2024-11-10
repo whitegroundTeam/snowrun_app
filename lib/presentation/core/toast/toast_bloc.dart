@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/application/default_status.dart';
+import 'package:doortoout/application/default_status.dart';
 
 part 'toast_event.dart';
 

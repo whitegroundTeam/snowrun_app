@@ -2,20 +2,20 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/auth/auth_bloc.dart';
-import 'package:snowrun_app/application/auth/sign_up_form/sign_up_form_bloc.dart';
-import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
-import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/core/common_button.dart';
-import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
-import 'package:snowrun_app/presentation/core/common_loading.dart';
-import 'package:snowrun_app/presentation/core/scroll_physics.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
-import 'package:snowrun_app/presentation/home/home_page.dart';
-import 'package:snowrun_app/presentation/permission/request_notification_permission_page.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/auth/auth_bloc.dart';
+import 'package:doortoout/application/auth/sign_up_form/sign_up_form_bloc.dart';
+import 'package:doortoout/application/permission/check_permission/check_permission_bloc.dart';
+import 'package:doortoout/application/user/user_bloc.dart';
+import 'package:doortoout/infrastructure/hive/hive_provider.dart';
+import 'package:doortoout/injection.dart';
+import 'package:doortoout/presentation/core/common_button.dart';
+import 'package:doortoout/presentation/core/appbar/common_app_bar.dart';
+import 'package:doortoout/presentation/core/common_loading.dart';
+import 'package:doortoout/presentation/core/scroll_physics.dart';
+import 'package:doortoout/presentation/core/toast/common_toast.dart';
+import 'package:doortoout/presentation/home/home_page.dart';
+import 'package:doortoout/presentation/permission/request_notification_permission_page.dart';
 
 class EmailSignUpPage extends StatefulWidget {
   const EmailSignUpPage({super.key});
@@ -305,7 +305,7 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                         );
                                   }
                                 },
-                                text: "스노우런 시작하기!",
+                                text: "도어투아웃 시작하기!",
                               )
                             ],
                           ),

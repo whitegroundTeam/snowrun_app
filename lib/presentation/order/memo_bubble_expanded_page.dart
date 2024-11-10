@@ -1,12 +1,12 @@
 import 'dart:ffi';
 
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/cart/cart_bloc.dart';
-import 'package:snowrun_app/presentation/core/common_button.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/scroll_physics.dart';
-import 'package:snowrun_app/presentation/core/textfield/app_text_field_style.dart';
-import 'package:snowrun_app/presentation/core/typography/app_text_style.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/cart/cart_bloc.dart';
+import 'package:doortoout/presentation/core/common_button.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/scroll_physics.dart';
+import 'package:doortoout/presentation/core/textfield/app_text_field_style.dart';
+import 'package:doortoout/presentation/core/typography/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

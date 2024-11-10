@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/domain/user/i_user_repository.dart';
-import 'package:snowrun_app/domain/user/model/snow_ball_profile_image.dart';
+import 'package:doortoout/application/user/user_bloc.dart';
+import 'package:doortoout/domain/user/i_user_repository.dart';
+import 'package:doortoout/domain/user/model/snow_ball_profile_image.dart';
 
 part 'profile_event.dart';
 

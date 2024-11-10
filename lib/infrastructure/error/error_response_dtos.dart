@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/error/app_error.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/error/app_error.dart';
 
 part 'error_response_dtos.freezed.dart';
 

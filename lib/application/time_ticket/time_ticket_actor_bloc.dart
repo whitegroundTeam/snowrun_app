@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:snowrun_app/application/default_status.dart';
-import 'package:snowrun_app/domain/activity_center/model/date_time_tickets.dart';
-import 'package:snowrun_app/domain/activity_center/model/time_ticket.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/rental/model/rental.dart';
-import 'package:snowrun_app/domain/rental_shop/i_rental_shop_repository.dart';
+import 'package:doortoout/application/default_status.dart';
+import 'package:doortoout/domain/activity_center/model/date_time_tickets.dart';
+import 'package:doortoout/domain/activity_center/model/time_ticket.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/rental/model/rental.dart';
+import 'package:doortoout/domain/rental_shop/i_rental_shop_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

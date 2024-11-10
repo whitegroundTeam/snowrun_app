@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/domain/place/i_place_repository.dart';
-import 'package:snowrun_app/domain/place/model/boundary_status.dart';
-import 'package:snowrun_app/domain/place/model/boundary_type.dart';
-import 'package:snowrun_app/domain/place/model/place.dart';
-import 'package:snowrun_app/domain/place/types.dart';
+import 'package:doortoout/domain/place/i_place_repository.dart';
+import 'package:doortoout/domain/place/model/boundary_status.dart';
+import 'package:doortoout/domain/place/model/boundary_type.dart';
+import 'package:doortoout/domain/place/model/place.dart';
+import 'package:doortoout/domain/place/types.dart';
 
 
 part 'place_event.dart';

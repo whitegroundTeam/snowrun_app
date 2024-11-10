@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/domain/auth/auth_failure.dart';
-import 'package:snowrun_app/domain/auth/auth_sign_result.dart';
-import 'package:snowrun_app/domain/auth/i_auth_repository.dart';
-import 'package:snowrun_app/domain/auth/value_objects.dart';
+import 'package:doortoout/domain/auth/auth_failure.dart';
+import 'package:doortoout/domain/auth/auth_sign_result.dart';
+import 'package:doortoout/domain/auth/i_auth_repository.dart';
+import 'package:doortoout/domain/auth/value_objects.dart';
 
 part 'sign_in_form_event.dart';
 

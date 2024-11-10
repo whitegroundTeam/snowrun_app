@@ -1,11 +1,11 @@
 // Package imports:
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/app-info/model/app_notice_button_info.dart';
+import 'package:doortoout/domain/app-info/model/app_notice_button_info.dart';
 
 // Project imports:
-import 'package:snowrun_app/domain/core/failures.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/core/value_validators.dart';
+import 'package:doortoout/domain/core/failures.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/core/value_validators.dart';
 
 class EmailAddress extends ValueObject<String> {
   @override

@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/place/model/boundary_status.dart';
-import 'package:snowrun_app/domain/place/model/boundary_type.dart';
-import 'package:snowrun_app/domain/place/model/place.dart';
-import 'package:snowrun_app/domain/place/place_failure.dart';
+import 'package:doortoout/domain/place/model/boundary_status.dart';
+import 'package:doortoout/domain/place/model/boundary_type.dart';
+import 'package:doortoout/domain/place/model/place.dart';
+import 'package:doortoout/domain/place/place_failure.dart';
 
 
 abstract class IPlaceRepository {

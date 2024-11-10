@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/body_spec/model/range.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
+import 'package:doortoout/domain/body_spec/model/range.dart';
+import 'package:doortoout/domain/core/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'height.freezed.dart';

@@ -6,10 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
-import 'package:snowrun_app/application/location/location_bloc.dart';
-import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/domain/user/model/user.dart';
-import 'package:snowrun_app/injection.dart';
+import 'package:doortoout/application/location/location_bloc.dart';
+import 'package:doortoout/application/user/user_bloc.dart';
+import 'package:doortoout/domain/user/model/user.dart';
+import 'package:doortoout/injection.dart';
 
 class RecordingPage extends StatefulWidget {
   const RecordingPage({super.key});
@@ -97,23 +97,23 @@ class RecordingPageState extends State<RecordingPage> {
                     CupertinoIcons.back,
                     color: Colors.black,
                   ))),
-          MapWidget(
-            key: const ValueKey('mapWidget'),
-            resourceOptions: ResourceOptions(
-                accessToken:
-                    dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? ""),
-            onMapCreated: _onMapCreated,
-            styleUri: "mapbox://styles/mapbox/outdoors-v12",
-            cameraOptions: CameraOptions(
-                center: Point(
-                    coordinates: Position(
-                  // 126.6338237,
-                  // 37.4064278,
-                  128.6803521,
-                  37.6390034,
-                )).toJson(),
-                zoom: 14.0),
-          ),
+          // MapWidget(
+          //   key: const ValueKey('mapWidget'),
+          //   resourceOptions: ResourceOptions(
+          //       accessToken:
+          //           dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? ""),
+          //   onMapCreated: _onMapCreated,
+          //   styleUri: "mapbox://styles/mapbox/outdoors-v12",
+          //   cameraOptions: CameraOptions(
+          //       center: Point(
+          //           coordinates: Position(
+          //         // 126.6338237,
+          //         // 37.4064278,
+          //         128.6803521,
+          //         37.6390034,
+          //       )).toJson(),
+          //       zoom: 14.0),
+          // ),
           Positioned(
               left: 20.0,
               right: 20.0,
@@ -179,45 +179,45 @@ class RecordingPageState extends State<RecordingPage> {
   }
 
   updateMarkers(List<User> users) async {
-    if (!isCreatedMap) {
-      return;
-    }
-    debugPrint("UPDATEMARKERS :: ${users.length}");
-    pointAnnotationManager?.deleteAll();
-    for (var user in users) {
-      String avatarPath = "assets/webp/snowrun_icon.webp";
-      // if (user.nickname.getOrCrash() == "줄리") {
-      //   avatarPath = "assets/webp/julie_avatar.png";
-      // } else if (user.nickname.getOrCrash() == "댄") {
-      //   avatarPath = "assets/webp/dan_avatar.png";
-      // } else if (user.nickname.getOrCrash() == "케틀린") {
-      //   avatarPath = "assets/webp/kathlyn_avatar.png";
-      // } else if (user.nickname.getOrCrash() == "루만") {
-      //   avatarPath = "assets/webp/luman_avatar.png";
-      // }
-
-      final ByteData bytes = await rootBundle.load(avatarPath);
-      final Uint8List avatarData = bytes.buffer.asUint8List();
-      double? lat = user.location?.lat.getOrCrash();
-      double? lng = user.location?.lng.getOrCrash();
-
-      if (lat != null && lng != null) {
-        pointAnnotationManager
-            ?.create(PointAnnotationOptions(
-                geometry: Point(coordinates: Position(lng, lat)).toJson(),
-                textField: user.nickname.getOrCrash(),
-                textSize: 24,
-                textHaloColor: 0xffffaacc,
-                // textAnchor: TextAnchor.BOTTOM,
-                textColor: 0xff00ddff,
-                textHaloWidth: 30,
-                textOffset: [0.0, -2.0],
-                iconSize: 1.0,
-                iconOffset: [0.0, -5.0],
-                symbolSortKey: 10,
-                image: avatarData))
-            .then((value) => pointAnnotation = value);
-      }
-    }
+    // if (!isCreatedMap) {
+    //   return;
+    // }
+    // debugPrint("UPDATEMARKERS :: ${users.length}");
+    // pointAnnotationManager?.deleteAll();
+    // for (var user in users) {
+    //   String avatarPath = "assets/webp/snowrun_icon.webp";
+    //   // if (user.nickname.getOrCrash() == "줄리") {
+    //   //   avatarPath = "assets/webp/julie_avatar.png";
+    //   // } else if (user.nickname.getOrCrash() == "댄") {
+    //   //   avatarPath = "assets/webp/dan_avatar.png";
+    //   // } else if (user.nickname.getOrCrash() == "케틀린") {
+    //   //   avatarPath = "assets/webp/kathlyn_avatar.png";
+    //   // } else if (user.nickname.getOrCrash() == "루만") {
+    //   //   avatarPath = "assets/webp/luman_avatar.png";
+    //   // }
+    //
+    //   final ByteData bytes = await rootBundle.load(avatarPath);
+    //   final Uint8List avatarData = bytes.buffer.asUint8List();
+    //   double? lat = user.location?.lat.getOrCrash();
+    //   double? lng = user.location?.lng.getOrCrash();
+    //
+    //   if (lat != null && lng != null) {
+    //     pointAnnotationManager
+    //         ?.create(PointAnnotationOptions(
+    //             geometry: Point(coordinates: Position(lng, lat)).toJson(),
+    //             textField: user.nickname.getOrCrash(),
+    //             textSize: 24,
+    //             textHaloColor: 0xffffaacc,
+    //             // textAnchor: TextAnchor.BOTTOM,
+    //             textColor: 0xff00ddff,
+    //             textHaloWidth: 30,
+    //             textOffset: [0.0, -2.0],
+    //             iconSize: 1.0,
+    //             iconOffset: [0.0, -5.0],
+    //             symbolSortKey: 10,
+    //             image: avatarData))
+    //         .then((value) => pointAnnotation = value);
+    //   }
+    // }
   }
 }

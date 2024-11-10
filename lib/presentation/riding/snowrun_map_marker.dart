@@ -2,8 +2,8 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/common_network_image.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/common_network_image.dart';
 
 import 'package:flutter/widgets.dart';
 

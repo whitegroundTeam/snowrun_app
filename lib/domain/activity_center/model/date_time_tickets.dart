@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/activity_center/model/time_ticket.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
+import 'package:doortoout/domain/activity_center/model/time_ticket.dart';
+import 'package:doortoout/domain/core/failures.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'date_time_tickets.freezed.dart';

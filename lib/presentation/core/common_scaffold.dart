@@ -1,10 +1,11 @@
+import 'package:doortoout/presentation/core/toast/common_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/draggable/draggable_bloc.dart';
-import 'package:snowrun_app/application/location/location_bloc.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/draggable/draggable_bloc.dart';
+import 'package:doortoout/application/location/location_bloc.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
 
 class CommonScaffold extends StatefulWidget {
   final Widget body;
@@ -91,16 +92,17 @@ class CommonScaffoldState extends State<CommonScaffold> {
       builder: (context, state) {
         return CommonDetector(
           onTap: () {
-            if (context.read<LocationBloc>().state.isCollectingLocationInfo ==
-                true) {
-              context
-                  .read<LocationBloc>()
-                  .add(const LocationEvent.stopRefreshLocation());
-            } else {
-              context
-                  .read<LocationBloc>()
-                  .add(const LocationEvent.startRefreshLocation());
-            }
+            showToast(context, "서비스 준비 중입니다.");
+            // if (context.read<LocationBloc>().state.isCollectingLocationInfo ==
+            //     true) {
+            //   context
+            //       .read<LocationBloc>()
+            //       .add(const LocationEvent.stopRefreshLocation());
+            // } else {
+            //   context
+            //       .read<LocationBloc>()
+            //       .add(const LocationEvent.startRefreshLocation());
+            // }
           },
           child: Container(
             width: width,

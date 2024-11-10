@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/infrastructure/api/authenticated_http_client.dart';
-import 'package:snowrun_app/infrastructure/auth/auth_dtos.dart';
-import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
-import 'package:snowrun_app/infrastructure/place/place_dtos.dart';
-import 'package:snowrun_app/infrastructure/riding/riding_dtos.dart';
-import 'package:snowrun_app/infrastructure/user/user_dtos.dart';
+import 'package:doortoout/infrastructure/api/authenticated_http_client.dart';
+import 'package:doortoout/infrastructure/auth/auth_dtos.dart';
+import 'package:doortoout/infrastructure/error/error_response_dtos.dart';
+import 'package:doortoout/infrastructure/place/place_dtos.dart';
+import 'package:doortoout/infrastructure/riding/riding_dtos.dart';
+import 'package:doortoout/infrastructure/user/user_dtos.dart';
 
 enum HttpMethod {
   get,

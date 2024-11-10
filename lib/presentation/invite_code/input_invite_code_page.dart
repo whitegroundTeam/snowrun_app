@@ -5,16 +5,16 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
-import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
-import 'package:snowrun_app/presentation/core/common_button.dart';
-import 'package:snowrun_app/presentation/core/common_loading.dart';
-import 'package:snowrun_app/presentation/core/formatters.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/home/home_page.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/app_info/app_info_bloc.dart';
+import 'package:doortoout/infrastructure/hive/hive_provider.dart';
+import 'package:doortoout/injection.dart';
+import 'package:doortoout/presentation/auth/sign_in_page.dart';
+import 'package:doortoout/presentation/core/common_button.dart';
+import 'package:doortoout/presentation/core/common_loading.dart';
+import 'package:doortoout/presentation/core/formatters.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
+import 'package:doortoout/presentation/home/home_page.dart';
 
 class InputInviteCodePage extends StatefulWidget {
   const InputInviteCodePage({super.key});

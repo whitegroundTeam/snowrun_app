@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:snowrun_app/domain/auth/auth_method.dart';
+import 'package:doortoout/domain/auth/auth_method.dart';
 
 part 'auth_sign_result.freezed.dart';
 

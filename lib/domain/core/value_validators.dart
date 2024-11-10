@@ -1,4 +1,4 @@
-import 'package:snowrun_app/domain/core/failures.dart';
+import 'package:doortoout/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
 
 Either<ValueFailure<String>, String> validateMaxStringLength(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:snowrun_app/app_style.dart';
+import 'package:doortoout/app_style.dart';
 
 class LoadingDialog {
   late BuildContext _context;

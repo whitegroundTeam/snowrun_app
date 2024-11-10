@@ -2,12 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/application/default_status.dart';
-import 'package:snowrun_app/domain/app-info/i_app_info_repository.dart';
-import 'package:snowrun_app/domain/app-info/model/app_notice.dart';
-import 'package:snowrun_app/domain/app-info/model/app_operation_info.dart';
-import 'package:snowrun_app/domain/app-info/model/app_version.dart';
-import 'package:snowrun_app/domain/app-info/model/invite_codes.dart';
+import 'package:doortoout/application/default_status.dart';
+import 'package:doortoout/domain/app-info/i_app_info_repository.dart';
+import 'package:doortoout/domain/app-info/model/app_notice.dart';
+import 'package:doortoout/domain/app-info/model/app_operation_info.dart';
+import 'package:doortoout/domain/app-info/model/app_version.dart';
+import 'package:doortoout/domain/app-info/model/invite_codes.dart';
 
 part 'app_info_event.dart';
 

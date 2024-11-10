@@ -3,15 +3,15 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/domain/place/i_place_repository.dart';
-import 'package:snowrun_app/domain/place/model/boundary_status.dart';
-import 'package:snowrun_app/domain/place/model/boundary_type.dart';
-import 'package:snowrun_app/domain/place/model/place.dart';
-import 'package:snowrun_app/domain/place/place_failure.dart';
-import 'package:snowrun_app/domain/place/types.dart';
-import 'package:snowrun_app/infrastructure/api/core_api.dart';
-import 'package:snowrun_app/infrastructure/error/error_response_dtos.dart';
-import 'package:snowrun_app/infrastructure/place/place_dtos.dart';
+import 'package:doortoout/domain/place/i_place_repository.dart';
+import 'package:doortoout/domain/place/model/boundary_status.dart';
+import 'package:doortoout/domain/place/model/boundary_type.dart';
+import 'package:doortoout/domain/place/model/place.dart';
+import 'package:doortoout/domain/place/place_failure.dart';
+import 'package:doortoout/domain/place/types.dart';
+import 'package:doortoout/infrastructure/api/core_api.dart';
+import 'package:doortoout/infrastructure/error/error_response_dtos.dart';
+import 'package:doortoout/infrastructure/place/place_dtos.dart';
 
 
 

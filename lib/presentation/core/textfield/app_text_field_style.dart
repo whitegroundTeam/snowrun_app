@@ -1,5 +1,5 @@
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/typography/app_text_style.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/typography/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class AppTextFieldStyle {

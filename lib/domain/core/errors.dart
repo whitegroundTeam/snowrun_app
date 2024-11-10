@@ -1,7 +1,7 @@
 // Project imports:
 
 
-import 'package:snowrun_app/domain/core/failures.dart';
+import 'package:doortoout/domain/core/failures.dart';
 
 class NotAuthenticatedError extends Error {
 

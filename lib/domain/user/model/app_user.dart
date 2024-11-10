@@ -2,7 +2,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:snowrun_app/domain/core/value_objects.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
 
 part 'app_user.freezed.dart';
 

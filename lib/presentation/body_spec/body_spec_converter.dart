@@ -1,8 +1,8 @@
-import 'package:snowrun_app/domain/body_spec/model/foot_size.dart';
-import 'package:snowrun_app/domain/body_spec/model/height.dart';
-import 'package:snowrun_app/domain/body_spec/model/weight.dart';
-import 'package:snowrun_app/presentation/core/constants.dart';
-import 'package:snowrun_app/utils/text_utils.dart';
+import 'package:doortoout/domain/body_spec/model/foot_size.dart';
+import 'package:doortoout/domain/body_spec/model/height.dart';
+import 'package:doortoout/domain/body_spec/model/weight.dart';
+import 'package:doortoout/presentation/core/constants.dart';
+import 'package:doortoout/utils/text_utils.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:units_converter/units_converter.dart';
 

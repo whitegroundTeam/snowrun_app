@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:snowrun_app/app_style.dart';
+import 'package:doortoout/app_style.dart';
 
 class CommonLoading extends StatefulWidget {
   const CommonLoading({super.key});

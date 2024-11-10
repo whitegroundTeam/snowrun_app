@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/permission/check_permission/check_permission_bloc.dart';
-import 'package:snowrun_app/application/permission/permission_actor/permission_actor_bloc.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/core/common_button.dart';
-import 'package:snowrun_app/presentation/core/constants.dart';
-import 'package:snowrun_app/presentation/home/home_page.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/permission/check_permission/check_permission_bloc.dart';
+import 'package:doortoout/application/permission/permission_actor/permission_actor_bloc.dart';
+import 'package:doortoout/injection.dart';
+import 'package:doortoout/presentation/core/common_button.dart';
+import 'package:doortoout/presentation/core/constants.dart';
+import 'package:doortoout/presentation/home/home_page.dart';
 
 class RequestLocationPermissionPage extends StatelessWidget {
   const RequestLocationPermissionPage({

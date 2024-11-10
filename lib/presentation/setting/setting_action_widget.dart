@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
 
 class SettingActionWidget extends StatefulWidget {
   final String title;

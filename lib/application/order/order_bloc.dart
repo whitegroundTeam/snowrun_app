@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:snowrun_app/application/default_status.dart';
-import 'package:snowrun_app/domain/rental/model/rental.dart';
+import 'package:doortoout/application/default_status.dart';
+import 'package:doortoout/domain/rental/model/rental.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

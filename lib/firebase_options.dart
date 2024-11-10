@@ -63,7 +63,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '84646097442',
     projectId: 'snowrun-b75bb',
     storageBucket: 'snowrun-b75bb.appspot.com',
-    iosClientId: '84646097442-jqjkdlbhjgpbbim61ajsomo1f6fva8m6.apps.googleusercontent.com',
+    androidClientId: '84646097442-357ct1q2aphl87co4bmpu128fpdj9n9i.apps.googleusercontent.com',
+    iosClientId: '84646097442-d23ahrrs3ui6a3ohevt5nbriurco4eg5.apps.googleusercontent.com',
     iosBundleId: 'app.whiteground.snowrun',
   );
+
 }

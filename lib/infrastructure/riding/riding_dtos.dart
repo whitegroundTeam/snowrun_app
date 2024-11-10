@@ -1,10 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/riding/riding_player.dart';
-import 'package:snowrun_app/domain/riding/riding_room.dart';
-import 'package:snowrun_app/domain/user/model/user_location.dart';
-import 'package:snowrun_app/infrastructure/auth/firebase_user_mapper.dart';
-import 'package:snowrun_app/infrastructure/user/user_dtos.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/riding/riding_player.dart';
+import 'package:doortoout/domain/riding/riding_room.dart';
+import 'package:doortoout/domain/user/model/user_location.dart';
+import 'package:doortoout/infrastructure/user/user_dtos.dart';
 
 part 'riding_dtos.freezed.dart';
 

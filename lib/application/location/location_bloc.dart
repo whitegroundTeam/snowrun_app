@@ -2,9 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/location/i_location_repository.dart';
-import 'package:snowrun_app/domain/user/model/user_location.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/location/i_location_repository.dart';
+import 'package:doortoout/domain/user/model/user_location.dart';
 
 part 'location_event.dart';
 

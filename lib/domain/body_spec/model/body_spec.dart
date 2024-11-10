@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/body_spec/model/foot_size.dart';
-import 'package:snowrun_app/domain/body_spec/model/height.dart';
-import 'package:snowrun_app/domain/body_spec/model/weight.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
+import 'package:doortoout/domain/body_spec/model/foot_size.dart';
+import 'package:doortoout/domain/body_spec/model/height.dart';
+import 'package:doortoout/domain/body_spec/model/weight.dart';
+import 'package:doortoout/domain/core/failures.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'body_spec.freezed.dart';

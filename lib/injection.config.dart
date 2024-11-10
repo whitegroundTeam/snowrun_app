@@ -91,42 +91,28 @@ _i174.GetIt $initGetIt(
   gh.lazySingleton<_i59.FirebaseAuth>(() => injectableModule.firebaseAuth);
   gh.lazySingleton<_i627.FirebaseRemoteConfig>(
       () => injectableModule.remoteConfig);
+  gh.factory<_i851.MapMarkerClickListener>(
+      () => _i851.MapMarkerClickListener(gh<_i346.RidingControllerBloc>()));
+  gh.factory<_i58.CheckPermissionBloc>(
+      () => _i58.CheckPermissionBloc(gh<_i840.HiveProvider>()));
   gh.lazySingleton<_i194.IAppInfoRepository>(
       () => _i525.AppInfoRepository(gh<_i627.FirebaseRemoteConfig>()));
   gh.factory<_i352.AppInfoBloc>(
       () => _i352.AppInfoBloc(gh<_i194.IAppInfoRepository>()));
-  gh.factory<_i58.CheckPermissionBloc>(
-      () => _i58.CheckPermissionBloc(gh<_i840.HiveProvider>()));
   gh.lazySingleton<_i217.AuthenticatedHttpClient>(() =>
       _i217.AuthenticatedHttpClient(hiveProvider: gh<_i840.HiveProvider>()));
-  gh.factory<_i851.MapMarkerClickListener>(
-      () => _i851.MapMarkerClickListener(gh<_i346.RidingControllerBloc>()));
   gh.singleton<_i998.CoreApi>(
       () => _i998.CoreApi(client: gh<_i217.AuthenticatedHttpClient>()));
-  gh.lazySingleton<_i1023.IAuthRepository>(() => _i886.AuthRepository(
-        gh<_i59.FirebaseAuth>(),
-        gh<_i116.GoogleSignIn>(),
-        gh<_i998.CoreApi>(),
-        gh<_i840.HiveProvider>(),
-      ));
-  gh.lazySingleton<_i474.IPlaceRepository>(
-      () => _i620.PlaceRepository(gh<_i998.CoreApi>()));
   gh.lazySingleton<_i609.IRidingRepository>(
       () => _i794.RidingRepository(gh<_i998.CoreApi>()));
   gh.lazySingleton<_i7.IRentalShopRepository>(
       () => _i903.RentalShopRepository(gh<_i998.CoreApi>()));
+  gh.lazySingleton<_i474.IPlaceRepository>(
+      () => _i620.PlaceRepository(gh<_i998.CoreApi>()));
   gh.lazySingleton<_i602.IUserRepository>(
       () => _i431.UserRepository(gh<_i998.CoreApi>()));
-  gh.factory<_i438.AuthBloc>(
-      () => _i438.AuthBloc(gh<_i1023.IAuthRepository>()));
-  gh.factory<_i966.SignInFormBloc>(
-      () => _i966.SignInFormBloc(gh<_i1023.IAuthRepository>()));
-  gh.factory<_i631.SignUpFormBloc>(
-      () => _i631.SignUpFormBloc(gh<_i1023.IAuthRepository>()));
   gh.lazySingleton<_i380.ILocationRepository>(
       () => _i615.LocationRepository(gh<_i998.CoreApi>()));
-  gh.factory<_i988.LocationBloc>(
-      () => _i988.LocationBloc(gh<_i380.ILocationRepository>()));
   gh.factory<_i205.RidingListBloc>(
       () => _i205.RidingListBloc(gh<_i609.IRidingRepository>()));
   gh.factory<_i721.RidingDetailBloc>(
@@ -135,15 +121,29 @@ _i174.GetIt $initGetIt(
       () => _i901.RidingActorBloc(gh<_i609.IRidingRepository>()));
   gh.factory<_i671.RidingFormBloc>(
       () => _i671.RidingFormBloc(gh<_i609.IRidingRepository>()));
+  gh.factory<_i111.UserBloc>(() => _i111.UserBloc(gh<_i602.IUserRepository>()));
+  gh.factory<_i11.ProfileBloc>(
+      () => _i11.ProfileBloc(gh<_i602.IUserRepository>()));
+  gh.factory<_i988.LocationBloc>(
+      () => _i988.LocationBloc(gh<_i380.ILocationRepository>()));
+  gh.factory<_i945.PlaceBloc>(
+      () => _i945.PlaceBloc(gh<_i474.IPlaceRepository>()));
   gh.factory<_i469.TimeTicketActorBloc>(
       () => _i469.TimeTicketActorBloc(gh<_i7.IRentalShopRepository>()));
   gh.factory<_i119.RentalShopBloc>(
       () => _i119.RentalShopBloc(gh<_i7.IRentalShopRepository>()));
-  gh.factory<_i945.PlaceBloc>(
-      () => _i945.PlaceBloc(gh<_i474.IPlaceRepository>()));
-  gh.factory<_i111.UserBloc>(() => _i111.UserBloc(gh<_i602.IUserRepository>()));
-  gh.factory<_i11.ProfileBloc>(
-      () => _i11.ProfileBloc(gh<_i602.IUserRepository>()));
+  gh.lazySingleton<_i1023.IAuthRepository>(() => _i886.AuthRepository(
+        gh<_i59.FirebaseAuth>(),
+        gh<_i116.GoogleSignIn>(),
+        gh<_i998.CoreApi>(),
+        gh<_i840.HiveProvider>(),
+      ));
+  gh.factory<_i438.AuthBloc>(
+      () => _i438.AuthBloc(gh<_i1023.IAuthRepository>()));
+  gh.factory<_i966.SignInFormBloc>(
+      () => _i966.SignInFormBloc(gh<_i1023.IAuthRepository>()));
+  gh.factory<_i631.SignUpFormBloc>(
+      () => _i631.SignUpFormBloc(gh<_i1023.IAuthRepository>()));
   return getIt;
 }
 

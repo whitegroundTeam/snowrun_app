@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:snowrun_app/app_style.dart';
+import 'package:doortoout/app_style.dart';
 
 class LabelText extends StatefulWidget {
   final String title;

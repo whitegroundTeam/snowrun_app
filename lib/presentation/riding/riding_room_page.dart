@@ -9,23 +9,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart' as mapbox;
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/default_status.dart';
-import 'package:snowrun_app/application/riding/riding_controller/riding_controller_bloc.dart';
-import 'package:snowrun_app/application/riding/riding_detail/riding_detail_bloc.dart';
-import 'package:snowrun_app/application/user/user_bloc.dart';
-import 'package:snowrun_app/domain/riding/riding_player.dart';
-import 'package:snowrun_app/domain/riding/riding_room.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/common_loading.dart';
-import 'package:snowrun_app/presentation/core/common_network_image.dart';
-import 'package:snowrun_app/presentation/core/common_scaffold.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/riding/listener/map_marker_click_listener.dart';
-import 'package:snowrun_app/presentation/riding/players_counts_widget.dart';
-import 'package:snowrun_app/presentation/riding/riding_dashboard_page.dart';
-import 'package:snowrun_app/presentation/share/share_button.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/default_status.dart';
+import 'package:doortoout/application/riding/riding_controller/riding_controller_bloc.dart';
+import 'package:doortoout/application/riding/riding_detail/riding_detail_bloc.dart';
+import 'package:doortoout/application/user/user_bloc.dart';
+import 'package:doortoout/domain/riding/riding_player.dart';
+import 'package:doortoout/domain/riding/riding_room.dart';
+import 'package:doortoout/injection.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/common_loading.dart';
+import 'package:doortoout/presentation/core/common_network_image.dart';
+import 'package:doortoout/presentation/core/common_scaffold.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
+import 'package:doortoout/presentation/riding/listener/map_marker_click_listener.dart';
+import 'package:doortoout/presentation/riding/players_counts_widget.dart';
+import 'package:doortoout/presentation/riding/riding_dashboard_page.dart';
+import 'package:doortoout/presentation/share/share_button.dart';
 
 class RidingRoomPage extends StatefulWidget {
   final int ridingRoomId;
@@ -154,39 +154,39 @@ class RidingRoomPageState extends State<RidingRoomPage> {
             String ridingRoomName = ridingRoom?.name.getOrCrash() ?? "";
             return Stack(
               children: [
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  // bottom: bottomAreaHeight + mapViewBottomPadding,
-                  bottom: MediaQuery
-                      .sizeOf(context)
-                      .height * 0.1 +
-                      mapViewBottomPadding,
-                  child: mapbox.MapWidget(
-                    key: const ValueKey('mapWidget'),
-                    resourceOptions: mapbox.ResourceOptions(
-                      accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? "",
-                    ),
-                    onMapCreated: _onMapCreated,
-                    styleUri: "mapbox://styles/mapbox/outdoors-v12",
-                    onCameraChangeListener: _onCameraChangeListener,
-                    onMapIdleListener: _onMapIdleListener,
-                    onMapLoadedListener: _onMapLoadedListener,
-                    cameraOptions: mapbox.CameraOptions(
-                      anchor: mapbox.ScreenCoordinate(x: 0, y: 0),
-                      zoom: defaultZoom,
-                      center: mapbox.Point(
-                        coordinates: mapbox.Position(
-                          selectedRidingPlayer?.location?.lng.getOrCrash() ??
-                              128.6803521,
-                          selectedRidingPlayer?.location?.lat.getOrCrash() ??
-                              37.6390034,
-                        ),
-                      ).toJson(),
-                    ),
-                  ),
-                ),
+                // Positioned(
+                //   top: 0,
+                //   left: 0,
+                //   right: 0,
+                //   // bottom: bottomAreaHeight + mapViewBottomPadding,
+                //   bottom: MediaQuery
+                //       .sizeOf(context)
+                //       .height * 0.1 +
+                //       mapViewBottomPadding,
+                //   child: mapbox.MapWidget(
+                //     key: const ValueKey('mapWidget'),
+                //     resourceOptions: mapbox.ResourceOptions(
+                //       accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? "",
+                //     ),
+                //     onMapCreated: _onMapCreated,
+                //     styleUri: "mapbox://styles/mapbox/outdoors-v12",
+                //     onCameraChangeListener: _onCameraChangeListener,
+                //     onMapIdleListener: _onMapIdleListener,
+                //     onMapLoadedListener: _onMapLoadedListener,
+                //     cameraOptions: mapbox.CameraOptions(
+                //       anchor: mapbox.ScreenCoordinate(x: 0, y: 0),
+                //       zoom: defaultZoom,
+                //       center: mapbox.Point(
+                //         coordinates: mapbox.Position(
+                //           selectedRidingPlayer?.location?.lng.getOrCrash() ??
+                //               128.6803521,
+                //           selectedRidingPlayer?.location?.lat.getOrCrash() ??
+                //               37.6390034,
+                //         ),
+                //       ).toJson(),
+                //     ),
+                //   ),
+                // ),
 
                 // const Positioned(
                 //   right: 8,
@@ -591,16 +591,16 @@ class RidingRoomPageState extends State<RidingRoomPage> {
   }
 
   _onMapLoadedListener(mapbox.MapLoadedEventData data) {
-    print("MAPMAP :: MapLoadedEventData: begin: ${data.begin}, end: ${data.end}");
+    // print("MAPMAP :: MapLoadedEventData: begin: ${data.begin}, end: ${data.end}");
   }
 
   _onCameraChangeListener(mapbox.CameraChangedEventData data) {
     _hideLoading();
-    print("MAPMAP :: CameraChangedEventData: begin: ${data.begin}, end: ${data.end}");
+    // print("MAPMAP :: CameraChangedEventData: begin: ${data.begin}, end: ${data.end}");
   }
 
   _onMapIdleListener(mapbox.MapIdleEventData data) {
-    print("MAPMAP :: MapIdleEventData: begin: ${data.begin}, end: ${data.end}");
+    // print("MAPMAP :: MapIdleEventData: begin: ${data.begin}, end: ${data.end}");
   }
 
   updateMarkers(List<RidingPlayer> ridingPlayers) async {
@@ -617,18 +617,18 @@ class RidingRoomPageState extends State<RidingRoomPage> {
       double? lng = ridingPlayer.location?.lng.getOrCrash();
 
       if (lat != null && lng != null) {
-        pointAnnotationManager?.create(mapbox.PointAnnotationOptions(
-            geometry:
-            mapbox.Point(coordinates: mapbox.Position(lng, lat)).toJson(),
-            textField: ridingPlayer.nickname.getOrCrash(),
-            textSize: 14,
-            textColor: 0xff000000,
-            textHaloWidth: 30,
-            textOffset: [0.0, -1.5],
-            iconSize: isIos ? 0.05 : 0.1,
-            iconOffset: [0.0, -5.0],
-            symbolSortKey: ridingPlayer.id.getOrCrash().toDouble(),
-            image: avatarData));
+        // pointAnnotationManager?.create(mapbox.PointAnnotationOptions(
+        //     geometry:
+        //     mapbox.Point(coordinates: mapbox.Position(lng, lat)).toJson(),
+        //     textField: ridingPlayer.nickname.getOrCrash(),
+        //     textSize: 14,
+        //     textColor: 0xff000000,
+        //     textHaloWidth: 30,
+        //     textOffset: [0.0, -1.5],
+        //     iconSize: isIos ? 0.05 : 0.1,
+        //     iconOffset: [0.0, -5.0],
+        //     symbolSortKey: ridingPlayer.id.getOrCrash().toDouble(),
+        //     image: avatarData));
       }
     }
   }
@@ -658,15 +658,16 @@ class RidingRoomPageState extends State<RidingRoomPage> {
       selectedRidingPlayer = ridingRoom?.players.getOrCrash().firstWhere(
               (player) => player.id.getOrCrash().toInt() == playerId?.toInt());
     });
-    mapboxMap?.setCamera(mapbox.CameraOptions(
-      anchor: mapbox.ScreenCoordinate(x: 0, y: 0),
-      center: mapbox.Point(
-        coordinates: mapbox.Position(
-          selectedRidingPlayer?.location?.lng.getOrCrash() ?? 128.6803521,
-          selectedRidingPlayer?.location?.lat.getOrCrash() ?? 37.6390034,
-        ),
-      ).toJson(),
-    ));
+    //TODO : 이거 살려야함
+  //   mapboxMap?.setCamera(mapbox.CameraOptions(
+  //     anchor: mapbox.ScreenCoordinate(x: 0, y: 0),
+  //     center: mapbox.Point(
+  //       coordinates: mapbox.Position(
+  //         selectedRidingPlayer?.location?.lng.getOrCrash() ?? 128.6803521,
+  //         selectedRidingPlayer?.location?.lat.getOrCrash() ?? 37.6390034,
+  //       ),
+  //     ).toJson(),
+  //   ));
   }
 
   // _checkLocationPermission() async {

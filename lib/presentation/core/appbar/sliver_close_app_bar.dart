@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
 
 class SliverCloseAppBar extends StatefulWidget {
   final String? title;

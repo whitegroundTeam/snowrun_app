@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/contents/model/content_media.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/rental_shop_product/rental_shop_product_option.dart';
+import 'package:doortoout/domain/contents/model/content_media.dart';
+import 'package:doortoout/domain/core/failures.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/rental_shop_product/rental_shop_product_option.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'rental_shop_product.freezed.dart';

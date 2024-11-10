@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/riding/riding_failure.dart';
-import 'package:snowrun_app/domain/riding/riding_room.dart';
-import 'package:snowrun_app/domain/riding/riding_rooms.dart';
+import 'package:doortoout/domain/riding/riding_failure.dart';
+import 'package:doortoout/domain/riding/riding_room.dart';
+import 'package:doortoout/domain/riding/riding_rooms.dart';
 
 abstract class IRidingRepository {
   Future<Either<RidingFailure, RidingRooms>> getRidingRooms();

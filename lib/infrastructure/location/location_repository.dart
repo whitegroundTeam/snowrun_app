@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/domain/location/i_location_repository.dart';
-import 'package:snowrun_app/domain/location/location_failure.dart';
-import 'package:snowrun_app/domain/location/model/boundary_location.dart';
-import 'package:snowrun_app/infrastructure/api/core_api.dart';
-import 'package:snowrun_app/infrastructure/location/location_dtos.dart';
+import 'package:doortoout/domain/location/i_location_repository.dart';
+import 'package:doortoout/domain/location/location_failure.dart';
+import 'package:doortoout/domain/location/model/boundary_location.dart';
+import 'package:doortoout/infrastructure/api/core_api.dart';
+import 'package:doortoout/infrastructure/location/location_dtos.dart';
 
 @LazySingleton(as: ILocationRepository)
 class LocationRepository implements ILocationRepository {

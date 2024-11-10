@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
-import 'package:snowrun_app/application/default_status.dart';
-import 'package:snowrun_app/domain/activity_center/model/activity_center.dart';
-import 'package:snowrun_app/domain/activity_center/model/date_time_tickets.dart';
-import 'package:snowrun_app/domain/cart/model/cart.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/rental/model/rental.dart';
-import 'package:snowrun_app/domain/rental_shop_product/rental_shop_product.dart';
-import 'package:snowrun_app/domain/rental_shop_product/rental_shop_product_option_item.dart';
+import 'package:doortoout/application/default_status.dart';
+import 'package:doortoout/domain/activity_center/model/activity_center.dart';
+import 'package:doortoout/domain/activity_center/model/date_time_tickets.dart';
+import 'package:doortoout/domain/cart/model/cart.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/rental/model/rental.dart';
+import 'package:doortoout/domain/rental_shop_product/rental_shop_product.dart';
+import 'package:doortoout/domain/rental_shop_product/rental_shop_product_option_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

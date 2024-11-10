@@ -2,11 +2,11 @@
 import 'package:dartz/dartz.dart';
 
 // Project imports:
-import 'package:snowrun_app/domain/auth/auth_failure.dart';
-import 'package:snowrun_app/domain/auth/auth_sign_result.dart';
-import 'package:snowrun_app/domain/auth/value_objects.dart';
-import 'package:snowrun_app/domain/user/model/app_user.dart';
-import 'package:snowrun_app/domain/user/model/user.dart';
+import 'package:doortoout/domain/auth/auth_failure.dart';
+import 'package:doortoout/domain/auth/auth_sign_result.dart';
+import 'package:doortoout/domain/auth/value_objects.dart';
+import 'package:doortoout/domain/user/model/app_user.dart';
+import 'package:doortoout/domain/user/model/user.dart';
 
 abstract class IAuthRepository {
   Future<Option<AppUser>> getSignedInUser();

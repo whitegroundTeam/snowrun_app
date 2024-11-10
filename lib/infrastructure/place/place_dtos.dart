@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/place/model/boundary.dart';
-import 'package:snowrun_app/domain/place/model/place.dart';
-import 'package:snowrun_app/domain/place/model/vertices.dart';
-import 'package:snowrun_app/domain/place/model/vertices_type.dart';
-import 'package:snowrun_app/domain/place/types.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/place/model/boundary.dart';
+import 'package:doortoout/domain/place/model/place.dart';
+import 'package:doortoout/domain/place/model/vertices.dart';
+import 'package:doortoout/domain/place/model/vertices_type.dart';
+import 'package:doortoout/domain/place/types.dart';
 
 
 

@@ -12,9 +12,10 @@ class Mapbox extends StatefulWidget {
 class MapboxState extends State<Mapbox> {
   @override
   Widget build(BuildContext context) {
-    return MapWidget(
-        resourceOptions:
-        ResourceOptions(accessToken: "pk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xua3UxZTZvMGZmMDJpczFmdnlxd2RqZSJ9.EHF4W-fNtEyADJC3lInQcA")
-    );
+    return Container();
+    // return MapWidget(
+    //     resourceOptions:
+    //     ResourceOptions(accessToken: "pk.eyJ1Ijoid2hpdGVncm91bmQiLCJhIjoiY2xua3UxZTZvMGZmMDJpczFmdnlxd2RqZSJ9.EHF4W-fNtEyADJC3lInQcA")
+    // );
   }
 }

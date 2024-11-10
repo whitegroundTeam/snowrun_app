@@ -1,8 +1,8 @@
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/body_spec/body_spec_bloc.dart';
-import 'package:snowrun_app/presentation/core/common_buttons/button_info.dart';
-import 'package:snowrun_app/presentation/core/common_buttons/common_buttons.dart';
-import 'package:snowrun_app/presentation/core/typography/app_text_style.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/body_spec/body_spec_bloc.dart';
+import 'package:doortoout/presentation/core/common_buttons/button_info.dart';
+import 'package:doortoout/presentation/core/common_buttons/common_buttons.dart';
+import 'package:doortoout/presentation/core/typography/app_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

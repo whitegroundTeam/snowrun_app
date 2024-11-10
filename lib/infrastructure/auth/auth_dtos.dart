@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:snowrun_app/domain/auth/auth_token.dart';
-import 'package:snowrun_app/domain/auth/sign_response.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
+import 'package:doortoout/domain/auth/auth_token.dart';
+import 'package:doortoout/domain/auth/sign_response.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
 
 part 'auth_dtos.freezed.dart';
 

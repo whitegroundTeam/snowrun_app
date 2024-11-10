@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/app_info/app_info_bloc.dart';
-import 'package:snowrun_app/application/auth/auth_bloc.dart';
-import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
-import 'package:snowrun_app/presentation/core/appbar/common_app_bar.dart';
-import 'package:snowrun_app/presentation/core/appbar/underline_text.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/common_scaffold.dart';
-import 'package:snowrun_app/presentation/core/scroll_physics.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
-import 'package:snowrun_app/presentation/setting/setting_action_widget.dart';
-import 'package:snowrun_app/utils/launch_url.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/app_info/app_info_bloc.dart';
+import 'package:doortoout/application/auth/auth_bloc.dart';
+import 'package:doortoout/presentation/auth/sign_in_page.dart';
+import 'package:doortoout/presentation/core/appbar/common_app_bar.dart';
+import 'package:doortoout/presentation/core/appbar/underline_text.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/common_scaffold.dart';
+import 'package:doortoout/presentation/core/scroll_physics.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
+import 'package:doortoout/presentation/core/webview/common_webview.dart';
+import 'package:doortoout/presentation/setting/setting_action_widget.dart';
+import 'package:doortoout/utils/launch_url.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});

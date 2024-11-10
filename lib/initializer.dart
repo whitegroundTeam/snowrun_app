@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:snowrun_app/firebase_options.dart';
-import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/utils/remote_configs.dart';
+import 'package:doortoout/firebase_options.dart';
+import 'package:doortoout/infrastructure/hive/hive_provider.dart';
+import 'package:doortoout/injection.dart';
+import 'package:doortoout/utils/remote_configs.dart';
 
 Future<void> initServices({
   bool isAnalyticsCollectEnabled = false,

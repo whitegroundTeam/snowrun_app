@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/presentation/core/bottomsheet/common_bottom_sheet.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/core/webview/common_webview.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/bottomsheet/common_bottom_sheet.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
+import 'package:doortoout/presentation/core/webview/common_webview.dart';
 
 class HomeBottomBand extends StatefulWidget {
   const HomeBottomBand({super.key});
@@ -41,7 +41,7 @@ class HomeBottomBandState extends State<HomeBottomBand> {
         onTap: () {
           showCommonBottomSheet(context,
               title: "장비 보관하기 번거로우시죠?",
-              accentDescription: "스노우런이 도와드릴게요!",
+              accentDescription: "도어투아웃이 도와드릴게요!",
               actionButtonDescriptionText: "데크, 바인딩, 부츠 등 어느 장비든",
               actionButtonText: "보관하러 가기", onClickActionButton: () {
             CommonWebViewPage.pushCommonWebView(

@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:snowrun_app/domain/activity_center/model/activity_center.dart';
-import 'package:snowrun_app/domain/activity_center/model/time_ticket.dart';
-import 'package:snowrun_app/domain/core/failures.dart';
-import 'package:snowrun_app/domain/core/value_objects.dart';
-import 'package:snowrun_app/domain/rental/model/rental.dart';
-import 'package:snowrun_app/domain/rental_shop_product/rental_shop_product.dart';
+import 'package:doortoout/domain/activity_center/model/activity_center.dart';
+import 'package:doortoout/domain/activity_center/model/time_ticket.dart';
+import 'package:doortoout/domain/core/failures.dart';
+import 'package:doortoout/domain/core/value_objects.dart';
+import 'package:doortoout/domain/rental/model/rental.dart';
+import 'package:doortoout/domain/rental_shop_product/rental_shop_product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cart.freezed.dart';

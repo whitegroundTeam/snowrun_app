@@ -1,18 +1,18 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/auth/auth_bloc.dart';
-import 'package:snowrun_app/application/home/refresh/home_refresh_bloc.dart';
-import 'package:snowrun_app/application/riding/riding_actor/riding_actor_bloc.dart';
-import 'package:snowrun_app/domain/riding/riding_player.dart';
-import 'package:snowrun_app/domain/riding/riding_room.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/loading_dialog.dart';
-import 'package:snowrun_app/presentation/core/text/title_text.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
-import 'package:snowrun_app/presentation/riding/players_counts_widget.dart';
-import 'package:snowrun_app/presentation/riding/riding_room_page.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/auth/auth_bloc.dart';
+import 'package:doortoout/application/home/refresh/home_refresh_bloc.dart';
+import 'package:doortoout/application/riding/riding_actor/riding_actor_bloc.dart';
+import 'package:doortoout/domain/riding/riding_player.dart';
+import 'package:doortoout/domain/riding/riding_room.dart';
+import 'package:doortoout/injection.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/loading_dialog.dart';
+import 'package:doortoout/presentation/core/text/title_text.dart';
+import 'package:doortoout/presentation/core/toast/common_toast.dart';
+import 'package:doortoout/presentation/riding/players_counts_widget.dart';
+import 'package:doortoout/presentation/riding/riding_room_page.dart';
 
 class HomeRidingItemWidget extends StatefulWidget {
   final RidingRoom ridingRoom;

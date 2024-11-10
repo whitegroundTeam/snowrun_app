@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snowrun_app/app_style.dart';
-import 'package:snowrun_app/application/core/select_button/select_button_bloc.dart';
-import 'package:snowrun_app/injection.dart';
-import 'package:snowrun_app/presentation/core/common_detector.dart';
-import 'package:snowrun_app/presentation/core/typography/app_text_style.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/application/core/select_button/select_button_bloc.dart';
+import 'package:doortoout/injection.dart';
+import 'package:doortoout/presentation/core/common_detector.dart';
+import 'package:doortoout/presentation/core/typography/app_text_style.dart';
 
 class CommonButton extends StatefulWidget {
   final SelectButtonBloc? selectButtonBloc;
@@ -33,8 +33,8 @@ class CommonButton extends StatefulWidget {
     this.selectButtonBloc,
     this.buttonColor = AppStyle.secondaryBackground,
     this.inActiveButtonColor = AppStyle.secondaryBackground,
-    this.textColor = AppStyle.black,
-    this.inActiveTextColor = AppStyle.black,
+    this.textColor = AppStyle.white,
+    this.inActiveTextColor = AppStyle.white,
     this.iconColor,
     this.iconPath,
     this.iconHeroTag,

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:snowrun_app/infrastructure/hive/hive_provider.dart';
+import 'package:doortoout/infrastructure/hive/hive_provider.dart';
 
 part 'check_permission_event.dart';
 

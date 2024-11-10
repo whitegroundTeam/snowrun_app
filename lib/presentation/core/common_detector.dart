@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:snowrun_app/application/auth/auth_bloc.dart';
-import 'package:snowrun_app/presentation/auth/sign_in_page.dart';
-import 'package:snowrun_app/presentation/core/toast/common_toast.dart';
+import 'package:doortoout/application/auth/auth_bloc.dart';
+import 'package:doortoout/presentation/auth/sign_in_page.dart';
+import 'package:doortoout/presentation/core/toast/common_toast.dart';
 
 class CommonDetector extends StatefulWidget {
   final Function? onTap;

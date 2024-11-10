@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:snowrun_app/domain/riding/riding_player.dart';
+import 'package:doortoout/domain/riding/riding_player.dart';
 
 part 'riding_controller_event.dart';
 part 'riding_controller_state.dart';
