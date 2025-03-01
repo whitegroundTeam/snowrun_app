@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:app_links/app_links.dart';
+import 'package:doortoout/app_style.dart';
+import 'package:doortoout/presentation/core/typography/app_text_style.dart';
+import 'package:doortoout/presentation/home/home_magazine_widget.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -98,8 +101,7 @@ class HomePageState extends State<HomePage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeRefreshBloc>(
-            create: (context) =>
-            widget.needRefresh == true
+            create: (context) => widget.needRefresh == true
                 ? (homeRefreshBloc..add(const HomeRefreshEvent.refresh()))
                 : homeRefreshBloc),
         // BlocProvider<AppInfoBloc>(
@@ -118,57 +120,51 @@ class HomePageState extends State<HomePage> {
             }
 
             final clickedAt =
-            getIt<HiveProvider>().getAppNoticeNotViewedToday();
+                getIt<HiveProvider>().getAppNoticeNotViewedToday();
             if (state.appNotice != null &&
                 (clickedAt.isEmpty ||
-                    DateTime
-                        .parse(clickedAt)
-                        .day != DateTime
-                        .now()
-                        .day)) {
+                    DateTime.parse(clickedAt).day != DateTime.now().day)) {
               await getIt<HiveProvider>().setAppNoticeNotViewedToday("");
 
               if (!mounted) return;
               showCommonBottomSheet(context,
                   canClose:
-                  state.appNotice?.isForcedFinish.getOrCrash() == false,
+                      state.appNotice?.isForcedFinish.getOrCrash() == false,
                   title: state.appNotice?.title.getOrCrash() ?? "",
                   description: state.appNotice?.description.getOrCrash(),
                   imageUrl: state.appNotice?.imageUrl.getOrCrash(),
                   negativeButtonText:
-                  state.appNotice?.negativeButton?.title.getOrCrash() ?? "",
+                      state.appNotice?.negativeButton?.title.getOrCrash() ?? "",
                   positiveButtonText:
-                  state.appNotice?.positiveButton?.title.getOrCrash() ?? "",
+                      state.appNotice?.positiveButton?.title.getOrCrash() ?? "",
                   onClickNegativeButton: () {
-                    getIt<HiveProvider>()
-                        .setAppNoticeNotViewedToday(DateTime.now().toString());
-                    launchExternalUrl(
-                        state.appNotice?.negativeButton?.link.getOrCrash() ??
-                            dotenv.env['APP_URL_HOST'] ??
-                            "");
-                    if (state.appNotice?.isForcedFinish.getOrCrash() == true) {
-                      exitAppForced();
-                    } else {
-                      context.pop();
-                    }
-                  },
-                  onClickPositiveButton: () {
-                    getIt<HiveProvider>()
-                        .setAppNoticeNotViewedToday(DateTime.now().toString());
-                    launchExternalUrl(
-                        state.appNotice?.positiveButton?.link.getOrCrash() ??
-                            dotenv.env['APP_URL_HOST'] ??
-                            "");
-                    if (state.appNotice?.isForcedFinish.getOrCrash() == true) {
-                      exitAppForced();
-                    } else {
-                      context.pop();
-                    }
-                  },
-                  onClickCloseButton: () {
-                    getIt<HiveProvider>()
-                        .setAppNoticeNotViewedToday(DateTime.now().toString());
-                  });
+                getIt<HiveProvider>()
+                    .setAppNoticeNotViewedToday(DateTime.now().toString());
+                launchExternalUrl(
+                    state.appNotice?.negativeButton?.link.getOrCrash() ??
+                        dotenv.env['APP_URL_HOST'] ??
+                        "");
+                if (state.appNotice?.isForcedFinish.getOrCrash() == true) {
+                  exitAppForced();
+                } else {
+                  context.pop();
+                }
+              }, onClickPositiveButton: () {
+                getIt<HiveProvider>()
+                    .setAppNoticeNotViewedToday(DateTime.now().toString());
+                launchExternalUrl(
+                    state.appNotice?.positiveButton?.link.getOrCrash() ??
+                        dotenv.env['APP_URL_HOST'] ??
+                        "");
+                if (state.appNotice?.isForcedFinish.getOrCrash() == true) {
+                  exitAppForced();
+                } else {
+                  context.pop();
+                }
+              }, onClickCloseButton: () {
+                getIt<HiveProvider>()
+                    .setAppNoticeNotViewedToday(DateTime.now().toString());
+              });
               isShowAppNoticeBottomSheet = true;
             }
           },
@@ -195,13 +191,14 @@ class HomePageState extends State<HomePage> {
                         CommonAppBar(
                           appBarType: AppBarType.home,
                         ),
-                        HomeProfileWidget(),
-                        HomeStartRidingWidget(),
-                        HomeRidingsWidget(),
+                        // HomeProfileWidget(),
+                        // HomeStartRidingWidget(),
+                        // HomeRidingsWidget(),
+                        HomeMagazineWidget(),
                       ],
                     ),
                   ),
-                  HomeBottomBand(),
+                  // HomeBottomBand(),
                 ],
               ),
               Positioned(

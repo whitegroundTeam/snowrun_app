@@ -1,3 +1,4 @@
+import 'package:doortoout/app_style.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:doortoout/presentation/core/common_detector.dart';
@@ -28,6 +29,7 @@ class HomeAppBarState extends State<HomeAppBar> {
               tag: "settingTag",
               child: Image.asset(
                 'assets/webp/setting.webp',
+                color: const Color(0xff2F2F2F),
                 height: 24,
                 width: 24,
               ),

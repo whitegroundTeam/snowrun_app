@@ -209,7 +209,9 @@ class SignInPageState extends State<SignInPage> {
                           children: [
                             Center(
                               child: Image.asset(
-                                'assets/webp/snow_ball_white.webp',
+                              //   'assets/webp/snow_ball_white.webp',
+                                'assets/webp/peak_icon.webp',
+                                color: AppStyle.white,
                                 height: previewProfileImageHeight,
                                 width: previewProfileImageHeight,
                               ),

@@ -60,7 +60,7 @@ class MemoBubbleExpandedPageState extends State<MemoBubbleExpandedPage> {
               const SizedBox(height: 88),
               Text(
                 '메모',
-                style: AppTextStyle.heading01,
+                style: AppTextStyle.headingShadow01,
               ),
               const SizedBox(height: 4),
               Text(

@@ -86,7 +86,6 @@ class CoreApi {
 
     Response response;
 
-
     switch (method) {
       case HttpMethod.post:
         response = await client.post(
@@ -177,6 +176,21 @@ class CoreApi {
         path: "/boundaries/",
         bodyParam: createBoundaryDto.toJson(),
       );
+
+  /// Magazines
+  Future<Response> getMagazines({int? limit, int? offset}) => _requestWrapper(
+          method: HttpMethod.get,
+          path: "/magazines",
+          queryParams: {
+            'limit': "${limit ?? defaultPageSize}",
+            'offset': "${offset ?? 0}",
+          },
+  );
+
+  Future<Response> getMagazine({required int id}) => _requestWrapper(
+      method: HttpMethod.get,
+      path: "/magazine/{magazine_id}",
+      pathParams: {'magazine_id': "$id"});
 
   /// Riding
   Future<Response> getRidingRooms({int? limit, int? offset}) => _requestWrapper(

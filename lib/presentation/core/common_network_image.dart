@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:doortoout/app_style.dart';
 import 'package:flutter/material.dart';
 
 class CommonNetworkImage extends StatefulWidget {
@@ -31,7 +32,9 @@ class CommonNetworkImageState extends State<CommonNetworkImage> {
               width: widget.width,
               height: widget.height,
               child: Image.asset(
-                'assets/webp/snow_ball_white.webp',
+                // 'assets/webp/snow_ball_white.webp',
+                'assets/webp/peak_icon.webp',
+                color: AppStyle.white,
                 width: widget.width,
                 height: widget.height,
                 fit: BoxFit.cover,
@@ -45,7 +48,9 @@ class CommonNetworkImageState extends State<CommonNetworkImage> {
                 width: widget.width,
                 height: widget.height,
                 child: Image.asset(
-                  'assets/webp/snow_ball_white.webp',
+                  // 'assets/webp/snow_ball_white.webp',
+                  'assets/webp/peak_icon.webp',
+                  color: AppStyle.white,
                   fit: BoxFit.cover,
                 )
               );

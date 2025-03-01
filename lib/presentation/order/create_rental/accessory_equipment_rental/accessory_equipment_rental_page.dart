@@ -73,7 +73,7 @@ class AccessoryEquipmentRentalPageState
                         Expanded(
                           child: Text(
                             '선택한 장비',
-                            style: AppTextStyle.heading01.copyWith(
+                            style: AppTextStyle.headingShadow01.copyWith(
                               color: AppStyle.white,
                             ),
                           ),
@@ -326,7 +326,7 @@ class AccessoryEquipmentRentalPageState
                               children: [
                                 Text(
                                   selectedProductOption.title.getOrCrash(),
-                                  style: AppTextStyle.heading02,
+                                  style: AppTextStyle.headingShadow02,
                                 ),
                                 const SizedBox(
                                   height: 4,
@@ -359,7 +359,7 @@ class AccessoryEquipmentRentalPageState
                 const SizedBox(height: 48),
                 Text(
                   '원하시는 악세서리를 선택해주세요',
-                  style: AppTextStyle.heading01,
+                  style: AppTextStyle.headingShadow01,
                 ),
                 //TODO : 한개일때 처리
                 //TODO : 이미 세팅이 되었을때 처리

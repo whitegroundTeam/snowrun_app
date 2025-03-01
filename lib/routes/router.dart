@@ -1,3 +1,5 @@
+import 'package:doortoout/domain/magazine/magazine.dart';
+import 'package:doortoout/presentation/magazine/magazine_deetail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:doortoout/domain/rental/model/rental.dart';
@@ -167,7 +169,7 @@ final GoRouter router = GoRouter(
       path: '/create-rental',
       builder: (BuildContext context, GoRouterState state) {
         final Map<String, dynamic>? extra =
-        state.extra as Map<String, dynamic>?;
+            state.extra as Map<String, dynamic>?;
         final Rental? rental = extra?['rental'] as Rental?;
         return CreateRentalPage(
           rental: rental,
@@ -196,9 +198,9 @@ final GoRouter router = GoRouter(
       path: '/select-rental-option',
       builder: (BuildContext context, GoRouterState state) {
         final Map<String, dynamic>? extra =
-        state.extra as Map<String, dynamic>?;
+            state.extra as Map<String, dynamic>?;
         final RentalShopProduct? rentalShopProduct =
-        extra?['rentalShopProduct'] as RentalShopProduct?;
+            extra?['rentalShopProduct'] as RentalShopProduct?;
         return SelectRentalOptionPage(rentalShopProduct: rentalShopProduct);
       },
     ),
@@ -206,11 +208,11 @@ final GoRouter router = GoRouter(
       path: '/customer-rental-info',
       builder: (BuildContext context, GoRouterState state) {
         final Map<String, dynamic>? extra =
-        state.extra as Map<String, dynamic>?;
+            state.extra as Map<String, dynamic>?;
         final String? representativePhoneNumber =
-        extra?['representativePhoneNumber'] as String?;
+            extra?['representativePhoneNumber'] as String?;
         final String? representativeEmail =
-        extra?['representativeEmail'] as String?;
+            extra?['representativeEmail'] as String?;
         return CustomerRentalInfoPage(
           representativePhoneNumber: representativePhoneNumber,
           representativeEmail: representativeEmail,
@@ -277,11 +279,22 @@ final GoRouter router = GoRouter(
       path: '/select-ticket',
       builder: (BuildContext context, GoRouterState state) {
         final Map<String, dynamic>? extra =
-        state.extra as Map<String, dynamic>?;
+            state.extra as Map<String, dynamic>?;
         final Rental? rental = extra?['rental'] as Rental?;
         return SelectTicketPage(
           rental: rental,
         );
+      },
+    ),
+
+    /// MAGAZINE
+    GoRoute(
+      path: '/magazineDetail',
+      builder: (BuildContext context, GoRouterState state) {
+        final Map<String, dynamic>? extra = state.extra as Map<String, dynamic>?;
+        final Magazine magazine = extra?['magazine'] as Magazine;
+        final int testIndex = extra?['testIndex'] ?? -1;
+        return MagazineDetailPage(magazine: magazine, testIndex: testIndex);
       },
     ),
   ],

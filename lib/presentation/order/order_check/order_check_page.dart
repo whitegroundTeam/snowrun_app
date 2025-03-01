@@ -87,7 +87,7 @@ class OrderCheckPageState extends State<OrderCheckPage> {
                         const SizedBox(height: 24),
                         Text(
                           '주문 내역을 확인해주세요',
-                          style: AppTextStyle.heading01,
+                          style: AppTextStyle.headingShadow01,
                         ),
                         const SizedBox(height: 4),
                         Text(

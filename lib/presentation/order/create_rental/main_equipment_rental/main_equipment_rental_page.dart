@@ -74,7 +74,7 @@ class MainEquipmentRentalPageState extends State<MainEquipmentRentalPage> {
                         Expanded(
                           child: Text(
                             '선택한 장비',
-                            style: AppTextStyle.heading02.copyWith(
+                            style: AppTextStyle.headingShadow02.copyWith(
                               color: AppStyle.white,
                             ),
                           ),
@@ -325,7 +325,7 @@ class MainEquipmentRentalPageState extends State<MainEquipmentRentalPage> {
                               children: [
                                 Text(
                                   selectedProductOption.title.getOrCrash(),
-                                  style: AppTextStyle.heading02,
+                                  style: AppTextStyle.headingShadow02,
                                 ),
                                 const SizedBox(
                                   height: 4,
@@ -358,7 +358,7 @@ class MainEquipmentRentalPageState extends State<MainEquipmentRentalPage> {
                 const SizedBox(height: 48),
                 Text(
                   '어떤 장비를 렌탈하시겠어요?',
-                  style: AppTextStyle.heading01,
+                  style: AppTextStyle.headingShadow01,
                 ),
                 Expanded(
                   child: ListView.builder(

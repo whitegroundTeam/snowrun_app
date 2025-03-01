@@ -1,0 +1,1 @@
+enum MagazineType { informational, event, recommendation }

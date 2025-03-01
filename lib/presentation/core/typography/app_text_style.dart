@@ -11,6 +11,20 @@ class AppTextStyle {
     fontSize: 24,
     height: 32 / 24,
     color: AppStyle.white,
+  );
+
+  static TextStyle heading02 = TextStyle(
+    fontWeight: bold,
+    fontSize: 20,
+    height: 28 / 20,
+    color: AppStyle.white,
+  );
+
+  static TextStyle headingShadow01 = TextStyle(
+    fontWeight: bold,
+    fontSize: 24,
+    height: 32 / 24,
+    color: AppStyle.white,
     shadows: const <Shadow>[
       Shadow(
         offset: Offset(0, 0),
@@ -20,7 +34,7 @@ class AppTextStyle {
     ],
   );
 
-  static TextStyle heading02 = TextStyle(
+  static TextStyle headingShadow02 = TextStyle(
     fontWeight: bold,
     fontSize: 20,
     height: 28 / 20,

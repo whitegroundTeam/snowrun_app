@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:doortoout/domain/auth/auth_failure.dart';
@@ -28,6 +29,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_CheckAuth>((event, emit) async {
       emit(state.copyWith(status: AuthStatus.progress));
       final failureOrResponse = await _authRepository.me();
+
+      debugPrint("TWTWTWT :: AUTHMEMEME");
 
       emit(
         failureOrResponse.fold(

@@ -155,7 +155,7 @@ class CommonCheckOptionItemState extends State<CommonCheckOptionItem> {
               children: [
                 Text(
                   '${widget.title}',
-                  style: AppTextStyle.heading02,
+                  style: AppTextStyle.headingShadow02,
                 ),
                 const SizedBox(
                   width: 8,

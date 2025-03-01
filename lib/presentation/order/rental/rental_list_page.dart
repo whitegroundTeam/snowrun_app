@@ -183,7 +183,7 @@ class RentalListPageState extends State<RentalListPage> {
                                       padding: const EdgeInsets.all(8),
                                       child: Text(
                                         "${index + 1}",
-                                        style: AppTextStyle.heading01
+                                        style: AppTextStyle.headingShadow01
                                             .copyWith(color: AppStyle.black),
                                       ),
                                     ),

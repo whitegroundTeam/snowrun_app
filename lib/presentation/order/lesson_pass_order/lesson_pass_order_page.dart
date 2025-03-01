@@ -309,7 +309,7 @@ class LessonPassOrderPageState extends State<LessonPassOrderPage> {
                           visible: productOption.title.getOrCrash().isNotEmpty,
                           child: Text(
                             productOption.title.getOrCrash() ?? '',
-                            style: AppTextStyle.heading02,
+                            style: AppTextStyle.headingShadow02,
                           ),
                         ),
                         Visibility(

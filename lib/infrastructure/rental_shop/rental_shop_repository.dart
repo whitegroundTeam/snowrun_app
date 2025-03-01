@@ -364,7 +364,7 @@ class RentalShopRepository implements IRentalShopRepository {
       FootShape.flatFeet,
       FootShape.highArch,
     ]);
-
+    
     const s3BaseUrl =
         "https://doorout.s3.ap-northeast-2.amazonaws.com/operation/image/test_product/";
     const skiTestName = "skiing_test1.png";

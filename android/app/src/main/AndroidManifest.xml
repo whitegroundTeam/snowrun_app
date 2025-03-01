@@ -15,7 +15,8 @@
         android:allowBackup="false"
         android:usesCleartextTraffic="true"
         android:enableOnBackInvokedCallback="true"
-        android:label="도어투아웃">
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:label="PEAK">
 
         <meta-data
             android:name="com.mapbox.token"

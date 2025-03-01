@@ -85,7 +85,7 @@ class SelectActivityCenterPageState extends State<SelectActivityCenterPage> {
                           duration: const Duration(milliseconds: 800),
                           child: Text(
                               "${rentalShop.name.getOrCrash()}은\n아래 시설들을 지원합니다.",
-                              style: AppTextStyle.heading01),
+                              style: AppTextStyle.headingShadow01),
                         ),
                         const SizedBox(
                           height: 8,
@@ -146,7 +146,7 @@ class SelectActivityCenterPageState extends State<SelectActivityCenterPage> {
                                 child: Center(
                                   child: Text(
                                     activityCenter.name.getOrCrash(),
-                                    style: AppTextStyle.heading01
+                                    style: AppTextStyle.headingShadow01
                                         .copyWith(color: AppStyle.white),
                                   ),
                                 ),

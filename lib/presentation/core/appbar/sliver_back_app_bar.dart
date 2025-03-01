@@ -68,7 +68,7 @@ class SliverBackAppBarState extends State<SliverBackAppBar>
                   ),
                   child: Image.asset(
                     'assets/webp/arrow_left.webp',
-                    color: AppStyle.white,
+                    color: AppStyle.black,
                   ),
                 ),
               ),
@@ -78,7 +78,7 @@ class SliverBackAppBarState extends State<SliverBackAppBar>
                   child: Text(
                     widget.title ?? "",
                     style: const TextStyle(
-                      color: AppStyle.white,
+                      color: AppStyle.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),

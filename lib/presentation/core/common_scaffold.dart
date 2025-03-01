@@ -88,6 +88,7 @@ class CommonScaffoldState extends State<CommonScaffold> {
       required double height,
       required Color backgroundColor,
       required double feedbackOpacity}) {
+    return Container();
     return BlocBuilder<LocationBloc, LocationState>(
       builder: (context, state) {
         return CommonDetector(

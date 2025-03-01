@@ -127,7 +127,7 @@ class RentalInfoState extends State<RentalInfo> {
                     ),
                     Text(
                       '장비 선택을 위한 정보',
-                      style: AppTextStyle.heading01,
+                      style: AppTextStyle.headingShadow01,
                     ),
                     const SizedBox(
                       width: 8,
@@ -258,7 +258,7 @@ class RentalInfoState extends State<RentalInfo> {
                         ),
                         Text(
                           '신체 정보',
-                          style: AppTextStyle.heading02,
+                          style: AppTextStyle.headingShadow02,
                         ),
                         const CommonTitle(
                           title: "키",

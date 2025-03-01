@@ -57,12 +57,20 @@ class MainAppState extends State<MainApp> {
       FlutterNativeSplash.remove();
     });
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      //   statusBarColor: AppStyle.transparent,
+      //   statusBarIconBrightness: Brightness.light,
+      //   systemNavigationBarDividerColor: AppStyle.background,
+      //   systemNavigationBarColor: AppStyle.background,
+      //   systemNavigationBarIconBrightness: Brightness.light,
+      // ));
+
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: AppStyle.transparent,
-        statusBarIconBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
         systemNavigationBarDividerColor: AppStyle.background,
         systemNavigationBarColor: AppStyle.background,
-        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.dark,
       ));
 
       commonToast = CommonToast(

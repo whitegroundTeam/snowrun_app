@@ -305,7 +305,7 @@ class EmailSignUpPageState extends State<EmailSignUpPage> {
                                         );
                                   }
                                 },
-                                text: "도어투아웃 시작하기!",
+                                text: "PEAK 읽으러가기!",
                               )
                             ],
                           ),

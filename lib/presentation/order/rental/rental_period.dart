@@ -72,7 +72,7 @@ class RentalPeroidState extends State<RentalPeroid> {
                     ),
                     Text(
                       '렌탈 기간',
-                      style: AppTextStyle.heading01,
+                      style: AppTextStyle.headingShadow01,
                     ),
                     const SizedBox(
                       width: 8,

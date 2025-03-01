@@ -173,7 +173,7 @@ class RentalContactState extends State<RentalContact> {
                     ),
                     Text(
                       '반납 정보',
-                      style: AppTextStyle.heading01,
+                      style: AppTextStyle.headingShadow01,
                     ),
                     const SizedBox(
                       width: 4,

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:doortoout/presentation/core/common_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,6 +77,7 @@ class LandingPageState extends State<LandingPage> {
                     c.status == DefaultStatus.failure);
           },
           listener: (context, state) async {
+            debugPrint("WTWTWT :: WTWT111 ${state.status}");
             if (state.isAvailableVersion != null) {
               if (state.isAvailableVersion == false) {
                 _showNeedUpdateBottomSheet(
@@ -126,19 +128,23 @@ class LandingPageState extends State<LandingPage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
-                      'assets/webp/snowrun_icon.webp',
-                      height: 80,
-                      width: 80,
-                      color: AppStyle.white,
+                      // 'assets/webp/snowrun_icon.webp',
+                      'assets/png/app_icon_1024.png',
+                      height: 196,
+                      width: 196,
+                      // height: 80,
+                      // width: 80,
+                      // color: AppStyle.white,
                     ),
                     const SizedBox(height: 16),
                     FadeInUp(
                       from: 40,
                       delay: const Duration(milliseconds: 800),
                       child: const TitleText(
-                        title: "눈을 좋아하시나요?",
+                        // title: "눈을 좋아하시나요?",
+                        title: "PEAKFFICE의 이야기가 시작됩니다.",
                         fontSize: 18,
-                        color: AppStyle.white,
+                        color: AppStyle.black,
                         fontWeight: FontWeight.w500,
                       ),
                     ),

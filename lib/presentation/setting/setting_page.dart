@@ -174,9 +174,9 @@ class SettingPageState extends State<SettingPage> {
                                   TitleText(
                                     title: "로그아웃 하기",
                                     fontSize: 16,
-                                    color: AppStyle.white,
+                                    color: AppStyle.black,
                                   ),
-                                  AppStyle.white,
+                                  AppStyle.black,
                                   width: 1,
                                 ),
                               ),

@@ -63,7 +63,7 @@ class OrderCompletePageState extends State<OrderCompletePage> {
                         const SizedBox(height: 24),
                         Text(
                           '주문이 완료되었습니다!',
-                          style: AppTextStyle.heading01,
+                          style: AppTextStyle.headingShadow01,
                         ),
                         const SizedBox(height: 4),
                         Text(
@@ -105,7 +105,7 @@ class OrderCompletePageState extends State<OrderCompletePage> {
                                             Expanded(
                                               child: Text(
                                                 '135,000원',
-                                                style: AppTextStyle.heading02,
+                                                style: AppTextStyle.headingShadow02,
                                               ),
                                             ),
                                             const SizedBox(
@@ -137,7 +137,7 @@ class OrderCompletePageState extends State<OrderCompletePage> {
                                 children: [
                                   Text(
                                     '리프트권 입금 계좌',
-                                    style: AppTextStyle.heading02,
+                                    style: AppTextStyle.headingShadow02,
                                   ),
                                   SizedBox(
                                     width: 8,
@@ -225,7 +225,7 @@ class OrderCompletePageState extends State<OrderCompletePage> {
                                         SizedBox(height: 4,),
                                         Text(
                                           '145,000원',
-                                          style: AppTextStyle.heading02,
+                                          style: AppTextStyle.headingShadow02,
                                         ),
                                       ],
                                     ),

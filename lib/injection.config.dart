@@ -24,6 +24,7 @@ import 'application/core/select_button/select_button_bloc.dart' as _i152;
 import 'application/draggable/draggable_bloc.dart' as _i43;
 import 'application/home/refresh/home_refresh_bloc.dart' as _i117;
 import 'application/location/location_bloc.dart' as _i988;
+import 'application/magazine/magazine_bloc.dart' as _i1009;
 import 'application/order/order_bloc.dart' as _i558;
 import 'application/permission/check_permission/check_permission_bloc.dart'
     as _i58;
@@ -45,6 +46,7 @@ import 'application/user/user_bloc.dart' as _i111;
 import 'domain/app-info/i_app_info_repository.dart' as _i194;
 import 'domain/auth/i_auth_repository.dart' as _i1023;
 import 'domain/location/i_location_repository.dart' as _i380;
+import 'domain/magazine/i_magazine_repository.dart' as _i148;
 import 'domain/place/i_place_repository.dart' as _i474;
 import 'domain/rental_shop/i_rental_shop_repository.dart' as _i7;
 import 'domain/riding/i_riding_repository.dart' as _i609;
@@ -55,6 +57,7 @@ import 'infrastructure/app-info/app_info_repository.dart' as _i525;
 import 'infrastructure/auth/auth_repository.dart' as _i886;
 import 'infrastructure/hive/hive_provider.dart' as _i840;
 import 'infrastructure/location/location_repository.dart' as _i615;
+import 'infrastructure/magazine/magazine_repository.dart' as _i428;
 import 'infrastructure/place/place_repository.dart' as _i620;
 import 'infrastructure/rental_shop/rental_shop_repository.dart' as _i903;
 import 'infrastructure/riding/riding_repository.dart' as _i794;
@@ -113,6 +116,8 @@ _i174.GetIt $initGetIt(
       () => _i431.UserRepository(gh<_i998.CoreApi>()));
   gh.lazySingleton<_i380.ILocationRepository>(
       () => _i615.LocationRepository(gh<_i998.CoreApi>()));
+  gh.lazySingleton<_i148.IMagazineRepository>(
+      () => _i428.RidingRepository(gh<_i998.CoreApi>()));
   gh.factory<_i205.RidingListBloc>(
       () => _i205.RidingListBloc(gh<_i609.IRidingRepository>()));
   gh.factory<_i721.RidingDetailBloc>(
@@ -126,6 +131,8 @@ _i174.GetIt $initGetIt(
       () => _i11.ProfileBloc(gh<_i602.IUserRepository>()));
   gh.factory<_i988.LocationBloc>(
       () => _i988.LocationBloc(gh<_i380.ILocationRepository>()));
+  gh.factory<_i1009.MagazineBloc>(
+      () => _i1009.MagazineBloc(gh<_i148.IMagazineRepository>()));
   gh.factory<_i945.PlaceBloc>(
       () => _i945.PlaceBloc(gh<_i474.IPlaceRepository>()));
   gh.factory<_i469.TimeTicketActorBloc>(

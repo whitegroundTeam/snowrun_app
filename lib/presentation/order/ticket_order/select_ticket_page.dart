@@ -407,7 +407,7 @@ class SelectTicketPageState extends State<SelectTicketPage> {
                                         Text(
                                           "성인이신가요?",
                                           style:
-                                              AppTextStyle.heading02.copyWith(
+                                              AppTextStyle.headingShadow02.copyWith(
                                             color: AppStyle.white,
                                           ),
                                         ),
